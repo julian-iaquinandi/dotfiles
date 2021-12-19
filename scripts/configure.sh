@@ -11,6 +11,8 @@ CONFIG_ZSH() {
 }
 
 
-CONFIGURE_TEXT zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"
+# installer
+
+TEXT_EXISTS zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"
 
 PRINT_CONFIGURE_SUMMARY

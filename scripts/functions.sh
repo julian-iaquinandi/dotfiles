@@ -7,7 +7,7 @@ SUMMARY_NOT_FOUND=()
 # Check if command exists and if not install
 # $1 = command name
 # $2 = install function
-INSTALL_CMD() {
+CMD_EXISTS() {
 
   if [ -x "$(command -v $1)" ]; then
     echo "✔️ $1 is already installed" >&2
@@ -23,8 +23,24 @@ INSTALL_CMD() {
 # $1 = command name
 # $2 = install function
 # $3 = directory
-INSTALL_DIR() {
+DIR_EXISTS() {
   if [ -d $3 ]; then 
+    echo "✔️ $1 is already installed" >&2
+    SUMMARY_FOUND+=($1) 
+  else 
+    echo "❗ $1 is not installed"
+    SUMMARY_NOT_FOUND+=($1) 
+    $2
+  fi 
+}
+
+
+# Check if file exists and if not install 
+# $1 = command name
+# $2 = install function
+# $3 = directory
+FILE_EXISTS() {
+  if [ -f $3 ]; then 
     echo "✔️ $1 is already installed" >&2
     SUMMARY_FOUND+=($1) 
   else 
@@ -39,7 +55,7 @@ INSTALL_DIR() {
 # $2 = install function
 # $3 = file
 # $4 = text
-CONFIGURE_TEXT() {
+TEXT_EXISTS() {
   if grep -Fxq "$4" $3
   then
     # code if found

@@ -21,13 +21,20 @@ require'nvim-treesitter.configs'.setup {
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use {
+    'neoclide/coc.nvim', 
+    branch = 'release',
+    run = ':CocInstall coc-tsserver'
+  }
   use 'folke/tokyonight.nvim'
-  use 'nvim-treesitter/nvim-treesitter' 
-  use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'tpope/vim-commentary'
   use 'ThePrimeagen/git-worktree.nvim'
   use 'mhinz/vim-startify'
+  use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}

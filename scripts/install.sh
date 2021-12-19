@@ -7,14 +7,16 @@ CURRENT_DIR=$(pwd)
 
 # Installs
 
-INSTALL_CURL() {
-  sudo apt install curl 
+INSTALL_BASE() {
+  sudo apt install curl wget stow build-essential -y
 }
 
 INSTALL_NEOVIM() {
-  sudo add-apt-repository ppa:neovim-ppa/unstable -y
-  sudo apt-get update -y
-  sudo apt-get install neovim -y
+  NVIM_DIR=~/dotfiles/app/nvim.0.7
+  sudo cp $NVIM_DIR/usr/bin/* /usr/bin
+  sudo cp $NVIM_DIR/usr/lib/* /usr/lib
+  sudo cp $NVIM_DIR/usr/man/* /usr/man
+  sudo cp $NVIM_DIR/usr/share/* /usr/share
 }
 
 INSTALL_OHMYZSH() {
@@ -29,12 +31,11 @@ INSTALL_NVM() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 }
 
-
 # Installer
 
-INSTALL_CMD curl INSTALL_CURL
-INSTALL_CMD nvim INSTALL_NEOVIM
-INSTALL_DIR oh-my-zsh INSTALL_OHMYZSH ~/.oh-my-zsh 
-INSTALL_DIR nvm INSTALL_NVM ~/.nvm
+CMD_EXISTS curl INSTALL_BASE
+CMD_EXISTS nvim INSTALL_NEOVIM
+FILE_EXISTS oh-my-zsh INSTALL_OHMYZSH ~/.oh-my-zsh/plugins/antigen.zsh 
+DIR_EXISTS nvm INSTALL_NVM ~/.nvm
 
 PRINT_INSTALL_SUMMARY
