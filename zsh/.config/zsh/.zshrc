@@ -54,7 +54,8 @@ source ~/.config/zsh/functions
 source ~/.oh-my-zsh/plugins/antigen.zsh
 
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+source $NVM_DIR/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh

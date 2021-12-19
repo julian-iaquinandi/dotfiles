@@ -18,17 +18,23 @@ INSTALL_NEOVIM() {
 }
 
 INSTALL_OHMYZSH() {
-  sudo apt-get install zsh -y
+  sudo apt-get install zsh tree -y
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   cd ~/.oh-my-zsh/plugins
   curl -L git.io/antigen > antigen.zsh
   cd $CURRENT_DIR
 }
 
-# Installer 
+INSTALL_NVM() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+}
+
+
+# Installer
 
 INSTALL_CMD curl INSTALL_CURL
 INSTALL_CMD nvim INSTALL_NEOVIM
 INSTALL_DIR oh-my-zsh INSTALL_OHMYZSH ~/.oh-my-zsh 
+INSTALL_DIR nvm INSTALL_NVM ~/.nvm
 
-PRINT_SUMMARY
+PRINT_INSTALL_SUMMARY
