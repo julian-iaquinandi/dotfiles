@@ -1,0 +1,6 @@
+# List directory files when changing directory
+function chpwd() {
+  emulate -L zsh
+  tree -L 1
+}
+

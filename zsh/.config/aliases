@@ -1,0 +1,58 @@
+alias vim="nvim"
+alias v="vim"
+alias cgs="clear && git status"
+alias gch="git checkout"
+alias gs="git status"
+alias gps="git push"
+alias ys="yarn start"
+alias yd="yarn dev"
+alias gpl="git pull"
+alias gd="git diff"
+alias ga="git add ."
+alias gl="git log"
+alias ysd="yarn start:dev"
+alias y="yarn"
+alias yf="yarn format"
+alias mk="minikube"
+alias kb="kubectl"
+alias gc="git commit"
+alias cl="clear"
+alias g="git"
+alias c="cat"
+/* alias gw="git worktree" */
+alias aliases="nvim ~/.config/zsh/aliases"
+
+
+
+alias code='code-insiders'
+# ------------------------------ Apt get 
+
+alias install='sudo apt-get install -y'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+
+alias list='sudo dpkg -l'
+alias findapp='sudo apt list --installed | grep -i apache'
+
+# --------------------------------File Ops
+
+alias c='clear'
+alias l='ls'
+alias laa='ls -a'
+alias la='ls -la'
+alias lhh='ls -d .?* '
+alias lh='ls -ld .?* '
+
+alias Del='sudo rm -rf'
+alias del='rm -rf'
+
+alias es='sudo chmod u+x'
+
+# ---------------------------------TMUX
+
+alias tmns='tmux new -s'
+alias tmas='tmux a -t'
+alias tmks='tmux kill-session -t'
+alias tmsc='tmux a -t sysconfig'
+alias tmls='tmux list'
+
