@@ -8,4 +8,17 @@ CONFIG_ZSH() {
   echo 'source ~/.config/zsh/.zshrc' >> ~/.zshrc 
 }
 
+CONFIG_NEOVIM() {
+  cd ~/dotfiles
+  stow nvim
+  cd $CURRENT_DIR
+}
 
+CONFIG_COC() {
+  cd ~/dotfiles
+  stow coc
+  cd ~/.config/coc/extensions
+  npm i
+
+  cd $CURRENT_DIR
+}

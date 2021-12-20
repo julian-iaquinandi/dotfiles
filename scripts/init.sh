@@ -15,6 +15,8 @@ CMD_EXISTS ripgrep INSTALL_RIPGREP
 
 # Config
 TEXT_EXISTS zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"
+DIR_EXISTS nvim CONFIG_NEOVIM ~/.config/nvim
+DIR_EXISTS nvim CONFIG_COC ~/.config/coc
 
 PRINT_INSTALL_SUMMARY
 PRINT_CONFIGURE_SUMMARY
