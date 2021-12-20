@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ./functions.sh
-
 CURRENT_DIR=$(pwd)
 
 CONFIG_ZSH() {
@@ -11,8 +9,3 @@ CONFIG_ZSH() {
 }
 
 
-# installer
-
-TEXT_EXISTS zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"
-
-PRINT_CONFIGURE_SUMMARY

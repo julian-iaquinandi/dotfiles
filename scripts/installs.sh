@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# . ./init.sh
-. ./functions.sh
-
 CURRENT_DIR=$(pwd)
 
 # Installs
@@ -55,4 +52,5 @@ INSTALL_RIPGREP() {
   sudo apt-get install ripgrep -y
 }
 
+# Installer
 
