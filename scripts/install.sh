@@ -21,9 +21,9 @@ INSTALL_BASE() {
 INSTALL_NEOVIM() {
   NVIM_DIR=~/dotfiles/app/nvim.0.7
   sudo cp $NVIM_DIR/usr/bin/* /usr/bin
-  sudo cp $NVIM_DIR/usr/lib/* /usr/lib
-  sudo cp $NVIM_DIR/usr/man/* /usr/man
-  sudo cp $NVIM_DIR/usr/share/* /usr/share
+  sudo cp -r $NVIM_DIR/usr/lib/* /usr/lib
+  sudo cp -r $NVIM_DIR/usr/man/* /usr/man
+  sudo cp -r $NVIM_DIR/usr/share/* /usr/share
   git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 }
