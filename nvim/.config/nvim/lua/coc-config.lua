@@ -12,3 +12,9 @@ vim.o.hidden = true
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.updatetime = 300
+
+
+vim.api.nvim_set_keymap("i", "<C-l>", "<Plug>(coc-snippets-expand)", {})
+vim.api.nvim_set_keymap("v", "<C-j>", "<Plug>(coc-snippets-select)", {})
+vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)", {})
+

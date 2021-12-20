@@ -11,10 +11,12 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary'
   use 'ThePrimeagen/git-worktree.nvim'
   use 'mhinz/vim-startify'
+  use 'honza/vim-snippets'
+  use 'tpope/vim-fugitive'
   use {
     'neoclide/coc.nvim', 
     branch = 'release',
-    run = ':CocInstall coc-tsserver'
+    run = ':CocInstall coc-tsserver coc-json coc-highlight coc-vetur coc-snippets'
   }
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -38,7 +40,9 @@ return require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = function()
-      require('lualine').setup()
+      require('lualine').setup({
+        extensions = { 'fugative' }
+      })
     end
   }
   use {
