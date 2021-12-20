@@ -8,7 +8,10 @@ CURRENT_DIR=$(pwd)
 # Installs
 
 INSTALL_BASE() {
-  sudo apt install curl wget stow build-essential -y
+  sudo apt install curl -y 
+  sudo apt install wget -y
+  sudo apt install stow -y
+  sudo apt install build-essential -y
 }
 
 INSTALL_NEOVIM() {
