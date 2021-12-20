@@ -8,7 +8,9 @@ CURRENT_DIR=$(pwd)
 # Installs
 
 INSTALL_BASE() {
-  sudo apt install curl wget stow build-essential -y
+  sudo apt update
+  sudo apt upgrade
+  sudo apt install curl wget stow build-essential tree zsh -y
 }
 
 INSTALL_NEOVIM() {
@@ -17,10 +19,11 @@ INSTALL_NEOVIM() {
   sudo cp $NVIM_DIR/usr/lib/* /usr/lib
   sudo cp $NVIM_DIR/usr/man/* /usr/man
   sudo cp $NVIM_DIR/usr/share/* /usr/share
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
 }
 
 INSTALL_OHMYZSH() {
-  sudo apt-get install zsh tree -y
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   cd ~/.oh-my-zsh/plugins
   curl -L git.io/antigen > antigen.zsh
