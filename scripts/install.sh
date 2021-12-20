@@ -10,10 +10,12 @@ CURRENT_DIR=$(pwd)
 INSTALL_BASE() {
   sudo apt update
   sudo apt upgrade
-  sudo apt install curl -y 
-  sudo apt install wget -y
-  sudo apt install stow -y
-  sudo apt install build-essential -y
+  sudo apt install curl -y &&
+  sudo apt install wget -y &&
+  sudo apt install stow -y &&
+  sudo apt install build-essential -y &&
+  sudo apt install tree -y &&
+  sudo apt install zsh -y
 }
 
 INSTALL_NEOVIM() {
@@ -28,6 +30,9 @@ INSTALL_NEOVIM() {
 
 INSTALL_OHMYZSH() {
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+INSTALL_ANTIGEN() {
   cd ~/.oh-my-zsh/plugins
   curl -L git.io/antigen > antigen.zsh
   cd $CURRENT_DIR
@@ -39,9 +44,10 @@ INSTALL_NVM() {
 
 # Installer
 
-CMD_EXISTS curl INSTALL_BASE
+CMD_EXISTS zsh INSTALL_BASE
 CMD_EXISTS nvim INSTALL_NEOVIM
-FILE_EXISTS oh-my-zsh INSTALL_OHMYZSH ~/.oh-my-zsh/plugins/antigen.zsh 
+DIR_EXISTS oh-my-zsh INSTALL_ANTIGEN ~/.oh-my-zsh
+FILE_EXISTS antigen INSTALL_ANTIGEN ~/.oh-my-zsh/plugins/antigen.zsh
 DIR_EXISTS nvm INSTALL_NVM ~/.nvm
 
 PRINT_INSTALL_SUMMARY
