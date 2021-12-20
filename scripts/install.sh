@@ -8,16 +8,12 @@ CURRENT_DIR=$(pwd)
 # Installs
 
 INSTALL_BASE() {
-<<<<<<< HEAD
   sudo apt update
   sudo apt upgrade
-  sudo apt install curl wget stow build-essential tree zsh -y
-=======
   sudo apt install curl -y 
   sudo apt install wget -y
   sudo apt install stow -y
   sudo apt install build-essential -y
->>>>>>> 3c220a4388010015db2e2fa6d47d0230be0a8678
 }
 
 INSTALL_NEOVIM() {
