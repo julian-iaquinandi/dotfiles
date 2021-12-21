@@ -13,6 +13,7 @@ FILE_EXISTS antigen INSTALL_ANTIGEN ~/.oh-my-zsh/plugins/antigen.zsh
 DIR_EXISTS nvm INSTALL_NVM ~/.nvm
 CMD_EXISTS python3 INSTALL_PYTHON
 CMD_EXISTS ripgrep INSTALL_RIPGREP
+CMD_EXISTS fzf INSTALL_FZF
 
 # Config
 TEXT_EXISTS zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"

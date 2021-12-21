@@ -50,5 +50,9 @@ INSTALL_RIPGREP() {
   sudo apt-get install ripgrep -y
 }
 
+INSTALL_FZF() {
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --all --no-bash --no-fish
+}
 
 
