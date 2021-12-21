@@ -12,7 +12,7 @@ CONFIG_NEOVIM() {
   cd ~/dotfiles
   stow nvim
   cd $CURRENT_DIR
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+#  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
 CONFIG_COC() {

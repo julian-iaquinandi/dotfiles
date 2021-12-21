@@ -4,6 +4,15 @@
 . functions.sh
 . configure.sh
 
+
+POST_INSTALL() {
+	nvm install node
+	sudo apt install python3-pip -y
+	python3 -m pip install --user --upgrade pynvim
+  DIR_EXISTS nvim CONFIG_COC ~/.config/coc
+}
+
+
 # Installs
 CMD_EXISTS zsh INSTALL_BASE
 CMD_EXISTS nvim INSTALL_NEOVIM
@@ -16,7 +25,6 @@ CMD_EXISTS ripgrep INSTALL_RIPGREP
 # Config
 TEXT_EXISTS zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"
 DIR_EXISTS nvim CONFIG_NEOVIM ~/.config/nvim
-DIR_EXISTS nvim CONFIG_COC ~/.config/coc
 
 PRINT_INSTALL_SUMMARY
 PRINT_CONFIGURE_SUMMARY

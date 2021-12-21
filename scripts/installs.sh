@@ -26,7 +26,7 @@ INSTALL_NEOVIM() {
 }
 
 INSTALL_OHMYZSH() {
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 }
 
 INSTALL_ANTIGEN() {
@@ -48,12 +48,6 @@ INSTALL_PYTHON() {
 
 INSTALL_RIPGREP() {
   sudo apt-get install ripgrep -y
-}
-
-POST_INSTALL() {
-	nvm install node
-	sudo apt install python3-pip -y
-	python3 -m pip install --user --upgrade pynvim
 }
 
 # Installer
