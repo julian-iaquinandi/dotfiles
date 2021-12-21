@@ -63,8 +63,8 @@ local wkMappings = {
 
   g = {
     name = "Git",
-    f = { ":gitdiff //3", "Take left" },
-    j = { ":gitdiff //2", "Take right" },
+    f = { ":gitdiff //2", "Take left" },
+    j = { ":gitdiff //3", "Take right" },
     c = { ":Git commit<cr>", "Git commit" },
     a = { ":Git add -A<cr>", "Git add all" },
     s = { ":Git status<cr>", "Git status" },
@@ -86,6 +86,7 @@ local wkMappings = {
   w = { ":w<cr>", "Write buffer" },
   q = { ":bd<cr>", "Close buffer" },
   Q = { ":bd!<cr>", "Force Close buffer" },
+  x = { ":q<cr>", "Quit buffer" },
   
   n = { ":Lexplore<CR> :vertical resize 30<CR>", "Navigation" },
   m = { "<C-^><cr>", "Files" },
