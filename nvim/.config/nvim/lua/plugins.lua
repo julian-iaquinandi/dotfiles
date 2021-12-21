@@ -13,11 +13,14 @@ return require('packer').startup(function()
   use 'mhinz/vim-startify'
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
+  use "tami5/sqlite.lua"
+ 
   use {
     'neoclide/coc.nvim', 
     branch = 'release',
     run = ':CocInstall coc-tsserver coc-json coc-highlight coc-vetur coc-snippets'
   }
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -36,32 +39,48 @@ return require('packer').startup(function()
       }
     end
   }
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = function()
       require('lualine').setup({
-        extensions = { 'fugative' }
+        -- extensions = { 'fugative' }
       })
     end
   }
+
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
   }
   use {
-    "blackCauldron7/surround.nvim",
+    'sudormrfbin/cheatsheet.nvim',
+
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+    }
+  }
+  use 'xiyaowong/telescope-emoji.nvim'
+  use 'nvim-telescope/telescope-media-files.nvim'
+
+  use {
+    'blackCauldron7/surround.nvim',
     config = function()
       require"surround".setup {mappings_style = "surround"}
     end
   }
+  
   use {
-    "folke/which-key.nvim",
+    'folke/which-key.nvim',
     config = function()
       require("which-key").setup {
     }
     end
   }
+  
   use {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
@@ -70,6 +89,7 @@ return require('packer').startup(function()
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
+  
   use {
     'lewis6991/gitsigns.nvim',
     requires = {

@@ -22,6 +22,13 @@ vim.o.showtabline = 2
 vim.o.signcolumn = 'yes'
 vim.o.mouse = 'a'
 
+-- from COC
+vim.o.hidden = true
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.updatetime = 300
+
+-- netrw
 vim.g["netrw_banner"] = 0
 vim.g["netrw_liststyle"] = 3
 vim.g["netrw_winsize"] = 25

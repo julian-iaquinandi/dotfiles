@@ -9,7 +9,6 @@ vim.api.nvim_set_keymap("n", "k", "j", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
 
-
 -- hop 
 
 vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
@@ -20,6 +19,7 @@ vim.api.nvim_set_keymap('n', 'h', "<cmd>lua require'hop'.hint_char2({ direction 
 vim.api.nvim_set_keymap('n', 'H', "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false, inclusive_jump = true })<cr>", {})
 vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", {})
 vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", {})
+
 
 local wkMappings = { 
   a = {
@@ -32,6 +32,9 @@ local wkMappings = {
     h = { "<C-w>s", "Split below" }, 
     v = { "<C-w>v", "Split right" }, 
     m = { ":tabedit % <cr>", "Maximize" }, 
+    q = { ":bd! <cr>", "quit buffer" }, 
+    n = { ":bn <cr>", "buffer next" }, 
+    p = { ":bp <cr>", "buffer previous" }, 
   },
 
   e = {
@@ -39,6 +42,11 @@ local wkMappings = {
     n = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
     p = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
     m = { ":CocList marketplace<cr>", "Coc Marketplace" },
+    ['.'] = { ":call <Plug>(coc-codeaction)<cr>", "Code Action" },
+    l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
+    r = { ":call <Plug>(coc-rename)<cr>", "Rename symbol" },
+    f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
+    g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
   },
 
   f = {
@@ -48,21 +56,27 @@ local wkMappings = {
     a = { ":Telescope live_grep<cr>", "In Files" },
     s = { ":Telescope buffers<cr>", "Buffers" },
     h = { ":Telescope help_tags<cr>", "Help Tags" },
+    e = { ":Telescope emoji<cr>", "Emoji" },
+    m = { ":Telescope media_files<cr>", "Emoji" },
     r = { ":%s/", "Replace" }
   },
 
   t = {
-    name = "terminal"
+    name = "terminal",
   },
 
+
+  p = { ":Telescope find_files<cr>", "Files" },
+  m = { "<C-^><cr>", "Files" },
 
   j = { "<C-w>h <cr>", "Focus left" },
   k = { "<C-w>j <cr>", "Focus down" },
   l = { "<C-w>k <cr>", "Focus up" },
   [';'] = { "<C-w>l <cr>", "Focus right" },
 
-  w = { ":w<cr>", "Write file" },
-  q = { ":bd<cr>", "Close file" },
+  w = { ":w<cr>", "Write buffer" },
+  q = { ":bd<cr>", "Close buffer" },
+  Q = { ":bd!<cr>", "Force Close buffer" },
   n = { ":Lexplore<CR> :vertical resize 30<CR>", "Navigation" },
   z = { ":Startify<cr>", "Startify" }
 }
