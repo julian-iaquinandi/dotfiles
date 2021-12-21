@@ -32,7 +32,6 @@ local wkMappings = {
     h = { "<C-w>s", "Split below" }, 
     v = { "<C-w>v", "Split right" }, 
     m = { ":tabedit % <cr>", "Maximize" }, 
-    q = { ":bd! <cr>", "quit buffer" }, 
     n = { ":bn <cr>", "buffer next" }, 
     p = { ":bp <cr>", "buffer previous" }, 
   },
