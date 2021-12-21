@@ -56,7 +56,6 @@ return require('packer').startup(function()
   }
   use {
     'sudormrfbin/cheatsheet.nvim',
-
     requires = {
       {'nvim-telescope/telescope.nvim'},
       {'nvim-lua/popup.nvim'},
@@ -75,29 +74,19 @@ return require('packer').startup(function()
   
   use {
     'folke/which-key.nvim',
-    config = function()
-      require("which-key").setup {
-    }
-    end
+    config = function() require("which-key").setup() end
   }
   
   use {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
+    config = function() require'hop'.setup() end
   }
   
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = function()
-      require('gitsigns').setup()
-    end
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function() require('gitsigns').setup() end
   }
 
 end)

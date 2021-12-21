@@ -65,7 +65,6 @@ local wkMappings = {
     name = "terminal",
   },
 
-
   p = { ":Telescope find_files<cr>", "Files" },
   m = { "<C-^><cr>", "Files" },
 
