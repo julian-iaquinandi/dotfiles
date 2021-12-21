@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ~/dotfiles/scripts/functions.sh
+
 CURRENT_DIR=$(pwd)
 
 CONFIG_ZSH() {
@@ -11,6 +13,7 @@ CONFIG_ZSH() {
 CONFIG_NEOVIM() {
   cd ~/dotfiles
   stow nvim
+  stow git
   cd $CURRENT_DIR
 #  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
@@ -24,3 +27,9 @@ CONFIG_COC() {
   cd $CURRENT_DIR
 }
 
+POST_INSTALL() {
+	nvm install node
+	sudo apt install python3-pip -y
+	python3 -m pip install --user --upgrade pynvim
+        DIR_EXISTS nvim CONFIG_COC ~/.config/coc
+}

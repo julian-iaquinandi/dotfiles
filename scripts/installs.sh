@@ -50,5 +50,5 @@ INSTALL_RIPGREP() {
   sudo apt-get install ripgrep -y
 }
 
-# Installer
+
 

@@ -39,3 +39,4 @@ source ~/.config/zsh/functions
 #  \___/_| |_|___/\__\__,_|_|_|___/                      
 
 source ~/dotfiles/scripts/installs.sh
+source ~/dotfiles/scripts/configure.sh

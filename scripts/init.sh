@@ -5,14 +5,6 @@
 . configure.sh
 
 
-POST_INSTALL() {
-	nvm install node
-	sudo apt install python3-pip -y
-	python3 -m pip install --user --upgrade pynvim
-  DIR_EXISTS nvim CONFIG_COC ~/.config/coc
-}
-
-
 # Installs
 CMD_EXISTS zsh INSTALL_BASE
 CMD_EXISTS nvim INSTALL_NEOVIM
@@ -29,4 +21,4 @@ DIR_EXISTS nvim CONFIG_NEOVIM ~/.config/nvim
 PRINT_INSTALL_SUMMARY
 PRINT_CONFIGURE_SUMMARY
 
-echo "run 'zsh', when the shell has updated run POST_INSTALL"
+echo "!! run 'zsh', when the shell has updated run POST_INSTALL"
