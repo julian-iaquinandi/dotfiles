@@ -32,7 +32,6 @@ local wkMappings = {
     h = { "<C-w>s", "Split below" }, 
     v = { "<C-w>v", "Split right" }, 
     m = { ":tabedit % <cr>", "Maximize" }, 
-    q = { ":bd! <cr>", "quit buffer" }, 
     n = { ":bn <cr>", "buffer next" }, 
     p = { ":bp <cr>", "buffer previous" }, 
   },
@@ -84,8 +83,8 @@ local wkMappings = {
   [';'] = { "<C-w>l <cr>", "Focus right" },
 
   w = { ":w<cr>", "Write buffer" },
-  q = { ":bd<cr>", "Close buffer" },
-  Q = { ":bd!<cr>", "Force Close buffer" },
+  q = { ":Bdelete<cr>", "Close buffer" },
+  Q = { ":Bdelete!<cr>", "Force Close buffer" },
   
   n = { ":Lexplore<CR> :vertical resize 30<CR>", "Navigation" },
   m = { "<C-^><cr>", "Files" },

@@ -21,6 +21,7 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
   use "tami5/sqlite.lua"
+  use 'famiu/bufdelete.nvim'
  
   use {
     'neoclide/coc.nvim', 
