@@ -61,12 +61,22 @@ local wkMappings = {
     r = { ":%s/", "Replace" }
   },
 
+  g = {
+    name = "Git",
+    f = { ":gitdiff //3", "Take left" },
+    j = { ":gitdiff //2", "Take right" },
+    c = { ":Git commit<cr>", "Git commit" },
+    a = { ":Git add -A<cr>", "Git add all" },
+    s = { ":Git status<cr>", "Git status" },
+    p = { ":Git push<cr>", "Git push" },
+    i = { ":G<cr>", "Interactive status"}
+  },
+
   t = {
     name = "terminal",
   },
 
   p = { ":Telescope find_files<cr>", "Files" },
-  m = { "<C-^><cr>", "Files" },
 
   j = { "<C-w>h <cr>", "Focus left" },
   k = { "<C-w>j <cr>", "Focus down" },
@@ -76,7 +86,9 @@ local wkMappings = {
   w = { ":w<cr>", "Write buffer" },
   q = { ":bd<cr>", "Close buffer" },
   Q = { ":bd!<cr>", "Force Close buffer" },
+  
   n = { ":Lexplore<CR> :vertical resize 30<CR>", "Navigation" },
+  m = { "<C-^><cr>", "Files" },
   z = { ":Startify<cr>", "Startify" }
 }
 
