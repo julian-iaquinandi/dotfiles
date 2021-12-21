@@ -31,5 +31,6 @@ POST_INSTALL() {
 	nvm install node
 	sudo apt install python3-pip -y
 	python3 -m pip install --user --upgrade pynvim
-        DIR_EXISTS nvim CONFIG_COC ~/.config/coc
+  DIR_EXISTS nvim CONFIG_COC ~/.config/coc
+  chsh -s $(which zsh)
 }
