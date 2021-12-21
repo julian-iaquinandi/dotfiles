@@ -19,9 +19,7 @@ alias gc="git commit"
 alias cl="clear"
 alias g="git"
 alias c="cat"
-/* alias gw="git worktree" */
 alias aliases="nvim ~/.config/zsh/aliases"
-
 
 
 alias code='code-insiders'

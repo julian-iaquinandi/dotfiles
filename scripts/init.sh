@@ -7,7 +7,7 @@
 # Installs
 CMD_EXISTS zsh INSTALL_BASE
 CMD_EXISTS nvim INSTALL_NEOVIM
-DIR_EXISTS oh-my-zsh INSTALL_ANTIGEN ~/.oh-my-zsh
+DIR_EXISTS oh-my-zsh INSTALL_OHMYZSH ~/.oh-my-zsh
 FILE_EXISTS antigen INSTALL_ANTIGEN ~/.oh-my-zsh/plugins/antigen.zsh
 DIR_EXISTS nvm INSTALL_NVM ~/.nvm
 CMD_EXISTS python3 INSTALL_PYTHON
@@ -20,3 +20,5 @@ DIR_EXISTS nvim CONFIG_COC ~/.config/coc
 
 PRINT_INSTALL_SUMMARY
 PRINT_CONFIGURE_SUMMARY
+
+echo "run 'zsh', when the shell has updated run POST_INSTALL"

@@ -1,1 +1,18 @@
-plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting, zsh-completions)
+
+source ~/.oh-my-zsh/plugins/antigen.zsh
+
+# Load the oh-my-zsh's library
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+
+# Load the theme
+antigen theme awesomepanda
+
+# Tell antigen that you're done
+antigen apply
+

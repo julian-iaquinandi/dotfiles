@@ -26,7 +26,7 @@ INSTALL_NEOVIM() {
 }
 
 INSTALL_OHMYZSH() {
-  sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
 }
 
 INSTALL_ANTIGEN() {
@@ -44,12 +44,16 @@ INSTALL_PYTHON() {
   sudo apt update
   sudo apt install -y python3.8
   sudo apt install -y python3-pip
-  sudo apt install -y python3-pip
-
 }
 
 INSTALL_RIPGREP() {
   sudo apt-get install ripgrep -y
+}
+
+POST_INSTALL() {
+	nvm install node
+	sudo apt install python3-pip -y
+	python3 -m pip install --user --upgrade pynvim
 }
 
 # Installer
