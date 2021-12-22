@@ -18,6 +18,9 @@ CMD_EXISTS fzf INSTALL_FZF
 # Config
 TEXT_EXISTS zsh CONFIG_ZSH ~/.zshrc "source ~/.config/zsh/.zshrc"
 DIR_EXISTS nvim CONFIG_NEOVIM ~/.config/nvim
+DIR_EXISTS tmux CONFIG_TMUX ~/.config/tmux
+DIR_EXISTS .local CONFIG_LOCAL ~/.local/bin
+FILE_EXISTS git CONFIG_GIT ~/.gitconfig
 
 PRINT_INSTALL_SUMMARY
 PRINT_CONFIGURE_SUMMARY

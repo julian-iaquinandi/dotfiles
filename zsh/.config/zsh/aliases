@@ -48,6 +48,7 @@ alias es='sudo chmod u+x'
 
 # ---------------------------------TMUX
 
+alias tmux='tmux -f ~/.config/tmux/.tmux.conf'
 alias tmns='tmux new -s'
 alias tmas='tmux a -t'
 alias tmks='tmux kill-session -t'

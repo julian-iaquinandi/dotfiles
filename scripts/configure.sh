@@ -27,6 +27,24 @@ CONFIG_COC() {
   cd $CURRENT_DIR
 }
 
+CONFIG_TMUX() {
+  cd ~/dotfiles
+  stow tmux
+  cd $CURRENT_DIR
+}
+
+CONFIG_LOCAL() {
+  cd ~/dotfiles
+  stow local
+  cd $CURRENT_DIR
+}
+
+CONFIG_GIT() {
+  cd ~/dotfiles
+  stow git
+  cd $CURRENT_DIR
+}
+
 POST_INSTALL() {
 	nvm install node
 	sudo apt install python3-pip -y
