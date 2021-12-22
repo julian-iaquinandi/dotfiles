@@ -96,6 +96,30 @@ return require('packer').startup(function()
     config = function() require('gitsigns').setup() end
   }
 
+  use {
+    'akinsho/bufferline.nvim', 
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require("bufferline").setup{} end
+  }
+
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.opts)
+    end
+  }
+
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'tami5/sqlite.lua', module = 'sqlite'},
+      {'nvim-telescope/telescope.nvim'}
+    },
+    config = function()
+      require('neoclip').setup()
+    end
+  }
   -- use {
   --   "max397574/better-escape.nvim",
   --   config = function()

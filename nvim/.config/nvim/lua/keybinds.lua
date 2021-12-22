@@ -62,7 +62,8 @@ local wkMappings = {
       w = {":Telescope tmux windows<cr>", "Tmux windows"},
       p = {":Telescope tmux pane_contents<cr>", "Tmux pane content"},
     },
-    r = { ":%s/", "Replace" }
+    r = { ":%s/", "Replace" },
+    v = { ":Telescope neoclip default<cr>", "Clipboard"}
   },
 
   g = {
