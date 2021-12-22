@@ -73,7 +73,8 @@ local wkMappings = {
     a = { ":Git add -A<cr>", "Git add all" },
     s = { ":Git status<cr>", "Git status" },
     p = { ":Git push<cr>", "Git push" },
-    i = { ":G<cr>", "Interactive status"}
+    i = { ":G<cr>", "Interactive status"},
+    l = { ":Git log<cr>", "Git log"},
   },
 
   t = {
