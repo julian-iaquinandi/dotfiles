@@ -57,6 +57,11 @@ local wkMappings = {
     h = { ":Telescope help_tags<cr>", "Help Tags" },
     e = { ":Telescope emoji<cr>", "Emoji" },
     m = { ":Telescope media_files<cr>", "Emoji" },
+    t = {
+      s = {":Telescope tmux sessions<cr>", "Tmux sessions"},
+      w = {":Telescope tmux windows<cr>", "Tmux windows"},
+      p = {":Telescope tmux pane_contents<cr>", "Tmux pane content"},
+    },
     r = { ":%s/", "Replace" }
   },
 

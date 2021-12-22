@@ -17,7 +17,6 @@ return require('packer').startup(function()
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'tpope/vim-commentary'
   use 'ThePrimeagen/git-worktree.nvim'
-  use 'mhinz/vim-startify'
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
   use "tami5/sqlite.lua"
@@ -71,6 +70,7 @@ return require('packer').startup(function()
   }
   use 'xiyaowong/telescope-emoji.nvim'
   use 'nvim-telescope/telescope-media-files.nvim'
+  use 'camgraff/telescope-tmux.nvim'
 
   use {
     'blackCauldron7/surround.nvim',
@@ -78,7 +78,7 @@ return require('packer').startup(function()
       require"surround".setup {mappings_style = "surround"}
     end
   }
-  
+
   use {
     'folke/which-key.nvim',
     config = function() require("which-key").setup() end
