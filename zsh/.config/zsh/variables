@@ -23,4 +23,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # if [ -f '/Users/albingroen/Documents/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/albingroen/Documents/google-cloud-sdk/completion.zsh.inc'; fi
 #
  
-if [ "$TMUX" = "" ]; then tmux; fi
+if [ "$TMUX" = "" ]; then tmux -f ~/.config/tmux/.tmux.conf; fi
