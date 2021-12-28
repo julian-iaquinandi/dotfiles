@@ -13,6 +13,7 @@ INSTALL_BASE() {
   sudo apt install build-essential -y &&
   sudo apt install tree -y &&
   sudo apt install zsh -y
+  sudo apt install trash-cli -y
 }
 
 INSTALL_NEOVIM() {

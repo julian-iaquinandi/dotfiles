@@ -56,3 +56,4 @@ alias tmks='tmux kill-session -t'
 alias tmsc='tmux a -t sysconfig'
 alias tmls='tmux list'
 
+alias del='trash'
