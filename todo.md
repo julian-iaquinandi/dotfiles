@@ -1,6 +1,6 @@
 ## Code
-[ ] - Pull down merged repo for station-booking and commit
-[ ] - Test npm serve on network 
+[x] - Pull down merged repo for station-booking and commit
+[x] - Test npm serve on network 
 [ ] - Test Git worktree
 [ ] - FZF search nested folders + dotfiles
 
