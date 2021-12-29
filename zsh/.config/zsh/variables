@@ -24,3 +24,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 #
  
 if [ "$TMUX" = "" ]; then tmux -f ~/.config/tmux/.tmux.conf; fi
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+

@@ -7,7 +7,7 @@
 
 ## Articles 
 [x] - Proof read keyboard article and post
-[ ] - How I setup my server
+[/] - How I setup my server
 [ ] - How I setup nvim and tmux, windows, mac (once finalized - getting close)
 [ ] - Simple but nice looking Tmux status bar 
 
