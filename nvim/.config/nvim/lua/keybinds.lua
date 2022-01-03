@@ -1,6 +1,5 @@
 
 vim.api.nvim_set_keymap('n', 'to', ':tabo<CR>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>t", ":sp<CR> :term<CR> :resize 20N<CR> i", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
 
 -- Movement keys
@@ -29,11 +28,16 @@ local wkMappings = {
 
   b = { 
     name = "Buffers",
+    b = { ":e #<cr>", "Last"},
     h = { "<C-w>s", "Split below" }, 
     v = { "<C-w>v", "Split right" }, 
     m = { ":tabedit % <cr>", "Maximize" }, 
     n = { ":bn <cr>", "buffer next" }, 
     p = { ":bp <cr>", "buffer previous" }, 
+    k = { ":resize -10<cr>", "Resize down" },
+    l = { ":resize +10<cr>", "Resize up" },
+    j = { ":vertical resize -10<cr>", "Resize up" },
+    [';'] = { ":vertical resize +5<cr>", "Resize up" },
   },
 
   e = {
@@ -41,10 +45,11 @@ local wkMappings = {
     n = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
     p = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
     m = { ":CocList marketplace<cr>", "Coc Marketplace" },
-    ['.'] = { ":call <Plug>(coc-codeaction)<cr>", "Code Action" },
+    ['.'] = { ":CocCommand actions.open<cr>", "Code Action" },
     l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
     r = { ":call <Plug>(coc-rename)<cr>", "Rename symbol" },
     f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
+    g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
     g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
   },
 
@@ -57,7 +62,7 @@ local wkMappings = {
     h = { ":Telescope help_tags<cr>", "Help Tags" },
     e = { ":Telescope emoji<cr>", "Emoji" },
     m = { ":Telescope media_files<cr>", "Emoji" },
-    g = { ":Telescope git_worktree<cr>", "Git worktree" },
+    g = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Git worktree" },
     t = {
       s = {":Telescope tmux sessions<cr>", "Tmux sessions"},
       w = {":Telescope tmux windows<cr>", "Tmux windows"},
@@ -81,6 +86,12 @@ local wkMappings = {
 
   t = {
     name = "terminal",
+    c = { ":sp<CR> :term<CR> :resize 20N<CR> i", "Create" },
+    t = { ":ToggleTermToggleAll <cr>", "Toggle all " },
+    j = { ":ToggleTerm size=15 direction=horizontal <cr>", "Open first" },
+    k = { ":2ToggleTerm size=15 direction=horizontal <cr>", "Open second" },
+    u = { ":TermExec cmd='npm start' <cr>", "Npm start first" },
+    i = { ":2TermExec cmd='npm start' <cr>", "Npm start second" },
   },
 
   p = { ":Telescope find_files<cr>", "Files" },

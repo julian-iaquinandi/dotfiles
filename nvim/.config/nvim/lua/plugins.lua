@@ -20,7 +20,8 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
   use "tami5/sqlite.lua"
- 
+  use {"akinsho/toggleterm.nvim"}
+  use "github/copilot.vim"
   use {
     'neoclide/coc.nvim', 
     branch = 'release',

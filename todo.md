@@ -1,9 +1,12 @@
 ## Code
 [x] - Pull down merged repo for station-booking and commit
 [x] - Test npm serve on network 
-[ ] - Test Git worktree
-[ ] - FZF search nested folders + dotfiles
-[ ] - Navigate from tmux terminals to errors 
+[x] - Refine tmux status bar
+[x] - Test Git worktree
+[x] - FZF/Telescope search nested folders + dotfiles
+[/] - Navigate from tmux terminals to errors 
+[ ] - Use vim terminal instead - go over primes video and recrete
+[ ] - Reize buffers + layouts
 
 ## Articles 
 [x] - Proof read keyboard article and post

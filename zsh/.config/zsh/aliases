@@ -1,5 +1,5 @@
-alias vim="nvim"
-alias v="vim"
+alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
+alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 alias cgs="clear && git status"
 alias gch="git checkout"
 alias gs="git status"
