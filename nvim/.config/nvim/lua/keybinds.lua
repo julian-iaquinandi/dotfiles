@@ -1,4 +1,4 @@
-
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = false })
 vim.api.nvim_set_keymap('n', 'to', ':tabo<CR>', { noremap = true })
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
 
@@ -9,7 +9,6 @@ vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
 
 -- hop 
-
 vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
 vim.api.nvim_set_keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 vim.api.nvim_set_keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
@@ -18,7 +17,6 @@ vim.api.nvim_set_keymap('n', 'h', "<cmd>lua require'hop'.hint_char2({ direction 
 vim.api.nvim_set_keymap('n', 'H', "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false, inclusive_jump = true })<cr>", {})
 vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", {})
 vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", {})
-
 
 local wkMappings = { 
   a = {
@@ -45,7 +43,7 @@ local wkMappings = {
     n = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
     p = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
     m = { ":CocList marketplace<cr>", "Coc Marketplace" },
-    ['.'] = { ":CocCommand actions.open<cr>", "Code Action" },
+    ['.'] = { ":CocCommand actions.open<cgr>", "Code Action" },
     l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
     r = { ":call <Plug>(coc-rename)<cr>", "Rename symbol" },
     f = { ":CocCommand prettier.formatFile<CR>", "Format file" },

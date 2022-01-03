@@ -22,6 +22,7 @@ return require('packer').startup(function()
   use "tami5/sqlite.lua"
   use {"akinsho/toggleterm.nvim"}
   use "github/copilot.vim"
+  use "prettier/vim-prettier"
   use {
     'neoclide/coc.nvim', 
     branch = 'release',
