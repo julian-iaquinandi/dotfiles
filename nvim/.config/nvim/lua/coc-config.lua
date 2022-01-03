@@ -21,3 +21,14 @@ vim.api.nvim_set_keymap("n", "gs", "<Plug>(coc-codeaction-cursor)", {silent = tr
 -- autocmd CursorHold * silent call CocActionAsync('highlight')
 
  
+vim.g.coc_global_extensions = {
+  "coc-snippets",
+  "coc-json",
+  "coc-volar",
+  "coc-prettier",
+  "coc-tsserver",
+  "coc-eslint",
+  "coc-pairs",
+  "coc-highlight"
+}
+
