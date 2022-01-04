@@ -122,6 +122,13 @@ return require('packer').startup(function()
       require('neoclip').setup()
     end
   }
+
+  use {"preservim/nerdtree",
+    requires = {
+      'Xuyuanp/nerdtree-git-plugin'      
+    }
+  }
+
   -- use {
   --   "max397574/better-escape.nvim",
   --   config = function()

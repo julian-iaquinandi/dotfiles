@@ -17,7 +17,6 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>j", {noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-;>", "<C-w>l", {noremap = true, silent = true })
 
-
 -- hop 
 vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
 vim.api.nvim_set_keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
@@ -114,7 +113,7 @@ local wkMappings = {
   Q = { ":bd!<cr>", "Force Close buffer" },
   x = { ":q<cr>", "Quit buffer" },
   
-  n = { ":Lexplore<CR> :vertical resize 30<CR>", "Navigation" },
+  n = { ":NERDTreeFind <CR>", "Navigation" },
   m = { "<C-^><cr>", "Files" },
   z = { ":Startify<cr>", "Startify" }
 }
