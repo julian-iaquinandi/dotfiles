@@ -23,6 +23,7 @@ return require('packer').startup(function()
   use {"akinsho/toggleterm.nvim"}
   use "github/copilot.vim"
   use "prettier/vim-prettier"
+  use "christoomey/vim-tmux-navigator"
   use {
     'neoclide/coc.nvim', 
     branch = 'release',

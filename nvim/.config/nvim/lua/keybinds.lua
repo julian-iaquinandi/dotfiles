@@ -2,9 +2,8 @@
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = false })
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', { noremap = false })
 vim.api.nvim_set_keymap('i', 'jj', '<Esc> <C-w>j<cr>', { noremap = false })
-vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> <C-w>k<cr>', { noremap = false })
-
--- vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> :sleep 20m <cr> <C-w>k<cr>', { noremap = false })
+vim.api.nvim_set_keymap('i', 'jm', '<Esc> <C-w>j <C-\\><C-n> :tabedit %<cr>', { noremap = false })
 
 -- Movement keys
 vim.api.nvim_set_keymap("n", "j", "h", {noremap = true, silent = true })
@@ -12,10 +11,18 @@ vim.api.nvim_set_keymap("n", "k", "j", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>h", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>j", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>k", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-;>", "<C-w>l", {noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>h", {noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>j", {noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>k", {noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-;>", "<C-w>l", {noremap = true, silent = true })
+--
+vim.g.tmux_navigator_save_on_switch = 1
+vim.g.tmux_navigator_no_mappings = 1
+
+vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateLeft<cr>", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", {noremap = true, silent = true })
 
 -- hop 
 vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})

@@ -28,9 +28,11 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.updatetime = 300
 
+
+
 -- netrw
-vim.g["netrw_banner"] = 0
-vim.g["netrw_liststyle"] = 3
-vim.g["newrw_browse_split"] = 4
-vim.g["netrw_winsize"] = 25
-vim.g["newrw_altv"] = 1
+-- vim.g["netrw_banner"] = 0
+-- vim.g["netrw_liststyle"] = 3
+-- vim.g["newrw_browse_split"] = 4
+-- vim.g["netrw_winsize"] = 25
+-- vim.g["newrw_altv"] = 1
