@@ -11,13 +11,7 @@ vim.api.nvim_set_keymap("n", "k", "j", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
 
--- vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>h", {noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>j", {noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>k", {noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<C-;>", "<C-w>l", {noremap = true, silent = true })
---
 vim.g.tmux_navigator_save_on_switch = 1
-vim.g.tmux_navigator_no_mappings = 1
 
 vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateLeft<cr>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", {noremap = true, silent = true })

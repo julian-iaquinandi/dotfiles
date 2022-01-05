@@ -20,14 +20,13 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
   use "tami5/sqlite.lua"
-  use {"akinsho/toggleterm.nvim"}
+  use "akinsho/toggleterm.nvim"
   use "github/copilot.vim"
   use "prettier/vim-prettier"
   use "christoomey/vim-tmux-navigator"
   use {
     'neoclide/coc.nvim', 
-    branch = 'release',
-    run = ':CocInstall coc-tsserver coc-json coc-highlight coc-vetur coc-snippets'
+    branch = 'release'
   }
 
   use {
@@ -86,7 +85,7 @@ return require('packer').startup(function()
     'folke/which-key.nvim',
     config = function() require("which-key").setup() end
   }
-  
+
   use {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
@@ -130,11 +129,5 @@ return require('packer').startup(function()
     }
   }
 
-  -- use {
-  --   "max397574/better-escape.nvim",
-  --   config = function()
-  --     require("better_escape").setup()
-  --   end,
-  -- }
 
 end)

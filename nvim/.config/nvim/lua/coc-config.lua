@@ -21,7 +21,7 @@ vim.api.nvim_command([[autocmd CursorHold * silent call CocActionAsync('highligh
 vim.g.coc_global_extensions = {
   "coc-snippets",
   "coc-json",
-  "coc-volar",
+  -- "coc-volar",
   "coc-prettier",
   "coc-tsserver",
   "coc-eslint",
