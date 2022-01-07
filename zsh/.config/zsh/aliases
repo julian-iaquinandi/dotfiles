@@ -1,29 +1,30 @@
+
+# ------------------------------ Nvim
 alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
-alias cgs="clear && git status"
-alias gch="git checkout"
-alias gs="git status"
-alias gps="git push"
+alias o="nvr --remote"
+alias k="nvr --remote-send"
+
+# ------------------------------ Yarn
+alias y="yarn"
 alias ys="yarn start"
 alias yd="yarn dev"
+alias ysd="yarn start:dev"
+alias yf="yarn format"
+
+# ------------------------------ Git
+alias g="git"
 alias gpl="git pull"
 alias gd="git diff"
 alias ga="git add ."
 alias gac="git add . && git commit"
 alias gl="git log"
-alias ysd="yarn start:dev"
-alias y="yarn"
-alias yf="yarn format"
-alias mk="minikube"
-alias kb="kubectl"
 alias gc="git commit"
-alias cl="clear"
-alias g="git"
-alias c="cat"
-alias aliases="nvim ~/.config/zsh/aliases"
+alias gch="git checkout"
+alias gs="git status"
+alias gps="git push"
+alias cgs="clear && git status"
 
-
-alias code='code-insiders'
 # ------------------------------ Apt get 
 
 alias install='sudo apt-get install -y'
@@ -46,6 +47,7 @@ alias Del='sudo rm -rf'
 alias del='rm -rf'
 
 alias es='sudo chmod u+x'
+alias aliases="nvim ~/.config/zsh/aliases"
 
 # ---------------------------------TMUX
 

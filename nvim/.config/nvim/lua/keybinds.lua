@@ -6,13 +6,14 @@ vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> :sleep 20m <cr> <C-w>k<cr>', { n
 vim.api.nvim_set_keymap('i', 'jm', '<Esc> <C-w>j <C-\\><C-n> :tabedit %<cr>', { noremap = false })
 
 -- Movement keys
+
+-- Remap hjkl to jkl; 
 vim.api.nvim_set_keymap("n", "j", "h", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "k", "j", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
 
 vim.g.tmux_navigator_save_on_switch = 1
-
 vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateLeft<cr>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", {noremap = true, silent = true })
