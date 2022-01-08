@@ -1,5 +1,25 @@
 #!/bin/zsh
 
+FIND_LAST_VITE_ERROR() {
+
+  tmux send -X search-backward 'File: '
+  tmux send-keys w
+  tmux send-keys v
+  tmux send-keys $
+  copy-pipe-and-cancel 'xargs -I{} nvr --remote {}' 
+
+  
+  tmux send -X search-backward 'File: '
+  tmux send-keys j
+  tmux send-keys j
+  tmux send-keys j
+  tmux send-keys v
+  tmux send-keys l
+  tmux send-keys l
+  tmux send-keys l
+  tmux send-keys M-f y
+  NUM=$(tmux)
+}
 
 COPY_ERRORS() {
   tmux send -X search-backward 'problems ('
