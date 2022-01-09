@@ -1,0 +1,6 @@
+tmux copy-mode
+tmux capture-pane -S -  
+tmux save-buffer /tmp/tmux 
+tmux delete-buffer 
+tmux send-keys Enter
+tmux split-window -v 
