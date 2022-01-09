@@ -29,11 +29,23 @@ vim.api.nvim_set_keymap('n', 'H', "<cmd>lua require'hop'.hint_char2({ direction 
 vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", {})
 vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", {})
 
+-- vim.api.nvim_set_keymap('n', '<leader>ac', "<Plug>(coc-codeaction-selected)", {})
+vim.api.nvim_set_keymap('n', '<leader>ar', "<Plug>(coc-rename)", {})
+
+
+local aWhichKeyMappings = {
+  name = "Errors | Coc",
+  c = { "<Plug>(coc-codeaction-selected)", "Code action"},
+  c = { "<Plug>(coc-rename)", "Rename symbol"},
+  j = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
+  k = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
+  m = { ":CocList marketplace<cr>", "Coc Marketplace" },
+  l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
+  f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
+  g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
+}
+
 local wkMappings = { 
-  a = {
-    name = "Comments",
-    a = { ":Commentary<cr>", "Comment" }
-  },
 
   b = { 
     name = "Buffers",
@@ -47,19 +59,6 @@ local wkMappings = {
     l = { ":resize +10<cr>", "Resize up" },
     j = { ":vertical resize -10<cr>", "Resize up" },
     [';'] = { ":vertical resize +5<cr>", "Resize up" },
-  },
-
-  e = {
-    name = "Errors | Coc",
-    n = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
-    p = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
-    m = { ":CocList marketplace<cr>", "Coc Marketplace" },
-    ['.'] = { ":CocCommand actions.open<cgr>", "Code Action" },
-    l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
-    r = { ":call <Plug>(coc-rename)<cr>", "Rename symbol" },
-    f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
-    g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
-    g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
   },
 
   f = {
@@ -119,6 +118,8 @@ local wkMappings = {
   m = { "<C-^><cr>", "Files" },
   z = { ":Startify<cr>", "Startify" }
 }
+
+wkMappings["a"] = aWhichKeyMappings
 
 local wkOpts =  { prefix = "<leader>" }
 local wk = require("which-key")

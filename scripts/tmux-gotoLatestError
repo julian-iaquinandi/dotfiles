@@ -12,23 +12,24 @@ WRITE_BUFFER_TO_FILE() {
 }
 
 CHECK_FOR_LATEST_ERROR() {
-  # WRITE_BUFFER_TO_FILE
+  # Needs running from the terminal that is currently in use
+  WRITE_BUFFER_TO_FILE
 
   latest_error_type=""
   latest_error_line_number="" 
   latest_error_error_msg=""
 
-  node_error_line_numbers=$(awk '/Compilation error/ {print FNR}' /tmp/tmux)
-  vite_error_line_numbers=$(awk '/File: / {print FNR}' /tmp/tmux)
-
+  node_error_line_numbers=$(awk '/Compilation error in/ {print FNR}' /tmp/tmux)
   latest_node_error_line_number=$(echo "$node_error_line_numbers[*]" | sort -nr | head -n 1)
+
+  vite_error_line_numbers=$(awk '/File: / {print FNR}' /tmp/tmux)
   latest_vite_error_line_number=$(echo "$vite_error_line_numbers[*]" | sort -nr | head -n 1)
 
+  # Check if which error appears last in the file
   if [ $latest_node_error_line_number -lt $latest_vite_error_line_number ]; then
     latest_error_type="vite"
     latest_error_line_number=$latest_vite_error_line_number
     latest_error_error_msg=$vite_error_msg
-
   else
     latest_error_type="node"
     latest_error_line_number=$latest_node_error_line_number
@@ -38,12 +39,12 @@ CHECK_FOR_LATEST_ERROR() {
   latest_error_line=$(sed "${latest_error_line_number}q;d" /tmp/tmux | awk '{ print substr ($0, 5 ) }')
   latest_error_filepath=$(echo $latest_error_line | sed s/"$latest_error_error_msg"// | awk '{$1=$1};1')
 
-  OPEN_FILE_AT_LINE $latest_error_filepath 
-
+  # echo "Latest error: $latest_error_type $latest_error_filepath"
+  OPEN_ERROR_IN_FILE $latest_error_filepath 
 }
 
 
-OPEN_FILE_AT_LINE() {
+OPEN_ERROR_IN_FILE() {
   # Open file at line
   tmux split -v
   # tmux send-keys 'cat '$FILE
