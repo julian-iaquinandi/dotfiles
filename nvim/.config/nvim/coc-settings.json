@@ -14,5 +14,28 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "prettier.bracketSpacing": true,
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+
+  "languageserver": {
+    "lua": {
+      "command": "/home/kd/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/bin/lua-language-server",
+      "args": [
+        "-E",
+        "/home/kd/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/bin/main.lua"
+      ],
+      "filetypes": ["lua"],
+      "settings": {
+        "Lua": {
+          "workspace.library": {
+            "/usr/share/nvim/runtime/lua": true,
+            "/usr/share/nvim/runtime/lua/vim": true,
+            "/usr/share/nvim/runtime/lua/vim/lsp": false
+          },
+          "diagnostics": {
+            "globals": ["vim"]
+          }
+        }
+      }
+    }
+  }
 }
