@@ -5,9 +5,11 @@
 [x] - Refine tmux status bar
 [x] - Test Git worktree
 [x] - FZF/Telescope search nested folders + dotfiles
-[/] - Navigate from tmux terminals to errors
-[/] - Reize buffers + layouts
-[ ] - movment action to maximize terminal / make terminal bigger once focused
+[x] - Navigate from tmux terminals to errors
+[x] - Reize buffers + layouts
+[x] - movment action to maximize terminal / make terminal bigger once focused
+[x] - Code actions and rename coc
+[ ] - Debugging
 
 ## Articles
 

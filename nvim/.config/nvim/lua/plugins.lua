@@ -129,5 +129,8 @@ return require('packer').startup(function()
     }
   }
 
+  use {
+    'puremourning/vimspector'
+  }
 
 end)
