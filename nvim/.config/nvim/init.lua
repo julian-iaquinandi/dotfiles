@@ -1,6 +1,7 @@
 require('basics')
 require('plugins')
 require('colors')
+require('keybinds')
 require('telescope-config')
 require('coc-config')
-require('keybinds')
+require('nvim-tree-config')

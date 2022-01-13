@@ -9,7 +9,9 @@
 [x] - Reize buffers + layouts
 [x] - movment action to maximize terminal / make terminal bigger once focused
 [x] - Code actions and rename coc
-[ ] - Debugging
+[/] - Debugging
+[x] - SSL API
+[ ] - Send errors back to frontend
 
 ## Articles
 

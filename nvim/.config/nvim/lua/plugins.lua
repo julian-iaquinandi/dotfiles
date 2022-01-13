@@ -4,6 +4,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -14,18 +15,20 @@ vim.cmd([[
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
-  use 'tpope/vim-commentary'
   use 'ThePrimeagen/git-worktree.nvim'
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
-  use "tami5/sqlite.lua"
-  use "akinsho/toggleterm.nvim"
-  use "github/copilot.vim"
-  use "prettier/vim-prettier"
-  use "christoomey/vim-tmux-navigator"
+  use 'tpope/vim-commentary'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'tami5/sqlite.lua'
+  use 'github/copilot.vim'
+  use 'prettier/vim-prettier'
+  use 'christoomey/vim-tmux-navigator'
+  use 'puremourning/vimspector'
+  use 'ggandor/lightspeed.nvim'
+
   use {
-    'neoclide/coc.nvim', 
+    'neoclide/coc.nvim',
     branch = 'release'
   }
 
@@ -59,9 +62,26 @@ return require('packer').startup(function()
   }
 
   use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require("bufferline").setup{} end
+  }
+
+	use {
+			'kyazdani42/nvim-tree.lua',
+			requires = {
+				'kyazdani42/nvim-web-devicons', -- optional, for file icon
+			},
+			config = function() require'nvim-tree'.setup {} end
+	}
+
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'xiyaowong/telescope-emoji.nvim'
+  use 'nvim-telescope/telescope-media-files.nvim'
   use {
     'sudormrfbin/cheatsheet.nvim',
     requires = {
@@ -70,9 +90,17 @@ return require('packer').startup(function()
       {'nvim-lua/plenary.nvim'},
     }
   }
-  use 'xiyaowong/telescope-emoji.nvim'
-  use 'nvim-telescope/telescope-media-files.nvim'
-  use 'camgraff/telescope-tmux.nvim'
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'tami5/sqlite.lua', module = 'sqlite'},
+      {'nvim-telescope/telescope.nvim'}
+    },
+    config = function()
+      require('neoclip').setup()
+    end
+  }
+  -- use 'nvim-telescope/telescope-file-browser.nvim'
 
   use {
     'blackCauldron7/surround.nvim',
@@ -87,50 +115,19 @@ return require('packer').startup(function()
   }
 
   use {
-    'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
-    config = function() require'hop'.setup() end
-  }
-  
-  use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('gitsigns').setup() end
   }
 
-  use {
-    'akinsho/bufferline.nvim', 
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require("bufferline").setup{} end
-  }
 
-  use {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.opts)
-    end
-  }
+  -- use {"preservim/nerdtree",
+  --   requires = {
+  --     'Xuyuanp/nerdtree-git-plugin',
+  --     'kyazdani42/nvim-web-devicons'
+  --   }
+  -- }
 
-  use {
-    "AckslD/nvim-neoclip.lua",
-    requires = {
-      {'tami5/sqlite.lua', module = 'sqlite'},
-      {'nvim-telescope/telescope.nvim'}
-    },
-    config = function()
-      require('neoclip').setup()
-    end
-  }
 
-  use {"preservim/nerdtree",
-    requires = {
-      'Xuyuanp/nerdtree-git-plugin'      
-    }
-  }
-
-  use {
-    'puremourning/vimspector'
-  }
 
 end)

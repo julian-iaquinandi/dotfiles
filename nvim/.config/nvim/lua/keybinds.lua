@@ -32,21 +32,6 @@ vim.api.nvim_set_keymap("i", "<TAB>", "pumvisible() ? '<C-n>' : '<TAB>'", {norem
 vim.api.nvim_set_keymap("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", {noremap = true, expr = true})
 vim.api.nvim_set_keymap("i", "<CR>", "pumvisible() ? coc#_select_confirm() : '<C-G>u<CR><C-R>=coc#on_enter()<CR>'", {silent = true, expr = true, noremap = true})
 
--- vim.api.nvim_set_keymap("i", "<C-l>", "<Plug>(coc-snippets-expand)", {})
--- vim.api.nvim_set_keymap("v", "<C-j>", "<Plug>(coc-snippets-select)", {})
--- vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)", {})
-
--- hop
-vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
-vim.api.nvim_set_keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
-vim.api.nvim_set_keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
-vim.api.nvim_set_keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
-vim.api.nvim_set_keymap('n', 'h', "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false, inclusive_jump = true })<cr>", {})
-vim.api.nvim_set_keymap('n', 'H', "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false, inclusive_jump = true })<cr>", {})
-vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", {})
-vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", {})
-
-
 -- Leader
 
 local actions = {
@@ -111,11 +96,6 @@ local find = {
   e = { ":Telescope emoji<cr>", "Emoji" },
   m = { ":Telescope media_files<cr>", "Emoji" },
   g = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Git worktree" },
-  t = {
-    s = {":Telescope tmux sessions<cr>", "Tmux sessions"},
-    w = {":Telescope tmux windows<cr>", "Tmux windows"},
-    p = {":Telescope tmux pane_contents<cr>", "Tmux pane content"},
-  },
   r = { ":%s/", "Replace" },
   v = { ":Telescope neoclip default<cr>", "Clipboard"}
 }
@@ -150,7 +130,7 @@ local wkMappings = {
   Q = { ":bd!<cr>", "Force Close buffer" },
   x = { ":q<cr>", "Quit buffer" },
 
-  n = { ":NERDTreeFind <CR>", "Navigation" },
+  n = { ":NvimTreeToggle<cr>", "Navigation" },
   m = { "<C-^><cr>", "Files" },
   z = { ":Startify<cr>", "Startify" }
 }

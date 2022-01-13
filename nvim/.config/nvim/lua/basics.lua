@@ -1,3 +1,5 @@
+vim.o.encoding = 'utf-8'
+
 vim.g.mapleader = " "
 vim.o.number  =true
 vim.o.relativenumber = true
@@ -21,7 +23,6 @@ vim.o.showmode = false
 vim.o.showtabline = 2
 vim.o.signcolumn = 'yes'
 vim.o.mouse = 'a'
-
 -- from COC
 vim.o.hidden = true
 vim.o.backup = false

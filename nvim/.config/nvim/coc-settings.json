@@ -1,5 +1,4 @@
 {
-  "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
