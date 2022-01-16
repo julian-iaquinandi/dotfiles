@@ -12,8 +12,10 @@
 [/] - Debugging
 [x] - SSL API
 [x] - Send errors back to frontend
-[ ] - Prettier
+[x] - Prettier
+[X] - Native LSP
 [ ] - yank then comment
+[ ] -    
 
 ## Articles
 

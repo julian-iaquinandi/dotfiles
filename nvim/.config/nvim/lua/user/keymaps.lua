@@ -11,7 +11,7 @@ vim.api.nvim_set_keymap("n", "k", "j", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
 
--- Nvim tmux movement keys
+-- Nvim Tmux movement keys
 vim.g.tmux_navigator_save_on_switch = 1
 vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateLeft<cr>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", {noremap = true, silent = true })
@@ -34,7 +34,7 @@ vim.api.nvim_set_keymap("v", "c", "<Plug>OscYank", {noremap = true})
 
 -- Which Key
 local actions = {
-  name = "Actions",
+  name = " 🚀 Actions",
   a = { ":TSLspImportAll<CR>", "Import All" },
   c = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
   d = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostic List" },
@@ -131,7 +131,6 @@ local wkMappings = {
   n = { ":NvimTreeToggle<cr>", "Navigation" },
   m = { "<C-^><cr>", "Files" },
   z = { ":Startify<cr>", "Startify" },
- 
 }
 
 wkMappings["a"] = actions
