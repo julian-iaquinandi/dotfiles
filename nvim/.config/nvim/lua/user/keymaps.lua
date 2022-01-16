@@ -1,3 +1,4 @@
+local noremapSilent = { noremap = true, silent = true }
 -- Escape normal mode + terminal swapping
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = false })
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', { noremap = false })
@@ -6,29 +7,29 @@ vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> :sleep 20m <cr> <C-w>k<cr>', { n
 -- vim.api.nvim_set_keymap('i', 'jm', '<Esc> <C-w>j <C-\\><C-n> :tabedit %<cr>', { noremap = false })
 
 -- Remap hjkl to jkl;
-vim.api.nvim_set_keymap("n", "j", "h", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "k", "j", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "l", "k", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", ";", "l", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "j", "h", noremapSilent)
+vim.api.nvim_set_keymap("n", "k", "j", noremapSilent)
+vim.api.nvim_set_keymap("n", "l", "k", noremapSilent)
+vim.api.nvim_set_keymap("n", ";", "l", noremapSilent)
 
 -- Nvim Tmux movement keys
 vim.g.tmux_navigator_save_on_switch = 1
-vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateLeft<cr>", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateLeft<cr>", noremapSilent)
+vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", noremapSilent)
+vim.api.nvim_set_keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", noremapSilent)
+vim.api.nvim_set_keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", noremapSilent)
 
 -- lsp
-local lspOpts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", lspOpts)
--- vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "g;", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", lspOpts)
+vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", noremapSilent)
+-- vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "g;", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremapSilent)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
 -- Copy
@@ -38,7 +39,6 @@ vim.api.nvim_set_keymap("v", "c", "<Plug>OscYank", {noremap = true})
 local actions = {
   name = " 🚀 Actions",
   a = { ":TSLspImportAll<CR>", "Import All" },
-  c = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
   d = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostic List" },
   f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open float" },
   m = { ":LspInstallInfo<CR>", "Organise imports" },
