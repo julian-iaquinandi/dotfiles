@@ -11,7 +11,9 @@
 [x] - Code actions and rename coc
 [/] - Debugging
 [x] - SSL API
-[ ] - Send errors back to frontend
+[x] - Send errors back to frontend
+[ ] - Prettier
+[ ] - yank then comment
 
 ## Articles
 

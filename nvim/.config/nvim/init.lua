@@ -1,7 +1,8 @@
-require('basics')
-require('plugins')
-require('colors')
-require('keybinds')
-require('telescope-config')
-require('coc-config')
-require('nvim-tree-config')
+require 'user.basics'
+require 'user.keymaps'
+require 'user.plugins'
+require 'user.colors'
+require 'user.telescope'
+require 'user.nvim-tree'
+require 'user.lsp'
+require 'user.nvim-cmp'
