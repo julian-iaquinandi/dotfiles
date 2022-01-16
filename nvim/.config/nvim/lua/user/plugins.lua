@@ -28,7 +28,7 @@ return require('packer').startup(function()
   use 'ggandor/lightspeed.nvim'
   use 'ojroques/vim-oscyank'
 
-  
+
   -- use {
   --   'neoclide/coc.nvim',
   --   branch = 'release'
@@ -38,6 +38,8 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'hrsh7th/cmp-nvim-lsp'
+  use "b0o/schemastore.nvim"
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
 
   -- Completions
   use { 'hrsh7th/nvim-cmp' }
@@ -51,7 +53,6 @@ return require('packer').startup(function()
   -- Snippets
   use { 'L3MON4D3/Luasnip' }
   use { "rafamadriz/friendly-snippets" }
-
 
   use {
     'nvim-treesitter/nvim-treesitter',

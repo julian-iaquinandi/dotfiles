@@ -18,7 +18,22 @@ vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", {noremap = true, 
 vim.api.nvim_set_keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", {noremap = true, silent = true })
 
+-- Coc
+-- vim.api.nvim_set_keymap("n", "ga", "<Plug>(coc-codeaction-selected)", {silent = true, noremap = true})
+-- vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", {silent = true})
+-- vim.api.nvim_set_keymap("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
+-- vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+-- vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", {silent = true})
+-- vim.api.nvim_set_keymap("n", "K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
+
+-- vim.api.nvim_set_keymap('n', '<M-.>', "<Plug>(coc-codeaction-selected)", {})
+-- vim.api.nvim_set_keymap("i", "<C-Space>", "coc#refresh()", { silent = true, expr = true })
+-- vim.api.nvim_set_keymap("i", "<TAB>", "pumvisible() ? '<C-n>' : '<TAB>'", {noremap = true, silent = true, expr = true})
+-- vim.api.nvim_set_keymap("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", {noremap = true, expr = true})
+-- vim.api.nvim_set_keymap("i", "<CR>", "pumvisible() ? coc#_select_confirm() : '<C-G>u<CR><C-R>=coc#on_enter()<CR>'", {silent = true, expr = true, noremap = true})
+
 -- lsp
+
 local lspOpts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lspOpts)
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lspOpts)
@@ -28,11 +43,26 @@ vim.api.nvim_set_keymap("n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagno
 vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lspOpts)
 vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", lspOpts)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-
+vim.api.nvim_set_keymap("n", "<leader><leader>", ":w<cr>; lua vim.lsp.buf.formatting()", lspOpts)
 -- Copy
 vim.api.nvim_set_keymap("v", "c", "<Plug>OscYank", {noremap = true})
 
--- Which Key
+-- Leader
+
+-- local actions = {
+--   name = " 🚀 Actions |",
+--   a = { "<Plug>(coc-fix-current)", "AutoFix"},
+--   c = { "<Plug>(coc-codeaction-selected)", "Code action"},
+--   r = { "<Plug>(coc-rename)", "Rename symbol"},
+--   j = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
+--   k = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
+--   m = { ":CocList marketplace<cr>", "Coc Marketplace" },
+--   l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
+--   f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
+--   g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
+--   ["."] = { "<Plug>(coc-codeaction-selected)", "Code Actions" }
+-- }
+
 local actions = {
   name = "Actions",
   a = { ":TSLspImportAll<CR>", "Import All" },
@@ -123,7 +153,7 @@ local terminal = {
 local wkMappings = {
   p = { ":Telescope find_files<cr>", "Files" },
 
-  w = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" },
+  w = { ":w<cr>", "Write buffer" },
   q = { ":bd<cr>", "Close buffer" },
   Q = { ":bd!<cr>", "Force Close buffer" },
   x = { ":q<cr>", "Quit buffer" },
@@ -146,31 +176,3 @@ local wk = require("which-key")
 
 wk.register(wkMappings, wkOpts)
 
-
--- Coc
--- vim.api.nvim_set_keymap("n", "ga", "<Plug>(coc-codeaction-selected)", {silent = true, noremap = true})
--- vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", {silent = true})
--- vim.api.nvim_set_keymap("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
--- vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", {silent = true})
--- vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", {silent = true})
--- vim.api.nvim_set_keymap("n", "K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
-
--- vim.api.nvim_set_keymap('n', '<M-.>', "<Plug>(coc-codeaction-selected)", {})
--- vim.api.nvim_set_keymap("i", "<C-Space>", "coc#refresh()", { silent = true, expr = true })
--- vim.api.nvim_set_keymap("i", "<TAB>", "pumvisible() ? '<C-n>' : '<TAB>'", {noremap = true, silent = true, expr = true})
--- vim.api.nvim_set_keymap("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", {noremap = true, expr = true})
--- vim.api.nvim_set_keymap("i", "<CR>", "pumvisible() ? coc#_select_confirm() : '<C-G>u<CR><C-R>=coc#on_enter()<CR>'", {silent = true, expr = true, noremap = true})
-
--- local actions = {
---   name = " 🚀 Actions |",
---   a = { "<Plug>(coc-fix-current)", "AutoFix"},
---   c = { "<Plug>(coc-codeaction-selected)", "Code action"},
---   r = { "<Plug>(coc-rename)", "Rename symbol"},
---   j = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
---   k = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
---   m = { ":CocList marketplace<cr>", "Coc Marketplace" },
---   l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
---   f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
---   g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
---   ["."] = { "<Plug>(coc-codeaction-selected)", "Code Actions" }
--- }
