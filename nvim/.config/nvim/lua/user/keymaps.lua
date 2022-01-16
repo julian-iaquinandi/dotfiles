@@ -28,12 +28,13 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", nore
 vim.api.nvim_set_keymap("n", "g;", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", noremapSilent)
 vim.api.nvim_set_keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", noremapSilent)
 vim.api.nvim_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", noremapSilent)
-vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", noremapSilent)
-vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.lsp.buf.hover()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremapSilent)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
 -- Copy
-vim.api.nvim_set_keymap("v", "c", "<Plug>OscYank", {noremap = true})
+vim.api.nvim_set_keymap("v", "c", "<Plug>OscYank<cr>", {noremap = true})
+-- vim.api.nvim_set_keymap("n", "gy", ":normal y :normal v :normal gv ", noremapSilent)
 
 -- Which Key
 local actions = {

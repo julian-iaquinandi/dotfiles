@@ -56,6 +56,9 @@ return require('packer').startup(function()
   use { 'L3MON4D3/Luasnip' }
   use { "rafamadriz/friendly-snippets" }
 
+  -- To be sorted
+  use "lukas-reineke/indent-blankline.nvim"
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
