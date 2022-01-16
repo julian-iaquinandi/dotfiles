@@ -24,7 +24,9 @@ vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", lsp
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", lspOpts)
 vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", lspOpts)
 vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", lspOpts)
-vim.api.nvim_set_keymap("n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', lspOpts)
+-- vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", lspOpts)
+vim.api.nvim_set_keymap("n", "g;", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", lspOpts)
+vim.api.nvim_set_keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", lspOpts)
 vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", lspOpts)
 vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", lspOpts)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
@@ -39,8 +41,6 @@ local actions = {
   c = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
   d = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostic List" },
   f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open float" },
-  j = { "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", "Next Error" },
-  k = { "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", "Previous Error" },
   m = { ":LspInstallInfo<CR>", "Organise imports" },
   o = { ":TSLspOrganize<CR>", "Organise imports" },
   r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Symbol" },
@@ -100,14 +100,17 @@ local find = {
 
 local git = {
   name = " ➕ Git",
-  f = { ":gitdiff //2", "Take left" },
-  j = { ":gitdiff //3", "Take right" },
-  c = { ":Git commit<cr>", "Git commit" },
   a = { ":Git add -A<cr>", "Git add all" },
-  s = { ":Git status<cr>", "Git status" },
-  p = { ":Git push<cr>", "Git push" },
+  c = { ":Git commit<cr>", "Git commit" },
+  f = { ":gitdiff //2", "Take left" },
+  g = { ":gitdiff //3", "Take right" },
   i = { ":G<cr>", "Interactive status"},
+  p = { ":Git push<cr>", "Git push" },
+  s = { ":Git status<cr>", "Git status" },
   l = { ":Git log<cr>", "Git log"},
+  h = { ":Gitsigns preview_hunk<cr>", "Next hunk"},
+  [";"] = { ":Gitsigns next_hunk<cr>", "Next hunk"},
+  j = { ":Gitsigns prev_hunk<cr>", "Next hunk"},
 }
 
 local terminal = {
@@ -144,32 +147,3 @@ local wkOpts =  { prefix = "<leader>" }
 local wk = require("which-key")
 
 wk.register(wkMappings, wkOpts)
-
-
--- Coc
--- vim.api.nvim_set_keymap("n", "ga", "<Plug>(coc-codeaction-selected)", {silent = true, noremap = true})
--- vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", {silent = true})
--- vim.api.nvim_set_keymap("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
--- vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", {silent = true})
--- vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", {silent = true})
--- vim.api.nvim_set_keymap("n", "K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
-
--- vim.api.nvim_set_keymap('n', '<M-.>', "<Plug>(coc-codeaction-selected)", {})
--- vim.api.nvim_set_keymap("i", "<C-Space>", "coc#refresh()", { silent = true, expr = true })
--- vim.api.nvim_set_keymap("i", "<TAB>", "pumvisible() ? '<C-n>' : '<TAB>'", {noremap = true, silent = true, expr = true})
--- vim.api.nvim_set_keymap("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", {noremap = true, expr = true})
--- vim.api.nvim_set_keymap("i", "<CR>", "pumvisible() ? coc#_select_confirm() : '<C-G>u<CR><C-R>=coc#on_enter()<CR>'", {silent = true, expr = true, noremap = true})
-
--- local actions = {
---   name = " 🚀 Actions |",
---   a = { "<Plug>(coc-fix-current)", "AutoFix"},
---   c = { "<Plug>(coc-codeaction-selected)", "Code action"},
---   r = { "<Plug>(coc-rename)", "Rename symbol"},
---   j = { ":call CocAction('diagnosticNext')<cr>", "Next error" },
---   k = { ":call CocAction('diagnosticPrevious')<cr>", "Previous error" },
---   m = { ":CocList marketplace<cr>", "Coc Marketplace" },
---   l = { ":CocCommand eslint.executeAutofix<CR>", "Auto fix" },
---   f = { ":CocCommand prettier.formatFile<CR>", "Format file" },
---   g = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "Git Worktree" },
---   ["."] = { "<Plug>(coc-codeaction-selected)", "Code Actions" }
--- }

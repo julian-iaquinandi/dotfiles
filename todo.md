@@ -15,7 +15,7 @@
 [x] - Prettier
 [X] - Native LSP
 [ ] - yank then comment
-[ ] -    
+[ ] - telescope sort by last opened     
 
 ## Articles
 
