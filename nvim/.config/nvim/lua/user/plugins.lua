@@ -4,7 +4,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -14,70 +13,10 @@ vim.cmd([[
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+
+  -- Display
   use 'folke/tokyonight.nvim'
-  use 'ThePrimeagen/git-worktree.nvim'
-  use 'honza/vim-snippets'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-commentary'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
-  use 'tami5/sqlite.lua'
-  use 'github/copilot.vim'
-  use 'prettier/vim-prettier'
-  use 'christoomey/vim-tmux-navigator'
-  use 'puremourning/vimspector'
-  use 'ggandor/lightspeed.nvim'
-  use 'ojroques/vim-oscyank'
-
-
-  -- use {
-  --   'neoclide/coc.nvim',
-  --   branch = 'release'
-  -- }
-
-  -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use "b0o/schemastore.nvim"
-  use "jose-elias-alvarez/nvim-lsp-ts-utils"
-  use "RishabhRD/popfix"
-  use "RishabhRD/nvim-lsputils"
-
-  -- Completions
-  use { 'hrsh7th/nvim-cmp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/cmp-nvim-lua' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'saadparwaiz1/cmp_luasnip' }
-
-  -- Snippets
-  use { 'L3MON4D3/Luasnip' }
-  use { "rafamadriz/friendly-snippets" }
-
-  -- To be sorted
   use "lukas-reineke/indent-blankline.nvim"
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = "maintained",
-        context_commentstring = {
-          enable = true
-        },
-        highlight = {
-          enable = true
-        },
-        indent = {
-          enable = true
-        }
-      }
-    end
-  }
-
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
@@ -87,13 +26,24 @@ return require('packer').startup(function()
       })
     end
   }
-
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require("bufferline").setup{} end
   }
 
+  -- Git
+  use 'ThePrimeagen/git-worktree.nvim'
+  use 'tpope/vim-fugitive'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function() require('gitsigns').setup() end
+  }
+
+  -- Navigation
+  use 'christoomey/vim-tmux-navigator'
+  use 'ggandor/lightspeed.nvim'
 	use {
 			'kyazdani42/nvim-tree.lua',
 			requires = {
@@ -101,7 +51,12 @@ return require('packer').startup(function()
 			},
 			config = function() require'nvim-tree'.setup {} end
 	}
+  use {
+    'folke/which-key.nvim',
+    config = function() require("which-key").setup() end
+  }
 
+  -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
@@ -129,32 +84,61 @@ return require('packer').startup(function()
   }
   -- use 'nvim-telescope/telescope-file-browser.nvim'
 
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use "b0o/schemastore.nvim"
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
+  use "RishabhRD/popfix"
+  use "RishabhRD/nvim-lsputils"
+
+  -- Completions
+  use { 'hrsh7th/nvim-cmp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'hrsh7th/cmp-cmdline' }
+  use { 'hrsh7th/cmp-nvim-lua' }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'saadparwaiz1/cmp_luasnip' }
+
+  -- Highlight/lint
+  use 'prettier/vim-prettier'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = "maintained",
+        context_commentstring = {
+          enable = true
+        },
+        highlight = {
+          enable = true
+        },
+        indent = {
+          enable = true
+        }
+      }
+    end
+  }
+
+  -- Snippets
+  use { 'L3MON4D3/Luasnip' }
+  use { "rafamadriz/friendly-snippets" }
+
+  -- Tools
+  use 'tpope/vim-commentary'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'tami5/sqlite.lua'
+  use 'github/copilot.vim'
+  use 'puremourning/vimspector'
+  use 'ojroques/vim-oscyank'
   use {
     'blackCauldron7/surround.nvim',
     config = function()
       require"surround".setup {mappings_style = "surround"}
     end
   }
-
-  use {
-    'folke/which-key.nvim',
-    config = function() require("which-key").setup() end
-  }
-
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup() end
-  }
-
-
-  -- use {"preservim/nerdtree",
-  --   requires = {
-  --     'Xuyuanp/nerdtree-git-plugin',
-  --     'kyazdani42/nvim-web-devicons'
-  --   }
-  -- }
-
-
 
 end)

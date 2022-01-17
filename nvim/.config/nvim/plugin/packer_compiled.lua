@@ -286,11 +286,6 @@ _G.packer_plugins = {
     path = "/home/kd/.local/share/nvim/site/pack/packer/start/vim-prettier",
     url = "https://github.com/prettier/vim-prettier"
   },
-  ["vim-snippets"] = {
-    loaded = true,
-    path = "/home/kd/.local/share/nvim/site/pack/packer/start/vim-snippets",
-    url = "https://github.com/honza/vim-snippets"
-  },
   ["vim-tmux-navigator"] = {
     loaded = true,
     path = "/home/kd/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
