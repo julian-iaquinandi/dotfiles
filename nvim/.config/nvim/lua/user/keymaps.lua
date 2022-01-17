@@ -23,7 +23,8 @@ vim.api.nvim_set_keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", noremapSilent)
 vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", noremapSilent)
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", noremapSilent)
 vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", noremapSilent)
-vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", noremapSilent)
+-- vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", noremapSilent)
+vim.api.nvim_set_keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", noremapSilent)
 -- vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", noremapSilent)
 vim.api.nvim_set_keymap("n", "g;", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", noremapSilent)
 vim.api.nvim_set_keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", noremapSilent)
@@ -114,35 +115,39 @@ local git = {
   j = { ":Gitsigns prev_hunk<cr>", "Next hunk"},
 }
 
-local terminal = {
-  name = " 💻 terminal",
-  c = { ":sp<CR> :term<CR> :resize 20N<CR> i", "Create" },
-  t = { ":ToggleTermToggleAll <cr>", "Toggle all " },
-  j = { ":ToggleTerm size=15 direction=horizontal <cr>", "Open first" },
-  k = { ":2ToggleTerm size=15 direction=horizontal <cr>", "Open second" },
-  u = { ":TermExec cmd='npm start' <cr>", "Npm start first" },
-  i = { ":2TermExec cmd='npm start' <cr>", "Npm start second" },
+local trouble = {
+  name = "⚠️  Trouble",
+  t = { "<cmd>Trouble<cr>", "Trouble Toggle" },
+  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" },
+  d = { "<cmd>Trouble document_diagnostics<cr>", "Document diagnostics" },
+  q = { "<cmd>Trouble quickfix<cr>", "Quickfix list" },
+  l = { "<cmd>Trouble loclist<cr>", "Loc list" },
 }
 
-local wkMappings = {
-  p = { ":Telescope find_files<cr>", "Files" },
+local openTelescopeFiles = { ":Telescope find_files<cr>", "Files" }
+local writeBufferAndFormat = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" }
+local closeBuffer = { ":bd<cr>", "Close buffer" }
+local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
+local quitBuffer = { ":q<cr>", "Quit buffer" }
+local navigationTree = { ":NvimTreeToggle<cr>", "Navigation" }
+local lastBuffer = { "<C-^><cr>", "Files" }
 
-  w = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" },
-  q = { ":bd<cr>", "Close buffer" },
-  Q = { ":bd!<cr>", "Force Close buffer" },
-  x = { ":q<cr>", "Quit buffer" },
-
-  n = { ":NvimTreeToggle<cr>", "Navigation" },
-  m = { "<C-^><cr>", "Files" },
-  z = { ":Startify<cr>", "Startify" },
-}
+local wkMappings = {}
 
 wkMappings["a"] = actions
 wkMappings["b"] = buffers
 wkMappings["d"] = debug
 wkMappings["f"] = find
 wkMappings["g"] = git
-wkMappings["t"] = terminal
+wkMappings["n"] = navigationTree
+wkMappings["m"] = lastBuffer
+wkMappings["p"] = openTelescopeFiles
+wkMappings["q"] = closeBuffer
+wkMappings["Q"] = forceCloseBuffer
+wkMappings["t"] = trouble
+wkMappings["w"] = writeBufferAndFormat
+wkMappings["x"] = quitBuffer
+
 
 local wkOpts =  { prefix = "<leader>" }
 local wk = require("which-key")

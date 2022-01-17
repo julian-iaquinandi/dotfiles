@@ -90,8 +90,10 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use "b0o/schemastore.nvim"
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
-  use "RishabhRD/popfix"
-  use "RishabhRD/nvim-lsputils"
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons"
+  }
 
   -- Completions
   use { 'hrsh7th/nvim-cmp' }

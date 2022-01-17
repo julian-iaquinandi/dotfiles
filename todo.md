@@ -17,6 +17,7 @@
 [ ] - yank then comment
 [ ] - telescope sort by last opened     
 [ ] - Lua lsp not working
+[ ] - Config snippets
 
 ## Articles
 
