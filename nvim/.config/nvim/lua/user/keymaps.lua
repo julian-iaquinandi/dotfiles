@@ -162,7 +162,6 @@ wkMappings["t"] = trouble
 wkMappings["w"] = writeBufferAndFormat
 wkMappings["x"] = quitBuffer
 
-local wkOpts =  { prefix = "<leader>" }
 local wk = require("which-key")
 
 wk.register(wkMappings, wkOpts)
