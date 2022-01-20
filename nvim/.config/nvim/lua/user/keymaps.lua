@@ -64,40 +64,30 @@ local buffers = {
 
 local debug = {
   name = " 🐛 Debug",
-  q = { "<Plug>Vimspector#Launch()", "Launch Debug" },
+  a = { ":lua require'debugHelper'.attach()<CR>", "Attach"},
+  q = { ":lua require'debugHelper'.attachToRemote()<CR>", "Attach remote"},
 
   d = { ":lua require'dap'.continue()<CR>", "Continue"},
+  s = { ":lua require'dap'.stop()<CR>", "Stop" },
+  r = { ":lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<CR>", "Restart" },
+
   k = { ":lua require'dap'.step_into()<CR>", "Step Into" },
   l = { ":lua require'dap'.step_out()<CR>", "Step Out"},
   [";"] = { ":lua require'dap'.step_over()<CR>", "Step Over" },
-
-  s = { ":lua require'dap'.stop()<CR>", "Stop" },
-  r = { ":lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<CR>", "Restart" },
 
   t = { ":lua require'dap'.repl.open({}, 'vsplit')<CR><C-w>l", "Repl" },
 
   i = { ":lua require'dap'.down()<CR>", "Down" },
   o = { ":lua require'dap'.up()<CR>", "Up" },
-
-  b = {
-    b = { "<Plug>VimspectorToggleBreakpoint", "Toggle Breakpoint" },
-    c = { "<Plug>VimspectorToggleConditionalBreakpoint", "Toggle Conditional Breakpoint" },
-    d = { ":call vimspector#CleanLineVreakpoint()", "Clean line breakpoint" },
-  }
+  h = { ":lua require'dap.ui.widgets'.hover()<CR>", "Hover" },
+    -- nnoremap <leader>di :lua require'dap.ui.variables'.hover()<CR>
+    -- vnoremap <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
+  g = { ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>", "Scopes"},
+    -- nnoremap <leader>d? :lua require'dap.ui.variables'.scopes()<CR>
+  b = { ":lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
+  c = { "", "Conditional Breakpoint"},
+    -- nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
 }
-
-nnoremap <leader>dh :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <S-k> 
-nnoremap <S-l> 
-nnoremap <S-j> 
-nnoremap <leader>di :lua require'dap.ui.variables'.hover()<CR>
-vnoremap <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
-nnoremap <leader>d? :lua require'dap.ui.variables'.scopes()<CR>
-nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
-nnoremap <leader>da :lua require'debugHelper'.attach()<CR>
-nnoremap <leader>dA :lua require'debugHelper'.attachToRemote()<CR>
-nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
-nnoremap <leader>d? :lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
 
 local find = {
   name = " 🔎 Find",
@@ -172,36 +162,7 @@ wkMappings["t"] = trouble
 wkMappings["w"] = writeBufferAndFormat
 wkMappings["x"] = quitBuffer
 
-
 local wkOpts =  { prefix = "<leader>" }
 local wk = require("which-key")
 
 wk.register(wkMappings, wkOpts)
-
-
-
-
-
--- local debug = {
---   name = " 🐛 Debug",
---   q = { "<Plug>Vimspector#Launch()", "Launch Debug" },
-
---   c = { ":call GotoWindow(g:vimspector_session_window.code",  "Debug Code" },
---   t = { ":call GotoWindow(g:vimspector_session_window.tagpage",  "Debug Tagpage" },
---   v = { ":call GotoWindow(g:vimspector_session_window.variables",  "Debug Variables" },
---   w = { ":call GotoWindow(g:vimspector_session_window.watches",  "Debug Watches" },
---   s = { ":call GotoWindow(g:vimspector_session_window.stack_trace",  "Debug Stacktrace" },
---   o = { ":call GotoWindow(g:vimspector_session_window.output",  "Debug Output" },
-
---   d = { ":call vimspector#Continue()", "Continue"},
---   k = { "<Plug>VimspectorStepInto", "Step Into" },
---   l = { "<Plug>StepOut", "Step Out"},
---   [";"] = { "<Plug>VimspectorStepOver", "Step Over" },
---   j = { "<Plug>VimspectorRestart", "Restart" },
-
---   b = {
---     b = { "<Plug>VimspectorToggleBreakpoint", "Toggle Breakpoint" },
---     c = { "<Plug>VimspectorToggleConditionalBreakpoint", "Toggle Conditional Breakpoint" },
---     d = { ":call vimspector#CleanLineVreakpoint()", "Clean line breakpoint" },
---   }
--- }
