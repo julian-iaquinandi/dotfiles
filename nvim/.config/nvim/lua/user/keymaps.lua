@@ -164,4 +164,6 @@ wkMappings["x"] = quitBuffer
 
 local wk = require("which-key")
 
-wk.register(wkMappings, wkOpts)
+wk.register(wkMappings, {
+  prefix = "<leader>"
+})
