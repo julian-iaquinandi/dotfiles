@@ -95,6 +95,9 @@ return require('packer').startup(function()
     requires = "kyazdani42/nvim-web-devicons"
   }
 
+  -- Testing
+  use 'David-Kunz/jester'
+
   -- Completions
   use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-buffer' }
@@ -129,12 +132,16 @@ return require('packer').startup(function()
   use { 'L3MON4D3/Luasnip' }
   use { "rafamadriz/friendly-snippets" }
 
+  -- Debugging
+  use 'mfussenegger/nvim-dap'
+  use 'theHamsta/nvim-dap-virtual-text'
+  -- use 'puremourning/vimspector'
+ 
   -- Tools
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'tami5/sqlite.lua'
   use 'github/copilot.vim'
-  use 'puremourning/vimspector'
   use 'ojroques/vim-oscyank'
   use {
     'blackCauldron7/surround.nvim',

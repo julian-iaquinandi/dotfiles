@@ -1,3 +1,5 @@
 [user]
 	email = kensledev@gmail.com
 	name = kensleDev
+[init]
+	defaultBranch = dev

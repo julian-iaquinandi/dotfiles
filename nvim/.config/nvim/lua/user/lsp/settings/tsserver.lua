@@ -1,5 +1,3 @@
-
-
 local opts = {
   setup = {
     on_attach = function(client, bufnr)
@@ -49,8 +47,8 @@ local opts = {
         },
 
         -- update imports on file move
-        update_imports_on_move = false,
-        require_confirmation_on_move = false,
+        update_imports_on_move = true,
+        require_confirmation_on_move = true,
         watch_dir = nil,
     })
 
