@@ -17,15 +17,15 @@ return require('packer').startup(function()
   -- Display
   use 'folke/tokyonight.nvim'
   use "lukas-reineke/indent-blankline.nvim"
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    config = function()
-      require('lualine').setup({
-        -- extensions = { 'fugative' }
-      })
-    end
-  }
+  -- use {
+  --   'nvim-lualine/lualine.nvim',
+  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  --   config = function()
+  --     require('lualine').setup({
+  --       -- extensions = { 'fugative' }
+  --     })
+  --   end
+  -- }
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -49,7 +49,9 @@ return require('packer').startup(function()
 			requires = {
 				'kyazdani42/nvim-web-devicons', -- optional, for file icon
 			},
-			config = function() require'nvim-tree'.setup {} end
+			config = function() require'nvim-tree'.setup {
+        auto_close = true
+      } end
 	}
   use {
     'folke/which-key.nvim',
@@ -133,10 +135,15 @@ return require('packer').startup(function()
   use { "rafamadriz/friendly-snippets" }
 
   -- Debugging
-  use 'mfussenegger/nvim-dap'
-  use 'theHamsta/nvim-dap-virtual-text'
   -- use 'puremourning/vimspector'
- 
+  use 'theHamsta/nvim-dap-virtual-text'
+  use { 
+    "rcarriga/nvim-dap-ui", 
+    requires = {"mfussenegger/nvim-dap"},
+  }
+  -- use 'jbyuki/one-small-step-for-vimkind'
+  use "Pocco81/DAPInstall.nvim"
+
   -- Tools
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'

@@ -2,8 +2,8 @@ local noremapSilent = { noremap = true, silent = true }
 -- Escape normal mode + terminal swapping
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = false })
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', { noremap = false })
-vim.api.nvim_set_keymap('i', 'jj', '<Esc> <C-w>j<cr>', { noremap = false })
-vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> :sleep 20m <cr> <C-w>k<cr>', { noremap = false })
+-- vim.api.nvim_set_keymap('i', 'jj', '<Esc> <C-w>j<cr>', { noremap = false })
+-- vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> :sleep 20m <cr> <C-w>k<cr>', { noremap = false })
 -- vim.api.nvim_set_keymap('i', 'jm', '<Esc> <C-w>j <C-\\><C-n> :tabedit %<cr>', { noremap = false })
 
 -- Remap hjkl to jkl;
@@ -79,14 +79,16 @@ local debug = {
 
   i = { ":lua require'dap'.down()<CR>", "Down" },
   o = { ":lua require'dap'.up()<CR>", "Up" },
+
   h = { ":lua require'dap.ui.widgets'.hover()<CR>", "Hover" },
-    -- nnoremap <leader>di :lua require'dap.ui.variables'.hover()<CR>
     -- vnoremap <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
   g = { ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>", "Scopes"},
-    -- nnoremap <leader>d? :lua require'dap.ui.variables'.scopes()<CR>
+
   b = { ":lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
   c = { "", "Conditional Breakpoint"},
     -- nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
+  --
+  u = { ":lua require'dapui'.toggle() <cr>", "Toggle UI" }
 }
 
 local find = {
@@ -143,6 +145,7 @@ local closeBuffer = { ":bd<cr>", "Close buffer" }
 local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
 local quitBuffer = { ":q<cr>", "Quit buffer" }
 local navigationTree = { ":NvimTreeToggle<cr>", "Navigation" }
+local navigationTreeFind = { ":NvimTreeFindFile<cr>", "Navigation" }
 local lastBuffer = { "<C-^><cr>", "Files" }
 
 local wkMappings = {}
@@ -153,7 +156,7 @@ wkMappings["d"] = debug
 wkMappings["f"] = find
 wkMappings["g"] = git
 wkMappings["j"] = jest
-wkMappings["n"] = navigationTree
+wkMappings["n"] = navigationTreeFind
 wkMappings["m"] = lastBuffer
 wkMappings["p"] = openTelescopeFiles
 wkMappings["q"] = closeBuffer
@@ -161,6 +164,7 @@ wkMappings["Q"] = forceCloseBuffer
 wkMappings["t"] = trouble
 wkMappings["w"] = writeBufferAndFormat
 wkMappings["x"] = quitBuffer
+wkMappings[","] = navigationTree
 
 local wk = require("which-key")
 
