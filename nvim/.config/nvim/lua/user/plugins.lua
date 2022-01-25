@@ -135,14 +135,15 @@ return require('packer').startup(function()
   use { "rafamadriz/friendly-snippets" }
 
   -- Debugging
-  -- use 'puremourning/vimspector'
-  use 'theHamsta/nvim-dap-virtual-text'
-  use { 
-    "rcarriga/nvim-dap-ui", 
-    requires = {"mfussenegger/nvim-dap"},
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap",
+    },
   }
-  -- use 'jbyuki/one-small-step-for-vimkind'
   use "Pocco81/DAPInstall.nvim"
+  use "nvim-telescope/telescope-dap.nvim"
+  use "theHamsta/nvim-dap-virtual-text"
 
   -- Tools
   use 'tpope/vim-commentary'

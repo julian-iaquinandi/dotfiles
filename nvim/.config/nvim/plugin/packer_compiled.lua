@@ -250,6 +250,11 @@ _G.packer_plugins = {
     path = "/home/kd/.local/share/nvim/site/pack/packer/start/surround.nvim",
     url = "https://github.com/blackCauldron7/surround.nvim"
   },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/kd/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
+  },
   ["telescope-emoji.nvim"] = {
     loaded = true,
     path = "/home/kd/.local/share/nvim/site/pack/packer/start/telescope-emoji.nvim",
