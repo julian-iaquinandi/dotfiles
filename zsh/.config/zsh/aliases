@@ -12,6 +12,10 @@ alias yd="yarn dev"
 alias ysd="yarn start:dev"
 alias yf="yarn format"
 
+# ------------------------------ Pnpm
+alias p="pnpm"
+alias pd="pnpm dev"
+
 # ------------------------------ Git
 alias g="git"
 alias gpl="git pull"

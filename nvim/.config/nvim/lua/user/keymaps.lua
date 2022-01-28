@@ -78,7 +78,6 @@ local debug = {
   l = { ":lua require'dap'.step_out()<CR>", "Step Out"},
   [";"] = { ":lua require'dap'.step_over()<CR>", "Step Over" },
 
-
   u = { ":lua require'dapui'.toggle() <cr>", "Toggle UI" },
   i = { ":lua require'dap'.down()<CR>", "Down" },
   o = { ":lua require'dap'.up()<CR>", "Up" },
