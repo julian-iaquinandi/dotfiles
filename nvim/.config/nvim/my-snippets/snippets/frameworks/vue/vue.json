@@ -11,5 +11,13 @@
       "</template>"
     ],
     "description": "setup script element"
+  },
+  "Ref Variable": {
+    "prefix": "ref",
+    "body": "const $1 = ref<$2>($3)"
+  },
+  "Reactive Variable": {
+    "prefix": "reactive",
+    "body": "const $1 = reactive<$2>($3)"
   }
 }
