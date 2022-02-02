@@ -1,6 +1,6 @@
 local opts = {
   paths = {
-    "~/.config/nvim/snippets/my-snippets",
+    "~/.config/nvim/my-snippets",
     "~/.local/share/nvim/site/pack/packer/start/friendly-snippets"
   },
   -- include = {

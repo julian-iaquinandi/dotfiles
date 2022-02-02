@@ -1,0 +1,15 @@
+{
+  "setup script": {
+    "prefix": "setup",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "\t$0",
+      "</script>",
+      "",
+      "<template>",
+      "",
+      "</template>"
+    ],
+    "description": "setup script element"
+  }
+}
