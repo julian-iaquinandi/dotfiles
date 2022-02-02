@@ -8,4 +8,4 @@ require 'user.nvim-cmp'
 require 'user.trouble'
 require 'user.jester'
 require 'user.dap'
-
+require 'user.luasnip'

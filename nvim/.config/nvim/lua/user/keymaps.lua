@@ -33,6 +33,9 @@ vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.lsp.buf.hover()<CR>", noremapSi
 vim.api.nvim_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremapSilent)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
+-- Snippets
+vim.api.nvim_set_keymap("n", "<C-J>", "<Plug>(vsnip-expand)", noremapSilent)
+
 -- Copy
 vim.api.nvim_set_keymap("v", "c", "<Plug>OscYank<cr>", {noremap = true})
 -- vim.api.nvim_set_keymap("n", "gy", ":normal y :normal v :normal gv ", noremapSilent)

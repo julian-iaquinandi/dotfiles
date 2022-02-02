@@ -100,7 +100,9 @@ return require('packer').startup(function()
   -- Testing
   use 'David-Kunz/jester'
 
-  -- Completions
+  -- Completions/Snippets
+  -- use { 'hrsh7th/vim-vsnip' }
+  -- use { 'hrsh7th/cmp-vsnip' }
   use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
@@ -108,6 +110,8 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-nvim-lua' }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'saadparwaiz1/cmp_luasnip' }
+  use { 'L3MON4D3/LuaSnip' }
+  use { "rafamadriz/friendly-snippets" }
 
   -- Highlight/lint
   use 'prettier/vim-prettier'
@@ -129,10 +133,6 @@ return require('packer').startup(function()
       }
     end
   }
-
-  -- Snippets
-  use { 'L3MON4D3/Luasnip' }
-  use { "rafamadriz/friendly-snippets" }
 
   -- Debugging
   use {
