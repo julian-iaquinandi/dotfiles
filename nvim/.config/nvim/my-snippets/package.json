@@ -11,7 +11,8 @@
           "markdown",
           "tex",
           "html",
-          "global"
+          "global",
+          "vue"
         ],
         "path": "./snippets/global.json"
       },
