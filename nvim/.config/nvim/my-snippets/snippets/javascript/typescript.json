@@ -1,1 +1,15 @@
-{}
+{
+  "Test outline": {
+    "prefix": "test",
+    "body": [
+      "import { mount } from '@vue/test-utils'",
+      "import $3 from $4",
+      "",
+      "describe('$1', () => {",
+      "  it('$2', () => {",
+      "    const wrapper = mount($3, { props: {} })",
+      "  })",
+      "})"
+    ]
+  }
+}

@@ -96,6 +96,10 @@ return require('packer').startup(function()
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons"
   }
+  -- use {
+  --   'weilbith/nvim-code-action-menu',
+  --   cmd = 'CodeActionMenu',
+  -- }
 
   -- Testing
   use 'David-Kunz/jester'

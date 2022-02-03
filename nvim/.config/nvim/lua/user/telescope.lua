@@ -1,6 +1,8 @@
 local telescope = require("telescope")
 local trouble = require("trouble.providers.telescope")
 
+require('telescope.actions')
+
 telescope.setup{
   defaults = {
     file_ignore_patterns = {"node_modules", "dist"},
@@ -12,17 +14,21 @@ telescope.setup{
   pickers = {
     find_files = {
       theme = "ivy",
-      hidden = "true"
+      hidden = "true",
+      sort_lastused = true
     },
     git_files = {
       theme = "ivy",
-      hidden = "true"
+      hidden = "true",
+      sort_lastused = true
     },
     buffers = {
       theme = "ivy",
+      sort_lastused = true
     },
     git_worktree= {
       theme = "ivy",
+      sort_lastused = true
     },
   },
 
