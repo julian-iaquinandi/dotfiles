@@ -17,20 +17,21 @@ return require('packer').startup(function()
   -- Display
   use 'folke/tokyonight.nvim'
   use "lukas-reineke/indent-blankline.nvim"
-  -- use {
-  --   'nvim-lualine/lualine.nvim',
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
-  --   config = function()
-  --     require('lualine').setup({
-  --       -- extensions = { 'fugative' }
-  --     })
-  --   end
-  -- }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = function()
+      require('lualine').setup({
+        -- extensions = { 'fugative' }
+      })
+    end
+  }
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require("bufferline").setup{} end
   }
+  use 'simrat39/symbols-outline.nvim'
 
   -- Git
   use 'ThePrimeagen/git-worktree.nvim'
@@ -105,8 +106,6 @@ return require('packer').startup(function()
   use 'David-Kunz/jester'
 
   -- Completions/Snippets
-  -- use { 'hrsh7th/vim-vsnip' }
-  -- use { 'hrsh7th/cmp-vsnip' }
   use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }

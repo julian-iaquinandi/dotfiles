@@ -1,7 +1,7 @@
 local telescope = require("telescope")
 local trouble = require("trouble.providers.telescope")
 
-require('telescope.actions')
+require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })
 
 telescope.setup{
   defaults = {
@@ -15,20 +15,24 @@ telescope.setup{
     find_files = {
       theme = "ivy",
       hidden = "true",
-      sort_lastused = true
+      sort_lastused = true,
+      sort_mru = true
     },
     git_files = {
       theme = "ivy",
       hidden = "true",
-      sort_lastused = true
+      sort_lastused = true,
+      sort_mru = true
     },
     buffers = {
       theme = "ivy",
-      sort_lastused = true
+      sort_lastused = true,
+      sort_mru = true
     },
     git_worktree= {
       theme = "ivy",
-      sort_lastused = true
+      sort_lastused = true,
+      sort_mru = true
     },
   },
 
