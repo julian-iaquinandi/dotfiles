@@ -1,3 +1,7 @@
+
+## snippets
+[ ] - Pinia store
+
 ## Code
 
 [x] - Pull down merged repo for station-booking and commit

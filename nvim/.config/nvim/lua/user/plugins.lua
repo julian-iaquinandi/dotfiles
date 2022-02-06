@@ -97,6 +97,7 @@ return require('packer').startup(function()
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons"
   }
+  use "jose-elias-alvarez/null-ls.nvim"
   -- use {
   --   'weilbith/nvim-code-action-menu',
   --   cmd = 'CodeActionMenu',
