@@ -45,8 +45,20 @@ CONFIG_GIT() {
   cd $CURRENT_DIR
 }
 
+NODE_PKGS() {
+  npm i pnpm
+  pnpm i -g @fsouza/prettierd
+  pnpm i -g @types/node
+  pnpm i -g eslint 
+  pnpm i -g jest 
+  pnpm i -g ts-node 
+  pnpm i -g typescript 
+  pnpm i -g vite 
+}
+
 POST_INSTALL() {
 	nvm install node
+  NODE_PKGS
 	sudo apt install python3-pip -y
 	python3 -m pip install --user --upgrade pynvim
   DIR_EXISTS nvim CONFIG_COC ~/.config/coc
