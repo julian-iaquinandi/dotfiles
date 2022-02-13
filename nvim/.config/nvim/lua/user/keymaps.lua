@@ -2,9 +2,6 @@ local noremapSilent = { noremap = true, silent = true }
 -- Escape normal mode + terminal swapping
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = false })
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', { noremap = false })
--- vim.api.nvim_set_keymap('i', 'jj', '<Esc> <C-w>j<cr>', { noremap = false })
--- vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n> :sleep 20m <cr> <C-w>k<cr>', { noremap = false })
--- vim.api.nvim_set_keymap('i', 'jm', '<Esc> <C-w>j <C-\\><C-n> :tabedit %<cr>', { noremap = false })
 
 -- Remap hjkl to jkl;
 vim.api.nvim_set_keymap("n", "j", "h", noremapSilent)
@@ -144,7 +141,7 @@ local trouble = {
   l = { "<cmd>Trouble loclist<cr>", "Loc list" },
 }
 
-local openTelescopeFiles = { ":Telescope find_files<cr>", "Files" }
+local openTelescopeFiles = { ":Telescope git_files<cr>", "Files(Git)" }
 local writeBufferAndFormat = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" }
 local closeBuffer = { ":bd<cr>", "Close buffer" }
 local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
@@ -152,6 +149,7 @@ local quitBuffer = { ":q<cr>", "Quit buffer" }
 local navigationTree = { ":NvimTreeToggle<cr>", "Navigation" }
 local navigationTreeFind = { ":NvimTreeFindFile<cr>", "Navigation" }
 local lastBuffer = { "<C-^><cr>", "Files" }
+-- local symbolOutline = { ":SymbolsOutline<cr>", "Symbol Outline" }
 
 local wkMappings = {}
 
@@ -163,6 +161,7 @@ wkMappings["g"] = git
 wkMappings["j"] = jest
 wkMappings["n"] = navigationTreeFind
 wkMappings["m"] = lastBuffer
+-- wkMappings["o"] = symbolOutline
 wkMappings["p"] = openTelescopeFiles
 wkMappings["q"] = closeBuffer
 wkMappings["Q"] = forceCloseBuffer

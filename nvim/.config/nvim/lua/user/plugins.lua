@@ -31,7 +31,7 @@ return require('packer').startup(function()
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require("bufferline").setup{} end
   }
-  use 'simrat39/symbols-outline.nvim'
+  -- use 'simrat39/symbols-outline.nvim'
 
   -- Git
   use 'ThePrimeagen/git-worktree.nvim'
