@@ -64,33 +64,13 @@ local buffers = {
 
 local debug = {
   name = " 🐛 Debug",
-  a = { ":lua require'debugHelper'.attach()<CR>", "Attach"},
-  q = { ":lua require'debugHelper'.attachToRemote()<CR>", "Attach remote"},
-
-  s = { ":lua require'dap'.close()<CR>", "Stop" },
-  d = { ":lua require'dap'.continue()<CR>", "Continue"},
-  f = { ":lua require'telescope'.extensions.dap.frames{}<cr>", "Telescoe frames" },
-
-  r = { ":lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<CR>", "Restart" },
-  t = { ":lua require'dap'.repl.open({}, 'vsplit')<CR><C-w>l", "Repl" },
-
-  k = { ":lua require'dap'.step_into()<CR>", "Step Into" },
-  l = { ":lua require'dap'.step_out()<CR>", "Step Out"},
-  [";"] = { ":lua require'dap'.step_over()<CR>", "Step Over" },
-
-  u = { ":lua require'dapui'.toggle() <cr>", "Toggle UI" },
-  i = { ":lua require'dap'.down()<CR>", "Down" },
-  o = { ":lua require'dap'.up()<CR>", "Up" },
-
-  h = { ":lua require'dap.ui.widgets'.hover()<CR>", "Hover" },
-    -- vnoremap <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
-  g = { ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>", "Scopes"},
-
-  b = {
-    b = { ":lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
-    c = { ":lua require'dap'.set_exception_breakpoints({'all'})<CR>", "Conditional Breakpoint"}
-  },
-
+  d = { ":call vimspector#Launch()<cr>", "Launch"},
+  r = { ":call vimspector#Reset()<cr>", "Reset"},
+  c = { ":call vimspector#Continue()<cr>", "Continue"},
+  f = { ":call vimspector#ToggleBreakpoint()<cr>", "Breakpoint"},
+  k = { ":call <Plug>VimspectorStepInto", "Step Into"},
+  l = { ":call <Plug>VimspectorStepOut", "Step Out"},
+  [';'] = { ":call <Plug>VimspectorStepOver", "Step Over"},
 }
 
 local find = {
@@ -175,3 +155,36 @@ local wk = require("which-key")
 wk.register(wkMappings, {
   prefix = "<leader>"
 })
+
+
+-- local debug = {
+--   name = " 🐛 Debug",
+--   a = { ":lua require'debugHelper'.attach()<CR>", "Attach"},
+--   q = { ":lua require'debugHelper'.attachToRemote()<CR>", "Attach remote"},
+
+--   s = { ":lua require'dap'.close()<CR>", "Stop" },
+--   d = { ":lua require'dap'.continue()<CR>", "Continue"},
+--   f = { ":lua require'telescope'.extensions.dap.frames{}<cr>", "Telescoe frames" },
+
+--   r = { ":lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<CR>", "Restart" },
+--   t = { ":lua require'dap'.repl.open({}, 'vsplit')<CR><C-w>l", "Repl" },
+
+--   k = { ":lua require'dap'.step_into()<CR>", "Step Into" },
+--   l = { ":lua require'dap'.step_out()<CR>", "Step Out"},
+--   [";"] = { ":lua require'dap'.step_over()<CR>", "Step Over" },
+
+--   u = { ":lua require'dapui'.toggle() <cr>", "Toggle UI" },
+--   i = { ":lua require'dap'.down()<CR>", "Down" },
+--   o = { ":lua require'dap'.up()<CR>", "Up" },
+
+--   h = { ":lua require'dap.ui.widgets'.hover()<CR>", "Hover" },
+--     -- vnoremap <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
+--   g = { ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>", "Scopes"},
+
+--   b = {
+--     b = { ":lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
+--     c = { ":lua require'dap'.set_exception_breakpoints({'all'})<CR>", "Conditional Breakpoint"}
+--   },
+
+-- }
+

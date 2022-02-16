@@ -6,7 +6,6 @@ local dap_install = require("dap-install")
 local dap_ui = require("dapui")
 local dap_vtext = require("nvim-dap-virtual-text")
 
-
 dap.defaults.fallback.terminal_win_cmd = '10split new'
 
 -- Dap Ui
@@ -59,8 +58,56 @@ dap.configurations.typescript = {
   --   request = 'attach',
   --   processId = require'dap.utils'.pick_process,
   -- },
-
 }
+
+dap_install.config("dnetcs", {})
+
+dap.configurations.cs = {
+  {
+    type = "netcoredbg",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = '${workspaceFolder}/bin/Debug/net6.0/api.news.dll',
+    cwd = vim.fn.getcwd(),
+    processId = function()
+      local pgrep = vim.fn.system("pgrep -f 'dotnet bin/Debug/net6.0/api.news.dll'")
+      return tonumber(pgrep)
+    end,
+    targetArchitecture = "x86_64"
+
+    -- preLaunchTask = function()
+    --   Term = vim.fn.termopen("dotnet bin/Debug/net6.0/api.news.ddl")
+    -- end
+  },
+}
+
+
+
+-- dap.configurations.cs = {
+--   {
+--     type = "netcoredbg",
+--     name = "launch - netcoredbg",
+--     request = "attach",
+--     processId = function()
+--       local pgrep = vim.fn.system("pgrep -f 'dotnet bin/Debug/net6.0/api.news.dll'")
+--       return tonumber(pgrep)
+--     end,
+--     -- preLaunchTask = function()
+--     --   Term = vim.fn.termopen("dotnet bin/Debug/net6.0/api.news.ddl")
+--     -- end
+--   },
+-- }
+
+-- dap.configurations.cs = {
+--   {
+--     type = "netcoredbg",
+--     name = "launch - netcoredbg",
+--     request = "launch",
+--     program = function()
+--         return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+--     end,
+--   },
+-- }
 
 -- -- Chrome
 -- dap.adapters.chrome = {

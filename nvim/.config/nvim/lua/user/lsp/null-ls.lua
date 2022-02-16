@@ -13,7 +13,7 @@ local sources = {
   diagnostics.eslint,
   code_actions.eslint,
   formatting.prettierd,
-  formatting.stylua,
+  -- formatting.stylua,
 }
 
 null_ls.setup({

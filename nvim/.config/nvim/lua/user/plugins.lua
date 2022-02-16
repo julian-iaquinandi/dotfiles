@@ -90,7 +90,6 @@ return require('packer').startup(function()
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
-  use 'hrsh7th/cmp-nvim-lsp'
   use "b0o/schemastore.nvim"
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
   use {
@@ -139,15 +138,16 @@ return require('packer').startup(function()
   }
 
   -- Debugging
-  use {
-    "rcarriga/nvim-dap-ui",
-    requires = {
-      "mfussenegger/nvim-dap",
-    },
-  }
-  use "Pocco81/DAPInstall.nvim"
-  use "nvim-telescope/telescope-dap.nvim"
-  use "theHamsta/nvim-dap-virtual-text"
+  use 'puremourning/vimspector'
+  -- use {
+  --   "rcarriga/nvim-dap-ui",
+  --   requires = {
+  --     "mfussenegger/nvim-dap",
+  --   },
+  -- }
+  -- use "Pocco81/DAPInstall.nvim"
+  -- use "nvim-telescope/telescope-dap.nvim"
+  -- use "theHamsta/nvim-dap-virtual-text"
 
   -- Tools
   use 'tpope/vim-commentary'
