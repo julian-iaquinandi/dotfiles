@@ -33,7 +33,7 @@ return require('packer').startup(function()
   }
 
   -- Git
-  use 'ThePrimeagen/git-worktree.nvim'
+  -- use 'ThePrimeagen/git-worktree.nvim'
   use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
@@ -101,7 +101,7 @@ return require('packer').startup(function()
   use "jose-elias-alvarez/null-ls.nvim"
 
   -- Testing
-  use 'David-Kunz/jester'
+  -- use 'David-Kunz/jester'
 
   -- Completions/Snippets
   use { 'hrsh7th/nvim-cmp' }
