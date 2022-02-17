@@ -31,7 +31,6 @@ return require('packer').startup(function()
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require("bufferline").setup{} end
   }
-  -- use 'simrat39/symbols-outline.nvim'
 
   -- Git
   use 'ThePrimeagen/git-worktree.nvim'
@@ -87,6 +86,9 @@ return require('packer').startup(function()
   }
   -- use 'nvim-telescope/telescope-file-browser.nvim'
 
+  use 'jakelinnzy/autocmd-lua'
+  use 'OmniSharp/omnisharp-vim'
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
@@ -97,10 +99,6 @@ return require('packer').startup(function()
     requires = "kyazdani42/nvim-web-devicons"
   }
   use "jose-elias-alvarez/null-ls.nvim"
-  -- use {
-  --   'weilbith/nvim-code-action-menu',
-  --   cmd = 'CodeActionMenu',
-  -- }
 
   -- Testing
   use 'David-Kunz/jester'
@@ -153,7 +151,7 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'tami5/sqlite.lua'
-  use 'github/copilot.vim'
+  -- use 'github/copilot.vim'
   use 'ojroques/vim-oscyank'
   use {
     'blackCauldron7/surround.nvim',
