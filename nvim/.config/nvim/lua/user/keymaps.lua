@@ -68,9 +68,9 @@ local debug = {
   r = { ":call vimspector#Reset()<cr>", "Reset"},
   c = { ":call vimspector#Continue()<cr>", "Continue"},
   f = { ":call vimspector#ToggleBreakpoint()<cr>", "Breakpoint"},
-  k = { ":call <Plug>VimspectorStepInto", "Step Into"},
-  l = { ":call <Plug>VimspectorStepOut", "Step Out"},
-  [';'] = { ":call <Plug>VimspectorStepOver", "Step Over"},
+  k = { ":call <Plug>VimspectorStepInto<cr>", "Step Into"},
+  l = { ":call <Plug>VimspectorStepOut<cr>", "Step Out"},
+  [';'] = { ":call <Plug>VimspectorStepOver<cr>", "Step Over"},
 }
 
 local find = {
