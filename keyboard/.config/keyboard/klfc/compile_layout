@@ -1,0 +1,6 @@
+read -p 'Layout: ' LAYOUT
+
+./klfc "./$LAYOUT/qwerty.json" "./$LAYOUT/lower.json" "./$LAYOUT/higher.json" -o "./$LAYOUT/bin"
+
+sh "./$LAYOUT/bin/xkb/install-system.sh"
+sh "./$LAYOUT/bin/xkb/run-session.sh"

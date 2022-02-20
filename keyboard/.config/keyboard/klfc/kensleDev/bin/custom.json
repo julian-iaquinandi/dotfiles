@@ -1,0 +1,100 @@
+{
+  "singletonKeys": [
+    [ "Alt_L", "AltGr" ],
+    [ "Win_R", "Extend" ]
+  ],
+  "keysWithShiftlevels": [
+    {
+      "shiftlevels": [ "None", "Shift", "Extend", "Shift+Extend" ],
+      "keys": [
+        { "pos": "~", "letters": [ "`", "~" ] },
+        { "pos": "1", "letters": [ "1", "!" ] },
+        { "pos": "2", "letters": [ "2", "@" ] },
+        { "pos": "3", "letters": [ "3", "#" ] },
+        { "pos": "4", "letters": [ "4", "$" ] },
+        { "pos": "5", "letters": [ "5", "%" ] },
+        { "pos": "6", "letters": [ "6", "^" ] },
+        { "pos": "7", "letters": [ "7", "&" ] },
+        { "pos": "8", "letters": [ "8", "*" ] },
+        { "pos": "9", "letters": [ "9", "(" ] },
+        { "pos": "0", "letters": [ "0", ")" ] },
+        { "pos": "-", "letters": [ "-", "_" ] },
+        { "pos": "+", "letters": [ "=", "+" ] },
+        { "pos": "Q", "letters": [ "q", "Q", "!", "?" ] },
+        { "pos": "W", "letters": [ "w", "W", "@" ] },
+        { "pos": "E", "letters": [ "e", "E", "#" ] },
+        { "pos": "R", "letters": [ "r", "R", "_" ] },
+        { "pos": "T", "letters": [ "t", "T", "%" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "AltGr", "Extend" ],
+      "keys": [
+        { "pos": "Y", "letters": [ "y", "Y", "%", "%" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "AltGr", "Shift+AltGr", "Extend" ],
+      "keys": [
+        { "pos": "U", "letters": [ "u", "U", "7", "F7", "Home" ] },
+        { "pos": "I", "letters": [ "i", "I", "8", "F8", "PageDown" ] },
+        { "pos": "O", "letters": [ "o", "O", "9", "F9", "PageUp" ] },
+        { "pos": "P", "letters": [ "p", "P", "+", "F10", "End" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "Extend" ],
+      "keys": [
+        { "pos": "[", "letters": [ "[", "{", "Backspace" ] },
+        { "pos": "]", "letters": [ "]", "}" ] },
+        { "pos": "\\", "letters": [ "\\", "|" ] },
+        { "pos": "A", "letters": [ "a", "A", "?" ] },
+        { "pos": "S", "letters": [ "s", "S", "`" ] },
+        { "pos": "D", "letters": [ "d", "D", "\"" ] },
+        { "pos": "F", "letters": [ "f", "F", "'" ] },
+        { "pos": "G", "letters": [ "g", "G", "^" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "AltGr", "Extend" ],
+      "keys": [
+        { "pos": "H", "letters": [ "h", "H", "=", "$" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "AltGr", "Shift+AltGr", "Extend" ],
+      "keys": [
+        { "pos": "J", "letters": [ "j", "J", "4", "F4", "Left" ] },
+        { "pos": "K", "letters": [ "k", "K", "5", "F5", "Down" ] },
+        { "pos": "L", "letters": [ "l", "L", "6", "F6", "Up" ] },
+        { "pos": ";", "letters": [ ";", ":", "-", "F11", "Right" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "Extend" ],
+      "keys": [
+        { "pos": "'", "letters": [ "'", "\"", "Enter" ] },
+        { "pos": "Z", "letters": [ "z", "Z", "|" ] },
+        { "pos": "X", "letters": [ "x", "X", "[" ] },
+        { "pos": "C", "letters": [ "c", "C", "{" ] },
+        { "pos": "V", "letters": [ "v", "V", "(" ] },
+        { "pos": "B", "letters": [ "b", "B", "&" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "AltGr", "Extend" ],
+      "keys": [
+        { "pos": "N", "letters": [ "n", "N", "0", "\\" ] }
+      ]
+    },
+    {
+      "shiftlevels": [ "None", "Shift", "AltGr", "Shift+AltGr", "Extend" ],
+      "keys": [
+        { "pos": "M", "letters": [ "m", "M", "1", "F1", ")" ] },
+        { "pos": ",", "letters": [ ",", "<", "2", "F2", "}" ] },
+        { "pos": ".", "letters": [ ".", ">", "3", "F3", "]" ] },
+        { "pos": "/", "letters": [ "/", "?", "*", "F12", "~" ] }
+      ]
+    }
+  ]
+}

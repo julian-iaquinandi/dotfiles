@@ -1,0 +1,8 @@
+sudo apt-get install -y git gcc make pkg-config libx11-dev libxtst-dev libxi-dev &&
+mkdir ~/.local/bin &&
+cd ~/.local/bin &&
+git clone https://github.com/alols/xcape.git &&
+cd xcape &&
+make &&
+sudo make install
+echo "-> xcape installed"

@@ -1,0 +1,42 @@
+{
+  "filter": "no klc,keylayout",
+  "shiftlevels": [ "AltGr+Extend" ],
+  "keys": [
+      
+    { "pos": "q", "letters": [ "Shift+q"] },
+    { "pos": "w", "letters": [ "Win+w" ] },
+    { "pos": "e", "letters": [ "Win+e" ] },
+    { "pos": "r", "letters": [ "Win+r" ] },
+    { "pos": "t", "letters": [ "Win+t" ] },
+  
+    { "pos": "y", "letters": [ "Win+y" ] },
+    { "pos": "u", "letters": [ "Win+u" ] },
+    { "pos": "i", "letters": [ "Win+i" ] },
+    { "pos": "o", "letters": [ "Win+o" ] },
+    { "pos": "p", "letters": [ "Win+p" ] },
+     
+    { "pos": "a", "letters": [ "Win+a" ] },
+    { "pos": "s", "letters": [ "Win+s" ] },
+    { "pos": "d", "letters": [ "Win+d" ] },
+    { "pos": "f", "letters": [ "Win+f" ] },
+    { "pos": "g", "letters": [ "Win+g" ] },
+    
+    { "pos": "h", "letters": [ "Win+h" ] },
+    { "pos": "j", "letters": [ "Win+j" ] },
+    { "pos": "k", "letters": [ "Win+k" ] },
+    { "pos": "l", "letters": [ "Win+l" ] },
+    { "pos": ";", "letters": [ "Win+;" ] },
+     
+    { "pos": "z", "letters": [ "Win+z" ] },
+    { "pos": "x", "letters": [ "Win+x" ] },
+    { "pos": "c", "letters": [ "Win+c" ] },
+    { "pos": "v", "letters": [ "Win+v" ] },
+    { "pos": "b", "letters": [ "Win+b" ] },
+    
+    { "pos": "n", "letters": [ "Win+n" ] },
+    { "pos": "m", "letters": [ "Win+m" ] },
+    { "pos": ",", "letters": [ "Win+," ] },
+    { "pos": ".", "letters": [ "Win+." ] },
+    { "pos": "/", "letters": [ "Win+/" ] }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "filter": "no klc,keylayout",
+  "singletonKeys": [
+    [ "Capslock", "AltGr" ]
+  ],
+  "shiftlevels": [ "AltGr", "Shift+AltGr" ],
+  "keys": [
+    
+    { "pos": "y", "letters": [ "%" ] },
+    { "pos": "u", "letters": [ "7", "F7" ] },
+    { "pos": "i", "letters": [ "8", "F8" ] },
+    { "pos": "o", "letters": [ "9", "F9" ] },
+    { "pos": "p", "letters": [ "+", "F10" ] },
+    
+    { "pos": "h", "letters": [ "=" ] },
+    { "pos": "j", "letters": [ "4", "F4" ] },
+    { "pos": "k", "letters": [ "5", "F5" ] },
+    { "pos": "l", "letters": [ "6", "F6" ] },
+    { "pos": ";", "letters": [ "-", "F11" ] },
+    
+    { "pos": "n", "letters": [ "0" ] },
+    { "pos": "m", "letters": [ "1", "F1" ] },
+    { "pos": ",", "letters": [ "2", "F2" ] },
+    { "pos": ".", "letters": [ "3", "F3" ] },
+    { "pos": "/", "letters": [ "*", "F12" ] }
+  ]
+}

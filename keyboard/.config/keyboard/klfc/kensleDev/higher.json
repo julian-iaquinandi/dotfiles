@@ -1,0 +1,49 @@
+{
+  "filter": "no klc,keylayout",
+  "singletonKeys": [
+    [ "Win_R", "Extend" ]
+  ],
+  "shiftlevels": [ "Extend", "Extend+Shift" ],
+  "keys": [
+    { "pos": "q", "letters": [ "!", "?"] },
+    { "pos": "w", "letters": [ "@" ] },
+    { "pos": "e", "letters": [ "#" ] },
+    { "pos": "r", "letters": [ "_" ] },
+    { "pos": "t", "letters": [ "%" ] },
+
+    { "pos": "y", "letters": [ "%" ] },
+    { "pos": "u", "letters": [ "Home" ] },
+    { "pos": "i", "letters": [ "PageDown" ] },
+    { "pos": "o", "letters": [ "PageUp" ] },
+    { "pos": "p", "letters": [ "End" ] },
+
+    { "pos": "[", "letters": [ "Backspace" ] },
+    
+    { "pos": "a", "letters": [ "?" ] },
+    { "pos": "s", "letters": [ "`" ] },
+    { "pos": "d", "letters": [ "\"" ] },
+    { "pos": "f", "letters": [ "'" ] },
+    { "pos": "g", "letters": [ "^" ] },
+    
+    { "pos": "h", "letters": [ "$" ] },
+    { "pos": "j", "letters": [ "Left" ] },
+    { "pos": "k", "letters": [ "Down" ] },
+    { "pos": "l", "letters": [ "Up" ] },
+    { "pos": ";", "letters": [ "Right" ] },
+     
+    { "pos": "'", "letters": [ "Enter" ] },
+    
+    { "pos": "z", "letters": [ "|" ] },
+    { "pos": "x", "letters": [ "[" ] },
+    { "pos": "c", "letters": [ "{" ] },
+    { "pos": "v", "letters": [ "(" ] },
+    { "pos": "b", "letters": [ "&" ] },
+    
+    { "pos": "n", "letters": [ "\\" ] },
+    { "pos": "m", "letters": [ ")" ] },
+    { "pos": ",", "letters": [ "}" ] },
+    { "pos": ".", "letters": [ "]" ] },
+    { "pos": "/", "letters": [ "~" ] }
+
+  ]
+}
