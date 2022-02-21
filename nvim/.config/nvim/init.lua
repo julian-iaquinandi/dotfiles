@@ -1,6 +1,6 @@
-require 'user.plugins'
 require 'user.basics'
 require 'user.keymaps'
+require 'user.plugins'
 require 'user.colors'
 require 'user.telescope'
 require 'user.lsp'

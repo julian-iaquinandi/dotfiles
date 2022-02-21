@@ -18,15 +18,6 @@ CONFIG_NEOVIM() {
 #  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
-CONFIG_COC() {
-  cd ~/dotfiles
-  stow coc
-  cd ~/.config/coc/extensions
-  npm i
-
-  cd $CURRENT_DIR
-}
-
 CONFIG_TMUX() {
   cd ~/dotfiles
   stow tmux
@@ -46,7 +37,7 @@ CONFIG_GIT() {
 }
 
 NODE_PKGS() {
-  npm i pnpm
+  npm i -g pnpm
   pnpm i -g @fsouza/prettierd
   pnpm i -g @types/node
   pnpm i -g eslint 
@@ -61,6 +52,5 @@ POST_INSTALL() {
   NODE_PKGS
 	sudo apt install python3-pip -y
 	python3 -m pip install --user --upgrade pynvim
-  DIR_EXISTS nvim CONFIG_COC ~/.config/coc
   chsh -s $(which zsh)
 }

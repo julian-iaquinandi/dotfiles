@@ -14,6 +14,7 @@ INSTALL_BASE() {
   sudo apt install tree -y &&
   sudo apt install zsh -y
   sudo apt install trash-cli -y
+  sudo apt install tmux -y
 }
 
 INSTALL_NEOVIM() {

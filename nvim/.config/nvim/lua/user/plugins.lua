@@ -153,11 +153,11 @@ return require('packer').startup(function()
   use 'tami5/sqlite.lua'
   -- use 'github/copilot.vim'
   use 'ojroques/vim-oscyank'
-  use {
-    'blackCauldron7/surround.nvim',
-    config = function()
-      require"surround".setup {mappings_style = "surround"}
-    end
-  }
+  -- use {
+  --   'blackCauldron7/surround.nvim',
+  --   config = function()
+  --     require"surround".setup {mappings_style = "surround"}
+  --   end
+  -- }
 
 end)

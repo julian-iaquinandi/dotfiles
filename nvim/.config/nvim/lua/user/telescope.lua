@@ -28,11 +28,11 @@ telescope.setup{
       sort_lastused = true,
       sort_mru = true
     },
-    git_worktree= {
-      theme = "ivy",
-      sort_lastused = true,
-      sort_mru = true
-    },
+    -- git_worktree= {
+    --   theme = "ivy",
+    --   sort_lastused = true,
+    --   sort_mru = true
+    -- },
   },
 
   extensions = {
@@ -49,7 +49,7 @@ telescope.setup{
 --   sort_lastused = true,
 -- })
 
-telescope.load_extension("git_worktree")
+-- telescope.load_extension("git_worktree")
 telescope.load_extension("emoji")
 telescope.load_extension("media_files")
 telescope.load_extension("fzf")
