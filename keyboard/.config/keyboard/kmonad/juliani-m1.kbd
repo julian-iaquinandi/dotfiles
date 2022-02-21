@@ -1,8 +1,8 @@
 ;; See keymap/tutorial.kbd for a more complete tutorial
 
 (defcfg
-  input  (device-file "/dev/input/by-id/usb-Apple_Inc._Apple_Internal_Keyboard___Trackpad_D3H5374HGA1GHJGAV4FF-if01-event-kbd")
-  output (uinput-sink "My KMonad output")
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
   fallthrough true
 )
 
@@ -17,16 +17,16 @@
 
   ;; Home row mods 
   _ec (tap-hold-next-release 200 esc lctl)
-  _a (tap-hold-next-release 200 a lmet)
+  _a (tap-hold-next-release 200 a @sym)
   _s (tap-hold-next-release 200 s lalt)
   _d (tap-hold-next-release 200 d lsft)
-  _f (tap-hold-next-release 200 f lctl)
-  _g (tap-hold-next-release 200 g @num)
+  _f (tap-hold-next-release 200 f lmet)
+  _g (tap-hold-next-release 200 g @num) 
   _h (tap-hold-next-release 200 h @num)
-  _j (tap-hold-next-release 200 j rctl)
+  _j (tap-hold-next-release 200 j rmet)
   _k (tap-hold-next-release 200 k rsft)
-  _l (tap-hold-next-release 200 l ralt)
-  _; (tap-hold-next-release 200 ; rmet)
+  _l (tap-hold-next-release 200 l lalt)
+  _; (tap-hold-next-release 200 ; @sym)
 )
 
 (defsrc
