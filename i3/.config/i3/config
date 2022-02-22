@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -118,8 +119,8 @@ set $ws9 "9: Chat "
 set $ws10 "10: Media "
 
 # switch to workspace
-bindsym $mod+x workspace $ws1
-bindsym $mod+c workspace $ws2
+bindsym $alt+a workspace $ws1
+bindsym $alt+d workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -130,8 +131,8 @@ bindsym $mod+z workspace $ws9
 bindsym $mod+m workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+x move container to workspace $ws1
-bindsym $mod+Shift+c move container to workspace $ws2
+bindsym $mod+Shift+a move container to workspace $ws1
+bindsym $mod+Shift+d move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
@@ -164,6 +165,7 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
+hide_edge_borders both
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -212,3 +214,5 @@ exec alacritty
 exec vivaldi
 exec_always kmonad /home/kd/.config/keyboard/kmonad/juliani.kbd
 exec_always compton 
+# exec_always alttab -sc 1 -d 1 -kk d
+
