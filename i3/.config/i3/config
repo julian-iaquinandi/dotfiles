@@ -12,6 +12,15 @@
 set $mod Mod4
 set $alt Mod1
 
+
+# Set colors
+set $bg-color 	         #0e0e14 
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:System San Francisco 8
@@ -43,10 +52,15 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty 
-# bindsym $mod+Return exec i3-sensible-terminal
+
+# open launcher
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -font "System San Francisco Display 30"
 
 # kill focused window
 bindsym $mod+q kill
+
+
+# ---------------------------------- Focus Windows
 
 # change focus
 bindsym $mod+j focus left
@@ -54,17 +68,20 @@ bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
+
+# resize current window
+bindsym $mod+u resize shrink width 10 px or 10 ppt
+bindsym $mod+i resize grow height 10 px or 10 ppt
+bindsym $mod+o resize shrink height 10 px or 10 ppt
+bindsym $mod+p resize grow width 10 px or 10 ppt
+
+
+# ---------------------------------- Layout Windows
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -87,30 +104,28 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-
+# ---------------------------------- Workspaces
 set $ws1 "1: Web "
 set $ws2 "2: Terminals "
 set $ws9 "9: Chat "
 set $ws10 "10: Media "
 
 # switch to workspace
-bindsym $alt+a workspace $ws1
-bindsym $alt+d workspace $ws2
-bindsym $mod+z workspace $ws9
-bindsym $mod+m workspace $ws10
+bindsym $mod+m workspace $ws1
+bindsym $mod+n workspace $ws2
+bindsym $mod+b workspace $ws9
+bindsym $mod+c workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+a move container to workspace $ws1
-bindsym $mod+Shift+d move container to workspace $ws2
-bindsym $mod+Shift+z move container to workspace $ws9
-bindsym $mod+Shift+m move container to workspace $ws10
+bindsym $mod+Shift+m move container to workspace $ws1
+bindsym $mod+Shift+n move container to workspace $ws2
+bindsym $mod+Shift+b move container to workspace $ws9
+bindsym $mod+Shift+c move container to workspace $ws10
 
 assign [class="Vivaldi-stable"] $ws1
 assign [class="Alacritty"] $ws2
@@ -120,13 +135,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-set $bg-color 	         #0e0e14 
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
 
-# window colors
+# ---------------------------------- Window Colors
 #                       border              background         text                 indicator
 client.focused          $bg-color           $bg-color          $text-color          #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
@@ -135,52 +145,25 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 hide_edge_borders both
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# ---------------------------------- Status Bar
 bar {
-        # status_command i3status
-        status_command i3blocks -c /home/kd/.config/i3/i3blocks.conf
-        colors {
-          background $bg-color
-              separator #757575
-          #                  border             background         text
-          focused_workspace  $bg-color          $bg-color          $text-color
-          inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-          urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        }
-}
+  # status_command i3statu
+#old 
 
+# resize window (you can also use the mouse for that)
+# mode "resize" {
+#         # These bindings trigger as soon as you enter the resize mode
 
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -font "System San Francisco Display 30"
+#         bindsym j resize shrink width 10 px or 10 ppt
+#         bindsym k resize grow height 10 px or 10 ppt
+#         bindsym l resize shrink height 10 px or 10 ppt
+#         bindsym semicolon resize grow width 10 px or 10 ppt
 
+#         # back to normal: Enter or Escape or $mod+r
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+#         bindsym $mod+r mode "default"
+# }
 
-# Startup apps
-exec alacritty
-exec vivaldi
-exec_always kmonad /home/kd/.config/keyboard/kmonad/juliani.kbd
-exec_always compton 
-# exec_always alttab -sc 1 -d 1 -kk d
-
+# bindsym $mod+r mode "resize"

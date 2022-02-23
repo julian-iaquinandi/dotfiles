@@ -12,7 +12,7 @@ local code_actions = null_ls.builtins.code_actions
 local sources = {
   diagnostics.eslint,
   code_actions.eslint,
-  formatting.prettierd,
+  formatting.prettier_d_slim,
   -- formatting.stylua,
 }
 

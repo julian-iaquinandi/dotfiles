@@ -1,0 +1,4 @@
+sed -n -e '/^bindsym/p' ~/.config/i3/config
+# keybinds=$(sed -n -e '/^bindsym/p' ~/.config/i3/config) 
+# echo $keybinds > ~/.config/i3/keybinds
+
