@@ -153,6 +153,7 @@ return require('packer').startup(function()
   use 'tami5/sqlite.lua'
   -- use 'github/copilot.vim'
   use 'ojroques/vim-oscyank'
+  use 'pantharshit00/vim-prisma'
   -- use {
   --   'blackCauldron7/surround.nvim',
   --   config = function()

@@ -37,3 +37,12 @@ vim.o.updatetime = 300
 -- vim.g["newrw_browse_split"] = 4
 -- vim.g["netrw_winsize"] = 25
 -- vim.g["newrw_altv"] = 1
+
+require "nvim-treesitter.parsers".get_parser_configs().Solidity = {
+  install_info = {
+    url = "https://github.com/JoranHonig/tree-sitter-solidity",
+    files = {"src/parser.c"},
+    requires_generate_from_grammar = true,
+  },
+  filetype = 'solidity'
+}
