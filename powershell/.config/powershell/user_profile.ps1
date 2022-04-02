@@ -23,13 +23,30 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 
 
 # Alias
-Set-Alias l ls
-function la { ls -a }
-Set-Alias g git
-Set-Alias grep findstr
+
+# General
 Set-Alias c clear
-Set-Alias v nvim
+Set-Alias l ls
+
+# Files/Locations
 function .. { cd .. }
+function home { cd ~ }
+function dl { cd ~/Downloads/ }
+function docs { cd ~/Documents }
+function config { cd ~/.config }
+function dotf { cd ~/dotfiles }
+function repos { cd ~/repos }
+
+# Programs
+Set-Alias grep findstr
+Set-Alias v nvim
+
+# Git
+Set-Alias g git
+function ga { git add -A }
+function gc { git commit }
+function gac { git add -A; git commit }
+
 
 # Utilities
 function which ($command) {
