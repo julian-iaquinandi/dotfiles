@@ -47,7 +47,7 @@ function InstallModules {
   Install-Module nvm
 }
 
-function InstallCmds {
+function InstallPrograms {
   InstallProgram('git')
   InstallProgram('z')
   InstallProgram('fzf')
@@ -60,7 +60,7 @@ function CleanUp {
 
 UpdatePowershellConfigLocation
 InstallInstaller($OS_Installer)
-InstallCmds
+InstallPrograms
 InstallModules
 CleanUp
 
