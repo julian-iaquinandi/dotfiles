@@ -1,8 +1,29 @@
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+
 $OS_Installer = ''
 
-if ($IsMacOS) { $OS_Installer = 'brew' }
-elseif ($IsWindows) { $OS_Installer = 'scoop' }
-else { echo 'OS NOT SUPPORTED!' }
+if ($IsMacOS) { 
+  $OS_Installer = 'brew'
+} elseif ($IsWindows) { 
+  $OS_Installer = 'scoop'
+  iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+} else { 
+  echo 'OS NOT SUPPORTED!' 
+}
+
+function InstallInstaller($Installer) {
+  if (Get-Command $Installer -errorAction SilentlyContinue) {
+    "$Installer Installed"
+  } else {
+    if($Installer == 'scoop') {
+      iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+    } elseif($Installer == 'brew') {
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    } else {
+      echo 'Installer NOT SUPPORTED!' 
+    }
+  }
+}
 
 function InstallCmd($program) {
   $cmd = $OS_Installer + ' install ' + $program
@@ -27,6 +48,7 @@ function InstallCmds {
   InstallCmd('nvm')
 }
 
+InstallInstaller
 InstallCmds
 InstallModules
 
