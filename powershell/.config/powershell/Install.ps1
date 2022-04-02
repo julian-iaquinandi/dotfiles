@@ -1,4 +1,4 @@
-Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+Set-ExecutionPolicy -s cu unrestricted
 
 $OS_Installer = ''
 
@@ -6,18 +6,19 @@ if ($IsMacOS) {
   $OS_Installer = 'brew'
 } elseif ($IsWindows) { 
   $OS_Installer = 'scoop'
-  iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-} else { 
+} else {
   echo 'OS NOT SUPPORTED!' 
 }
 
 function InstallInstaller($Installer) {
   if (Get-Command $Installer -errorAction SilentlyContinue) {
-    "$Installer Installed"
+    "-> $Installer Installed"
   } else {
-    if($Installer == 'scoop') {
-      iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-    } elseif($Installer == 'brew') {
+    if($Installer -eq 'scoop') {
+      iwr -useb get.scoop.sh -outfile 'scoop-installer.ps1'
+      .\scoop-installer.ps1 -ScoopDir 'C:\Applications\Scoop' -ScoopGlobalDir 'C:\GlobalScoopApps' -
+      rm scoop-installer.ps1
+    } elseif($Installer -eq 'brew') {
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     } else {
       echo 'Installer NOT SUPPORTED!' 
@@ -25,7 +26,12 @@ function InstallInstaller($Installer) {
   }
 }
 
-function InstallCmd($program) {
+function UpdatePowershellConfigLocation {
+  $configLocation = ". $env:USERPROFILE\.config\powershell\user_profile.ps1"
+  $configLocation | Out-File $PROFILE.CurrentUserCurrentHost
+}
+
+function InstallProgram($program) {
   $cmd = $OS_Installer + ' install ' + $program
   Invoke-Expression $cmd
   echo 'Installed: ' $program
@@ -42,15 +48,21 @@ function InstallModules {
 }
 
 function InstallCmds {
-  InstallCmd('git')
-  InstallCmd('z')
-  InstallCmd('fzf')
-  InstallCmd('nvm')
+  InstallProgram('git')
+  InstallProgram('z')
+  InstallProgram('fzf')
+  InstallProgram('nvm')
 }
 
-InstallInstaller
+function CleanUp {
+  rm $env:USERPROFILE\.config\powershell\- -Force
+}
+
+UpdatePowershellConfigLocation
+InstallInstaller($OS_Installer)
 InstallCmds
 InstallModules
+CleanUp
 
 
 
