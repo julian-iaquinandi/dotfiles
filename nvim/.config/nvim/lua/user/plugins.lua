@@ -63,7 +63,7 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
   }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'xiyaowong/telescope-emoji.nvim'
   use 'nvim-telescope/telescope-media-files.nvim'
   use {
