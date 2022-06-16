@@ -25,12 +25,15 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 # Alias
 
 # General
+function d { cd $1; Get-ChildItem }
 Set-Alias c clear
-Set-Alias l ls
+Set-Alias l Get-ChildItem 
+function la { Get-ChildItem -hidden }
 
 # Files/Locations
 function .. { cd .. }
 function home { cd ~ }
+function ~ { cd ~ }
 function dl { cd ~/Downloads/ }
 function docs { cd ~/Documents }
 function config { cd ~/.config }

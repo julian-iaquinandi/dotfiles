@@ -48,7 +48,5 @@ call plug#begin()
 
   Plug 'asvetliakov/vim-easymotion'
 
-
-
 " Initialize plugin system
 call plug#end()
