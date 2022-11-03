@@ -6,20 +6,15 @@ git clone https://github.com/julian-iaquinandi/dotfiles.git
 cp -r ~/dotfiles/windows-install/.config/* ~/.config/
 cp -r ~/dotfiles/powershell/.config/* ~/.config/
 
-powershell ~/.config/windows-install/install.ps1
-
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
 Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 
 choco install -y  powershell-core microsoft-windows-terminal  
-
 
 # Dependancies
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
 Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 
-# chocolatey - needed for apps that can't be installed via scoop (terminal)
-choco install -y  powershell-core microsoft-windows-terminal  
 
 Set-ExecutionPolicy -s cu unrestricted
 
