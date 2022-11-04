@@ -7,8 +7,6 @@ if ($IsMacOS) {
   $OS_Installer = 'brew'
 } elseif ($IsWindows) { 
   $OS_Installer = 'scoop'
-} else {
-  echo 'OS NOT SUPPORTED!' 
 }
 
 function InstallInstaller($Installer) {
