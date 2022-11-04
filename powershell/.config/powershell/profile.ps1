@@ -16,8 +16,13 @@ installModule("posh-git")
 installModule("Terminal-Icons")
 installModule("PSFzf")
 installModule("nvm")
-Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
 
+If (Get-Module PSReadLine -List) {
+  Import-Module PSReadLine
+} else {
+  Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
+  Import-Module PSReadLine
+}
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineOption -EditMode Emacs
