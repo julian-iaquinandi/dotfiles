@@ -32,6 +32,13 @@ pwsh
 
 it should reload the shell with no errors.
 
+## Reccomended
+
+Install Windows Terminal Theme
+```
+cd ~\dotfiles\windows-terminal
+./link.ps1
+```
 
 ## Optionally
 
@@ -40,9 +47,5 @@ Install neovim
 . ~\dotfiles\windows-install\.config\windows-install\install-neovim.ps1
 ```
 
-Install Windows Terminal Theme
-```
-cd ~\dotfiles\windows-terminal
-./link.ps1
-```
+
 ** Restart terminal app after running **
