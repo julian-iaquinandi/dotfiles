@@ -1,22 +1,20 @@
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-choco install -y git
-
-git clone https://github.com/julian-iaquinandi/dotfiles.git
 cp -r ~/dotfiles/windows-install/.config/* ~/.config/
 cp -r ~/dotfiles/powershell/.config/* ~/.config/
+cp -r ~/dotfiles/nvim/.config/* ~/.config/
 
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
 Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 
 choco install -y  powershell-core microsoft-windows-terminal  
 
-# Dependancies
-Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
-Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
-
-
 Set-ExecutionPolicy -s cu unrestricted
+
+Install-Module posh-git -Scope CurrentUser -Force
+# Install-Module -Name z -Force
+Install-Module PSReadline -Force
+Install-Module PSFzf -Scope CurrentUser -Force
+Install-Module Terminal-Icons -Scope CurrentUser -Force
 
 $OS_Installer = 'scoop'
 
@@ -53,13 +51,6 @@ function InstallProgram($program) {
   echo 'Installed: ' $program
 }
 
-function InstallModules {
-  Install-Module posh-git -Scope CurrentUser -Force
-  # Install-Module -Name z -Force
-  Install-Module PSReadline -Force
-  Install-Module PSFzf -Scope CurrentUser -Force
-  Install-Module Terminal-Icons -Scope CurrentUser -Force
-}
 
 function InstallPrograms {
   InstallProgram('https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json')
@@ -72,5 +63,5 @@ function InstallPrograms {
 UpdatePowershellConfigLocation
 InstallInstaller($OS_Installer)
 InstallPrograms
-InstallModules
 Install-Module nvm
+echo "Finished"
