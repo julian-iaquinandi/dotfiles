@@ -41,23 +41,4 @@ it should reload the shell with no errors.
 
 ## Open Windows Terminal
 Go to settings and update the font to the font downloaded earlier (Anonymic NF by default)
-
-
-
-## Reccomended
-
-Install Windows Terminal Theme
-```
-cd ~\dotfiles\windows-terminal
-./link.ps1
-```
-
-## Optionally
-
-Install neovim
-```
-. ~\dotfiles\windows-install\.config\windows-install\install-neovim.ps1
-```
-
-
-** Restart terminal app after running **
+If seeing any issues please restart the terminal app
