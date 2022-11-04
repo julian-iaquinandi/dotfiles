@@ -20,6 +20,8 @@ installModule("nvm")
 If (Get-Module PSReadLine -List) {
   Import-Module PSReadLine
 } else {
+  Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
+  Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
   Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
   Import-Module PSReadLine
 }
