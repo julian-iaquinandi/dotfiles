@@ -1,7 +1,6 @@
 
 cp -r ~/dotfiles/windows-install/.config/* ~/.config/
 cp -r ~/dotfiles/powershell/.config/* ~/.config/
-cp -r ~/dotfiles/nvim/.config/* ~/.config/
 
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
 Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
