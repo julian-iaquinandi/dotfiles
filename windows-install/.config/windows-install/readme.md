@@ -63,9 +63,9 @@ Go to settings and update the font to the font downloaded earlier (Anonymic NF b
 If seeing any issues please restart the terminal app
 
 
-## Themeing
+## Terminal Themeing
 
-I have included Takuya's Matsuyama's [theme](https://www.youtube.com/watch?v=5-aK2_WwrmM) as the defalult prompt but there are many prompts avalible [here](https://ohmyposh.dev/docs/themes)
+I have included Takuya's Matsuyama's Oh My Posh [theme](https://www.youtube.com/watch?v=5-aK2_WwrmM) as the defalult prompt but there are many prompts avalible [here](https://ohmyposh.dev/docs/themes)
 
 ## Credit
 
