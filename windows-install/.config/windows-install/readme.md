@@ -7,11 +7,7 @@ Open powershell as admin
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 choco install -y git
-```
-
-Reopen Powerhshell as admin
-
-```
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 git clone https://github.com/julian-iaquinandi/dotfiles.git
 Set-ExecutionPolicy -s cu unrestricted -Force
 ./dotfiles/windows-install/.config/windows-install/install.ps1
