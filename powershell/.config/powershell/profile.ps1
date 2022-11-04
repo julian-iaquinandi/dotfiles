@@ -19,6 +19,7 @@ installModule("Terminal-Icons")
 installModule("PSFzf")
 installModule("nvm")
 
+Remove-Module PSReadLine
 If (Get-Module PSReadLine -List) {
   Import-Module PSReadLine
 } else {
