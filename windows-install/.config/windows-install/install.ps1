@@ -10,6 +10,8 @@ choco install -y  powershell-core microsoft-windows-terminal
 
 Set-ExecutionPolicy -s cu unrestricted
 
+<<<<<<< HEAD
+=======
 Install-Module posh-git -Scope CurrentUser -Force
 # Install-Module -Name z -Force
 Install-Module PSReadline -Force
@@ -17,6 +19,7 @@ Install-Module PSFzf -Scope CurrentUser -Force
 Install-Module Terminal-Icons -Scope CurrentUser -Force
 
 
+>>>>>>> 77a67c57ccba4b2391f4d9fbdfea98fd792a58c8
 $OS_Installer = 'scoop'
 
 if ($IsMacOS) { 
@@ -64,5 +67,5 @@ function InstallPrograms {
 UpdatePowershellConfigLocation
 InstallInstaller($OS_Installer)
 InstallPrograms
-Install-Module nvm
+
 echo "Finished"
