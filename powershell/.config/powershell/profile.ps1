@@ -4,14 +4,14 @@ Set-ExecutionPolicy -s cu unrestricted -Force
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 function installModule($module) {
-$MOD = Get-Module $module -List 
-If ($MOD) {
-  Import-Module $module
+  $MOD = Get-Module $module -List 
+  If ($MOD) {
+    Import-Module $module
 
-} else {
-  Install-Module $module -Force
-  Import-Module $module
-}
+  } else {
+    Install-Module $module -Force
+    Import-Module $module
+  }
 }
 
 installModule("posh-git")
@@ -20,13 +20,14 @@ installModule("PSFzf")
 installModule("nvm")
 
 Remove-Module PSReadLine
-rm -r "C:\Program Files\WindowsPowerShell\Modules\PSReadLine"
+# rm -r "C:\Program Files\WindowsPowerShell\Modules\PSReadLine"
+# rm -r "C:\program files\powershell\7\Modules\PSReadLine"
+Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
+Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
 
 If (Get-Module -ListAvailable -Name PSReadLine) {
   Import-Module PSReadLine
 } else {
-#   Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
-#   Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
   Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
   Import-Module PSReadLine
 }
