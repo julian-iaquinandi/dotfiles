@@ -42,5 +42,8 @@ powershell ~\dotfiles\windows-install\.config\windows-install\install-neovim.ps1
 
 Install Windows Terminal Theme
 ```
-powershell ~\dotfiles\windows-terminal\link.ps1
+cd ~\dotfiles\windows-terminal
+./link.ps1
+cd ~
 ```
+** Restart terminal app after running **
