@@ -16,8 +16,6 @@ Install-Module PSReadline -Force
 Install-Module PSFzf -Scope CurrentUser -Force
 Install-Module Terminal-Icons -Scope CurrentUser -Force
 
-# Fonts
-mkdir ~/.config/fonts
 
 $OS_Installer = 'scoop'
 
