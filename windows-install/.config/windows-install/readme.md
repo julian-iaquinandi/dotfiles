@@ -1,5 +1,7 @@
 # Windows Env Setup
 
+This has been created to setup my Development environement on Windows. This can be very handy for setting up new machines and/or windows sandbox to test new apps and changes to workflow. 
+
 Open powershell as admin
 
 ```
