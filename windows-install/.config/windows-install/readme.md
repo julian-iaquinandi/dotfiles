@@ -21,3 +21,13 @@ pwsh
 ```
 
 Wait for modules to install 
+
+There will be some errors due to PSReadline. These are due to powershell coming with an old verison that's removed on the first run on the powershell profile.
+
+There is no actual error, if you run:
+
+```
+pwsh
+```
+
+it should reload the shell with no errors.
