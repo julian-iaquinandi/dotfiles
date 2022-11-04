@@ -1,8 +1,10 @@
 # Windows Env Setup
 
-This has been created to setup my Development environement on Windows. This can be very handy for setting up new machines and/or windows sandbox to test new apps and changes to workflow. 
+This has been created to setup my Development environement on Windows. This can be very handy for setting up new machines and/or Windows Sandbox to test new apps and changes to workflow. 
 
-## Open powershell as admin
+## Install 
+
+### Open powershell as admin
 
 Paste the following:
 
@@ -16,7 +18,7 @@ Set-ExecutionPolicy -s cu unrestricted -Force
 ```
 Select what you would like to be installed **(Windows Terminal and Neovim depend on Powershell Setup)**
 
-## Open Powershell 7 (Core)
+### Open Powershell 7 (Core)
 
 Paste the following:
 
@@ -39,6 +41,6 @@ pwsh
 it should reload the shell with no errors.
 
 
-## Open Windows Terminal
+### Open Windows Terminal
 Go to settings and update the font to the font downloaded earlier (Anonymic NF by default)
 If seeing any issues please restart the terminal app
