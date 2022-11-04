@@ -44,7 +44,7 @@ function InstallPrograms {
 }
 
 echo "=> Install Programs"
-UpdatePowershellConfigLocation
+# UpdatePowershellConfigLocation
 InstallInstaller($OS_Installer)
 InstallPrograms
 
