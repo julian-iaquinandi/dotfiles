@@ -73,6 +73,7 @@ This config is a result of watching Takuya Matsuyama's Powershell config [video]
 
 This setup has been tested on Windows but could be adpted to work on other OS's. Mac coming soon.
 
+## Differences
 These are the inital differences between mine and Takuya's config:
 
 ### Automated install process
