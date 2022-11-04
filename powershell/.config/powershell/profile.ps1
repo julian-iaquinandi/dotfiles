@@ -47,6 +47,9 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 cd C:\Users\WDAGUtilityAccount\AppData\Local\Programs\oh-my-posh\bin
 .\oh-my-posh init pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
 
+cd ~
+
+
 # Aliases
 
 # General
