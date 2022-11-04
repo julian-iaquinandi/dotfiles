@@ -10,7 +10,7 @@ choco install -y git
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 git clone https://github.com/julian-iaquinandi/dotfiles.git
 Set-ExecutionPolicy -s cu unrestricted -Force
-./dotfiles/windows-install/.config/windows-install/install.ps1
+./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
 
 Open Powershell
