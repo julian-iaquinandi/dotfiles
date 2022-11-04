@@ -1,11 +1,13 @@
 # Windows Env Setup
 
+Open powershell as admin
+
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 choco install -y git
 ```
 
-Reopen Powerhshell
+Reopen Powerhshell as admin
 
 ```
 git clone https://github.com/julian-iaquinandi/dotfiles.git
