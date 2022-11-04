@@ -12,7 +12,7 @@ git clone https://github.com/julian-iaquinandi/dotfiles.git
 Set-ExecutionPolicy -s cu unrestricted -Force
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
-Select what you would like to be installed (Windows Terminal and Neovim depend on the install of Windows Install)
+Select what you would like to be installed **(Windows Terminal and Neovim depend on Powershell Setup)**
 
 ## Open Powershell 7 (Core)
 ```
