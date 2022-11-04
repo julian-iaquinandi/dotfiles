@@ -1,7 +1,7 @@
 function writeMenu($choices) {
     write-host ""
-    write-host "A - Powershell Setup"
-    write-host "B - Windows Terminal Theme Setup"
+    write-host "A - Powershell Setup (Selected by default)"
+    write-host "B - Windows Terminal Apps (Powershell 7, Windows Terminal)"
     write-host "C - Nevoim Setup"
     write-host ""
     write-host "Y - Accept"
@@ -13,9 +13,8 @@ function writeMenu($choices) {
 
 }
 
-
 $choices = New-Object Collections.Generic.List[Int]
-
+$choices += "A"
 
 do {
     do {
@@ -70,17 +69,18 @@ do {
 foreach ($choice in $choices) {
 
   if($choice -eq "A") {
-    . ~/dotfiles/windows-install/.config/windows-install/install.ps1
+    . ~/dotfiles/powershell/.config/powershell/setup-powershell.ps1
   }
 
   if($choice -eq "B") {
-    cd ~/dotfiles/windows-terminal
-    . link.ps1
-    cd ~
+    . ~/dotfiles/windows-install/.config/windows-install/install-desktop.ps1
+    # cd ~/dotfiles/windows-terminal
+    # . link.ps1
+    # cd ~
   }
 
   if($choice -eq "C") {
-    . ~/dotfiles/windows-install/.config/windows-install/install-neovim.ps1
+    . ~/dotfiles/nvim/.config/nvim/install-neovim.ps1
   }
 
 }

@@ -1,4 +1,6 @@
-Set-ExecutionPolicy -s cu unrestricted -Force
+if($isWindows) {
+  Set-ExecutionPolicy -s cu unrestricted -Force
+}
 
 . ~\.config\powershell\firstRun.ps1
 
@@ -23,8 +25,10 @@ installModule("nvm")
 
 if($firstRun -eq "true") {
   Remove-Module PSReadLine
-  Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
-  Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
+  if($isWindows) {
+    Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
+    Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
+  }
   (Get-Content ~/.config/powershell/firstRun.ps1).replace('true', 'false') | Set-Content ~/.config/powershell/firstRun.ps1
 }
 
@@ -43,12 +47,14 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-
-cd C:\Users\WDAGUtilityAccount\AppData\Local\Programs\oh-my-posh\bin
-.\oh-my-posh init pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
+if($isWindows) {
+  cd ~\AppData\Local\Programs\oh-my-posh\bin
+  .\oh-my-posh init pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
+} else {
+  oh-my-posh --init --shell pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
+}
 
 cd ~
-
 
 # Aliases
 
