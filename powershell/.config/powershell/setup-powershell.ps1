@@ -5,7 +5,7 @@ $OS_Installer = 'scoop'
 
 if ($IsMacOS) { 
   $OS_Installer = 'brew'
-} elseif ($IsWindows) { 
+} elseif (!$IsLinux && !$IsMac) { 
   $OS_Installer = 'scoop'
 }
 
