@@ -116,8 +116,8 @@
     "list": [
       {
         "colorScheme": "Juju Dark",
-        "commandline": "powershell.exe",
-        "fontFace": "FiraCode NF Retina",
+        "commandline": "pwsh.exe",
+        "fontFace": "Anonymice NF Regular",
         "fontSize": 11,
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
