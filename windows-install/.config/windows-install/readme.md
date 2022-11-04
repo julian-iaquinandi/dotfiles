@@ -44,6 +44,5 @@ Install Windows Terminal Theme
 ```
 cd ~\dotfiles\windows-terminal
 ./link.ps1
-cd ~
 ```
 ** Restart terminal app after running **
