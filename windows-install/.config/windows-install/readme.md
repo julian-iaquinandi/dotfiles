@@ -117,3 +117,9 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 ### Neovim config
 The neovim config started as [quick.nvim](https://github.com/albingroen/quick.nvim) but has since been heavily modified. 
+
+
+## Todo 
+- Z install currently broken
+- Neovim config not allowing package install
+- Expand nerd font installer to include different types of fonts and accept fontname as an argument
