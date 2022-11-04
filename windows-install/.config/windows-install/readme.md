@@ -39,3 +39,8 @@ Install neovim
 ```
 powershell ~\dotfiles\windows-install\.config\windows-install\install-neovim.ps1
 ```
+
+Install Windows Terminal Theme
+```
+powershell ~\dotfiles\windows-terminal\link.ps1
+```
