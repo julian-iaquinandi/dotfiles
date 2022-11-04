@@ -14,9 +14,9 @@ If ($MOD) {
 
 installModule("posh-git")
 installModule("Terminal-Icons")
-installModule("PSReadLine")
 installModule("PSFzf")
 installModule("nvm")
+Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
 
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
