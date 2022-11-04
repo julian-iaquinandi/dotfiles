@@ -1,7 +1,23 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-. .\modules.ps1
+function installModule($module) {
+$MOD = Get-Module $module -List 
+If ($MOD) {
+  Import-Module $module
+
+} else {
+  Install-Module $module -Force
+  Import-Module $module
+}
+}
+
+installModule("posh-git")
+installModule("Terminal-Icons")
+installModule("PSReadLine")
+installModule("PSFzf")
+installModule("nvm")
+
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineOption -EditMode Emacs
