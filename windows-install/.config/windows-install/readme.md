@@ -75,6 +75,15 @@ This setup has been tested on Windows but could be adpted to work on other OS's.
 
 These are the inital differences between mine and Takuya's config:
 
+### Automated install process
+This repository is currently my dotfiles. When using linux I use stow to copy the files to their correct locations automatically. This install will only copy what's required to your .config folder so there won't be any clashes with existing dotfiles on your system. This is acheived by a set a scripts that can be found in dotfiles/windows-install/.config/windows-install/
+
+If at any time you want to start the install process again run: 
+
+```
+. ~/dotfiles/windows-install/.config/windows-install/install-menu.ps1
+```
+
 ### More Aliases
 
 ```
