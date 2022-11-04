@@ -1,6 +1,6 @@
 Set-ExecutionPolicy -s cu unrestricted -Force
 
-. .\firstRun.ps1
+. ~\.config\powershell\firstRun.ps1
 
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
@@ -23,8 +23,6 @@ installModule("nvm")
 
 if($firstRun -eq "true") {
   Remove-Module PSReadLine
-  # rm -r "C:\Program Files\WindowsPowerShell\Modules\PSReadLine"
-  # rm -r "C:\program files\powershell\7\Modules\PSReadLine"
   Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
   Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
   $firstRun="false"
