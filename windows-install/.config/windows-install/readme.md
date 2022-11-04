@@ -37,7 +37,7 @@ it should reload the shell with no errors.
 
 Install neovim
 ```
-powershell ~\dotfiles\windows-install\.config\windows-install\install-neovim.ps1
+. ~\dotfiles\windows-install\.config\windows-install\install-neovim.ps1
 ```
 
 Install Windows Terminal Theme
