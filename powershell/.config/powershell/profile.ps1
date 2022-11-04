@@ -1,4 +1,4 @@
-if(!$IsMac && !$IsLinux) {
+if(!$IsMac -and !$IsLinux) {
   Set-ExecutionPolicy -s cu unrestricted -Force
 }
 
@@ -47,7 +47,7 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-if(!$IsMac && !$IsLinux) {
+if(!$IsMac -and !$IsLinux) {
   cd ~\AppData\Local\Programs\oh-my-posh\bin
   .\oh-my-posh init pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
 } else {
