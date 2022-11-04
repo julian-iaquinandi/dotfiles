@@ -25,7 +25,7 @@ if($firstRun -eq "true") {
   Remove-Module PSReadLine
   Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
   Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
-  $firstRun="false"
+  (Get-Content -path ~\.config\powershell\firstRun.ps1 -Raw) -replace 'true','false'
 }
 
 If (Get-Module -ListAvailable -Name PSReadLine) {
