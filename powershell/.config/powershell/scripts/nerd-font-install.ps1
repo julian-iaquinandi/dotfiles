@@ -4,6 +4,6 @@ Invoke-WebRequest -Uri "https://github.com/ryanoasis/nerd-fonts/releases/downloa
 cd ~\Downloads
 Expand-Archive "~\Downloads\$fontName.zip"
 cd "~\Downloads\$fontName"
-. ~\Downloads\font-dir-install.ps1
+. ~\.config\powershell\scripts\font-dir-install.ps1
 cd ~\Downloads
 rm -r "~\Downloads\$fontName"
