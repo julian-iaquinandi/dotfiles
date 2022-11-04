@@ -2,9 +2,14 @@
 cp -r ~/dotfiles/windows-install/.config/* ~/.config/
 cp -r ~/dotfiles/powershell/.config/* ~/.config/
 
+echo "=> Install fonts"
+. ~\.config\powershell\scripts\nerd-font-install.ps1
+
+echo "=> Install Deps"
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
 Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 
+echo "=> Install Terminal apps"
 choco install -y  powershell-core microsoft-windows-terminal  
 
 Set-ExecutionPolicy -s cu unrestricted
@@ -53,6 +58,7 @@ function InstallPrograms {
   InstallProgram('nvm')
 }
 
+echo "=> Install Programs"
 UpdatePowershellConfigLocation
 InstallInstaller($OS_Installer)
 InstallPrograms
