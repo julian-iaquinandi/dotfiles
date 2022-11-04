@@ -13,7 +13,7 @@ Set-ExecutionPolicy -s cu unrestricted -Force
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
 
-Open Powershell
+Open Powershell 7 (Core)
 ```
 New-Item -Type File -Force $PROFILE
 ". ~/.config/powershell/profile.ps1" >> $PROFILE
