@@ -20,7 +20,8 @@ installModule("PSFzf")
 installModule("nvm")
 
 Remove-Module PSReadLine
-If (Get-Module PSReadLine -List) {
+
+If (Get-Module -ListAvailable -Name PSReadLine) {
   Import-Module PSReadLine
 } else {
   Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
