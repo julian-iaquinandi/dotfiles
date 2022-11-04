@@ -4,7 +4,7 @@ This has been created to setup my Development environement on Windows. This can 
 
 ## Open powershell as admin
 
-Paste te following:
+Paste the following:
 
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -18,7 +18,7 @@ Select what you would like to be installed **(Windows Terminal and Neovim depend
 
 ## Open Powershell 7 (Core)
 
-Paste te following:
+Paste the following:
 
 ```
 New-Item -Type File -Force $PROFILE
