@@ -33,7 +33,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 git clone https://github.com/julian-iaquinandi/dotfiles.git
 Set-ExecutionPolicy -s cu unrestricted -Force
 New-Item -Type File -Force "~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-". ~/.config/powershell/profile.ps1" >> "~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
 Select what you would like to be installed **(Windows Terminal and Neovim depend on Powershell Setup)**
