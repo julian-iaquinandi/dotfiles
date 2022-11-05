@@ -25,7 +25,7 @@ installModule("nvm")
 
 if($firstRun -eq "true") {
   Remove-Module PSReadLine
-  if($isWindows) {
+  if(!$IsLinus -and !$IsMac) {
     Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
     Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
   }
