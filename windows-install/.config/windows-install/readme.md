@@ -31,9 +31,11 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install -y git
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 git clone https://github.com/julian-iaquinandi/dotfiles.git
-Set-ExecutionPolicy -s cu unrestricted -Force
-New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+# Set-ExecutionPolicy -s cu unrestricted -Force
+if(!$IsMac && !IsLinux) {
+  New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+  ". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+}
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
 Select what you would like to be installed **(Windows Terminal and Neovim depend on Powershell Setup)**
