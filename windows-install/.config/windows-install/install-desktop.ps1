@@ -14,6 +14,9 @@ Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 echo "=> Install Terminal apps"
 choco install -y  powershell-core microsoft-windows-terminal  
 
+echo "=> Install Desktop apps"
+choco install -y vscode-insiders
+
 cd ~/dotfiles/windows-terminal/
 . ./link.ps1
 cd ~/
