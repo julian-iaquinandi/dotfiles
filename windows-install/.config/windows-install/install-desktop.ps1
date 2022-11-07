@@ -18,8 +18,6 @@ cd ~/dotfiles/windows-terminal/
 . ./link.ps1
 cd ~/
 
-Set-ExecutionPolicy -s cu unrestricted
-
 $OS_Installer = 'scoop'
 
 if ($IsMacOS) { 
