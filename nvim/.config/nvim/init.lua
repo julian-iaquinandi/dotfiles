@@ -1,13 +1,7 @@
-require 'user.plugins'
-require 'user.basics'
-require 'user.keymaps'
-require 'user.colors'
-require 'user.telescope'
-require 'user.lsp'
-require 'user.omnisharp'
-require 'user.nvim-cmp'
-require 'user.trouble'
-require 'user.luasnip'
--- require 'user.symbol-outline'
--- require 'user.dap'
--- require 'user.vimspector'
+if vim.g.vscode then
+    -- VSCode extension
+  require 'vscode'
+else
+    -- ordinary Neovim
+  require 'nvim'
+end
