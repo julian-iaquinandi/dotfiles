@@ -25,7 +25,7 @@ installModule("nvm")
 
 if($firstRun -eq "true") {
   Remove-Module PSReadLine
-  if(!$IsLinus -and !$IsMac) {
+  if(!$IsLinus -and !$IsMacOs) {
     Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
     Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
   }
@@ -47,7 +47,7 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-if(!$IsMac -and !$IsLinux) {
+if(!$IsMacOs -and !$IsLinux) {
   cd ~\AppData\Local\Programs\oh-my-posh\bin
   .\oh-my-posh init pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
 } else {
