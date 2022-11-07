@@ -1,7 +1,3 @@
-if(!$IsMac -and !$IsLinux) {
-  Set-ExecutionPolicy -s cu unrestricted -Force
-}
-
 . ~\.config\powershell\firstRun.ps1
 
 # set PowerShell to UTF-8
