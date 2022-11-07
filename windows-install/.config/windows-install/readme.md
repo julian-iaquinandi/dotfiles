@@ -20,7 +20,7 @@ This has been created to setup my Development environement on Windows. This can 
 - [Nvm](https://github.com/aaronpowell/ps-nvm)
 
 
-## Install 
+## Install - Windows 
 
 ### Open powershell as admin
 
@@ -32,10 +32,8 @@ choco install -y git
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 git clone https://github.com/julian-iaquinandi/dotfiles.git
 (Get-Content ~/.config/powershell/firstRun.ps1).replace('false', 'true') | Set-Content ~/.config/powershell/firstRun.ps1
-if(!$IsMac -and $IsLinux) {
-  New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-  ". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-}
+New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
 Select what you would like to be installed **(Windows Terminal and Neovim depend on Powershell Setup)**
