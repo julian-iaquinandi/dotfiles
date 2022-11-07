@@ -125,4 +125,4 @@ The neovim config started as [quick.nvim](https://github.com/albingroen/quick.nv
 ## Todo 
 - Z install currently broken
 - Neovim config not allowing package install
-- Expand nerd font installer to include different types of fonts and accept fontname as an argument
+- Expand nerd font installer to include different more font formats
