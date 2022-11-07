@@ -31,12 +31,10 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install -y git
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 git clone https://github.com/julian-iaquinandi/dotfiles.git
-# Set-ExecutionPolicy -s cu unrestricted -Force
-if(!$IsMac) {
-  if(!$IsLinux) {
-    New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-    ". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-  }
+(Get-Content ~/.config/powershell/firstRun.ps1).replace('false', 'true') | Set-Content ~/.config/powershell/firstRun.ps1
+if(!$IsMac -and $IsLinux) {
+  New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+  ". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 }
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
