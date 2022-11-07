@@ -35,12 +35,8 @@ git clone https://github.com/julian-iaquinandi/dotfiles.git
 New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 ". ~/.config/powershell/profile.ps1" >> "~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 ./dotfiles/windows-install/.config/windows-install/install-menu.ps1
+wt
 ```
-Select what you would like to be installed **(Windows Terminal and Neovim depend on Powershell Setup)**
-
-### Open Powershell 7 (Core)
-
-Wait for modules to install 
 
 There will be some errors due to PSReadline. These are due to powershell coming with an old verison that's removed on the first run on the powershell profile.
 
