@@ -44,7 +44,7 @@ Once the installs are finished you should have the command entered into terminal
 wt
 ```
 
-Presee enter and wait for the modules to install
+Press enter and wait for the modules to install
 
 There will be some errors due to PSReadline. These are due to powershell coming with an old verison that's removed on the first run on the powershell profile.
 
