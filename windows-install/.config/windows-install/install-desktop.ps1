@@ -12,7 +12,9 @@ Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 echo "=> Install Terminal apps"
 choco install -y  powershell-core microsoft-windows-terminal  
 
-
+cd ~/dotfiles/windows-terminal/
+. ./link.ps1
+cd ~/
 
 Set-ExecutionPolicy -s cu unrestricted
 
