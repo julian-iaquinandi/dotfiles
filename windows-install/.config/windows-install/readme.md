@@ -82,6 +82,12 @@ If at any time you want to start the install process again run:
 . ~/dotfiles/windows-install/.config/windows-install/install-menu.ps1
 ```
 
+### Nerd font install script
+The following command is included in the profile to install any ttf Nerd Font from [here](https://www.nerdfonts.com/font-downloads)
+```
+InstallNerdFont("Monofur")
+```
+
 ### More Aliases
 
 ```
