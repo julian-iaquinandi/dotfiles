@@ -38,6 +38,14 @@ New-Item -Type File -Force "~\Documents\PowerShell\Microsoft.PowerShell_profile.
 wt
 ```
 
+Once the installs are finished you should have the command entered into terminal:
+
+```
+wt
+```
+
+Presee enter and wait for the modules to install
+
 There will be some errors due to PSReadline. These are due to powershell coming with an old verison that's removed on the first run on the powershell profile.
 
 There is no actual error, if you run:
@@ -48,12 +56,11 @@ pwsh
 
 it should reload the shell with no errors.
 
-### Open Windows Terminal
-Go to settings and update the font to the font downloaded earlier (Anonymic NF by default)
-If seeing any issues please restart the terminal app
 
+## Windows Terminal Themeing
+I have included a handful of themes from [Windows Terminal Themes](https://windowsterminalthemes.dev/)
 
-## Terminal Themeing
+## Oh My Posh Themeing
 
 I have included Takuya's Matsuyama's Oh My Posh [theme](https://www.youtube.com/watch?v=5-aK2_WwrmM) as the defalult prompt but there are many prompts avalible [here](https://ohmyposh.dev/docs/themes)
 
