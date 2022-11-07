@@ -60,7 +60,7 @@ function InstallProgram($program) {
 function InstallPrograms {
   InstallProgram('https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json')
   # InstallProgram('git')
-  # InstallProgram('z')
+  InstallProgram('z')
   InstallProgram('fzf')
   InstallProgram('nvm')
 }
