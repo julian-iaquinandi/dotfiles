@@ -83,3 +83,6 @@ function which ($command) {
 
 # Font Installer
 . ~\.config\powershell\scripts\nerd-font-install.ps1
+
+# Check app installed
+. ~\.config\powershell\scripts\check-app-installed.ps1
