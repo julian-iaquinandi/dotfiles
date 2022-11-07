@@ -136,7 +136,7 @@ return require('packer').startup(function()
   }
 
   -- Debugging
-  use 'puremourning/vimspector'
+  -- use 'puremourning/vimspector'
   -- use {
   --   "rcarriga/nvim-dap-ui",
   --   requires = {
