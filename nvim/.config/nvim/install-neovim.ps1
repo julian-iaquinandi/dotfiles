@@ -5,7 +5,7 @@ if($IsMac) {
   nvm use lts
 } else {
   cp -r ~/dotfiles/nvim/.config/* ~/AppData/Local/
-  choco install -y neovim ripgrep llvm wget gzip
+  choco install -y neovim ripgrep mingw wget gzip
   choco install -y python3 --pre
   nvm install lts
   nvm use lts
