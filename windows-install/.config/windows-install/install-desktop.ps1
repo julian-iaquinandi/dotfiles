@@ -4,6 +4,9 @@ cp -r ~/dotfiles/powershell/.config/* ~/.config/
 
 echo "=> Install fonts"
 . ~\.config\powershell\scripts\nerd-font-install.ps1
+installNerdFont("AnonymousPro")
+installNerdFont("Monofur")
+installNerdFont("JetBrainsMono")
 
 echo "=> Install Deps"
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
