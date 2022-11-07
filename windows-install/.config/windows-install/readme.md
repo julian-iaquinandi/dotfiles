@@ -9,6 +9,7 @@ This has been created to setup my Development environement on Windows. This can 
 - Auto completion of commands with list of options via PSReadLine
 - Directory navigation by partial names via Z
 - Result colorizing and file icons via Terminal Icons
+- Automatic Nerd Font installs
 
 ### All Avalible Modules/Tools
 - [Oh My Posh](https://ohmyposh.dev/docs/)
