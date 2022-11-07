@@ -10,6 +10,7 @@ This has been created to setup my Development environement on Windows. This can 
 - Directory navigation by partial names via Z
 - Result colorizing and file icons via Terminal Icons
 - Automatic Nerd Font installs
+- Desktop Apps: Windows Terminal, Powershell 7, VsCode Insiders
 
 ### All Avalible Modules/Tools
 - [Oh My Posh](https://ohmyposh.dev/docs/)
