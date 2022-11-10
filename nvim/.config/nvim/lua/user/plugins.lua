@@ -17,20 +17,20 @@ return require('packer').startup(function()
   -- Display
   use 'folke/tokyonight.nvim'
   use "lukas-reineke/indent-blankline.nvim"
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    config = function()
-      require('lualine').setup({
-        -- extensions = { 'fugative' }
-      })
-    end
-  }
-  use {
-    'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require("bufferline").setup{} end
-  }
+  -- use {
+  --   'nvim-lualine/lualine.nvim',
+  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  --   config = function()
+  --     require('lualine').setup({
+  --       -- extensions = { 'fugative' }
+  --     })
+  --   end
+  -- }
+  -- use {
+  --   'akinsho/bufferline.nvim',
+  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   config = function() require("bufferline").setup{} end
+  -- }
 
   -- Git
   -- use 'ThePrimeagen/git-worktree.nvim'
@@ -44,15 +44,15 @@ return require('packer').startup(function()
   -- Navigation
   use 'christoomey/vim-tmux-navigator'
   use 'ggandor/lightspeed.nvim'
-	use {
-			'kyazdani42/nvim-tree.lua',
-			requires = {
-				'kyazdani42/nvim-web-devicons', -- optional, for file icon
-			},
-			config = function() require'nvim-tree'.setup {
-        auto_close = true
-      } end
-	}
+	-- use {
+	-- 		'kyazdani42/nvim-tree.lua',
+	-- 		requires = {
+	-- 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
+	-- 		},
+	-- 		config = function() require'nvim-tree'.setup {
+        -- auto_close = true
+      -- } end
+	-- }
   use {
     'folke/which-key.nvim',
     config = function() require("which-key").setup() end
@@ -74,6 +74,9 @@ return require('packer').startup(function()
       {'nvim-lua/plenary.nvim'},
     }
   }
+
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+
   use {
     "AckslD/nvim-neoclip.lua",
     requires = {
@@ -116,12 +119,13 @@ return require('packer').startup(function()
 
   -- Highlight/lint
   use 'prettier/vim-prettier'
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = "maintained",
+        ensure_installed = "all",
         context_commentstring = {
           enable = true
         },

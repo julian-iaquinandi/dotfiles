@@ -36,6 +36,19 @@ telescope.setup{
   },
 
   extensions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    }
     -- fzf = {
     --   fuzzy = true,                    -- false will only do exact matching
     --   override_generic_sorter = true,  -- override the generic sorter
@@ -52,6 +65,7 @@ telescope.setup{
 -- telescope.load_extension("git_worktree")
 telescope.load_extension("emoji")
 telescope.load_extension("media_files")
+telescope.load_extension("file_browser")
 -- telescope.load_extension("fzf")
 -- telescope.load_extension("file_browser")
 -- telescope.load_extension('dap')
