@@ -17,20 +17,20 @@ return require('packer').startup(function()
   -- Display
   use 'folke/tokyonight.nvim'
   use "lukas-reineke/indent-blankline.nvim"
-  -- use {
-  --   'nvim-lualine/lualine.nvim',
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
-  --   config = function()
-  --     require('lualine').setup({
-  --       -- extensions = { 'fugative' }
-  --     })
-  --   end
-  -- }
-  -- use {
-  --   'akinsho/bufferline.nvim',
-  --   requires = 'kyazdani42/nvim-web-devicons',
-  --   config = function() require("bufferline").setup{} end
-  -- }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = function()
+      require('lualine').setup({
+        -- extensions = { 'fugative' }
+      })
+    end
+  }
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require("bufferline").setup{} end
+  }
 
   -- Git
   -- use 'ThePrimeagen/git-worktree.nvim'
@@ -93,15 +93,23 @@ return require('packer').startup(function()
   use 'OmniSharp/omnisharp-vim'
 
   -- LSP
+  --  Config lsp servers
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use "b0o/schemastore.nvim"
-  use "jose-elias-alvarez/nvim-lsp-ts-utils"
+  
+  -- manage and install lsp servers
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use ({ 'glepnir/lspsaga.nvim', branch = "main"})
+  use 'jose-elias-alvarez/typescript.nvim'
+  use ('onsails/lspkind.nvim')
+  -- use 'williamboman/nvim-lsp-installer'
+  -- use "b0o/schemastore.nvim"
+  -- use "jose-elias-alvarez/nvim-lsp-ts-utils"
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons"
   }
-  use "jose-elias-alvarez/null-ls.nvim"
+  -- use "jose-elias-alvarez/null-ls.nvim"
 
   -- Testing
   -- use 'David-Kunz/jester'
