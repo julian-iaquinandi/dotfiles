@@ -32,7 +32,17 @@ null_ls.setup({
 		-- },
 		formatting.prettierd, -- js/ts formatter
 		formatting.prettierd.with({
-			filetypes = { "html", "json", "svelte", "markdown", "css", "javascript", "javascriptreact" },
+			filetypes = {
+				"html",
+				"json",
+				"svelte",
+				"markdown",
+				"css",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"vue",
+			},
 		}),
 		formatting.stylua, -- lua formatter
 		diagnostics.eslint_d.with({ -- js/ts linter
