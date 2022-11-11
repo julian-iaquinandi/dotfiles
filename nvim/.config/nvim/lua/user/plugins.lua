@@ -44,15 +44,6 @@ return require('packer').startup(function()
   -- Navigation
   use 'christoomey/vim-tmux-navigator'
   use 'ggandor/lightspeed.nvim'
-	-- use {
-	-- 		'kyazdani42/nvim-tree.lua',
-	-- 		requires = {
-	-- 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
-	-- 		},
-	-- 		config = function() require'nvim-tree'.setup {
-        -- auto_close = true
-      -- } end
-	-- }
   use {
     'folke/which-key.nvim',
     config = function() require("which-key").setup() end
@@ -63,7 +54,6 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
   }
-  -- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'xiyaowong/telescope-emoji.nvim'
   use 'nvim-telescope/telescope-media-files.nvim'
   use {
@@ -74,9 +64,7 @@ return require('packer').startup(function()
       {'nvim-lua/plenary.nvim'},
     }
   }
-
   use { "nvim-telescope/telescope-file-browser.nvim" }
-
   use {
     "AckslD/nvim-neoclip.lua",
     requires = {
@@ -87,30 +75,34 @@ return require('packer').startup(function()
       require('neoclip').setup()
     end
   }
-  -- use 'nvim-telescope/telescope-file-browser.nvim'
 
   use 'jakelinnzy/autocmd-lua'
-  use 'OmniSharp/omnisharp-vim'
 
   -- LSP
-  --  Config lsp servers
-  use 'neovim/nvim-lspconfig'
-  
+
   -- manage and install lsp servers
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+
+  --  Config lsp servers
+  use 'neovim/nvim-lspconfig'
   use ({ 'glepnir/lspsaga.nvim', branch = "main"})
   use 'jose-elias-alvarez/typescript.nvim'
   use ('onsails/lspkind.nvim')
-  -- use 'williamboman/nvim-lsp-installer'
-  -- use "b0o/schemastore.nvim"
-  -- use "jose-elias-alvarez/nvim-lsp-ts-utils"
+
+  -- Linting and formatting
+  use "jose-elias-alvarez/null-ls.nvim"
+  use("jayp0521/mason-null-ls.nvim")
+
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons"
   }
-  -- use "jose-elias-alvarez/null-ls.nvim"
 
+  -- use 'OmniSharp/omnisharp-vim'
+  -- use 'prettier/vim-prettier'
+  -- use "b0o/schemastore.nvim"
+  --
   -- Testing
   -- use 'David-Kunz/jester'
 
@@ -125,9 +117,7 @@ return require('packer').startup(function()
   use { 'L3MON4D3/LuaSnip' }
   use { "rafamadriz/friendly-snippets" }
 
-  -- Highlight/lint
-  use 'prettier/vim-prettier'
-
+  -- Highlight
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
