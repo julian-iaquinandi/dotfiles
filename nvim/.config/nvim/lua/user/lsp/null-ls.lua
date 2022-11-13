@@ -13,10 +13,6 @@ local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 -- 	{ command = "prettierd", filetypes = { "svelte" } },
 -- })
 
--- formatting.prettierd.with({
--- 	filetypes = { "html", "json", "svelte", "markdown", "css", "javascript", "javascriptreact" },
--- })
-
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -30,8 +26,8 @@ null_ls.setup({
 		-- formatting.prettierd.with {
 		--   filetypes = { "html", "json", "svelte", "markdown", "css", "javascript", "javascriptreact", "typescript" },
 		-- },
-		formatting.prettierd, -- js/ts formatter
-		formatting.prettierd.with({
+		formatting.prettier, -- js/ts formatter
+		formatting.prettier.with({
 			filetypes = {
 				"html",
 				"json",
@@ -42,6 +38,11 @@ null_ls.setup({
 				"javascriptreact",
 				"typescript",
 				"vue",
+				"astro",
+			},
+			args = {
+				"--plugin-search-dir=.",
+				"$FILENAME",
 			},
 		}),
 		formatting.stylua, -- lua formatter
