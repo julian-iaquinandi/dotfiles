@@ -26,8 +26,8 @@ null_ls.setup({
 		-- formatting.prettierd.with {
 		--   filetypes = { "html", "json", "svelte", "markdown", "css", "javascript", "javascriptreact", "typescript" },
 		-- },
-		formatting.prettier, -- js/ts formatter
-		formatting.prettier.with({
+		formatting.prettierd, -- js/ts formatter
+		formatting.prettierd.with({
 			filetypes = {
 				"html",
 				"json",
@@ -41,7 +41,8 @@ null_ls.setup({
 				"astro",
 			},
 			args = {
-				"--plugin-search-dir=.",
+				-- "-w",
+				-- "--plugin-search-dir=.",
 				"$FILENAME",
 			},
 		}),
