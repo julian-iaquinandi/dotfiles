@@ -106,6 +106,8 @@ return require("packer").startup(function()
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
+	use("MunifTanjim/prettier.nvim")
+
 	-- use 'OmniSharp/omnisharp-vim'
 	-- use 'prettier/vim-prettier'
 	-- use "b0o/schemastore.nvim"
