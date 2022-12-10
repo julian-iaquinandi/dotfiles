@@ -16,8 +16,8 @@ null_ls.setup({
 	debug = true,
 	-- setup formatters & linters
 	sources = {
-		--  to disable file types use
-		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
+		formatting.stylua, -- lua formatter
+
 		formatting.prettier, -- js/ts formatter
 		formatting.prettier.with({
 			filetypes = {
@@ -34,13 +34,22 @@ null_ls.setup({
 			},
 			extra_args = { "-w", "--plugin-search-dir=." },
 		}),
-		formatting.stylua, -- lua formatter
 
 		diagnostics.eslint_d.with({ -- js/ts linter
 			-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
 			condition = function(utils)
-				return utils.root_has_file(".eslintrc.json") -- change file extension if you use something else
+				return utils.root_has_file(".eslintrc.cjs") -- change file extension if you use something else
 			end,
+			filetypes = {
+				"json",
+				"svelte",
+				"markdown",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"vue",
+				"astro",
+			},
 		}),
 	},
 
