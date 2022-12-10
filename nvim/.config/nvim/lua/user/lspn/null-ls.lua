@@ -8,6 +8,19 @@ end
 local formatting = null_ls.builtins.formatting -- to setup formatters
 local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
+local filetypes = {
+	"html",
+	"json",
+	"svelte",
+	"markdown",
+	"css",
+	"javascript",
+	"javascriptreact",
+	"typescript",
+	"vue",
+	"astro",
+}
+
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -20,18 +33,7 @@ null_ls.setup({
 
 		formatting.prettier, -- js/ts formatter
 		formatting.prettier.with({
-			filetypes = {
-				"html",
-				"json",
-				"svelte",
-				"markdown",
-				"css",
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"vue",
-				"astro",
-			},
+			filetypes = filetypes,
 			extra_args = { "-w", "--plugin-search-dir=." },
 		}),
 
@@ -40,16 +42,7 @@ null_ls.setup({
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.cjs") -- change file extension if you use something else
 			end,
-			filetypes = {
-				"json",
-				"svelte",
-				"markdown",
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"vue",
-				"astro",
-			},
+			filetypes = filetypes,
 		}),
 	},
 
