@@ -15,9 +15,20 @@ vim.cmd([[
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
+	use({
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup()
+			end, 100)
+		end,
+	})
+
 	-- Display
 	use("folke/tokyonight.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
+	use("nvim-tree/nvim-web-devicons")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -48,11 +59,20 @@ return require("packer").startup(function()
 
 	-- Navigation
 	use("christoomey/vim-tmux-navigator")
-	use("ggandor/lightspeed.nvim")
+	-- use("ggandor/lightspeed.nvim")
 	use({
 		"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup()
+		end,
+	})
+
+	use({
+		"ggandor/leap.nvim",
+		keys = { "s", "S" },
+		config = function()
+			local leap = require("leap")
+			leap.set_default_keymaps()
 		end,
 	})
 
@@ -108,12 +128,8 @@ return require("packer").startup(function()
 
 	use("MunifTanjim/prettier.nvim")
 
-	-- use 'OmniSharp/omnisharp-vim'
-	-- use 'prettier/vim-prettier'
 	-- use "b0o/schemastore.nvim"
 	--
-	-- Testing
-	-- use 'David-Kunz/jester'
 
 	-- Completions/Snippets
 	use({ "hrsh7th/nvim-cmp" })
