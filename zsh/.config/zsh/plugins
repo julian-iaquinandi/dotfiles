@@ -1,6 +1,6 @@
 plugins=(zsh-autosuggestions zsh-syntax-highlighting, zsh-completions)
 
-source ~/.oh-my-zsh/plugins/antigen.zsh
+source ~/.config/zsh/plugs/antigen.zsh
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh

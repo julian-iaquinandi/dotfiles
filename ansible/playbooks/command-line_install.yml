@@ -1,0 +1,51 @@
+---
+- name: localhost demo
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: kd
+
+  tasks:
+    - name: Update and Upgrade Apt
+      apt: 
+        upgrade: yes
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+
+    - name: Install Packages
+      package:
+        name:
+          - stow
+          - tree
+          - trash-cli
+
+    - name: Configure oh-my-zsh
+      shell:
+        cmd: stow zsh
+        chdir: /home/kd/dotfiles/    
+
+
+    - name: Remove old zsh config
+      ansible.builtin.file:
+        path: /home/kd/.zshrc
+        state: absent
+
+    - name: Create empty zsh config
+      file:
+        path: "/home/kd/.zshrc"
+        state: touch
+
+    - name: Point new config at .cofig/zsh
+      lineinfile:
+        path: /home/kd/.zshrc
+        line: 'source /home/kd/.config/zsh/.zshrc'
+        insertbefore: BOF
+
