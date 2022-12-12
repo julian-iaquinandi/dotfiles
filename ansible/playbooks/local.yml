@@ -1,0 +1,35 @@
+---
+- name: localhost demo
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  tasks:
+    - name: Update and Upgrade Apt
+      apt: 
+        upgrade: yes
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+    
+    - name: Install zsh
+      package:
+        name: zsh
+        state: present
+
+    - name: Install oh-my-zsh
+      shell:
+        cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"    
+
+    - name: Install nvm
+      shell:
+        cmd: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+          . ~/.nvm/nvm.sh
+
+    - name: Install ripgrep
+      package:
+        name: ripgrep
+        state: present
