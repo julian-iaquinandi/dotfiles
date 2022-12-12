@@ -1,0 +1,41 @@
+---
+- name: Build and Install Neovim
+  hosts: localhost
+  become: 'yes'
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+  tasks:
+    - name: Install dependencies for building neovim
+      package:
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - ninja-build
+        - gettext
+        - libtool
+        - libtool-bin
+        - autoconf
+        - automake
+        - cmake
+        - g++
+        - pkg-config
+        - unzip
+        - curl
+        - doxygen
+
+    - name: Clone neovim from source
+      git:
+        repo: 'https://github.com/neovim/neovim.git'
+        dest: /tmp/neovim
+
+    - name: Buid neovim
+      shell:
+        cmd: make CMAKE_BUILD_TYPE=RelWithDebInfo
+        chdir: /tmp/neovim
+    
+    - name: Install neovim
+      shell:      
+        command: make install  
+        chdir: /tmp/neovim
