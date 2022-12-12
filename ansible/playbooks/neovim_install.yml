@@ -35,23 +35,34 @@
         cmd: make CMAKE_BUILD_TYPE=RelWithDebInfo && make install
         chdir: /tmp/neovim
 
+    - name: Take ownership of .local
+      shell:
+        cmd: chown -R kd:kd /home/kd/.local
+
     - name: Configure neovim
       shell:
         cmd: stow nvim
         chdir: /home/kd/dotfiles/    
-    
+
     - name: Remove compiled packer file
       ansible.builtin.file:
         path: /home/kd/.config/nvim/plugin/packer_compiled.lua
         state: absent
 
-
     - name: Packer Install
-      git:
-        repo: 'https://github.com/neovim/neovim.git'
-        dest: /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim 
-        depth: 1
-
-    - name: Packer sync
       shell:
-        cmd: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+        cmd: git clone --depth 1 https://github.com/wbthomason/packer.nvim /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim
+        chdir: /home/kd/    
+
+    - name: Create missing dir
+      file: 
+        path: /home/kd/.local/share/nvim/site/pack/packer/opt 
+        state: directory
+    
+    - name: Take ownership of .local/share/nvim
+      shell:
+        cmd: chown -R kd:kd /home/kd/.local/share/nvim
+
+#    - name: Packer sync
+#      shell:
+#        cmd: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
