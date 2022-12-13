@@ -1,5 +1,5 @@
 ---
-- name: localhost demo
+- name: Command line install
   hosts: localhost
   become: yes
   become_method: sudo
@@ -54,3 +54,6 @@
         line: 'source /home/kd/.config/zsh/.zshrc'
         insertbefore: BOF
 
+    - name: Update home folder permissions
+      shell:
+        cmd: chmod -R a+rwX,o-w /home/$USER

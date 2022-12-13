@@ -1,13 +1,27 @@
 ---
 - name: Install NVM and node 
   hosts: localhost
-  become: 'yes'
-  become_method: sudo
   vars:
     ansible_connection: local
     ansible_python_interpreter: '{{ ansible_playbook_python }}'
-    nvm_install_globally: ['yarn', 'pnpm', '@fsouza/prettierd']
-    nvm_node_version: "18.12.1"
-  roles:
-    - role: grzegorznowak.nvm_node
 
+  tasks:
+  - name: Install nvm
+    shell: >
+      curl https://raw.githubusercontent.com/creationix/nvm/v0.7.0/install.sh | sh
+      creates=/home/{{ ansible_user_id }}/.nvm/nvm.sh
+
+  - name: Install node and set version
+    shell: >
+      /bin/bash -c "source ~/.nvm/nvm.sh && nvm install stable && nvm alias default stable"
+      creates=/home/{{ ansible_user_id }}/.nvm/alias
+
+  - name: Install "pnpm" node.js package globally.
+    community.general.npm:
+      name: pnpm
+      global: true
+
+  - name: Install "yarn" node.js package globally.
+    community.general.npm:
+      name: pnpm
+      global: true

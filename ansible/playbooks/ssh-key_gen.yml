@@ -7,14 +7,9 @@
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    ssh_key_filename: system
-
 
   tasks:
     - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
-      openssh_keypair:
-        path: "/home/kd/.ssh/{{ssh_key_filename}}"
-        type: rsa
-        size: 4096
-        state: present
-        force: no
+      shell:
+        cmd: ssh-keygen -t rsa -b 4096 -C "kensledev@gmail.com"
+
