@@ -27,6 +27,11 @@
           - tree
           - trash-cli
 
+    - name: Configure git
+      shell:
+        cmd: stow git
+        chdir: /home/kd/dotfiles/    
+
     - name: Configure oh-my-zsh
       shell:
         cmd: stow zsh

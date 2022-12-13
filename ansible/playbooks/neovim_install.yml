@@ -35,10 +35,6 @@
         cmd: make CMAKE_BUILD_TYPE=RelWithDebInfo && make install
         chdir: /tmp/neovim
 
-    - name: Take ownership of .local
-      shell:
-        cmd: chown -R kd:kd /home/kd/.local
-
     - name: Configure neovim
       shell:
         cmd: stow nvim
@@ -54,6 +50,10 @@
         cmd: git clone --depth 1 https://github.com/wbthomason/packer.nvim /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim
         chdir: /home/kd/    
 
+    - name: Take ownership of .local
+      shell:
+        cmd: chown -R kd:kd /home/kd/.local
+
     - name: Create missing dir
       file: 
         path: /home/kd/.local/share/nvim/site/pack/packer/opt 
@@ -66,3 +66,4 @@
 #    - name: Packer sync
 #      shell:
 #        cmd: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+

@@ -27,7 +27,7 @@ mason_lspconfig.setup({
 		"emmet_ls",
 		"svelte",
 		"volar",
-		"astro-language-server",
+		"astro",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed

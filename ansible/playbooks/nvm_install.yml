@@ -1,0 +1,13 @@
+---
+- name: Install NVM and node 
+  hosts: localhost
+  become: 'yes'
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    nvm_install_globally: ['yarn', 'pnpm', '@fsouza/prettierd']
+    nvm_node_version: "18.12.1"
+  roles:
+    - role: grzegorznowak.nvm_node
+
