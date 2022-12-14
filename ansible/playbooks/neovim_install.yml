@@ -69,6 +69,11 @@
       shell:
         cmd: chown -R kd:kd /home/kd/.local/share/nvim
 
+    - name: Change permissions of keyfile
+      shell:
+        cmd: chmod 400 ~/.ssh/id_rsa
+
+        
 #    - name: Packer sync
 #      shell:
 #        cmd: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
