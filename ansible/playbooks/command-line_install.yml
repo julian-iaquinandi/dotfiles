@@ -26,6 +26,7 @@
           - stow
           - tree
           - trash-cli
+          - python3-pip 
 
     - name: Configure git
       shell:
@@ -56,4 +57,6 @@
 
     - name: Update home folder permissions
       shell:
-        cmd: chmod -R a+rwX,o-w /home/$USER
+        cmd: chmod -R a+rwX,o-w /home/kd
+
+

@@ -24,6 +24,8 @@
         - unzip
         - curl
         - doxygen
+        - ripgrep
+        - fd-find
 
     - name: Clone neovim
       git:
@@ -49,6 +51,10 @@
       shell:
         cmd: git clone --depth 1 https://github.com/wbthomason/packer.nvim /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim
         chdir: /home/kd/    
+
+    - name: Install pynvim python package
+      ansible.builtin.pip:
+      name: pynvim
 
     - name: Take ownership of .local
       shell:

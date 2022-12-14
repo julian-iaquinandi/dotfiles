@@ -23,5 +23,15 @@
 
   - name: Install "yarn" node.js package globally.
     community.general.npm:
-      name: pnpm
+      name: yarn
+      global: true
+
+  # - name: Install "prettierd" node.js package globally.
+  #   community.general.npm:
+  #     name: "@fsouza/prettierd"
+  #     global: true
+
+  - name: Install "neovim" node.js package globally.
+    community.general.npm:
+      name: neovim
       global: true
