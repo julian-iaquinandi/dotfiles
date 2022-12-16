@@ -47,14 +47,17 @@
         path: /home/kd/.config/nvim/plugin/packer_compiled.lua
         state: absent
 
+    - name: Packer Folder
+      stat:
+        path: /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim 
+      register: packer_folder
+    
+
     - name: Packer Install
       shell:
         cmd: git clone --depth 1 https://github.com/wbthomason/packer.nvim /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim
         chdir: /home/kd/    
-
-    - name: Install pynvim python package
-      ansible.builtin.pip:
-      name: pynvim
+      when: not packer_folder.stat.exists
 
     - name: Take ownership of .local
       shell:
@@ -71,7 +74,7 @@
 
     - name: Change permissions of keyfile
       shell:
-        cmd: chmod 400 ~/.ssh/id_rsa
+        cmd: chmod 400 /home/kd/.ssh/id_rsa.pub
 
         
 #    - name: Packer sync
