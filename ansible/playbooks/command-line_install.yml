@@ -28,6 +28,7 @@
           - trash-cli
           - python3-pip 
           - gh
+          - tmux
 
     - name: Configure git
       shell:
@@ -58,3 +59,8 @@
     - name: Update home folder permissions
       shell:
         cmd: chmod -R a+rwX,o-w /home/kd
+        
+    - name: Configure tmux
+      shell:
+        cmd: stow tmux
+        chdir: /home/kd/dotfiles/    
