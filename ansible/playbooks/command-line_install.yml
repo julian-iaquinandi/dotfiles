@@ -59,8 +59,3 @@
     - name: Update home folder permissions
       shell:
         cmd: chmod -R a+rwX,o-w /home/kd
-
-    - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
-      community.crypto.openssh_keypair:
-        path: /.ssh/id_ssh_rsa
-
