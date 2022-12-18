@@ -71,11 +71,6 @@
     - name: Take ownership of .local/share/nvim
       shell:
         cmd: chown -R kd:kd /home/kd/.local/share/nvim
-
-    - name: Change permissions of keyfile
-      shell:
-        cmd: chmod 400 /home/kd/.ssh/id_rsa.pub
-
         
 #    - name: Packer sync
 #      shell:
