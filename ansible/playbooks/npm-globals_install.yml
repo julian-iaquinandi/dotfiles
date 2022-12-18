@@ -2,6 +2,7 @@
 - name: Install npm global packages
   hosts: localhost
 
+  tasks:
   - name: Install "pnpm" node.js package globally.
     community.general.npm:
       name: pnpm
