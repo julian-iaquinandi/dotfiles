@@ -3,7 +3,6 @@
   hosts: localhost
   become: yes
   become_method: sudo
-  become_user: kd
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
@@ -58,4 +57,4 @@
 
     - name: Update home folder permissions
       shell:
-        cmd: sudo chmod -R a+rwX,o-w /home/kd
+        cmd: chmod -R a+rwX,o-w /home/kd
