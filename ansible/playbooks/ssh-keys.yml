@@ -18,3 +18,7 @@
         size: 4096
         state: present
         force: no
+        
+    - name: show key
+      shell:
+        cmd: cat /home/kd/.ssh/id_rsa.pub
