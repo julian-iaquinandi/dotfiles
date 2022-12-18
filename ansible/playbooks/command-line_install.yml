@@ -56,11 +56,18 @@
         line: 'source /home/kd/.config/zsh/.zshrc'
         insertbefore: BOF
 
-    - name: Update home folder permissions
-      shell:
-        cmd: chmod -R a+rwX,o-w /home/kd
-        
     - name: Configure tmux
       shell:
         cmd: stow tmux
         chdir: /home/kd/dotfiles/    
+
+    - name: Update home folder permissions
+      shell:
+        cmd: chmod -R a+rwX,o-w /home/kd
+        
+    - name: Change file ownership, group and permissions
+      file:
+        path: /home/kd/.config
+        owner: kd
+        group: kd
+        mode: '0644'
