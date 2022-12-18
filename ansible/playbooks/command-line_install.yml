@@ -27,6 +27,7 @@
           - tree
           - trash-cli
           - python3-pip 
+          - gh
 
     - name: Configure git
       shell:
