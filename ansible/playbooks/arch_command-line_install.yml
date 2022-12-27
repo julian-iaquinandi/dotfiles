@@ -20,6 +20,7 @@
           - tree
           - trash-cli
           - tmux
+          - github-cli
 
     - name: Configure git
       shell:
