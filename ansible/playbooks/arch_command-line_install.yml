@@ -23,6 +23,8 @@
           - github-cli
           - ripgrep
           - fd
+          - neovim
+          - python-pynvim
 
     - name: Configure git
       shell:
