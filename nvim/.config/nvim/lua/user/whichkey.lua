@@ -14,7 +14,7 @@ local buffers = {
 	b = { ":e #<cr>", "Last" },
 	h = { "<C-w>s", "Split below" },
 	v = { "<C-w>v", "Split right" },
-	m = { ":tabedit % <cr>", "Maximize" },
+  m = { ":tabedit % <cr>", "Maximize" },
 	n = { ":bn <cr>", "buffer next" },
 	p = { ":bp <cr>", "buffer previous" },
 	k = { ":resize -10<cr>", "Resize down" },
@@ -85,6 +85,7 @@ local trouble = {
 
 local openTelescopeFiles = { ":Telescope git_files<cr>", "Files(Git)" }
 local writeBufferAndFormat = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" }
+local writeBuffer = { ":w<cr>;", "Write buffer" }
 local closeBuffer = { ":bd<cr>", "Close buffer" }
 local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
 local quitBuffer = { ":q<cr>", "Quit buffer" }
@@ -109,7 +110,7 @@ wkMappings["p"] = openTelescopeFiles
 wkMappings["q"] = closeBuffer
 wkMappings["Q"] = forceCloseBuffer
 wkMappings["t"] = trouble
-wkMappings["w"] = writeBufferAndFormat
+wkMappings["w"] = writeBuffer
 wkMappings["x"] = quitBuffer
 wkMappings[","] = navigationTree
 

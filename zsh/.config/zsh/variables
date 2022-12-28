@@ -29,4 +29,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # if [ "$TMUX" = "" ]; then tmux -f ~/.config/tmux/.tmux.conf; fi
 #
 #
+
 export PATH="$HOME/.local/bin:$PATH"
+
