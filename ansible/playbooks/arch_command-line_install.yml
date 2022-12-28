@@ -25,6 +25,7 @@
           - fd
           - neovim
           - python-pynvim
+          - kwin-bismuth
 
     - name: Configure git
       shell:
