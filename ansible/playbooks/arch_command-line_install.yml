@@ -21,6 +21,8 @@
           - trash-cli
           - tmux
           - github-cli
+          - ripgrep
+          - fd
 
     - name: Configure git
       shell:
