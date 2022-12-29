@@ -3,22 +3,22 @@
   hosts: localhost
   become: yes
   become_method: sudo
-  roles:
-    - gikeymarcia.neovim
+#   roles:
+#     - gikeymarcia.neovim
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-    neovim_nightly: true
-    primary_user: kd
-    neovim_pde: true
-    neovim_npm_packages:
-      - neovim
-      - pnpm
-      - yarn
-    neovim_pip_packages:
-      - pynvim
-    neovim_config_dirs:
-      - "/home/{{ primary_user }}/.config/nvim"
+#     neovim_nightly: true
+#     primary_user: kd
+#     neovim_pde: true
+#     neovim_npm_packages:
+#       - neovim
+#       - pnpm
+#       - yarn
+#     neovim_pip_packages:
+#       - pynvim
+#     neovim_config_dirs:
+#       - "/home/{{ primary_user }}/.config/nvim"
 
   tasks:
     - name: show family
