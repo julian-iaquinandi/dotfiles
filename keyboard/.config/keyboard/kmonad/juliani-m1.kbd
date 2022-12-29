@@ -1,8 +1,14 @@
 ;; See keymap/tutorial.kbd for a more complete tutorial
 
+;;(defcfg
+;;  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+;;  output (kext)
+;;  fallthrough true
+;;)
+
 (defcfg
-  input  (iokit-name "Apple Internal Keyboard / Trackpad")
-  output (kext)
+  input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
+  output (uinput-sink "My KMonad output" "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
   fallthrough true
 )
 

@@ -21,6 +21,10 @@
       - "/home/{{ primary_user }}/.config/nvim"
 
   tasks:
+    - name: show family
+      debug:
+        var: ansible_os_family
+
     - name: Configure neovim
       shell:
         cmd: stow nvim

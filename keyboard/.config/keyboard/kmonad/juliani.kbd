@@ -1,15 +1,17 @@
 ;; See keymap/tutorial.kbd for a more complete tutorial
 
 (defcfg
-  input  (iokit-name "Apple Internal Keyboard / Trackpad")
-  output (kext)
+  ;; input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  ;; output (kext)
+  input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
+  output (uinput-sink "My KMonad output" "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
   fallthrough true
 )
 
 (defalias 
 
   ;; Layers
-  fn (around (layer-toggle function) fn)
+  ;;   fn (around (layer-toggle function) fn)
   num  (layer-toggle numbers)
   sym  (layer-toggle symbols)
 
@@ -37,7 +39,7 @@
   tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps  a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft  z    x    c    v    b    n    m    ,    .    /    rsft up
-  fn    lctl lalt lmet           spc            rmet ralt left down rght
+  lctl  lctl lalt lmet           spc            rmet ralt left down rght
 )
 
 (deflayer default
@@ -46,7 +48,7 @@
   XX   _    _    _    _    _    _    _    _    _    _    XX   XX   XX
   @_ec @_a  @_s  @_d  @_f  @_g  @_h  @_j  @_k  @_l  @_;  ret  XX
   XX   _    _    _    _    _    _    _    _    _    _    XX   XX
-  XX   XX   @fn  @_num          _              @_sym _   XX   XX   XX
+  XX   XX   _  @_num          _              @_sym _   XX   XX   XX
 )
 
 (deflayer symbols
@@ -62,16 +64,16 @@
   _   _    _    _    _    _    _    _    _    _    _    _    _
   _   _    _    _    _    _    _    _    _    _    _    _    _    _
   _   f11  f10  f9   f11  _    _    7    8    9    +    _    _    _
-  _   f4   f5   f6   f10  _    =    4    5    6    -    _    _
-  _   f1   f2   f3   f12  _    tab  1    2    3    *    _    _
+  _   f4   f5   f6   f10  _    tab  4    5    6    -    _    _
+  _   f1   f2   f3   f12  _    =    1    2    3    *    _    _
   _   _    _    _              esc            0    _    _    _    _
 )
 
-(deflayer function
-  _   brdn brup lp   mctl bldn blup prev pp   next mute vold volu
-  _   _    _    _    _    _    _    _    _    _    _    _    _    _
-  _   _    _    _    _    _    _    _    _    _    _    _    _    _
-  _   _    _    _    _    _    _    _    _    _    _    _    _
-  _   _    _    _    _    _    _    _    _    _    _    _    _
-  _   _    _    _              _              _    _    _    _    _
-)
+;;(deflayer function
+;;  _   brdn brup lp   mctl bldn blup prev pp   next mute vold volu
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _              _              _    _    _    _    _
+;;)
