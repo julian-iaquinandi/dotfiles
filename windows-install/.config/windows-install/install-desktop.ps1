@@ -4,6 +4,8 @@ cp -r ~/dotfiles/powershell/.config/* ~/.config/
 
 echo "=> Install fonts"
 . ~\.config\powershell\scripts\nerd-font-install.ps1
+installNerdFont("AnonymousPro")
+installNerdFont("Monofur")
 
 echo "=> Install Deps"
 Invoke-WebRequest -Uri "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"  -OutFile "~\Downloads\VCLibs.appx"
@@ -12,9 +14,12 @@ Add-AppxPackage -Path "~\Downloads\VCLibs.appx"
 echo "=> Install Terminal apps"
 choco install -y  powershell-core microsoft-windows-terminal  
 
+echo "=> Install Desktop apps"
+choco install -y vscode-insiders
 
-
-Set-ExecutionPolicy -s cu unrestricted
+cd ~/dotfiles/windows-terminal/
+. ./link.ps1
+cd ~/
 
 $OS_Installer = 'scoop'
 
@@ -55,7 +60,7 @@ function InstallProgram($program) {
 function InstallPrograms {
   InstallProgram('https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json')
   # InstallProgram('git')
-  # InstallProgram('z')
+  InstallProgram('z')
   InstallProgram('fzf')
   InstallProgram('nvm')
 }

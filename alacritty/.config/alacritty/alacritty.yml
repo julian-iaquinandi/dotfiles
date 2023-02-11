@@ -1,7 +1,11 @@
 font:
   normal:
     family: CodeNewRoman Nerd Font Mono
-  size: 18
+  size: 14
+
+window:
+  opacity: .9
+
 
 
 

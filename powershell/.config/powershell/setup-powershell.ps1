@@ -5,10 +5,8 @@ $OS_Installer = 'scoop'
 
 if ($IsMacOS) { 
   $OS_Installer = 'brew'
-} elseif ($IsWindows) { 
+} elseif (!$IsLinux -and !$IsMac) { 
   $OS_Installer = 'scoop'
-} else {
-  echo 'OS NOT SUPPORTED!' 
 }
 
 function InstallInstaller($Installer) {
@@ -46,7 +44,7 @@ function InstallPrograms {
 }
 
 echo "=> Install Programs"
-UpdatePowershellConfigLocation
+# UpdatePowershellConfigLocation
 InstallInstaller($OS_Installer)
 InstallPrograms
 

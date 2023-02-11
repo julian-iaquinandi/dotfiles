@@ -4,20 +4,12 @@
     "actions": 
     [
         {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "right"
-            },
-            "keys": "alt+shift+v"
+            "command": "paste",
+            "keys": "ctrl+v"
         },
         {
             "command": 
@@ -35,124 +27,6 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "up"
-            },
-            "keys": "ctrl+alt+shift+l"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "down"
-            },
-            "keys": "alt+shift+h"
-        },
-        {
-            "command": "scrollUpPage",
-            "keys": "alt+shift+o"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "down"
-            },
-            "keys": "alt+shift+k"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "down"
-            },
-            "keys": "ctrl+alt+shift+k"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "left"
-            },
-            "keys": "alt+shift+j"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "keys": "alt+shift+l"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "right"
-            },
-            "keys": "alt+shift+;"
-        },
-        {
-            "command": "closePane",
-            "keys": "alt+shift+x"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "left"
-            },
-            "keys": "ctrl+alt+shift+j"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+shift+m"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "right"
-            },
-            "keys": "ctrl+alt+shift+;"
-        },
-        {
-            "command": 
-            {
-                "action": "newTab"
-            },
-            "keys": "alt+shift+t"
-        },
-        {
-            "command": "scrollDownPage",
-            "keys": "alt+shift+i"
-        },
-        {
-            "command": "scrollToTop",
-            "keys": "alt+shift+u"
-        },
-        {
-            "command": "scrollToBottom",
-            "keys": "alt+shift+p"
-        },
-        {
-            "command": 
-            {
-                "action": "nextTab"
-            },
-            "keys": "alt+shift+/"
-        },
-        {
-            "command": 
-            {
-                "action": "renameTab",
-                "title": null
-            },
-            "keys": "alt+shift+r"
         }
     ],
     "copyFormatting": "none",
@@ -160,31 +34,39 @@
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "profiles": 
     {
-        "defaults": {},
+        "defaults": 
+        {
+            "colorScheme": "Argonaut"
+        },
         "list": 
         [
             {
-                "colorScheme": "Juju Dark",
+                "colorScheme": "MaterialDesignColors",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "font": 
                 {
-                    "face": "FiraCode NF Retina",
-                    "size": 11
+                    "face": "Anonymice NF"
                 },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
+                "colorScheme": "Mathias",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "font": 
+                {
+                    "face": "Anonymice NF"
+                },
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
             },
             {
-                "colorScheme": "Juju Dark",
+                "colorScheme": "Argonaut",
                 "font": 
                 {
-                    "face": "Anonymice NF",
-                    "size": 14
+                    "face": "Monofur NF"
                 },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
@@ -201,6 +83,29 @@
     },
     "schemes": 
     [
+        {
+            "background": "#0E1019",
+            "black": "#232323",
+            "blue": "#008DF8",
+            "brightBlack": "#444444",
+            "brightBlue": "#0092FF",
+            "brightCyan": "#67FFF0",
+            "brightGreen": "#ABE15B",
+            "brightPurple": "#9A5FEB",
+            "brightRed": "#FF2740",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFD242",
+            "cursorColor": "#FF0018",
+            "cyan": "#00D8EB",
+            "foreground": "#FFFAF4",
+            "green": "#8CE10B",
+            "name": "Argonaut",
+            "purple": "#6D43A6",
+            "red": "#FF000F",
+            "selectionBackground": "#002A3B",
+            "white": "#FFFFFF",
+            "yellow": "#FFB900"
+        },
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -248,27 +153,96 @@
             "yellow": "#C19C00"
         },
         {
-            "background": "#16161E",
-            "black": "#414868",
-            "blue": "#7AA2F7",
-            "brightBlack": "#073642",
-            "brightBlue": "#839496",
-            "brightCyan": "#93A1A1",
-            "brightGreen": "#586E75",
-            "brightPurple": "#6C71C4",
-            "brightRed": "#CB4B16",
-            "brightWhite": "#FDF6E3",
-            "brightYellow": "#657B83",
+            "background": "#1F1D27",
+            "black": "#1F1D27",
+            "blue": "#FFC284",
+            "brightBlack": "#353147",
+            "brightBlue": "#FFC284",
+            "brightCyan": "#2488FF",
+            "brightGreen": "#2DCD73",
+            "brightPurple": "#DE8D40",
+            "brightRed": "#D9393E",
+            "brightWhite": "#EAE5FF",
+            "brightYellow": "#D9B76E",
+            "cursorColor": "#FF9839",
+            "cyan": "#2488FF",
+            "foreground": "#B7A1FF",
+            "green": "#2DCD73",
+            "name": "Duotone Dark",
+            "purple": "#DE8D40",
+            "red": "#D9393E",
+            "selectionBackground": "#353147",
+            "white": "#B7A1FF",
+            "yellow": "#D9B76E"
+        },
+        {
+            "background": "#212121",
+            "black": "#000000",
+            "blue": "#82AAFF",
+            "brightBlack": "#545454",
+            "brightBlue": "#82AAFF",
+            "brightCyan": "#89DDFF",
+            "brightGreen": "#C3E88D",
+            "brightPurple": "#C792EA",
+            "brightRed": "#FF5370",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFCB6B",
             "cursorColor": "#FFFFFF",
-            "cyan": "#7DCFFF",
-            "foreground": "#839496",
-            "green": "#73DACA",
-            "name": "Juju Dark",
-            "purple": "#BB9AF7",
-            "red": "#F7768E",
-            "selectionBackground": "#FFFFFF",
-            "white": "#C0CAF5",
-            "yellow": "#E0AF68"
+            "cyan": "#89DDFF",
+            "foreground": "#EEFFFF",
+            "green": "#C3E88D",
+            "name": "MaterialDarker",
+            "purple": "#C792EA",
+            "red": "#FF5370",
+            "selectionBackground": "#EEFFFF",
+            "white": "#FFFFFF",
+            "yellow": "#FFCB6B"
+        },
+        {
+            "background": "#1D262A",
+            "black": "#435B67",
+            "blue": "#37B6FF",
+            "brightBlack": "#A1B0B8",
+            "brightBlue": "#70CFFF",
+            "brightCyan": "#9AFFE6",
+            "brightGreen": "#ADF7BE",
+            "brightPurple": "#FC669B",
+            "brightRed": "#FC746D",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FEE16C",
+            "cursorColor": "#EAEAEA",
+            "cyan": "#59FFD1",
+            "foreground": "#E7EBED",
+            "green": "#5CF19E",
+            "name": "MaterialDesignColors",
+            "purple": "#FC226E",
+            "red": "#FC3841",
+            "selectionBackground": "#4E6A78",
+            "white": "#FFFFFF",
+            "yellow": "#FED032"
+        },
+        {
+            "background": "#000000",
+            "black": "#000000",
+            "blue": "#C48DFF",
+            "brightBlack": "#555555",
+            "brightBlue": "#5555FF",
+            "brightCyan": "#55FFFF",
+            "brightGreen": "#55FF55",
+            "brightPurple": "#FF55FF",
+            "brightRed": "#FF5555",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFFF55",
+            "cursorColor": "#BBBBBB",
+            "cyan": "#67D9F0",
+            "foreground": "#BBBBBB",
+            "green": "#A6E32D",
+            "name": "Mathias",
+            "purple": "#FA2573",
+            "red": "#E52222",
+            "selectionBackground": "#555555",
+            "white": "#F2F2F2",
+            "yellow": "#FC951E"
         },
         {
             "background": "#282C34",

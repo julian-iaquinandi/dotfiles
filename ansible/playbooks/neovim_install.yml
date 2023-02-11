@@ -1,0 +1,78 @@
+---
+- name: Build and Install Neovim
+  hosts: localhost
+  become: 'yes'
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+  tasks:
+    - name: Install dependencies for building neovim
+      package:
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - ninja-build
+        - gettext
+        - libtool
+        - libtool-bin
+        - autoconf
+        - automake
+        - cmake
+        - g++
+        - pkg-config
+        - unzip
+        - curl
+        - doxygen
+        - ripgrep
+        - fd-find
+
+    - name: Clone neovim
+      git:
+        repo: 'https://github.com/neovim/neovim.git'
+        dest: /tmp/neovim
+
+    - name: Buid neovim
+      shell:
+        cmd: make CMAKE_BUILD_TYPE=RelWithDebInfo && make install
+        chdir: /tmp/neovim
+
+    - name: Configure neovim
+      shell:
+        cmd: stow nvim
+        chdir: /home/kd/dotfiles/    
+
+    - name: Remove compiled packer file
+      ansible.builtin.file:
+        path: /home/kd/.config/nvim/plugin/packer_compiled.lua
+        state: absent
+
+    - name: Packer Folder
+      stat:
+        path: /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim 
+      register: packer_folder
+    
+
+    - name: Packer Install
+      shell:
+        cmd: git clone --depth 1 https://github.com/wbthomason/packer.nvim /home/kd/.local/share/nvim/site/pack/packer/start/packer.nvim
+        chdir: /home/kd/    
+      when: not packer_folder.stat.exists
+
+    - name: Take ownership of .local
+      shell:
+        cmd: chown -R kd:kd /home/kd/.local
+
+    - name: Create missing dir
+      file: 
+        path: /home/kd/.local/share/nvim/site/pack/packer/opt 
+        state: directory
+    
+    - name: Take ownership of .local/share/nvim
+      shell:
+        cmd: chown -R kd:kd /home/kd/.local/share/nvim
+        
+#    - name: Packer sync
+#      shell:
+#        cmd: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+

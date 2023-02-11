@@ -1,0 +1,74 @@
+---
+- name: Command line install
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: kd
+
+  tasks:
+    - name: Update and Upgrade Apt
+      apt: 
+        upgrade: yes
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+
+    - name: Install Packages
+      package:
+        name:
+          - stow
+          - tree
+          - trash-cli
+          - python3-pip 
+          - gh
+          - tmux
+
+    - name: Configure git
+      shell:
+        cmd: stow git
+        chdir: /home/kd/dotfiles/    
+
+    - name: Configure oh-my-zsh
+      shell:
+        cmd: stow zsh
+        chdir: /home/kd/dotfiles/    
+
+    - name: Remove old zsh config
+      ansible.builtin.file:
+        path: /home/kd/.zshrc
+        state: absent
+
+    - name: Create empty zsh config
+      file:
+        path: "/home/kd/.zshrc"
+        state: touch
+
+    - name: Point new config at .cofig/zsh
+      lineinfile:
+        path: /home/kd/.zshrc
+        line: 'source /home/kd/.config/zsh/.zshrc'
+        insertbefore: BOF
+
+    - name: Configure tmux
+      shell:
+        cmd: stow tmux
+        chdir: /home/kd/dotfiles/    
+
+    - name: Update home folder permissions
+      shell:
+        cmd: chmod -R a+rwX,o-w /home/kd
+        
+    - name: Change file ownership, group and permissions
+      file:
+        path: /home/kd/.config
+        state: directory
+        recurse: yes
+        owner: kd
+        group: kd

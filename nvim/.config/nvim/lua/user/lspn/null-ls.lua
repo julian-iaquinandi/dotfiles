@@ -8,10 +8,18 @@ end
 local formatting = null_ls.builtins.formatting -- to setup formatters
 local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
--- local formatters = require("lvim.lsp.null-ls.formatters")
--- formatters.setup({
--- 	{ command = "prettierd", filetypes = { "svelte" } },
--- })
+local filetypes = {
+	"html",
+	"json",
+	"svelte",
+	"markdown",
+	"css",
+	"javascript",
+	"javascriptreact",
+	"typescript",
+	"vue",
+	"astro",
+}
 
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -21,37 +29,20 @@ null_ls.setup({
 	debug = true,
 	-- setup formatters & linters
 	sources = {
-		--  to disable file types use
-		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-		-- formatting.prettierd.with {
-		--   filetypes = { "html", "json", "svelte", "markdown", "css", "javascript", "javascriptreact", "typescript" },
-		-- },
-		formatting.prettierd, -- js/ts formatter
-		formatting.prettierd.with({
-			filetypes = {
-				"html",
-				"json",
-				"svelte",
-				"markdown",
-				"css",
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"vue",
-				"astro",
-			},
-			args = {
-				-- "-w",
-				-- "--plugin-search-dir=.",
-				"$FILENAME",
-			},
-		}),
 		formatting.stylua, -- lua formatter
+
+		formatting.prettier, -- js/ts formatter
+		formatting.prettier.with({
+			filetypes = filetypes,
+			extra_args = { "-w", "--plugin-search-dir=." },
+		}),
+
 		diagnostics.eslint_d.with({ -- js/ts linter
 			-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
 			condition = function(utils)
-				return utils.root_has_file(".eslintrc.json") -- change file extension if you use something else
+				return utils.root_has_file(".eslintrc.cjs") -- change file extension if you use something else
 			end,
+			filetypes = filetypes,
 		}),
 	},
 

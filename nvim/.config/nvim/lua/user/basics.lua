@@ -1,7 +1,7 @@
-vim.o.encoding = 'utf-8'
+vim.o.encoding = "utf-8"
 
-vim.g.mapleader = " "
-vim.o.number  =true
+vim.g.mapleader = ","
+vim.o.number = true
 vim.o.relativenumber = true
 vim.o.wrap = false
 vim.o.expandtab = true
@@ -18,18 +18,16 @@ vim.o.errorbells = false
 vim.o.shiftwidth = 2
 vim.o.numberwidth = 4
 vim.o.termguicolors = true
-vim.o.colorcolumn = '80'
+vim.o.colorcolumn = "80"
 vim.o.showmode = false
 vim.o.showtabline = 2
-vim.o.signcolumn = 'yes'
-vim.o.mouse = 'a'
+vim.o.signcolumn = "yes"
+vim.o.mouse = "a"
 -- from COC
 vim.o.hidden = true
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.updatetime = 300
-
-
 
 -- netrw
 -- vim.g["netrw_banner"] = 0
@@ -38,11 +36,17 @@ vim.o.updatetime = 300
 -- vim.g["netrw_winsize"] = 25
 -- vim.g["newrw_altv"] = 1
 
-require "nvim-treesitter.parsers".get_parser_configs().Solidity = {
-  install_info = {
-    url = "https://github.com/JoranHonig/tree-sitter-solidity",
-    files = {"src/parser.c"},
-    requires_generate_from_grammar = true,
-  },
-  filetype = 'solidity'
+require("nvim-treesitter.parsers").get_parser_configs().Solidity = {
+	install_info = {
+		url = "https://github.com/JoranHonig/tree-sitter-solidity",
+		files = { "src/parser.c" },
+		requires_generate_from_grammar = true,
+	},
+	filetype = "solidity",
 }
+
+-- vim.filetype.add({
+-- 	extension = {
+-- 		astro = "astro",
+-- 	},
+-- })

@@ -38,5 +38,7 @@ source ~/.config/zsh/functions
 #  _| || | | \__ \ || (_| | | \__ \
 #  \___/_| |_|___/\__\__,_|_|_|___/                      
 
-source ~/dotfiles/scripts/installs.sh
-source ~/dotfiles/scripts/configure.sh
+#source ~/dotfiles/scripts/installs.sh
+#source ~/dotfiles/scripts/configure.sh
+
+theme=agnoster

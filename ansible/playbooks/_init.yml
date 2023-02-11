@@ -1,0 +1,6 @@
+- import_playbook: command-line_install.yml
+- import_playbook: neovim_install.yml
+- import_playbook: ssh-keys.yml
+- import_playbook: nvm_install.yml
+
+

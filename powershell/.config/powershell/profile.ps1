@@ -1,7 +1,3 @@
-if($isWindows) {
-  Set-ExecutionPolicy -s cu unrestricted -Force
-}
-
 . ~\.config\powershell\firstRun.ps1
 
 # set PowerShell to UTF-8
@@ -25,7 +21,7 @@ installModule("nvm")
 
 if($firstRun -eq "true") {
   Remove-Module PSReadLine
-  if($isWindows) {
+  if(!$IsLinus -and !$IsMacOs) {
     Remove-Item "C:\Program Files\WindowsPowerShell\Modules\PSReadline" -Recurse -ErrorAction Ignore
     Remove-Item "C:\Program Files\PowerShell\7\Modules\PSReadLine" -Recurse -ErrorAction Ignore
   }
@@ -47,7 +43,7 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-if($isWindows) {
+if(!$IsMacOs -and !$IsLinux) {
   cd ~\AppData\Local\Programs\oh-my-posh\bin
   .\oh-my-posh init pwsh --config ~/.config/powershell/takuya.omp.json | Invoke-Expression
 } else {
@@ -84,3 +80,9 @@ function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
+
+# Font Installer
+. ~\.config\powershell\scripts\nerd-font-install.ps1
+
+# Check app installed
+. ~\.config\powershell\scripts\check-app-installed.ps1
