@@ -1,7 +1,7 @@
 if vim.g.vscode then
-    -- VSCode extension
-  require 'vscode'
+   -- VSCode extension
+  -- require 'vscode'
 else
-    -- ordinary Neovim
-  require 'nvim'
+  -- ordinary Neovim
+  -- require 'nvim'
 end
