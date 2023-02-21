@@ -11,6 +11,7 @@ local actions = {
 
 local buffers = {
 	name = " 📁 Buffers",
+  a = { ":Telescope buffers<cr>", "List all" },
 	b = { ":e #<cr>", "Last" },
 	h = { "<C-w>s", "Split below" },
 	v = { "<C-w>v", "Split right" },
@@ -21,32 +22,6 @@ local buffers = {
 	l = { ":resize +10<cr>", "Resize up" },
 	j = { ":vertical resize -10<cr>", "Resize up" },
 	[";"] = { ":vertical resize +5<cr>", "Resize up" },
-}
-
-local debug = {
-	name = " 🐛 Debug",
-	d = { ":call vimspector#Launch()<cr>", "Launch" },
-	r = { ":call vimspector#Reset()<cr>", "Reset" },
-	c = { ":call vimspector#Continue()<cr>", "Continue" },
-	f = { ":call vimspector#ToggleBreakpoint()<cr>", "Breakpoint" },
-	k = { ":call <Plug>VimspectorStepInto<cr>", "Step Into" },
-	l = { ":call <Plug>VimspectorStepOut<cr>", "Step Out" },
-	[";"] = { ":call <Plug>VimspectorStepOver<cr>", "Step Over" },
-}
-
-local find = {
-	name = " 🔎 Find",
-	f = { ":Telescope find_files<cr>", "Files" },
-	d = { ":Telescope git_files<cr>", "Git Files" },
-	a = { ":Telescope live_grep<cr>", "In Files" },
-	s = { ":Telescope buffers<cr>", "Buffers" },
-	h = { ":Telescope help_tags<cr>", "Help Tags" },
-	e = { ":Telescope emoji<cr>", "Emoji" },
-	m = { ":Telescope media_files<cr>", "Media" },
-	n = { ":Telescope noice<cr>", "Nofify History" },
-	g = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Git worktree" },
-	r = { ":%s/", "Replace" },
-	v = { ":Telescope neoclip default<cr>", "Clipboard" },
 }
 
 local git = {
@@ -64,16 +39,6 @@ local git = {
 	j = { ":Gitsigns prev_hunk<cr>", "Next hunk" },
 }
 
-local jest = {
-	name = " 🃏 Jest",
-	j = { ":lua require'jester'.run()<cr>", "Run Closest" },
-	f = { ":lua require'jester'.run_file()<cr>", "Run File" },
-	l = { ":lua require'jester'.run_last()<cr>", "Run Last" },
-	J = { ":lua require'jester'.debug()<cr>", "Debug closest" },
-	F = { ":lua require'jester'.debug_file()<cr>", "Debug file" },
-	L = { ":lua require'jester'.debug_last()<cr>", "Debug last" },
-}
-
 local trouble = {
 	name = "⚠️  Trouble",
 	t = { "<cmd>Trouble<cr>", "Trouble Toggle" },
@@ -81,28 +46,39 @@ local trouble = {
 	d = { "<cmd>Trouble document_diagnostics<cr>", "Document diagnostics" },
 	q = { "<cmd>Trouble quickfix<cr>", "Quickfix list" },
 	l = { "<cmd>Trouble loclist<cr>", "Loc list" },
+  h = { ":Telescope noice<cr>", "Nofify History" }
 }
 
-local openTelescopeFiles = { ":Telescope git_files<cr>", "Files(Git)" }
 local writeBufferAndFormat = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" }
 local writeBuffer = { ":w<cr>;", "Write buffer" }
 local closeBuffer = { ":bd<cr>", "Close buffer" }
 local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
 local quitBuffer = { ":q<cr>", "Quit buffer" }
+
 local navigationTree = { ":NvimTreeToggle<cr>", "Navigation" }
 -- local navigationTreeFind = { ":NvimTreeFindFile<cr>", "Navigation" }
-local navigationTelescope = { ":Telescope file_browser path=%:p:h<cr>", "Navigation" }
 local lastBuffer = { "<C-^><cr>", "Files" }
+
+local openTelescopeFiles = { ":Telescope git_files<cr>", "Files(Git)" }
+local findInFiles = { ":Telescope live_grep<cr>", "In Files" }
+local helpTags = { ":Telescope help_tags<cr>", "Help Tags" }
+local navigationTelescope = { ":Telescope file_browser path=%:p:h<cr>", "Navigation" }
+local clipboard = { ":Telescope neoclip default<cr>", "Clipboard" }
+local emoji = { ":Telescope emoji<cr>", "Emoji" }
+local files = { ":Telescope find_files<cr>", "Files" }
 -- local symbolOutline = { ":SymbolsOutline<cr>", "Symbol Outline" }
 
 local wkMappings = {}
 
 wkMappings["a"] = actions
 wkMappings["b"] = buffers
-wkMappings["d"] = debug
-wkMappings["f"] = find
+wkMappings["c"] = clipboard
+-- wkMappings["d"] = debug
+wkMappings["e"] = emoji
+wkMappings["f"] = files
 wkMappings["g"] = git
-wkMappings["j"] = jest
+wkMappings["h"] = helpTags
+-- wkMappings["j"] = jest
 wkMappings["n"] = navigationTelescope
 wkMappings["m"] = lastBuffer
 -- wkMappings["o"] = symbolOutline
@@ -113,12 +89,7 @@ wkMappings["t"] = trouble
 wkMappings["w"] = writeBuffer
 wkMappings["x"] = quitBuffer
 wkMappings[","] = navigationTree
-
--- local wk = require("which-key")
-
--- wk.register(wkMappings, {
--- 	prefix = " ",
--- })
+wkMappings["/"] = findInFiles
 
 return {
   {
@@ -126,14 +97,10 @@ return {
     event = "VimEnter",
     config = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 100
+      vim.o.timeoutlen = 300
       local wk = require("which-key")
 
-      wk.setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      wk.setup({})
 
       wk.register(wkMappings, {
         prefix = " ",
@@ -141,3 +108,40 @@ return {
     end,
   }
 }
+
+-- local jest = {
+-- 	name = " 🃏 Jest",
+-- 	j = { ":lua require'jester'.run()<cr>", "Run Closest" },
+-- 	f = { ":lua require'jester'.run_file()<cr>", "Run File" },
+-- 	l = { ":lua require'jester'.run_last()<cr>", "Run Last" },
+-- 	J = { ":lua require'jester'.debug()<cr>", "Debug closest" },
+-- 	F = { ":lua require'jester'.debug_file()<cr>", "Debug file" },
+-- 	L = { ":lua require'jester'.debug_last()<cr>", "Debug last" },
+-- }
+
+
+-- local find = {
+-- 	name = " 🔎 Find",
+-- 	f = { ":Telescope find_files<cr>", "Files" },
+-- 	d = { ":Telescope git_files<cr>", "Git Files" },
+-- 	a = { ":Telescope live_grep<cr>", "In Files" },
+-- 	s = { ":Telescope buffers<cr>", "Buffers" },
+-- 	h = { ":Telescope help_tags<cr>", "Help Tags" },
+-- 	e = { ":Telescope emoji<cr>", "Emoji" },
+-- 	m = { ":Telescope media_files<cr>", "Media" },
+-- 	n = { ":Telescope noice<cr>", "Nofify History" },
+-- 	g = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Git worktree" },
+-- 	r = { ":%s/", "Replace" },
+-- 	v = { ":Telescope neoclip default<cr>", "Clipboard" },
+-- }
+
+-- local debug = {
+-- 	name = " 🐛 Debug",
+-- 	d = { ":call vimspector#Launch()<cr>", "Launch" },
+-- 	r = { ":call vimspector#Reset()<cr>", "Reset" },
+-- 	c = { ":call vimspector#Continue()<cr>", "Continue" },
+-- 	f = { ":call vimspector#ToggleBreakpoint()<cr>", "Breakpoint" },
+-- 	k = { ":call <Plug>VimspectorStepInto<cr>", "Step Into" },
+-- 	l = { ":call <Plug>VimspectorStepOut<cr>", "Step Out" },
+-- 	[";"] = { ":call <Plug>VimspectorStepOver<cr>", "Step Over" },
+-- }
