@@ -92,21 +92,49 @@ wkMappings[","] = navigationTree
 wkMappings["/"] = findInFiles
 
 return {
-  {
+	{
     "folke/which-key.nvim",
-    event = "VimEnter",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      local wk = require("which-key")
+    event = "VeryLazy",
+		-- lazy = true,
+    opts = {
+      plugins = { spelling = true },
+      key_labels = { ["<leader>"] = "SPC" },
+    },
+    config = function(_, opts)
 
-      wk.setup({})
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
 
-      wk.register(wkMappings, {
-        prefix = " ",
-      })
+      -- local wk = require("which-key")
+      -- wk.setup(opts)
+      -- wk.register(wkMappings, {
+			-- 	prefix = " ",
+			-- })
     end,
-  }
+  },
+  -- {
+  --   "folke/which-key.nvim",
+	-- 	-- event = "VimEnter",
+    
+	-- 	-- dependencies = {
+	-- 	config = function()
+	-- 		vim.o.timeout = true
+	-- 		vim.o.timeoutlen = 300
+
+	-- 		require("which-key").setup({})
+
+	-- 		-- local wk = require("which-key")
+
+	-- 		-- wk.register(wkMappings, {
+	-- 		-- 	prefix = " ",
+	-- 		-- })
+	-- 	end,
+	-- 	-- },
+
+	-- 	-- lazy = false,
+	-- 	-- event = "VimEnter",
+	-- 	-- priority = 1000,   
+  -- }
 }
 
 -- local jest = {

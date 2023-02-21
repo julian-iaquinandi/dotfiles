@@ -17,14 +17,17 @@ vim.o.scrolloff = 3
 vim.o.errorbells = false
 vim.o.shiftwidth = 2
 vim.o.numberwidth = 4
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 vim.o.colorcolumn = "80"
 vim.o.showmode = false
 vim.o.showtabline = 2
 vim.o.signcolumn = "yes"
 vim.o.mouse = "a"
--- from COC
+-- -- from COC
 vim.o.hidden = true
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.updatetime = 300
+
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0

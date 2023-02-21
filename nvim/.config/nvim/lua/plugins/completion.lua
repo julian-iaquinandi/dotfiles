@@ -12,7 +12,7 @@ return {
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets"
     },
-    ---@param opts cmp.ConfigSchema
+
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { 
@@ -24,6 +24,9 @@ return {
         { name = "buffer" },
         { name = "path" },
       }))
+    end
+  }
+}
 
       -- opts.snippet = {
       --   expand = function(args)
@@ -87,10 +90,3 @@ return {
       --     "s",
       --   }),
       -- },
-
-    end,
-
-    
-  }
-
-}
