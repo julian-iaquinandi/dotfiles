@@ -16,6 +16,7 @@ return {
   -- tools
   {
     "williamboman/mason.nvim",
+    event = "VeryLazy",
     opts = {
       ensure_installed = {
         "prettierd",
