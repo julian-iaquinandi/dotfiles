@@ -101,40 +101,17 @@ return {
       key_labels = { ["<leader>"] = "SPC" },
     },
     config = function(_, opts)
-
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 
-      -- local wk = require("which-key")
-      -- wk.setup(opts)
-      -- wk.register(wkMappings, {
-			-- 	prefix = " ",
-			-- })
+      local wk = require("which-key")
+      wk.setup(opts)
+      wk.register(wkMappings, {
+				prefix = " ",
+			})
     end,
   },
-  -- {
-  --   "folke/which-key.nvim",
-	-- 	-- event = "VimEnter",
-    
-	-- 	-- dependencies = {
-	-- 	config = function()
-	-- 		vim.o.timeout = true
-	-- 		vim.o.timeoutlen = 300
 
-	-- 		require("which-key").setup({})
-
-	-- 		-- local wk = require("which-key")
-
-	-- 		-- wk.register(wkMappings, {
-	-- 		-- 	prefix = " ",
-	-- 		-- })
-	-- 	end,
-	-- 	-- },
-
-	-- 	-- lazy = false,
-	-- 	-- event = "VimEnter",
-	-- 	-- priority = 1000,   
-  -- }
 }
 
 -- local jest = {

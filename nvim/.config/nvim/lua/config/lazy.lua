@@ -26,9 +26,9 @@ return function(opts)
       { import = "plugins" },
     },
     defaults = { lazy = true },
-    dev = { patterns = jit.os:find("Windows") and {} or { "folke", "LazyVim" } },
-    install = { colorscheme = { "tokyonight", "habamax" } },
-    checker = { enabled = true },
+    -- dev = { patterns = jit.os:find("Windows") and {} or { "folke", "LazyVim" } },
+    -- install = { colorscheme = { "tokyonight", "habamax" } },
+    -- checker = { enabled = true },
     diff = {
       cmd = "terminal_git",
     },
@@ -51,13 +51,13 @@ return function(opts)
         },
       },
     },
-    ui = {
-      custom_keys = {
-        ["<localleader>d"] = function(plugin)
-          dd(plugin)
-        end,
-      },
-    },
+    -- ui = {
+    --   custom_keys = {
+    --     ["<localleader>d"] = function(plugin)
+    --       dd(plugin)
+    --     end,
+    --   },
+    -- },
     debug = false,
   }, opts or {})
 

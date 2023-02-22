@@ -1,7 +1,7 @@
 vim.g.profile_loaders = true
 
 require("config.autocmds")
-require("config.editor")
+require("config.options")
 
 require("config.lazy")({
   defaults = {

@@ -7,9 +7,9 @@ return {
       experimental = {
         pathStrict = true,
       },
-      library = {
-        runtime = "~/projects/neovim/runtime/",
-      },
+      -- library = {
+      --   runtime = "~/projects/neovim/runtime/",
+      -- },
     },
   },
 
