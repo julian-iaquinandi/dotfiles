@@ -49,7 +49,7 @@ local trouble = {
   h = { ":Telescope noice<cr>", "Nofify History" }
 }
 
-local writeBufferAndFormat = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" }
+local writeBufferAndFormat = { ":Format<cr> :w<cr>", "Write buffer" }
 local writeBuffer = { ":w<cr>;", "Write buffer" }
 local closeBuffer = { ":bd<cr>", "Close buffer" }
 local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
@@ -86,7 +86,7 @@ wkMappings["p"] = openTelescopeFiles
 wkMappings["q"] = closeBuffer
 wkMappings["Q"] = forceCloseBuffer
 wkMappings["t"] = trouble
-wkMappings["w"] = writeBuffer
+wkMappings["w"] = writeBufferAndFormat
 wkMappings["x"] = quitBuffer
 wkMappings[","] = navigationTree
 wkMappings["/"] = findInFiles

@@ -18,7 +18,7 @@ keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", noremapSilent)
 keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", noremapSilent)
 
 --
-vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 
 -- Snippets
 keymap("n", "<C-J>", "<Plug>(vsnip-expand)", noremapSilent)
