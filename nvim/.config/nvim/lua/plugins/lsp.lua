@@ -52,22 +52,15 @@ return {
       lspconfig.tsserver.setup {}
       lspconfig.svelte.setup {}
       lspconfig.unocss.setup {}
+      lspconfig.eslint.setup({
+         on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      })
     end,
-    -- opts = {
-    --   ensure_installed = {
-    --     "prettierd",
-    --     "stylua",
-    --     "selene",
-    --     "luacheck",
-    --     "eslint_d",
-    --     "shellcheck",
-    --     -- "deno",
-    --     "shfmt",
-    --     "black",
-    --     "isort",
-    --     "flake8",
-    --   },
-    -- },
   },
 
   -- null-ls
