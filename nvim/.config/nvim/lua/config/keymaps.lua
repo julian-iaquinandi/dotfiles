@@ -21,7 +21,7 @@ keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", noremapSilent)
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 
 -- Snippets
-keymap("n", "<C-J>", "<Plug>(vsnip-expand)", noremapSilent)
+-- keymap("n", "<C-J>", "<Plug>(vsnip-expand)", noremapSilent)
 
 -- Copy
 keymap("v", "c", "<Plug>OscYank<cr>", { noremap = true })

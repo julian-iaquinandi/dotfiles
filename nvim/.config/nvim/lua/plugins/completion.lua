@@ -22,10 +22,16 @@ return {
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 
+			require("luasnip/loaders/from_vscode").lazy_load()
+
+			local check_backspace = function()
+				local col = vim.fn.col(".") - 1
+				return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+			end
+
 			return {
 				sources = {
-					{ name = "emoji" },
-					{ name = "nvim_lsp" },
+					-- { name = "emoji" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
@@ -42,6 +48,7 @@ return {
 				fomatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = lspkind.cmp_format({
+						mode = "symbol",
 						maxwidth = 50,
 						ellipsis_char = "...",
 					}),
