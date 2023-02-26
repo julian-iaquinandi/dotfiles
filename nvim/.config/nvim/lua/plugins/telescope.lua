@@ -23,6 +23,9 @@ return {
 			local actions = require("telescope.actions")
 			local fb_actions = require("telescope").extensions.file_browser.actions
 			local trouble = require("trouble.providers.telescope")
+			local neoclip = require("neoclip")
+
+			neoclip.setup()
 
 			local telescope = require("telescope")
 			telescope.load_extension("emoji")

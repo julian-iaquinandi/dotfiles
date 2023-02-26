@@ -13,6 +13,7 @@
   "dial.nvim": { "branch": "master", "commit": "5020da900cc5dfd7067f181ee2ebd872ca7c84e8" },
   "diffview.nvim": { "branch": "main", "commit": "11827d46e939b4748dbdb7e0df4982a63bd59d26" },
   "friendly-snippets": { "branch": "main", "commit": "6fa50a94ba5378bb73013a6e163376d8e69bd8a5" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f388995990aba04cfdc7c3ab870c33e280601109" },
   "inc-rename.nvim": { "branch": "main", "commit": "21c23c379342a731a0c90f226601ec0434627b26" },
   "lazy.nvim": { "branch": "main", "commit": "8077428e63feb0f3bf795d53b23ba1695b28ab0e" },
   "leap.nvim": { "branch": "main", "commit": "9a69febb2e5a4f5f5a55dd2d7173098fde917bc5" },

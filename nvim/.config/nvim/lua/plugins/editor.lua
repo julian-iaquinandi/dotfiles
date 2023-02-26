@@ -16,6 +16,14 @@ return {
 	{ "christoomey/vim-tmux-navigator" },
 
 	{
+		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+
+	{
 		"ggandor/leap.nvim",
 		event = "VeryLazy",
 		dependencies = {
