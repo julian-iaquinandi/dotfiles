@@ -17,6 +17,7 @@ keymap("n", "<M-k>", ":TmuxNavigateDown<cr>", noremapSilent)
 keymap("n", "<M-l>", ":TmuxNavigateUp<cr>", noremapSilent)
 keymap("n", "<M-;>", ":TmuxNavigateRight<cr>", noremapSilent)
 
+keymap("n", "vaf", "va{V", noremapSilent)
 --
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 

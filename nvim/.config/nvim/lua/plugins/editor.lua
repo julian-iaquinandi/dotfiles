@@ -11,9 +11,19 @@ return {
 
 	{ "ojroques/vim-oscyank", lazy = true },
 
-	{ "tpope/vim-commentary", event = "VeryLazy" },
+	-- { "tpope/vim-commentary", event = "VeryLazy" },
 
-	{ "christoomey/vim-tmux-navigator" },
+	{
+		"numToStr/Comment.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
+
+	{ "tpope/vim-fugitive", event = "VeryLazy" },
+
+	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 
 	{
 		"lewis6991/gitsigns.nvim",

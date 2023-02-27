@@ -52,6 +52,7 @@ return {
 			lspconfig.tsserver.setup({})
 			lspconfig.svelte.setup({})
 			lspconfig.unocss.setup({})
+			-- lspconfig.emmetls.setup({})
 			lspconfig.eslint.setup({
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
