@@ -1,6 +1,7 @@
 vim.o.encoding = "utf-8"
 
 vim.g.mapleader = ","
+vim.g.maplocalleader = " "
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.wrap = false
@@ -32,5 +33,4 @@ vim.o.updatetime = 300
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
-
-vim.o.t_Co=256
+vim.o.t_Co = 256

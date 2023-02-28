@@ -1,18 +1,18 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
+		"mbbill/undotree",
+		cmd = "UndotreeToggle",
+	},
+
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
 		config = function()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
+			require("nvim-surround").setup({})
 		end,
 	},
 
-	{ "ojroques/vim-oscyank", lazy = true },
-
-	-- { "tpope/vim-commentary", event = "VeryLazy" },
-
+	-- Comments
 	{
 		"numToStr/Comment.nvim",
 		event = "VeryLazy",
@@ -21,9 +21,20 @@ return {
 		end,
 	},
 
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	-- Git
+	{
+		"tpope/vim-fugitive",
+		-- event = "VeryLazy"
+		cmd = "Git",
+	},
 
-	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
+	-- better diffing
+	{
+		"sindrets/diffview.nvim",
+		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+		config = true,
+		-- keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" } },
+	},
 
 	{
 		"lewis6991/gitsigns.nvim",
@@ -32,6 +43,9 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
+
+	-- Navigation
+	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 
 	{
 		"ggandor/leap.nvim",
@@ -43,4 +57,12 @@ return {
 			require("leap").add_default_mappings()
 		end,
 	},
+
+	-- {
+	-- 	"ray-x/sad.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("sad").setup({})
+	-- 	end,
+	-- },
 }

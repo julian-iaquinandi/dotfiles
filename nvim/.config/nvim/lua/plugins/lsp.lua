@@ -1,3 +1,12 @@
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+
 return {
 	-- neodev
 	-- {
@@ -21,6 +30,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
 			"jay-babu/mason-null-ls.nvim",
+			"jose-elias-alvarez/nvim-lsp-ts-utils",
 		},
 		event = "VeryLazy",
 		config = function()
@@ -49,8 +59,20 @@ return {
 			})
 
 			local lspconfig = require("lspconfig")
-			lspconfig.tsserver.setup({})
+
+			lspconfig.tsserver.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				commands = {
+					OrganizeImports = {
+						organize_imports,
+						description = "Organize Imports",
+					},
+				},
+			})
+
 			lspconfig.svelte.setup({})
+
 			lspconfig.unocss.setup({})
 			-- lspconfig.emmetls.setup({})
 			lspconfig.eslint.setup({
@@ -87,19 +109,20 @@ return {
 					-- nls.builtins.formatting.fish_indent,
 					-- nls.builtins.formatting.fixjson.with({ filetypes = { "jsonc" } }),
 					nls.builtins.formatting.eslint_d,
+					nls.builtins.code_actions.eslint_d,
 					-- nls.builtins.diagnostics.shellcheck,
 					-- nls.builtins.formatting.shfmt,
 					nls.builtins.diagnostics.markdownlint,
 					-- nls.builtins.diagnostics.luacheck,
 					-- nls.builtins.formatting.prettierd.with({
-					-- filetypes = { "markdown", "svelte" }, -- only runs `deno fmt` for markdown
+					-- 	filetypes = { "markdown", "svelte" }, -- only runs `deno fmt` for markdown
 					-- }),
 					-- nls.builtins.diagnostics.selene.with({
 					--   condition = function(utils)
 					--     return utils.root_has_file({ "selene.toml" })
 					--   end,
 					-- }),
-					nls.builtins.code_actions.gitsigns,
+					-- nls.builtins.code_actions.gitsigns,
 					-- nls.builtins.formatting.isort,
 					nls.builtins.formatting.black,
 					nls.builtins.diagnostics.flake8,
@@ -107,5 +130,20 @@ return {
 				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
 			})
 		end,
+	},
+
+	-- lsp saga
+	{
+		"glepnir/lspsaga.nvim",
+		event = "BufRead",
+		config = function()
+			require("lspsaga").setup({})
+		end,
+	},
+
+	-- Glance
+	{
+		"DNLHC/glance.nvim",
+		event = "VeryLazy",
 	},
 }
