@@ -11,11 +11,11 @@ local actions = {
 
 local buffers = {
 	name = " 📁 Buffers",
-  a = { ":Telescope buffers<cr>", "List all" },
+	a = { ":Telescope buffers<cr>", "List all" },
 	b = { ":e #<cr>", "Last" },
 	h = { "<C-w>s", "Split below" },
 	v = { "<C-w>v", "Split right" },
-  m = { ":tabedit % <cr>", "Maximize" },
+	m = { ":tabedit % <cr>", "Maximize" },
 	n = { ":bn <cr>", "buffer next" },
 	p = { ":bp <cr>", "buffer previous" },
 	k = { ":resize -10<cr>", "Resize down" },
@@ -28,8 +28,7 @@ local git = {
 	name = " ➕ Git",
 	a = { ":Git add -A<cr>", "Git add all" },
 	c = { ":Git commit<cr>", "Git commit" },
-	f = { ":gitdiff //2", "Take left" },
-	g = { ":gitdiff //3", "Take right" },
+	d = { ":DiffviewOpen<cr>", "Git diff view" },
 	i = { ":G<cr>", "Interactive status" },
 	p = { ":Git push<cr>", "Git push" },
 	s = { ":Git status<cr>", "Git status" },
@@ -46,10 +45,10 @@ local trouble = {
 	d = { "<cmd>Trouble document_diagnostics<cr>", "Document diagnostics" },
 	q = { "<cmd>Trouble quickfix<cr>", "Quickfix list" },
 	l = { "<cmd>Trouble loclist<cr>", "Loc list" },
-  h = { ":Telescope noice<cr>", "Nofify History" }
+	h = { ":Telescope noice<cr>", "Nofify History" },
 }
 
-local writeBufferAndFormat = { ":w<cr>; lua vim.lsp.buf.formatting()<cr>", "Write buffer" }
+local writeBufferAndFormat = { ":Format<cr> :w<cr>", "Write buffer" }
 local writeBuffer = { ":w<cr>;", "Write buffer" }
 local closeBuffer = { ":bd<cr>", "Close buffer" }
 local forceCloseBuffer = { ":bd!<cr>", "Force Close buffer" }
@@ -67,6 +66,7 @@ local clipboard = { ":Telescope neoclip default<cr>", "Clipboard" }
 local emoji = { ":Telescope emoji<cr>", "Emoji" }
 local files = { ":Telescope find_files<cr>", "Files" }
 -- local symbolOutline = { ":SymbolsOutline<cr>", "Symbol Outline" }
+local undoTree = { ":UndotreeToggle<CR>", "UndoTree" }
 
 local wkMappings = {}
 
@@ -86,32 +86,32 @@ wkMappings["p"] = openTelescopeFiles
 wkMappings["q"] = closeBuffer
 wkMappings["Q"] = forceCloseBuffer
 wkMappings["t"] = trouble
-wkMappings["w"] = writeBuffer
+wkMappings["u"] = undoTree
+wkMappings["w"] = writeBufferAndFormat
 wkMappings["x"] = quitBuffer
 wkMappings[","] = navigationTree
 wkMappings["/"] = findInFiles
 
 return {
 	{
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+		"folke/which-key.nvim",
+		event = "VeryLazy",
 		-- lazy = true,
-    opts = {
-      plugins = { spelling = true },
-      key_labels = { ["<leader>"] = "SPC" },
-    },
-    config = function(_, opts)
+		opts = {
+			plugins = { spelling = true },
+			key_labels = { ["<leader>"] = "SPC" },
+		},
+		config = function(_, opts)
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 
-      local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(wkMappings, {
+			local wk = require("which-key")
+			wk.setup(opts)
+			wk.register(wkMappings, {
 				prefix = " ",
 			})
-    end,
-  },
-
+		end,
+	},
 }
 
 -- local jest = {
@@ -123,7 +123,6 @@ return {
 -- 	F = { ":lua require'jester'.debug_file()<cr>", "Debug file" },
 -- 	L = { ":lua require'jester'.debug_last()<cr>", "Debug last" },
 -- }
-
 
 -- local find = {
 -- 	name = " 🔎 Find",
