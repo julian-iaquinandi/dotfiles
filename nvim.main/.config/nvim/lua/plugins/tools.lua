@@ -15,10 +15,15 @@ return {
 		config = function()
 			-- require("mini.bracketed").setup()
 			-- require("mini.comment").setup()
-			-- require("mini.animate").setup()
+			-- require("mini.animate").setup({
+			-- 	cursor = {
+			-- 		enable = false,
+			-- 	},
+			-- })
 			require("mini.cursorword").setup()
 			require("mini.indentscope").setup()
 			require("mini.pairs").setup()
+			require("mini.starter").setup()
 		end,
 	},
 }

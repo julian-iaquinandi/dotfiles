@@ -1,17 +1,15 @@
-local json = require("utils.dkjson")
-
 local M = {}
 
 local function read(filepath)
     local f = assert(io.open(filepath, "rb"))
     local content = f:read("*all")
     f:close()
-    return content
+    return tostring(content)
 end
 
 local function write(filepath, content)
-    local f = assert(io.open(vim.fn.expand(filepath), "w+"))
-    f:write(vim.inspect(content))
+    local f = io.open(filepath, "w+")
+    f:write(content)
     f:close()
 end
 

@@ -6,7 +6,8 @@ local actions = {
 	f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open float" },
 	m = { ":LspInstallInfo<CR>", "Organise imports" },
 	o = { ":TSLspOrganize<CR>", "Organise imports" },
-	r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Symbol" },
+	r = { "<cmd>Lspsaga rename<CR>", "Rename Symbol" },
+	R = { "<cmd>Lspsaga rename ++project<CR>", "Rename Symbol Global" },
 }
 
 local buffers = {
@@ -27,7 +28,9 @@ local buffers = {
 local git = {
 	name = " ➕ Git",
 	a = { ":Git add -A<cr>", "Git add all" },
+	b = { ":Telescope git_branches", "Git add all" },
 	c = { ":Git commit<cr>", "Git commit" },
+	C = { ":Telescope git_commits", "Commits" },
 	d = { ":DiffviewOpen<cr>", "Git diff view" },
 	i = { ":G<cr>", "Interactive status" },
 	p = { ":Git push<cr>", "Git push" },

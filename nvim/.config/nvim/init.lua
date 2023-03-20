@@ -1,17 +1,14 @@
-vim.g.profile_loaders = true
-
-require("config.autocmds")
-require("config.options")
+require('config.keymaps')
+require('config.options')
+require('macroHelper')
 
 require("config.lazy")({
-  defaults = {
-    lazy = true,
-  },
-  performance = {
-    cache = {
-      enabled = true,
+    defaults = {
+        lazy = true,
     },
-  },
+    performance = {
+        cache = {
+            enabled = true,
+        },
+    },
 })
-
-require("config.keymaps")

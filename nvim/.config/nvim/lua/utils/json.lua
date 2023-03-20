@@ -3,13 +3,14 @@ local json = require("libs.dkjson")
 local M = {}
 
 local function decode(json_file_string)
-    local currentJsonFileTable
+    local currentJsonFileTable = {}
 
     local obj, pos, err = json.decode(json_file_string, 1, nil)
+
     if err then
         print("Error:", err)
     else
-        if (obj) then
+        if (type(obj) == "table") then
             currentJsonFileTable = obj
         end
     end
@@ -18,8 +19,7 @@ local function decode(json_file_string)
 end
 
 local function encode(lua_table)
-    local str = json.encode(lua_table, { indent = true })
-    return str
+    return json.encode(lua_table)
 end
 
 M.decode = decode
