@@ -6,8 +6,8 @@ local remap = vim.api.nvim_set_keymap
 local keyset = vim.keymap.set
 
 -- Escape normal mode + terminal swapping
-remap("i", "jk", "<Esc>", { noremap = false })
-remap("t", "jk", "<C-\\><C-n>", { noremap = false })
+-- remap("i", "jk", "<Esc>", { noremap = false })
+-- remap("t", "jk", "<C-\\><C-n>", { noremap = false })
 
 -- Remap hjkl to jkl;
 remap("n", "j", "h", noremapSilent)
@@ -18,6 +18,10 @@ remap("n", ";", "l", noremapSilent)
 -- Open file exp
 keyset("n", "gf", function()
     vim.cmd([[:call VSCodeNotify("file-navigator.start")]])
+end, { noremap = true, silent = true })
+
+keyset("n", "<leader>h", function()
+    vim.cmd([[:call VSCodeNotify("vscode-nvim-bridge.toast", "test, warning" )]])
 end, { noremap = true, silent = true })
 
 
