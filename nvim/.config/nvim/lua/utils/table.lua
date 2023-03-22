@@ -13,28 +13,4 @@ M.dump = function(o)
     end
 end
 
-M.get_keys = function(t)
-    local keys = {}
-    for key, _ in pairs(t) do
-        table.insert(keys, key)
-    end
-    return keys
-end
-
-M.print = function(table)
-    print(M.dump(table))
-end
-
-M.utils_Set = function(list)
-    local set = {}
-    for _, l in ipairs(list) do set[l] = true end
-    return set
-end
-
-M.contains = function(table, key)
-    local _set = M.utils_Set(table)
-    if _set[key] then return true end
-    return false
-end
-
 return M

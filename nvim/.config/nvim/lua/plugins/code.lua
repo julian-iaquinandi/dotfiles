@@ -41,5 +41,13 @@ return {
                 },
             })
         end,
+    },
+
+    {
+        "kensleDev/persistent-macros.nvim",
+        event = "VeryLazy",
+        config = function()
+            require('persistent-macros').setup("C:\\Users\\juliani\\.config\\macros.json")
+        end
     }
 }
