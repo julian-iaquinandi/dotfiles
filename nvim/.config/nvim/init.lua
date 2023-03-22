@@ -1,6 +1,5 @@
 require('config.keymaps')
 require('config.options')
-require('macroHelper')
 
 require("config.lazy")({
     defaults = {
