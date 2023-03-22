@@ -1,0 +1,3 @@
+[submodule "nvim/.config/nvim/local/persistent-macros.nvim"]
+	path = nvim/.config/nvim/local/persistent-macros.nvim
+	url = git@github.com:kensleDev/persistent-macros.nvim.git
