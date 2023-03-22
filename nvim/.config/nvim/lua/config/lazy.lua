@@ -40,6 +40,7 @@ return function(opts)
             { import = "plugins" },
         },
         defaults = { lazy = true },
+        dev = { path = "~/.config/nvim/local" },
         -- dev = { patterns = jit.os:find("Windows") and {} or { "folke", "LazyVim" } },
         -- install = { colorscheme = { "tokyonight", "habamax" } },
         -- checker = { enabled = true },
