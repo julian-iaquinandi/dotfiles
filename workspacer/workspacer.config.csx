@@ -25,58 +25,58 @@ using workspacer.FocusIndicator;
 
 return new Action<IConfigContext>((IConfigContext context) =>
 {
-    /* Variables */
-    var fontSize = 11;
-    var barHeight = 26;
-    var fontName = "CaskaydiaCove NF";
-    var background = new Color(0x0, 0x0, 0x0);
+  /* Variables */
+  var fontSize = 11;
+  var barHeight = 26;
+  var fontName = "CaskaydiaCove NF";
+  var background = new Color(0x0, 0x0, 0x0);
 
-    /* Config */
-    context.CanMinimizeWindows = true;
+  /* Config */
+  context.CanMinimizeWindows = true;
 
-    /* Gap */
-    var gap = barHeight - 12;
-    var gapPlugin = context.AddGap(new GapPluginConfig() { InnerGap = gap, OuterGap = gap / 2, Delta = gap / 2 });
+  /* Gap */
+  var gap = barHeight - 12;
+  var gapPlugin = context.AddGap(new GapPluginConfig() { InnerGap = gap, OuterGap = gap / 2, Delta = gap / 2 });
 
-    /* Bar */
-    context.AddBar(new BarPluginConfig()
+  /* Bar */
+  context.AddBar(new BarPluginConfig()
+  {
+    FontSize = fontSize,
+    BarHeight = barHeight,
+    FontName = fontName,
+    DefaultWidgetBackground = background,
+    LeftWidgets = () => new IBarWidget[]
     {
-        FontSize = fontSize,
-        BarHeight = barHeight,
-        FontName = fontName,
-        DefaultWidgetBackground = background,
-        LeftWidgets = () => new IBarWidget[]
-        {
             new WorkspaceWidget(), new TextWidget(": "), new TitleWidget() {
                 IsShortTitle = true
             }
-        },
-        RightWidgets = () => new IBarWidget[]
-        {
+    },
+    RightWidgets = () => new IBarWidget[]
+    {
             new BatteryWidget(),
             new ActiveLayoutWidget(),
             new TimeWidget(1000, "dd-MMM HH:mm"),
-        }
-    });
+    }
+  });
 
-    /* Bar focus indicator */
-    context.AddFocusIndicator();
+  /* Bar focus indicator */
+  context.AddFocusIndicator();
 
-    /* Default layouts */
-    Func<ILayoutEngine[]> defaultLayouts = () => new ILayoutEngine[]
-    {
+  /* Default layouts */
+  Func<ILayoutEngine[]> defaultLayouts = () => new ILayoutEngine[]
+  {
         new TallLayoutEngine(),
         // new VertLayoutEngine(),
         // new HorzLayoutEngine(),
         new FullLayoutEngine(),
-    };
+  };
 
-    context.DefaultLayouts = defaultLayouts;
+  context.DefaultLayouts = defaultLayouts;
 
-    /* Workspaces */
-    // Array of workspace names and their layouts
-    (string, ILayoutEngine[])[] workspaces =
-    {
+  /* Workspaces */
+  // Array of workspace names and their layouts
+  (string, ILayoutEngine[])[] workspaces =
+  {
         ("main", defaultLayouts()),
         ("todo", new ILayoutEngine[] { new HorzLayoutEngine(), new TallLayoutEngine() }),
         ("cal", defaultLayouts()),
@@ -85,161 +85,165 @@ return new Action<IConfigContext>((IConfigContext context) =>
         ("other", defaultLayouts()),
     };
 
-    foreach ((string name, ILayoutEngine[] layouts) in workspaces)
-    {
-        context.WorkspaceContainer.CreateWorkspace(name, layouts);
-    }
+  foreach ((string name, ILayoutEngine[] layouts) in workspaces)
+  {
+    context.WorkspaceContainer.CreateWorkspace(name, layouts);
+  }
 
-    /* Filters */
-    // context.WindowRouter.AddFilter((window) => !window.ProcessFileName.Equals("1Password.exe"));
-    // context.WindowRouter.AddFilter((window) => !window.ProcessFileName.Equals("pinentry.exe"));
+  /* Filters */
+  // context.WindowRouter.AddFilter((window) => !window.ProcessFileName.Equals("1Password.exe"));
+  // context.WindowRouter.AddFilter((window) => !window.ProcessFileName.Equals("pinentry.exe"));
 
-    // The following filter means that Edge will now open on the correct display
-    context.WindowRouter.AddFilter((window) => !window.Class.Equals("ShellTrayWnd"));
+  // The following filter means that Edge will now open on the correct display
+  context.WindowRouter.AddFilter((window) => !window.Class.Equals("ShellTrayWnd"));
 
-    /* Routes */
-    context.WindowRouter.RouteProcessName("Slack", "chat");
-    context.WindowRouter.RouteProcessName("Discord", "chat");
-    context.WindowRouter.RouteProcessName("Spotify", "media");
-    context.WindowRouter.RouteProcessName("OUTLOOK", "cal");
-    context.WindowRouter.RouteTitle("Microsoft To Do", "todo");
+  /* Routes */
+  context.WindowRouter.RouteProcessName("Slack", "chat");
+  context.WindowRouter.RouteProcessName("Discord", "chat");
+  context.WindowRouter.RouteProcessName("Spotify", "media");
+  context.WindowRouter.RouteProcessName("OUTLOOK", "cal");
+  context.WindowRouter.RouteTitle("Microsoft To Do", "todo");
+  context.WindowRouter.RouteProcessName("Notion", "todo");
 
-    /* Action menu */
-    var actionMenu = context.AddActionMenu(new ActionMenuPluginConfig()
-    {
-        RegisterKeybind = false,
-        MenuHeight = barHeight,
-        FontSize = fontSize,
-        FontName = fontName,
-        Background = background,
-    });
+  /* Action menu */
+  var actionMenu = context.AddActionMenu(new ActionMenuPluginConfig()
+  {
+    RegisterKeybind = false,
+    MenuHeight = barHeight,
+    FontSize = fontSize,
+    FontName = fontName,
+    Background = background,
+  });
 
-    /* Action menu builder */
-    Func<ActionMenuItemBuilder> createActionMenuBuilder = () =>
-    {
-        var menuBuilder = actionMenu.Create();
+  /* Action menu builder */
+  Func<ActionMenuItemBuilder> createActionMenuBuilder = () =>
+  {
+    var menuBuilder = actionMenu.Create();
 
-        // Switch to workspace
-        menuBuilder.AddMenu("switch", () =>
+    // Switch to workspace
+    menuBuilder.AddMenu("switch", () =>
+      {
+        var workspaceMenu = actionMenu.Create();
+        var monitor = context.MonitorContainer.FocusedMonitor;
+        var workspaces = context.WorkspaceContainer.GetWorkspaces(monitor);
+
+        Func<int, Action> createChildMenu = (workspaceIndex) => () =>
+          {
+            context.Workspaces.SwitchMonitorToWorkspace(monitor.Index, workspaceIndex);
+          };
+
+        int workspaceIndex = 0;
+        foreach (var workspace in workspaces)
         {
-            var workspaceMenu = actionMenu.Create();
-            var monitor = context.MonitorContainer.FocusedMonitor;
-            var workspaces = context.WorkspaceContainer.GetWorkspaces(monitor);
+          workspaceMenu.Add(workspace.Name, createChildMenu(workspaceIndex));
+          workspaceIndex++;
+        }
 
-            Func<int, Action> createChildMenu = (workspaceIndex) => () =>
-            {
-                context.Workspaces.SwitchMonitorToWorkspace(monitor.Index, workspaceIndex);
-            };
+        return workspaceMenu;
+      });
 
-            int workspaceIndex = 0;
-            foreach (var workspace in workspaces)
-            {
-                workspaceMenu.Add(workspace.Name, createChildMenu(workspaceIndex));
-                workspaceIndex++;
-            }
+    // Move window to workspace
+    menuBuilder.AddMenu("move", () =>
+      {
+        var moveMenu = actionMenu.Create();
+        var focusedWorkspace = context.Workspaces.FocusedWorkspace;
 
-            return workspaceMenu;
-        });
+        var workspaces = context.WorkspaceContainer.GetWorkspaces(focusedWorkspace).ToArray();
+        Func<int, Action> createChildMenu = (index) => () => { context.Workspaces.MoveFocusedWindowToWorkspace(index); };
 
-        // Move window to workspace
-        menuBuilder.AddMenu("move", () =>
+        for (int i = 0; i < workspaces.Length; i++)
         {
-            var moveMenu = actionMenu.Create();
-            var focusedWorkspace = context.Workspaces.FocusedWorkspace;
+          moveMenu.Add(workspaces[i].Name, createChildMenu(i));
+        }
 
-            var workspaces = context.WorkspaceContainer.GetWorkspaces(focusedWorkspace).ToArray();
-            Func<int, Action> createChildMenu = (index) => () => { context.Workspaces.MoveFocusedWindowToWorkspace(index); };
+        return moveMenu;
+      });
 
-            for (int i = 0; i < workspaces.Length; i++)
-            {
-                moveMenu.Add(workspaces[i].Name, createChildMenu(i));
-            }
+    // Rename workspace
+    menuBuilder.AddFreeForm("rename", (name) =>
+      {
+        context.Workspaces.FocusedWorkspace.Name = name;
+      });
 
-            return moveMenu;
-        });
+    // Create workspace
+    menuBuilder.AddFreeForm("create workspace", (name) =>
+      {
+        context.WorkspaceContainer.CreateWorkspace(name);
+      });
 
-        // Rename workspace
-        menuBuilder.AddFreeForm("rename", (name) =>
-        {
-            context.Workspaces.FocusedWorkspace.Name = name;
-        });
+    // Delete focused workspace
+    menuBuilder.Add("close", () =>
+      {
+        context.WorkspaceContainer.RemoveWorkspace(context.Workspaces.FocusedWorkspace);
+      });
 
-        // Create workspace
-        menuBuilder.AddFreeForm("create workspace", (name) =>
-        {
-            context.WorkspaceContainer.CreateWorkspace(name);
-        });
+    // Workspacer
+    menuBuilder.Add("toggle keybind helper", () => context.Keybinds.ShowKeybindDialog());
+    menuBuilder.Add("toggle enabled", () => context.Enabled = !context.Enabled);
+    menuBuilder.Add("restart", () => context.Restart());
+    menuBuilder.Add("quit", () => context.Quit());
 
-        // Delete focused workspace
-        menuBuilder.Add("close", () =>
-        {
-            context.WorkspaceContainer.RemoveWorkspace(context.Workspaces.FocusedWorkspace);
-        });
+    return menuBuilder;
+  };
+  var actionMenuBuilder = createActionMenuBuilder();
 
-        // Workspacer
-        menuBuilder.Add("toggle keybind helper", () => context.Keybinds.ShowKeybindDialog());
-        menuBuilder.Add("toggle enabled", () => context.Enabled = !context.Enabled);
-        menuBuilder.Add("restart", () => context.Restart());
-        menuBuilder.Add("quit", () => context.Quit());
+  /* Keybindings */
+  Action setKeybindings = () =>
+  {
+    KeyModifiers alt = KeyModifiers.Alt;
+    KeyModifiers altShift = KeyModifiers.Alt | KeyModifiers.Shift;
 
-        return menuBuilder;
-    };
-    var actionMenuBuilder = createActionMenuBuilder();
+    IKeybindManager manager = context.Keybinds;
 
-    /* Keybindings */
-    Action setKeybindings = () =>
-    {
-        KeyModifiers winShift = KeyModifiers.Win | KeyModifiers.Shift;
-        KeyModifiers winCtrl = KeyModifiers.Win | KeyModifiers.Control;
-        KeyModifiers win = KeyModifiers.Win;
-        KeyModifiers alt = KeyModifiers.Alt;
-        KeyModifiers altShift = KeyModifiers.Alt | KeyModifiers.Shift;
+    var workspaces = context.Workspaces;
 
-        IKeybindManager manager = context.Keybinds;
+    manager.UnsubscribeAll();
+    manager.Subscribe(MouseEvent.LButtonDown, () => workspaces.SwitchFocusedMonitorToMouseLocation());
 
-        var workspaces = context.Workspaces;
+    // Focus
+    // manager.Subscribe(alt, Keys.D, () => workspaces.FocusedWorkspace.FocusNextWindow(), "focus next window");
+    // manager.Subscribe(alt, Keys.F, () => workspaces.FocusedWorkspace.FocusPreviousWindow(), "focus previous window");
 
-        manager.UnsubscribeAll();
-        manager.Subscribe(MouseEvent.LButtonDown, () => workspaces.SwitchFocusedMonitorToMouseLocation());
+    manager.Subscribe(alt, Keys.D1, () => context.Workspaces.SwitchToWorkspace(0), "switch to workspace 1");
+    manager.Subscribe(alt, Keys.D2, () => context.Workspaces.SwitchToWorkspace(1), "switch to workspace 2");
+    manager.Subscribe(alt, Keys.D3, () => context.Workspaces.SwitchToWorkspace(2), "switch to workspace 3");
+    manager.Subscribe(alt, Keys.D4, () => context.Workspaces.SwitchToWorkspace(3), "switch to workspace 4");
+    manager.Subscribe(alt, Keys.D5, () => context.Workspaces.SwitchToWorkspace(4), "switch to workspace 5");
+    manager.Subscribe(alt, Keys.D6, () => context.Workspaces.SwitchToWorkspace(5), "switch to workspace 6");
 
-        // Focus
-        manager.Subscribe(alt, Keys.D, () => workspaces.FocusedWorkspace.FocusNextWindow(), "focus next window");
-        manager.Subscribe(alt, Keys.F, () => workspaces.FocusedWorkspace.FocusPreviousWindow(), "focus previous window");
+    manager.Subscribe(alt, Keys.D7, () => context.Workspaces.SwitchFocusedMonitor(6), "switch to monitor 1");
+    manager.Subscribe(alt, Keys.D8, () => context.Workspaces.SwitchFocusedMonitor(7), "switch to monitor 2");
+    manager.Subscribe(alt, Keys.D9, () => context.Workspaces.SwitchFocusedMonitor(8), "switch to monitor 3");
 
-        manager.Subscribe(alt, Keys.D1, () => context.Workspaces.SwitchToWorkspace(0), "switch to workspace 1");
-        manager.Subscribe(alt, Keys.D2, () => context.Workspaces.SwitchToWorkspace(1), "switch to workspace 2");
-        manager.Subscribe(alt, Keys.D3, () => context.Workspaces.SwitchToWorkspace(2), "switch to workspace 3");
-        manager.Subscribe(alt, Keys.D4, () => context.Workspaces.SwitchToWorkspace(3), "switch to workspace 4");
-        manager.Subscribe(alt, Keys.D5, () => context.Workspaces.SwitchToWorkspace(4), "switch to workspace 5");
-        manager.Subscribe(alt, Keys.D6, () => context.Workspaces.SwitchToWorkspace(5), "switch to workspace 6");
+    // Move
+    manager.Subscribe(altShift, Keys.D1, () => context.Workspaces.MoveFocusedWindowToWorkspace(0), "switch focused window to workspace 1");
+    manager.Subscribe(altShift, Keys.D2, () => context.Workspaces.MoveFocusedWindowToWorkspace(1), "switch focused window to workspace 2");
+    manager.Subscribe(altShift, Keys.D3, () => context.Workspaces.MoveFocusedWindowToWorkspace(2), "switch focused window to workspace 3");
+    manager.Subscribe(altShift, Keys.D4, () => context.Workspaces.MoveFocusedWindowToWorkspace(3), "switch focused window to workspace 4");
+    manager.Subscribe(altShift, Keys.D5, () => context.Workspaces.MoveFocusedWindowToWorkspace(4), "switch focused window to workspace 5");
+    manager.Subscribe(altShift, Keys.D6, () => context.Workspaces.MoveFocusedWindowToWorkspace(5), "switch focused window to workspace 6");
 
-        manager.Subscribe(alt, Keys.D7, () => context.Workspaces.SwitchFocusedMonitor(6), "switch to monitor 1");
-        manager.Subscribe(alt, Keys.D8, () => context.Workspaces.SwitchFocusedMonitor(7), "switch to monitor 2");
-        manager.Subscribe(alt, Keys.D9, () => context.Workspaces.SwitchFocusedMonitor(8), "switch to monitor 3");
+    manager.Subscribe(altShift, Keys.D7, () => context.Workspaces.MoveFocusedWindowToMonitor(0), "move focused window to monitor 1");
+    manager.Subscribe(altShift, Keys.D8, () => context.Workspaces.MoveFocusedWindowToMonitor(1), "move focused window to monitor 2");
+    manager.Subscribe(altShift, Keys.D9, () => context.Workspaces.MoveFocusedWindowToMonitor(2), "move focused window to monitor 3");
 
-        // Move
-        manager.Subscribe(altShift, Keys.D1, () => context.Workspaces.MoveFocusedWindowToWorkspace(0), "switch focused window to workspace 1");
-        manager.Subscribe(altShift, Keys.D2, () => context.Workspaces.MoveFocusedWindowToWorkspace(1), "switch focused window to workspace 2");
-        manager.Subscribe(altShift, Keys.D3, () => context.Workspaces.MoveFocusedWindowToWorkspace(2), "switch focused window to workspace 3");
-        manager.Subscribe(altShift, Keys.D4, () => context.Workspaces.MoveFocusedWindowToWorkspace(3), "switch focused window to workspace 4");
-        manager.Subscribe(altShift, Keys.D5, () => context.Workspaces.MoveFocusedWindowToWorkspace(4), "switch focused window to workspace 5");
-        manager.Subscribe(altShift, Keys.D6, () => context.Workspaces.MoveFocusedWindowToWorkspace(5), "switch focused window to workspace 6");
+    manager.Subscribe(alt, Keys.C, () => context.Workspaces.FocusedWorkspace.CloseFocusedWindow(), "close focused window");
 
-        manager.Subscribe(altShift, Keys.D7, () => context.Workspaces.MoveFocusedWindowToMonitor(0), "move focused window to monitor 1");
-        manager.Subscribe(altShift, Keys.D8, () => context.Workspaces.MoveFocusedWindowToMonitor(1), "move focused window to monitor 2");
-        manager.Subscribe(altShift, Keys.D9, () => context.Workspaces.MoveFocusedWindowToMonitor(2), "move focused window to monitor 3");
+    manager.Subscribe(altShift, Keys.Space, () => context.Workspaces.FocusedWorkspace.NextLayoutEngine(), "next layout");
+    manager.Subscribe(altShift, Keys.Q, context.Restart, "restart workspacer");
+    manager.Subscribe(altShift, Keys.X, context.Quit, "quit workspacer");
 
-        // Misc
-        manager.Subscribe(altShift, Keys.J, () => workspaces.FocusedWorkspace.ShrinkPrimaryArea(), "shrink primary area");
-        manager.Subscribe(altShift, Keys.OemSemicolon, () => workspaces.FocusedWorkspace.ExpandPrimaryArea(), "expand primary area");
+    // Misc
+    manager.Subscribe(altShift, Keys.J, () => workspaces.FocusedWorkspace.ShrinkPrimaryArea(), "shrink primary area");
+    manager.Subscribe(altShift, Keys.OemSemicolon, () => workspaces.FocusedWorkspace.ExpandPrimaryArea(), "expand primary area");
 
-        manager.Subscribe(alt, Keys.Add, () => workspaces.FocusedWorkspace.DecrementNumberOfPrimaryWindows(), "decrement number of primary windows");
-        manager.Subscribe(alt, Keys.Subtract, () => workspaces.FocusedWorkspace.IncrementNumberOfPrimaryWindows(), "increment number of primary windows");
+    manager.Subscribe(alt, Keys.Add, () => workspaces.FocusedWorkspace.DecrementNumberOfPrimaryWindows(), "decrement number of primary windows");
+    manager.Subscribe(alt, Keys.Subtract, () => workspaces.FocusedWorkspace.IncrementNumberOfPrimaryWindows(), "increment number of primary windows");
 
-        // Other shortcuts
-        manager.Subscribe(alt, Keys.P, () => actionMenu.ShowMenu(actionMenuBuilder), "show menu");
-        manager.Subscribe(altShift, Keys.Escape, () => context.Enabled = !context.Enabled, "toggle enabled/disabled");
-        manager.Subscribe(altShift, Keys.T, () => context.ToggleConsoleWindow(), "toggle console window");
-    };
-    setKeybindings();
+    // Other shortcuts
+    manager.Subscribe(alt, Keys.P, () => actionMenu.ShowMenu(actionMenuBuilder), "show menu");
+    manager.Subscribe(altShift, Keys.Escape, () => context.Enabled = !context.Enabled, "toggle enabled/disabled");
+    manager.Subscribe(altShift, Keys.T, () => context.ToggleConsoleWindow(), "toggle console window");
+  };
+  setKeybindings();
 });
