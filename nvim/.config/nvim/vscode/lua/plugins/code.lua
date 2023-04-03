@@ -49,7 +49,8 @@ return {
         branch = "main",
         event = "VeryLazy",
         config = function()
-            require('persistent-macros').setup(".config/macros.json")
+            require('persistent-macros').setup(".config/macros.lua")
         end
-    }
+    },
+
 }

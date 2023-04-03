@@ -1,9 +1,10 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "8d3aa5c22c2d45e788c7a5fe13ad77368b783c20" },
-  "dial.nvim": { "branch": "master", "commit": "5020da900cc5dfd7067f181ee2ebd872ca7c84e8" },
+  "dial.nvim": { "branch": "master", "commit": "0fb00f58591e6d28a8e344984403b3e390df2458" },
   "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
   "leap.nvim": { "branch": "main", "commit": "f74473d23ebf60957e0db3ff8172349a82e5a442" },
-  "neodev.nvim": { "branch": "main", "commit": "13376f7b2098e5665becd2861930085e26fce0a1" },
-  "nvim-surround": { "branch": "main", "commit": "056f69ed494198ff6ea0070cfc66997cfe0a6c8b" },
+  "neodev.nvim": { "branch": "main", "commit": "662d7ff7243f703f67b691bc533b6ebf426b8912" },
+  "nvim-libmodal": { "branch": "master", "commit": "1cf02322819a4dca47bf57165e2e36d7a598bb0c" },
+  "nvim-surround": { "branch": "main", "commit": "50f667861fac75592fc9e482472c12672e1cd723" },
   "vim-oscyank": { "branch": "main", "commit": "ffe827a27dae98aa826e2295336c650c9a434da0" }
 }

@@ -42,7 +42,7 @@ return function(opts)
         defaults = { lazy = true },
         -- dev = { path = "~/.config/nvim/local" },
         -- dev = { path = "C:\\Users\\Administrator\\AppData\\Local\\nvim\\local" },
-        dev = { path = "C:\\Users\\juliani\\AppData\\Local\\nvim\\local" },
+        dev = { path = "C:\\Users\\kd\\AppData\\Local\\nvim\\local" },
         -- dev = { patterns = jit.os:find("Windows") and {} or { "folke", "LazyVim" } },
         -- install = { colorscheme = { "tokyonight", "habamax" } },
         -- checker = { enabled = true },
