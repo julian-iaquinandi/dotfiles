@@ -44,4 +44,4 @@ source ~/.config/zsh/functions
 theme=agnoster
 
 
-. ~/dotfiles/z.sh
+. ~/dotfiles/scripts/z.sh
