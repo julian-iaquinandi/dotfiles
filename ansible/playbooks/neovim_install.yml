@@ -29,7 +29,7 @@
 
     - name: Clone neovim
       git:
-        repo: 'https://github.com/neovim/neovim.git'
+        repo: 'https://github.com/neovim/neovim/tree/release-0.8'
         dest: /tmp/neovim
 
     - name: Buid neovim

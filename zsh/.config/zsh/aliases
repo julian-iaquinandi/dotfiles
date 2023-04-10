@@ -2,6 +2,7 @@
 # ------------------------------ Nvim
 alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
+alias nv="NVIM_APPNAME=nvchad nvim"
 alias o="nvr --remote"
 alias k="nvr --remote-send"
 

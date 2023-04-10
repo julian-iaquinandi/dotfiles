@@ -45,3 +45,6 @@ theme=agnoster
 
 
 . ~/dotfiles/scripts/z.sh
+
+
+PATH="$PATH:~/.local/bin"
