@@ -13,6 +13,24 @@
         - username: kd
 
   tasks:
+    - name: Create ~/.local/bin directory if it doesn't exist
+      become: true
+      become_method: sudo
+      file:
+        path: ~/.local/bin
+        state: directory
+        mode: '0755' 
+
+    - name: Add ~/.local/bin to the PATH environment variable
+      become: true
+      become_method: sudo
+      lineinfile:
+        path: ~/.bashrc
+        line: 'export PATH="$PATH:~/.local/bin"'
+        state: present
+      register: bashrc_changed
+      changed_when: bashrc_changed is changed
+
     - name: Update and Upgrade Apt
       apt: 
         upgrade: yes
@@ -24,11 +42,23 @@
       package:
         name:
           - stow
-          - tree
           - trash-cli
           - python3-pip 
           - gh
           - tmux
+          - ncdu
+          - duf
+          - fzf
+          - silversearcher-ag
+
+    - name: Download and install neovim
+      become: true
+      become_method: sudo
+      get_url:
+        url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        dest: /tmp/nvim.appimage
+        mode: '0755'
+      shell: mv /tmp/nvim.appimage ~/.local/bin/nvim
 
     - name: Configure git
       shell:

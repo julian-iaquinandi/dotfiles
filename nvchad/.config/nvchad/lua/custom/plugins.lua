@@ -34,7 +34,7 @@ local plugins = {
 	},
 
 	{
-		"nvim-tree/nvim-tree",
+		"nvim-tree/nvim-tree.lua",
 		opts = overrides.nvimtree,
 		config = function()
 			require("nvim-tree").setup({
@@ -42,6 +42,7 @@ local plugins = {
 					side = "right",
 					width = 40,
 				},
+				update_focused_file = { enable = true },
 			})
 		end,
 	},
@@ -58,6 +59,15 @@ local plugins = {
 	{
 		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
+	},
+
+	{
+		"ggandor/leap.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("leap").add_default_mappings()
+			-- require("configs.leap")
+		end,
 	},
 
 	-- To make a plugin not be loaded
