@@ -2,59 +2,101 @@
 
 local M = {}
 
+-- Navigation
+-- vim.cmd([[nnoremap <A-j> <C-w>h]])
+-- vim.cmd([[nnoremap <A-k> <C-w>j]])
+-- vim.cmd([[nnoremap <A-l> <C-w>k]])
+-- vim.cmd([[nnoremap <A-;> <C-w>l]])
+--
+-- vim.cmd([[tnoremap <A-j> <C-\><C-n><C-w>h]])
+-- vim.cmd([[tnoremap <A-k> <C-\><C-n><C-w>j]])
+-- vim.cmd([[tnoremap <A-l> <C-\><C-n><C-w>k]])
+-- vim.cmd([[tnoremap <A-;> <C-\><C-n><C-w>l]])
+
+-- zoom
+
+-- vim.cmd([[tnoremap <A-S-;> <C-\><C-n><C-w>>]])
+-- vim.cmd([[inoremap <A-j> <C-w>h]])
+-- vim.cmd([[inoremap <A-k> <C-w>j]])
+-- vim.cmd([[inoremap <A-l> <C-w>k]])
+-- vim.cmd([[inoremap <A-;> <C-w>l]])
+--
 M.general = {
 	i = {
 		-- go to  beginning and end
 		["<C-b>"] = { "<ESC>^i", "beginning of line" },
 		["<C-e>"] = { "<End>", "end of line" },
-
-		-- navigate within insert mode
-		["<C-h>"] = { "<Left>", "move left" },
-		["<C-l>"] = { "<Right>", "move right" },
-		["<C-j>"] = { "<Down>", "move down" },
-		["<C-k>"] = { "<Up>", "move up" },
 	},
 
 	n = {
 		["<Esc>"] = { ":noh <CR>", "clear highlights" },
-		-- switch between windows
-		["<C-h>"] = { "<C-w>h", "window left" },
-		["<C-l>"] = { "<C-w>l", "window right" },
-		["<C-j>"] = { "<C-w>j", "window down" },
-		["<C-k>"] = { "<C-w>k", "window up" },
 
-		-- save
 		["<C-s>"] = { "<cmd> w <CR>", "save file" },
 
-		-- Copy all
 		["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
 
-		-- line numbers
 		["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
 		["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
 
 		-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-		-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-		-- empty mode is same as using <cmd> :map
-		-- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+		["l"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
 		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
 		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
 		-- new buffer
-		["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
+		["<leader>bn"] = { "<cmd> enew <CR>", "new buffer" },
 		["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
 
 		["<leader>w"] = { ":w<cr>", "Write File" },
 		["<leader>q"] = { ":bd<cr>", "Close File" },
 		["<leader>Q"] = { ":bd!<cr>", "Force close File" },
 		["<leader>m"] = { ":bn<cr>", "Last buffer" },
-		["<leader>x"] = { ":wq<cr>", "Quit Neovim" },
+		-- ["<leader>x"] = { ":qa<cr>", "Quit Neovim" },
+		["<leader>z"] = { "<cmd> notify.dismiss()<CR>", "Dismiss notify" },
+
+		-- Zoom
+		["<A-z>"] = {
+			function()
+				vim.cmd("NeoZoomToggle")
+			end,
+			"Zoom",
+		},
+
+		["<leader>ce"] = {
+			function()
+				local chatgpt = require("chatgpt")
+				chatgpt.edit_with_instructions()
+			end,
+
+			"Edit with GPT",
+		},
+
+		["<leader>co"] = { "<cmd> ChatGPT <CR>", "GPT Open" },
+		["<leader>ci"] = { "<cmd> ChatGPTActAs <CR>", "GPT Act as" },
+
+		["<leader>xx"] = { "<cmd> TroubleToggle<cr>", "Toggle Trouble" },
+		["<leader>xw"] = { "<cmd> TroubleToggle workspace_diagnostics<cr>", "Toggle Trouble Workspace" },
+		["<leader>xf"] = { "<cmd> TroubleToggle document_diagnostics<cr>", "Toggle Trouble File" },
 	},
 
 	t = {
-		["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" },
+		["<A-z>"] = {
+			function()
+				vim.cmd([[ ]])
+				vim.cmd("NeoZoomToggle")
+			end,
+			"Zoom",
+		},
+
+		["<leader>ce"] = {
+			function()
+				local chatgpt = require("chatgpt")
+				chatgpt.edit_with_instructions()
+			end,
+
+			"Edit with GPT",
+		},
 	},
 
 	v = {
@@ -63,8 +105,8 @@ M.general = {
 	},
 
 	x = {
-		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move left", opts = { expr = true } },
-		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move down", opts = { expr = true } },
+		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move left", opts = { expr = true } },
+		["l"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move down", opts = { expr = true } },
 		-- Don't copy the replaced text after pasting in visual mode
 		-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 		["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "dont copy replaced text", opts = { silent = true } },
@@ -248,6 +290,21 @@ M.lspconfig = {
 	},
 }
 
+M.NeoZoom = {
+	plugin = true,
+
+	n = {
+		["<C-k>"] = {
+			function()
+				vim.cmd("NeoZoomToggle")
+			end,
+			"Zoom",
+		},
+		{ silent = true, nowait = true },
+		-- vim.keymap.set("n", "<CR>", nd, { silent = true, nowait = true })
+	},
+}
+
 M.nvimtree = {
 	plugin = true,
 
@@ -272,14 +329,13 @@ M.telescope = {
 		["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
 		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
 		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+		["<leader>ft"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
+		["<leader>fs"] = { "<cmd> Telescope session-lens search_session <CR>", "pick session" },
 
 		-- git
 		["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
 		["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 		["<leader>gl"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
-
-		-- pick a hidden term
-		["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
 
 		-- theme switcher
 		["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
@@ -365,6 +421,13 @@ M.nvterm = {
 		},
 
 		-- new
+		["<leader>i"] = {
+			function()
+				require("nvterm.terminal").new("float")
+			end,
+			"new horizontal term",
+		},
+
 		["<leader>h"] = {
 			function()
 				require("nvterm.terminal").new("horizontal")
@@ -485,6 +548,10 @@ M.gitsigns = {
 			"Toggle deleted",
 		},
 	},
+}
+
+M.chatGpt = {
+	plugin = true,
 }
 
 return M
