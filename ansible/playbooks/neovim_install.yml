@@ -27,10 +27,10 @@
         - ripgrep
         - fd-find
 
-    - name: Clone neovim
-      git:
-        repo: 'https://github.com/neovim/neovim/tree/release-0.8'
-        dest: /tmp/neovim
+#    - name: Clone neovim
+#      git:
+#        repo: 'https://github.com/neovim/neovim/tree/release-0.9'
+#        dest: /tmp/neovim
 
     - name: Buid neovim
       shell:

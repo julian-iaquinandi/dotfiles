@@ -51,15 +51,6 @@
           - fzf
           - silversearcher-ag
 
-    - name: Download and install neovim
-      become: true
-      become_method: sudo
-      get_url:
-        url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-        dest: /tmp/nvim.appimage
-        mode: '0755'
-      shell: mv /tmp/nvim.appimage ~/.local/bin/nvim
-
     - name: Configure git
       shell:
         cmd: stow git
