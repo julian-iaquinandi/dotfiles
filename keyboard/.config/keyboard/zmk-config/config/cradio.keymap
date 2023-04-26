@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define DEFAULT 0
+#define PUNCT   1
+#define NUMS    2
+
+/ {
+        behaviors {
+            hm: homerow_mods {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS";
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                quick_tap_ms = <0>;
+                flavor = "balanced";
+                bindings = <&kp>, <&kp>;
+            };
+            combos {
+                compatible = "zmk,combos";
+                combo_layer_escape {
+                    timeout-ms = <50>;
+                    key-positions = <37 40>;
+                    bindings = <&to 0>;
+                };
+                combo_sticky_shift {
+                    timeout-ms = <50>;
+                    key-positions = <16 19>;
+                    bindings = <&sk LSHIFT>;
+                };
+            };
+        };
+
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+// ┌────────┬────────┬────────┬────────┬────────┐ ┌────────┬────────┬────────┬────────┬────────┐
+// |  Q     |  W     |  E     |  R     |  T     | |  Y     |  U     |  I     |  O     |  P     |
+// ├────────┼────────┼────────┼────────┼────────┤ ├────────┼────────┼────────┼────────┼────────┤
+// |  A/WIN |  S/ALT |  D/SFT |  F/CTRL|  G/NUMS| |  H/NUMS|  J/CTRL|  K/SFT |  L/ALT |  ;/WIN |
+// ├────────┼────────┼────────┼────────┼────────┤ ├────────┼────────┼────────┼────────┼────────┤
+// |  Z     |  X     |  C     |  V     |  B     | |  N     |  M     |  ,     |  .     |  /     |
+// ┴────────┴────────┴────────┼────────┼────────┤ ├────────┼────────┼────────┴────────┴────────┘
+//                            |NUMS/BSP| ENT    | | ESC    |PUNCT/SP| 
+//		                        └────────┴────────┘ └────────┴────────┘
+
+
+                        bindings = <
+   &kp Q       &kp W       &kp E         &kp R          &kp T         &kp Y       &kp U            &kp I          &kp O       &kp P          
+   &hm LCMD A  &hm LALT S  &hm LSHIFT D  &hm LCTRL F    &lt NUMS G    &lt NUMS H  &hm RCTRL J      &hm RSHIFT K   &hm RALT L  &hm RCMD SEMI 
+   &kp Z       &kp X       &kp C         &kp V          &kp B         &kp N       &kp M            &kp COMMA      &kp DOT     &kp FSLH      
+                                         &lt NUMS BSPC  &kp RET       &kp ESC     &lt PUNCT SPACE  
+                        >;
+                };
+
+                punct_layer {
+// ┌────────┬────────┬────────┬────────┬────────┐ ┌────────┬────────┬────────┬────────┬────────┐
+// |  !     |  @     |  #     |  _     |  %     | |  CAPS  |  HOME  |  PGDN  |  PGUP  |  END   |
+// ├────────┼────────┼────────┼────────┼────────┤ ├────────┼────────┼────────┼────────┼────────┤
+// |  ?     |  `     |  "     |  '     |  ^     | |  $     |  LEFT  |  DOWN  |  UP    |  RIGHT |
+// ├────────┼────────┼────────┼────────┼────────┤ ├────────┼────────┼────────┼────────┼────────┤
+// |  |     |  [     |  {     |  (     |  &     | |  ~     |  )     |  }     |  ]     |  BSLSH |
+// └────────┴────────┴────────┼────────┼────────┤ ├────────┼────────┼────────┴────────┴────────┘
+//                            | ___    | NUMLK  | | PSCRN  | ___    |
+//		                        └────────┴────────┘ └────────┴────────┘
+
+                        bindings = <
+   &kp EXCL   &kp AT     &kp HASH  &kp UNDER  &kp PRCNT        &kp CAPS  &kp HOME  &kp PG_DN &kp PG_UP &kp END    
+   &kp QMARK  &kp GRAVE  &kp DQT   &kp SQT    &kp CARET        &kp DLLR  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT 
+   &kp PIPE   &kp LBKT   &kp LBRC  &kp LPAR   &kp AMPS         &kp TILDE &kp RPAR  &kp RBRC  &kp RBKT  &kp BSLH 
+                                           &trans     &to 2            &kp PSCRN &trans    
+                        >;
+                };
+
+                num_layer {
+// ┌────────┬────────┬────────┬────────┬────────┐ ┌────────┬────────┬────────┬────────┬────────┐
+// |  F7    |  F8    |  F9    |  F10   |  PREV  | |  NEXT  |  7     |  8     |  9     |  +     |
+// ├────────┼────────┼────────┼────────┼────────┤ ├────────┼────────┼────────┼────────┼────────┤
+// |  F4    |  F5    |  F6    |  F11   |  PP    | |  =     |  4     |  5     |  6     |  -     |
+// ├────────┼────────┼────────┼────────┼────────┤ ├────────┼────────┼────────┼────────┼────────┤
+// |  F1    |  F2    |  F3    |  F12   |  TAB   | |  TAB   |  1     |  2     |  3     |  *     |
+// └────────┴────────┴────────┼────────┼────────┤ ├────────┼────────┼────────┴────────┴────────┘
+//                            | ___    |  ___   | | PUNCTLK|  0     |
+//	                          └────────┴────────┘ └────────┴────────┘
+
+                        bindings = <
+   &kp F7  &kp F8  &kp F9  &kp F10  &kp C_PREV  &kp C_NEXT &kp N7  &kp N8  &kp N9  &kp PLUS   
+   &kp F4  &kp F5  &kp F6  &kp F11  &kp C_PP    &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp MINUS 
+   &kp F1  &kp F2  &kp F3  &kp F12  &kp TAB     &kp TAB    &kp N1  &kp N2  &kp N3  &kp STAR 
+                                   &trans   &trans      &to 1      &kp N0  
+                        >;
+                };
+               
+        };
+}; 
+

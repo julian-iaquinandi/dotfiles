@@ -41,6 +41,8 @@ source ~/.config/zsh/functions
 #source ~/dotfiles/scripts/installs.sh
 #source ~/dotfiles/scripts/configure.sh
 
+source ~/.config/zsh/neovim/index
+
 theme=agnoster
 . ~/dotfiles/scripts/z.sh
 

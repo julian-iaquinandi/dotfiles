@@ -10,7 +10,7 @@ export TERM=xterm-256color
 export EDITOR=nvim
 
 # Use Kitty as default system terminal
-export TERMINAL=kitty
+export TERMINAL=alacritty
 
 # Load NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -32,3 +32,4 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 export PATH="$HOME/.local/bin:$PATH"
 
+export OPENAI_API_KEY=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
