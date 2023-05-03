@@ -48,3 +48,4 @@ theme=agnoster
 
 
 PATH="$PATH:~/.local/bin"
+PATH="$PATH:/home/kd/.local/share/bob/nvim-bin"
