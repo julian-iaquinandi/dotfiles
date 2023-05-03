@@ -1,7 +1,6 @@
 local M = {
   "folke/noice.nvim",
   event = "VeryLazy",
-  enabled = false,
 }
 
 function M.config()
@@ -16,7 +15,7 @@ function M.config()
       focused = false
     end,
   })
-  require("noice").setup {
+  require("noice").setup({
     debug = false,
     lsp = {
       override = {
@@ -63,7 +62,7 @@ function M.config()
         icons = false,
       },
     },
-  }
+  })
 
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",

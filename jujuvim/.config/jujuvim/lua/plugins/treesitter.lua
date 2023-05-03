@@ -11,13 +11,10 @@ return {
         "cpp",
         "css",
         "diff",
-        "fish",
         "gitignore",
-        "go",
         "graphql",
         "html",
         "http",
-        "java",
         "javascript",
         "jsdoc",
         "jsonc",
@@ -51,7 +48,7 @@ return {
         -- "wgsl",
         "json",
         "markdown",
-        "vimdoc"
+        "vimdoc",
       },
       matchup = {
         enable = true,

@@ -54,6 +54,10 @@
       community.general.snap:
         name:
           - gh
+          - lazygit
+
+    - name: Install lazygit
+      command: sh ~/dotfiles/ansible/scripts/lazygit-install
 
     - name: Configure git
       shell:
