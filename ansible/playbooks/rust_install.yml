@@ -33,6 +33,9 @@
       shell: /tmp/sh.rustup.rs -y
       tags:
         - rust
+        
+    - name: Reload zsh
+      command: owz reload 
 
     - name: Reload zsh
       command: omz reload
@@ -64,6 +67,11 @@
     - name: Install "bat" Rust package
       community.general.cargo:
         name: bat
+        
+    - name: Install "bob" Rust package
+      community.general.cargo:
+        name: bob-nvim
+
 
     - name: Install "bat" Rust package
       community.general.cargo:
