@@ -1,0 +1,22 @@
+##########################################
+# 2 - Playbooks to run
+##########################################
+
+# Oh my zsh
+ansible-galaxy install gantsign.oh-my-zsh
+ansible-playbook ~/dotfiles/ansible/playbooks/base_install.yml --ask-become-pass
+
+# Node
+ansible-playbook ~/dotfiles/ansible/playbooks/nvm_install.yml
+
+# Neovim
+ansible-playbook ~/dotfiles/ansible/playbooks/neovim_appimg_install.yml
+
+# Rust Tools - Slow
+ansible-galaxy collection install community.general
+ansible-playbook ~/dotfiles/ansible/playbooks/rust_install.yml --ask-become-pass
+
+echo "Run the following commands to change dotfiles to ssh"
+echo "gh auth login"
+echo "cd ~/dotfiles" 
+echo "git remote set-url origin git@github.com:julian-iaquinandi/dotfiles.git"
