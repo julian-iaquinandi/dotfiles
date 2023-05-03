@@ -44,12 +44,16 @@
           - stow
           - trash-cli
           - python3-pip 
-          - gh
           - tmux
           - ncdu
           - duf
           - fzf
           - silversearcher-ag
+
+    - name: Install Snap packages
+      community.general.snap:
+        name:
+          - gh
 
     - name: Configure git
       shell:
