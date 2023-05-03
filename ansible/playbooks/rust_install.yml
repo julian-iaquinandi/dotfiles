@@ -33,6 +33,9 @@
       shell: /tmp/sh.rustup.rs -y
       tags:
         - rust
+        
+    - name: Reload zsh
+      command: owz reload 
 
     - name: Install ripgrep Rust package
       community.general.cargo:
@@ -61,6 +64,11 @@
     - name: Install "bat" Rust package
       community.general.cargo:
         name: bat
+        
+    - name: Install "bob" Rust package
+      community.general.cargo:
+        name: bob-nvim
+
 
 
 
