@@ -5,9 +5,11 @@
 # Anisble librarys
 ansible-galaxy install gantsign.oh-my-zsh
 ansible-galaxy collection install community.general
+ansible-galaxy install gantsign.lazygit
 
 # Base Install
 ansible-playbook ~/dotfiles/ansible/playbooks/base_install.yml --ask-become-pass
+ansible-playbook ~/dotfiles/ansible/playbooks/base_config.yml
 
 # Rust Tools - fs, sd, bat, rg, neovim - Slow
 ansible-playbook ~/dotfiles/ansible/playbooks/rust_install.yml --ask-become-pass

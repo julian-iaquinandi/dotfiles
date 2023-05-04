@@ -34,12 +34,6 @@
       tags:
         - rust
         
-    - name: Reload zsh
-      command: owz reload 
-
-    - name: Reload zsh
-      command: omz reload
-
     - name: Install ripgrep Rust package
       community.general.cargo:
         name: ripgrep

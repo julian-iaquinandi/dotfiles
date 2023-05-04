@@ -6,7 +6,7 @@
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
-  
+
   roles:
     - role: gantsign.oh-my-zsh
       users:
@@ -38,6 +38,7 @@
         cache_valid_time: 3600
         force_apt_get: true
 
+
     - name: Install Packages
       package:
         name:
@@ -49,15 +50,28 @@
           - duf
           - fzf
           - silversearcher-ag
+          - unzip
 
-    - name: Install Snap packages
-      community.general.snap:
-        name:
-          - gh
-          - lazygit
+    - name: Retrieve LazyGit latest release version
+      shell: 'curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -oP ''(?<=tag_name": "v)[^"]*'''
+      register: lazygit_version
 
-    - name: Install lazygit
-      command: sh ~/dotfiles/ansible/scripts/lazygit-install
+    - name: Download LazyGit binary archive
+      get_url:
+        url: "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version.stdout }}_Linux_x86_64.tar.gz"
+        dest: "/tmp/lazygit.tar.gz"
+
+    - name: Extract LazyGit binary
+      shell: tar xf /tmp/lazygit.tar.gz
+      args:
+        chdir: /tmp
+
+    - name: Install LazyGit binary
+      copy:
+        src: /tmp/lazygit
+        dest: /usr/local/bin/lazygit
+        mode: 0755
+
 
     - name: Configure git
       shell:
