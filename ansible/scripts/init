@@ -2,20 +2,27 @@
 # 2 - Playbooks to run
 ##########################################
 
+default_DISTRO=ubuntu
+DISTRO=${1:-$default_DISTRO}
+
 # Anisble librarys
 ansible-galaxy install gantsign.oh-my-zsh
 ansible-galaxy collection install community.general
 ansible-galaxy install gantsign.lazygit
 
 # Base Install
-ansible-playbook ~/dotfiles/ansible/playbooks/base_install.yml --ask-become-pass
-ansible-playbook ~/dotfiles/ansible/playbooks/base_config.yml
+ansible-playbook "~/dotfiles/ansible/playbooks/base/${DISTRO}_base_install.yml --ask-become-pass"
+ansible-playbook ~/dotfiles/ansible/playbooks/base/base_config.yml
 
-# Rust Tools - fs, sd, bat, rg, neovim - Slow
-ansible-playbook ~/dotfiles/ansible/playbooks/rust_install.yml --ask-become-pass
+# Rust 
+ansible-playbook ~/dotfiles/ansible/playbooks/langs/rust_install.yml --ask-become-pass
+ansible-playbook ~/dotfiles/ansible/playbooks/apps/rust_terminal_apps_install.yml --ask-become-pass
 
 # Node
-ansible-playbook ~/dotfiles/ansible/playbooks/nvm_install.yml
+ansible-playbook ~/dotfiles/ansible/playbooks/apps/nvm_install.yml
+
+# Neovim
+bob install stable
 
 echo "Run the following commands to change dotfiles to ssh"
 echo "gh auth login"
