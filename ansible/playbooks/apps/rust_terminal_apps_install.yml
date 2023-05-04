@@ -1,0 +1,34 @@
+- hosts: localhost
+  gather_facts: true
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+  become_method: sudo
+
+    - name: Install ripgrep Rust package
+      community.general.cargo:
+        name: ripgrep
+
+    - name: Install "fd" Rust package
+      community.general.cargo:
+        name: fd-find
+
+    - name: Install "sd" Rust package
+      community.general.cargo:
+        name: sd
+
+    - name: Install "exa" Rust package
+      community.general.cargo:
+        name: exa
+
+    - name: Install "dust" Rust package
+      community.general.cargo:
+        name: du-dust
+
+    - name: Install "xh" Rust package
+      community.general.cargo:
+        name: xh
+
+    - name: Install "bat" Rust package
+      community.general.cargo:
+        name: bat
+
