@@ -4,6 +4,7 @@
   become_user: "{{ lookup('env', 'USER') }}"
   become_method: sudo
 
+  tasks:
     - name: Install ripgrep Rust package
       community.general.cargo:
         name: ripgrep

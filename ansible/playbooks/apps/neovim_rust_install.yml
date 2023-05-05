@@ -1,6 +1,9 @@
 - name: Install Neovim via rust
+  gather_facts: true
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+  become_method: sudo
   hosts: localhost
-  become: yes
 
   tasks:
     - name: Install "bob" Rust package
@@ -12,11 +15,14 @@
     - name: Install neovim via bob
       command: bob install stable
 
-    - name: Get current neovim version
-      command: version=$(bob list | grep "Used" | awk '{print $2}')
+    - name: Set version
+      command: bob use stable
 
-    - name: Copy bob bin
-      command: cp /home/kd/.local/share/bob/${version}/bin/nvim /home/kd/local/share/bob/nvim-bin
+#    - name: Get current neovim version
+#      command: version=$(bob list | grep "Used" | awk '{print $2}')
+
+#    - name: Copy bob bin
+#      command: cp /home/kd/.local/share/bob/${version}/bin/nvim /home/kd/local/share/bob/nvim-bin
 
     - name: List bob versions
       command: bob list
