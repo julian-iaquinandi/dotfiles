@@ -4,7 +4,8 @@
 # 2 - Playbooks to run
 ##########################################
 
-read -e -p 'Enter your password: ' -i "$PASSWORD" PASSWORD
+echo -n Password: 
+read -s PASSWORD
 
 # Rust Apps
 ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/rust_terminal_apps_install.yml -e "ansible_become_password=$PASSWORD"

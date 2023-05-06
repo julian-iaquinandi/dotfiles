@@ -4,7 +4,8 @@
 # 2 - Playbooks to run
 ##########################################
 
-read -e -p 'Enter your password: ' -i "$PASSWORD" PASSWORD
+echo -n Password: 
+read -s PASSWORD
 
 # Anisble librarys
 ansible-galaxy install gantsign.oh-my-zsh
@@ -19,9 +20,6 @@ ansible-playbook $HOME/dotfiles/ansible/playbooks/langs/rust_install.yml -e "ans
 
 # Node
 ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/nvm_install.yml
-
-# Neovim
-ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/neovim_rust_install.yml
 
 echo "Run: zsh"
 echo "Run: ./finish"
