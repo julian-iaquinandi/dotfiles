@@ -26,6 +26,8 @@
       changed_when: bashrc_changed is changed
 
     - name: Update and Upgrade Apt
+      become: true
+      become_method: sudo
       apt:
         upgrade: yes
         update_cache: true
@@ -34,6 +36,8 @@
 
 
     - name: Install Packages
+      become: true
+      become_method: sudo
       package:
         name:
           - stow
@@ -48,6 +52,8 @@
 
 
     - name: Install foo
+      become: true
+      become_method: sudo
       community.general.snap:
         name:
           - lazygit

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+##########################################
+# 2 - Playbooks to run
+##########################################
+
+read -e -p 'Enter your password: ' -i "$PASSWORD" PASSWORD
+
+# Rust Apps
+ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/rust_terminal_apps_install.yml -e "ansible_become_password=$PASSWORD"
+
+# Neovim
+ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/neovim_rust_install.yml
+
+echo "Run the following commands to change dotfiles to ssh"
+echo "gh auth login"
+echo "cd ~/dotfiles" 
+echo "git remote set-url origin git@github.com:julian-iaquinandi/dotfiles.git"
+
