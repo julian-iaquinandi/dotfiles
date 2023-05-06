@@ -52,3 +52,9 @@
           - silversearcher-ag
           - unzip
 
+
+    - name: Install foo
+      community.general.snap:
+        name:
+          - lazygit
+          - gh
