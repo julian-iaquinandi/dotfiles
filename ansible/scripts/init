@@ -1,30 +1,31 @@
+#!/bin/bash
+
 ##########################################
 # 2 - Playbooks to run
 ##########################################
 
-default_DISTRO=ubuntu
-DISTRO=${1:-$default_DISTRO}
+read -e -p 'Enter your password' -i "$PASSWORD" PASSWORD
 
 # Anisble librarys
 ansible-galaxy install gantsign.oh-my-zsh
 ansible-galaxy collection install community.general
-ansible-galaxy install gantsign.lazygit
 
 # Base Install
-ansible-playbook "~/dotfiles/ansible/playbooks/base/${DISTRO}_base_install.yml --ask-become-pass"
-ansible-playbook ~/dotfiles/ansible/playbooks/base/base_config.yml
+ansible-playbook $HOME/dotfiles/ansible/playbooks/base/ubuntu_base_install.yml -e ansible_password='{{ lookup("env", "PASSWORD") }}'
+ansible-playbook $HOME/dotfiles/ansible/playbooks/base/base_config.yml
 
 # Rust 
-ansible-playbook ~/dotfiles/ansible/playbooks/langs/rust_install.yml --ask-become-pass
-ansible-playbook ~/dotfiles/ansible/playbooks/apps/rust_terminal_apps_install.yml --ask-become-pass
+ansible-playbook $HOME/dotfiles/ansible/playbooks/langs/rust_install.yml -e ansible_password='{{ lookup("env", "PASSWORD") }}'
+ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/rust_terminal_apps_install.yml -e ansible_password='{{ lookup("env", "PASSWORD") }}'
 
 # Node
-ansible-playbook ~/dotfiles/ansible/playbooks/apps/nvm_install.yml
+ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/nvm_install.yml
 
 # Neovim
-ansible-playbook ~/dotfiles/ansible/playbooks/apps/neovim_rust_install.yml
+ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/neovim_rust_install.yml
 
 echo "Run the following commands to change dotfiles to ssh"
 echo "gh auth login"
 echo "cd ~/dotfiles" 
 echo "git remote set-url origin git@github.com:julian-iaquinandi/dotfiles.git"
+
