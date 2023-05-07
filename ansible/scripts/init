@@ -15,12 +15,12 @@ ansible-galaxy collection install community.general
 ansible-playbook $HOME/dotfiles/ansible/playbooks/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD"
 ansible-playbook $HOME/dotfiles/ansible/playbooks/base/base_config.yml
 
-# Rust 
+# Rust
 ansible-playbook $HOME/dotfiles/ansible/playbooks/langs/rust_install.yml -e "ansible_become_password=$PASSWORD"
 
 # Node
 ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/nvm_install.yml
 
 echo "Run: zsh"
-echo "Run: ./finish"
+echo "Run: bash ~/dotfiles/ansible/scripts/finish"
 
