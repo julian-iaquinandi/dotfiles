@@ -4,7 +4,7 @@
 # 2 - Playbooks to run
 ##########################################
 
-echo -n Password: 
+echo -n Password:
 read -s PASSWORD
 
 # Anisble librarys
@@ -12,8 +12,8 @@ ansible-galaxy install gantsign.oh-my-zsh
 ansible-galaxy collection install community.general
 
 # Base Install
-ansible-playbook $HOME/dotfiles/ansible/playbooks/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD"
-ansible-playbook $HOME/dotfiles/ansible/playbooks/base/base_config.yml
+ansible-playbook $HOME/dotfiles/ansible/playbooks/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD" -e "current_user=$USER"
+ansible-playbook $HOME/dotfiles/ansible/playbooks/base/base_config.yml -e "current_user=$USER"
 
 # Rust
 ansible-playbook $HOME/dotfiles/ansible/playbooks/langs/rust_install.yml -e "ansible_become_password=$PASSWORD"
@@ -23,4 +23,3 @@ ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/nvm_install.yml
 
 echo "Run: zsh"
 echo "Run: bash ~/dotfiles/ansible/scripts/finish"
-

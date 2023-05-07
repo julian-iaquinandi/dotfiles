@@ -1,10 +1,11 @@
 - name: Command line install
   hosts: localhost
+  gather_facts: true
 
   roles:
     - role: gantsign.oh-my-zsh
       users:
-        - username: kd
+        - username: "{{current_user}}"
 
   tasks:
     - name: Create ~/.local/bin directory if it doesn't exist
@@ -51,13 +52,10 @@
           - unzip
 
 
-    - name: Install foo
+    - name: Install snap packages
       become: true
       become_method: sudo
       community.general.snap:
         name:
           - lazygit
           - gh
-
-
-

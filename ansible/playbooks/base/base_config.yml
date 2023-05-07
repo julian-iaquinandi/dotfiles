@@ -11,33 +11,33 @@
     - name: Configure git
       shell:
         cmd: stow git
-        chdir: /home/kd/dotfiles/
+        chdir: /home/{{current_user}}/dotfiles/
 
     - name: Configure oh-my-zsh
       shell:
         cmd: stow zsh
-        chdir: /home/kd/dotfiles/
+        chdir: /home/{{current_user}}/dotfiles/
 
     - name: Remove old zsh config
       ansible.builtin.file:
-        path: /home/kd/.zshrc
+        path: /home/{{current_user}}/.zshrc
         state: absent
 
     - name: Create empty zsh config
       file:
-        path: "/home/kd/.zshrc"
+        path: "/home/{{current_user}}/.zshrc"
         state: touch
 
     - name: Point new config at .cofig/zsh
       lineinfile:
-        path: /home/kd/.zshrc
+        path: /home/{{current_user}}/.zshrc
         line: 'source /home/kd/.config/zsh/.zshrc'
         insertbefore: BOF
 
     - name: Configure tmux
       shell:
         cmd: stow tmux
-        chdir: /home/kd/dotfiles/
+        chdir: /home/{{current_user}}/dotfiles/
 
     - name: Update home folder permissions
       shell:
@@ -45,8 +45,8 @@
 
     - name: Change file ownership, group and permissions
       file:
-        path: /home/kd/.config
+        path: /home/{{current_user}}/.config
         state: directory
         recurse: yes
-        owner: kd
-        group: kd
+        owner: "{{current_user}}"
+        group: "{{current_user}}"
