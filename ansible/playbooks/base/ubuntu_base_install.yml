@@ -49,6 +49,7 @@
           - duf
           - fzf
           - silversearcher-ag
+          - gh
           - unzip
 
 
@@ -58,4 +59,3 @@
       community.general.snap:
         name:
           - lazygit
-          - gh
