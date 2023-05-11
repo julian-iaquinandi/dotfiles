@@ -1,9 +1,5 @@
 #!/bin/bash
 
-##########################################
-# 2 - Playbooks to run
-##########################################
-
 PLAYBOOK_DIR=$HOME/dotfiles/ansible/playbooks
 
 echo -n Password:

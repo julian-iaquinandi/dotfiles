@@ -39,3 +39,8 @@
         cmd: stow tmux
         chdir: "{{home_dir}}/dotfiles/"
 
+    - name: Configure JujuVim (neovim)
+      shell:
+        cmd: stow jujuvim
+        chdir: "{{home_dir}}/dotfiles/"
+
