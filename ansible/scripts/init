@@ -21,7 +21,7 @@ ansible-playbook $PLAYBOOK_DIR/langs/rust_install.yml -e "ansible_become_passwor
 ansible-playbook $PLAYBOOK_DIR/apps/nvm_install.yml
 
 # Neovim Version Manager
-ansible-playbook $PLAYBOOK_DIR/apps/bob_install.yml
+ansible-playbook $PLAYBOOK_DIR/apps/git_bin_install.yml --extra-vars "app_bin_name=bob app_repo_url=https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip app_zip_file=bob-linux-x86_64.zip"
+ansible-playbook $PLAYBOOK_DIR/apps/neovim_bob_install.yml
 
 zsh
-
