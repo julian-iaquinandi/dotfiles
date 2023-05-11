@@ -13,6 +13,7 @@ ansible-galaxy collection install community.general
 
 # Base Install
 ansible-playbook $HOME/dotfiles/ansible/playbooks/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD" -e "current_user=$USER"
+ansible-playbook $HOME/dotfiles/ansible/playbooks/base/homebrew_apps.yml
 ansible-playbook $HOME/dotfiles/ansible/playbooks/base/base_config.yml -e "current_user=$USER" -e "home_dir=$HOME"
 
 # Rust

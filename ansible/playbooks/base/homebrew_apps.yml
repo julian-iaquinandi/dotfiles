@@ -1,0 +1,21 @@
+- name: Command line install
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+    - name: Installing Homebrew
+      shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    - name: homebrew reload
+      shell: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.zshenv && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    - name: Instal brew apps
+      community.general.homebrew:
+        name:
+          - lazygit
+          - dust
+          - gh
+          - sd
+          - xh
+          - exa
+
