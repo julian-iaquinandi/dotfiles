@@ -44,6 +44,15 @@
           - python3-pip
           - silversearcher-ag
           - fd-find
+          - exa
+          - ripgrep
+          - bat
+          - unzip
+          - fzf
+          - duf
+          - ncdu
+          - tmux
+          - stow
 
     - name: Installing Homebrew
       shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -56,16 +65,7 @@
         name:
           - lazygit
           - dust
-          - exa
-          - ripgrep
-          - bat
-          - unzip
           - gh
-          - fzf
-          - duf
-          - ncdu
-          - tmux
-          - stow
           - sd
           - xh
 
