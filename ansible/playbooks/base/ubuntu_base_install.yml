@@ -40,25 +40,48 @@
       become_method: sudo
       package:
         name:
-          - stow
           - trash-cli
           - python3-pip
-          - tmux
-          - ncdu
-          - duf
-          - fzf
           - silversearcher-ag
-          - gh
-          - unzip
-          - bat
-          - ripgrep
-          - exa
           - fd-find
 
-    - name: Install snap packages
+    - name: Ensuring Homebrew Is Installed
+      stat:
+        path: /home/linuxbrew/.linuxbrew/bin/brew
+      register: homebrew_check
+
+    - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
+      fail:
+        msg: Homebrew is missing...Install from http://brew.sh/
+      when:
+        - not homebrew_check.stat.exists
+        - not install_homebrew_if_missing
+
+    - name: Installing Homebrew
+      shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when:
+        - not homebrew_check.stat.exists
+        - install_homebrew_if_missing
+
+
+    - name: Instal brew apps
       become: true
       become_method: sudo
-      community.general.snap:
+      community.general.homebrew:
         name:
           - lazygit
           - dust
+          - exa
+          - ripgrep
+          - bat
+          - unzip
+          - gh
+          - fzf
+          - duf
+          - ncdu
+          - tmux
+          - stow
+          - sd
+          - xh
+
+
