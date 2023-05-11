@@ -34,8 +34,7 @@
         update_cache: true
         cache_valid_time: 3600
         force_apt_get: true
-
-
+        
     - name: Install Packages
       become: true
       become_method: sudo
@@ -51,7 +50,10 @@
           - silversearcher-ag
           - gh
           - unzip
-
+          - bat
+          - ripgrep
+          - exa
+          - fd-find
 
     - name: Install snap packages
       become: true
@@ -59,3 +61,4 @@
       community.general.snap:
         name:
           - lazygit
+          - dust
