@@ -23,5 +23,5 @@ ansible-playbook $PLAYBOOK_DIR/apps/nvm_install.yml
 # Neovim Version Manager
 ansible-playbook $PLAYBOOK_DIR/apps/bob_install.yml
 
-echo "Run: zsh"
-echo "Run: bash ~/dotfiles/ansible/scripts/finish"
+zsh
+
