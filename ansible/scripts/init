@@ -4,6 +4,8 @@
 # 2 - Playbooks to run
 ##########################################
 
+PLAYBOOK_DIR=$HOME/dotfiles/ansible/playbooks
+
 echo -n Password:
 read -s PASSWORD
 
@@ -12,15 +14,18 @@ ansible-galaxy install gantsign.oh-my-zsh
 ansible-galaxy collection install community.general
 
 # Base Install
-ansible-playbook $HOME/dotfiles/ansible/playbooks/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD" -e "current_user=$USER"
-ansible-playbook $HOME/dotfiles/ansible/playbooks/base/homebrew_apps.yml
-ansible-playbook $HOME/dotfiles/ansible/playbooks/base/base_config.yml -e "current_user=$USER" -e "home_dir=$HOME"
+ansible-playbook $PLAYBOOK_DIR/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD" -e "current_user=$USER"
+ansible-playbook $PLAYBOOK_DIR/base/homebrew_apps.yml
+ansible-playbook $PLAYBOOK_DIR/base/base_config.yml -e "current_user=$USER" -e "home_dir=$HOME"
 
 # Rust
-ansible-playbook $HOME/dotfiles/ansible/playbooks/langs/rust_install.yml -e "ansible_become_password=$PASSWORD"
+ansible-playbook $PLAYBOOK_DIR/langs/rust_install.yml -e "ansible_become_password=$PASSWORD"
 
-# Node
-ansible-playbook $HOME/dotfiles/ansible/playbooks/apps/nvm_install.yml
+# Node Version Manager
+ansible-playbook $PLAYBOOK_DIR/apps/nvm_install.yml
+
+# Neovim Version Manager
+ansible-playbook $PLAYBOOK_DIR/apps/bob_install.yml
 
 echo "Run: zsh"
 echo "Run: bash ~/dotfiles/ansible/scripts/finish"

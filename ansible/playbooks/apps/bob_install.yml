@@ -1,0 +1,25 @@
+---
+- name: Install Bob
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+
+  tasks:
+    - name: Download bob
+      shell: wget https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip
+
+    - name: Unzip bob
+      shell: unzip bob-linux-x86_64.zip
+
+    - name: Make dirs
+      shell:  mkdir -p ~/.local/bin
+
+    - name: Move bob
+      shell:  mv ./bob ~/.local/bin
+
+    - name: Clean up
+      shell: rm -r bob-linux-x86_64.zip
+
+    - name: make executable
+      shell: chmod +x ~/.local/bin/bob
