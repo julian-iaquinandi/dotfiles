@@ -1,6 +1,0 @@
-- [x] Open tree on current file
-- [x] Focus on tree rather than toggle - use alt j + ;
-- [x] Leap to line
-- [x] Leap to line above or below
-- [ ] Remap hjkl
-- [ ] Tmux battery

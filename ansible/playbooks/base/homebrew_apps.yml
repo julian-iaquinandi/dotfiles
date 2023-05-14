@@ -1,0 +1,34 @@
+- name: Command line install
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+
+    - name: Check for brew bin
+      stat:
+        path: /home/linuxbrew/.linuxbrew/bin/brew
+      register: brew_bin
+
+    - name: Check for exa bin
+      stat:
+        path: /home/linuxbrew/.linuxbrew/bin/exa
+      register: exa_bin
+
+    - name: Installing Homebrew
+      shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when: brew_bin.stat.exists == false
+
+    - name: homebrew reload
+      shell: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.zshenv && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      when: brew_bin.stat.exists == false
+
+    - name: Instal brew apps
+      community.general.homebrew:
+        name:
+          - lazygit
+          - dust
+          - gh
+          - sd
+          - xh
+          - exa
+      when:  exa_bin.stat.exists == false

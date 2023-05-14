@@ -1,0 +1,9 @@
+- name: Install Neovim via bob
+  hosts: localhost
+
+  tasks:
+    - name: Install neovim via bob
+      command: bob install stable
+
+    - name: Set version
+      command: bob use stable

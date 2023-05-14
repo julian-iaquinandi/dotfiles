@@ -1,0 +1,46 @@
+---
+- name: Command line install
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+
+  tasks:
+    - name: Configure git
+      shell:
+        cmd: stow git
+        chdir: "{{home_dir}}/dotfiles/"
+
+    - name: Configure oh-my-zsh
+      shell:
+        cmd: stow zsh
+        chdir: "{{home_dir}}/dotfiles/"
+
+    - name: Remove old zsh config
+      ansible.builtin.file:
+        path: "{{home_dir}}/.zshrc"
+        state: absent
+
+    - name: Create empty zsh config
+      file:
+        path: "{{home_dir}}/.zshrc"
+        state: touch
+
+    - name: Point new config at .cofig/zsh
+      lineinfile:
+        path: "{{home_dir}}/.zshrc"
+        line: 'source /home/kd/.config/zsh/.zshrc'
+        insertbefore: BOF
+
+    - name: Configure tmux
+      shell:
+        cmd: stow tmux
+        chdir: "{{home_dir}}/dotfiles/"
+
+    - name: Configure JujuVim (neovim)
+      shell:
+        cmd: stow jujuvim
+        chdir: "{{home_dir}}/dotfiles/"
+

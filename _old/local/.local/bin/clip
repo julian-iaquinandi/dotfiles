@@ -1,9 +1,0 @@
-#!/bin/bash
-[[ ! -t 1 ]] && powershell.exe Get-Clipboard
-[[ ! -t 0 ]] && clip.exe
-if [[ -t 1 && -t 0 ]]; then
-    echo Nothing specified to copy or paste! >&2
-  exit 1
-fi
-
-# https://gist.github.com/vor0nwe/4c9a2561d79a833abe4f10e9f17d6002

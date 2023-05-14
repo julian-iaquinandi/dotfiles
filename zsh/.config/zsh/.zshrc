@@ -44,7 +44,8 @@ source ~/.config/zsh/functions
 source ~/.config/zsh/neovim/index
 
 theme=agnoster
-. ~/dotfiles/scripts/z.sh
+. ~/.config/zsh/z.sh
 
 
 PATH="$PATH:~/.local/bin"
+PATH="$PATH:/home/kd/.local/share/bob/nvim-bin"

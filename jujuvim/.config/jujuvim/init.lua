@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("User", {
       -- require("lazy.core.cache").inspect()
     end)
   end,
-})
+  })
 
 -- vim.g.profile_loaders = true
 require("config.lazy")
