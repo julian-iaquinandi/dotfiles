@@ -6,7 +6,9 @@ services:
       dockerfile: Dockerfile
       args: 
         DEBIAN_FRONTEND: noninteractive
+
     volumes:
       - ./scripts:/home/scripts
+
 
 

@@ -2,8 +2,15 @@
 
 PLAYBOOK_DIR=$HOME/dotfiles/ansible/playbooks
 
-echo -n Password:
-read -s PASSWORD
+if [ -z "$1" ]; then
+    # No argument passed, prompt for password
+    echo -n Password:
+    read -s PASSWORD
+else
+    # Argument passed, use it as the password
+    PASSWORD="$1"
+fi
+
 
 # Anisble librarys
 ansible-galaxy install gantsign.oh-my-zsh

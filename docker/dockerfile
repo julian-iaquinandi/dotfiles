@@ -2,10 +2,13 @@ FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
+ENV PASSWORD=q
 
 RUN apt-get update && apt-get install -y && apt install -y python3 python3-pip git ansible 
 
 RUN git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
 
-RUN bash ~/dotfiles/ansible/scripts/init
+# RUN bash ~/dotfiles/ansible/scripts/init
 
+
+CMD tail -F /home/root/.bashrc
