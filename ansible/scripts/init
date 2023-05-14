@@ -11,6 +11,7 @@ else
     PASSWORD="$1"
 fi
 
+echo PASSWORD $PASSWORD
 
 # Anisble librarys
 ansible-galaxy install gantsign.oh-my-zsh
