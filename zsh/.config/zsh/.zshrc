@@ -31,19 +31,5 @@ source ~/.config/zsh/aliases
 
 source ~/.config/zsh/functions
 
-#  _____          _        _ _     
-# |_   _|        | |      | | |    
-#   | | _ __  ___| |_ __ _| | |___ 
-#   | || '_ \/ __| __/ _` | | / __|
-#  _| || | | \__ \ || (_| | | \__ \
-#  \___/_| |_|___/\__\__,_|_|_|___/                      
-
-#source ~/dotfiles/scripts/installs.sh
-#source ~/dotfiles/scripts/configure.sh
-
-
 theme=agnoster
 
-
-PATH="$PATH:~/.local/bin"
-PATH="$PATH:/home/kd/.local/share/bob/nvim-bin"
