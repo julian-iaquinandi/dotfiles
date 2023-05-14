@@ -1,6 +1,9 @@
 plugins=(zsh-autosuggestions zsh-syntax-highlighting, zsh-completions)
 
 source ~/.config/zsh/plugs/antigen.zsh
+source ~/.config/zsh/plugs/z.sh
+source ~/.config/zsh/plugs/neovim/index
+source ~/.config/zsh/plugs/docker/docker_picker
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh

@@ -41,10 +41,8 @@ source ~/.config/zsh/functions
 #source ~/dotfiles/scripts/installs.sh
 #source ~/dotfiles/scripts/configure.sh
 
-source ~/.config/zsh/neovim/index
 
 theme=agnoster
-. ~/.config/zsh/z.sh
 
 
 PATH="$PATH:~/.local/bin"

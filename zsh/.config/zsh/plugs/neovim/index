@@ -1,5 +1,5 @@
 
-neovimconfigs=( $( cat ~/.config/zsh/neovim/configs.sh ) )
+neovimconfigs=( $( cat ~/.config/zsh/plugs/neovim/configs.sh ) )
 config=""
 
 neovim_list_configs() {
