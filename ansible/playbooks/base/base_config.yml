@@ -31,7 +31,7 @@
     - name: Point new config at .cofig/zsh
       lineinfile:
         path: "{{home_dir}}/.zshrc"
-        line: 'source /home/kd/.config/zsh/.zshrc'
+        line: 'source $HOME/.config/zsh/.zshrc'
         insertbefore: BOF
 
     - name: Configure tmux

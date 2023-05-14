@@ -9,7 +9,8 @@ ENV PASSWORD=q
 RUN apt-get update && apt-get install -y && apt install -y python3 python3-pip git ansible 
 RUN git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
 
-cmd chpasswd <<< "$USER:$PASSWORD"
+RUN echo "$USER:$PASSWORD" | chpasswd
+
 
 RUN bash ~/dotfiles/ansible/scripts/init $PASSWORD
 
