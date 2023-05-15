@@ -6,7 +6,7 @@
 - name: Unzip file
   unarchive:
     src: "~/bob.zip"
-    dest: "~/bob/"
+    dest: "~/bob"
     remote_src: true
     extra_opts: "--overwrite"
 
