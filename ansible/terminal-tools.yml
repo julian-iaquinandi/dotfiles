@@ -27,6 +27,13 @@
     path: /home/linuxbrew/.linuxbrew/bin/exa
   register: exa_bin
 
+- name: homebrew reload
+  shell: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  when: brew_bin.stat.exists == false
+  tags:
+    - brew
+  when:  exa_bin.stat.exists == false
+
 - name: Instal brew apps
   community.general.homebrew:
     name:

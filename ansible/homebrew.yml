@@ -17,8 +17,9 @@
   tags:
     - brew
 
-- name: reload
-  shell: echo "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >> ~/.profile
+- name: homebrew reload
+  shell: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  when: brew_bin.stat.exists == false
   tags:
     - brew
 
