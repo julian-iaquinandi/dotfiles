@@ -18,7 +18,7 @@ ansible-galaxy install gantsign.oh-my-zsh
 ansible-galaxy collection install community.general
 #
 # Base Install
-ansible-playbook $PLAYBOOK_DIR/base/ubuntu_base_install.yml -e "ansible_become_password=$PASSWORD" -e "current_user=$USER"
+ansible-playbook $PLAYBOOK_DIR/base/docker_ubuntu_base_install.yml -e "current_user=$USER"
 # ansible-playbook $PLAYBOOK_DIR/base/homebrew_apps.yml
 # ansible-playbook $PLAYBOOK_DIR/base/base_config.yml -e "current_user=$USER" -e "home_dir=$HOME"
 #

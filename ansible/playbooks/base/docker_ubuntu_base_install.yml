@@ -1,0 +1,47 @@
+- name: Command line install [Docker]
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "{{current_user}}"
+
+  tasks:
+    - name: Create ~/.local/bin directory if it doesn't exist
+      file:
+        path: ~/.local/bin
+        state: directory
+        mode: '0755'
+
+    - name: Add ~/.local/bin to the PATH environment variable
+      lineinfile:
+        path: ~/.bashrc
+        line: 'export PATH="$PATH:~/.local/bin"'
+        state: present
+      register: bashrc_changed
+      changed_when: bashrc_changed is changed
+
+    - name: Update and Upgrade Apt
+      apt:
+        upgrade: yes
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+
+    - name: Install Packages
+      package:
+        name:
+          - trash-cli
+          - python3-pip
+          - silversearcher-ag
+          - fd-find
+          - ripgrep
+          - bat
+          - unzip
+          - fzf
+          - duf
+          - ncdu
+          - tmux
+          - stow
+
