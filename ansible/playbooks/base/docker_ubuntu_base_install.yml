@@ -8,6 +8,11 @@
         - username: "{{current_user}}"
 
   tasks:
+    - name: Install Sudo
+      package:
+        name:
+          - sudo
+
     - name: Create ~/.local/bin directory if it doesn't exist
       file:
         path: ~/.local/bin
