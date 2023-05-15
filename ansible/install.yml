@@ -10,6 +10,9 @@
     - name: Install stow
       apt: name=stow
 
+    - name: Install stow
+      apt: name=curl
+
     - name: Configure zsh
       shell: cd ~/dotfiles && stow zsh
 
