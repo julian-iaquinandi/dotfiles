@@ -1,14 +1,8 @@
 - name: Download bob
-  get_url:
-    url: "https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip"
-    dest: "~/bob.zip"
+  shell: cd ~ && wget https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip
 
 - name: Unzip file
-  unarchive:
-    src: "~/bob.zip"
-    dest: "~/bob"
-    remote_src: true
-    extra_opts: "--overwrite"
+  shell: cd ~ && unzip bob-linux-x86_64.zip
 
 - name: Copy extracted files
   copy:
