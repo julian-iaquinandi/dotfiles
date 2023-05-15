@@ -37,6 +37,5 @@
     - include: terminal-tools.yml
     # - include: nvm.yml
     - include: bob.yml
-    - include: neovim.yml
 
 
