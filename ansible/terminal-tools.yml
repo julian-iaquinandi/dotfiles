@@ -8,6 +8,7 @@
 - name: Install Packages
   package:
     name:
+      - curl
       - trash-cli
       - python3-pip
       - silversearcher-ag
