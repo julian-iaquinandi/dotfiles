@@ -80,3 +80,8 @@ alias tmsc='tmux a -t sysconfig'
 alias tmls='tmux list'
 
 alias del='trash'
+
+#---- DOCKER
+alias dkrmi='sudo docker rmi $(docker images -a -q)'
+alias dkrmc='sudo docker ps -a'
+alias dkrma='sudo docker rmi $(docker images -a -q) && docker ps -a'

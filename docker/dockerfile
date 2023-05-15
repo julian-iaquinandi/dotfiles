@@ -3,15 +3,19 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
-ENV USER=root
+ENV USER=kd
 ENV PASSWORD=q
 
-RUN apt-get update && apt-get install -y && apt install -y python3 python3-pip git ansible 
+RUN echo "root:$PASSWORD" | chpasswd
+
+# RUN useradd -u 8877 $USER
+# RUN usermod -aG sudo $USER
+# RUN apt-get update && apt-get -y install sudo
+
+RUN apt-get update && apt-get upgrade -y && apt install -y python3 git ansible 
 RUN git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
 
-RUN echo "$USER:$PASSWORD" | chpasswd
+RUN bash ~/dotfiles/ansible/scripts/docker-init $PASSWORD
 
-
-RUN bash ~/dotfiles/ansible/scripts/init $PASSWORD
-
+USER $USER
 CMD tail -F /home/root/.bashrc
