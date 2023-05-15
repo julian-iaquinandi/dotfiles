@@ -3,6 +3,21 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
+
+# COPY ./scripts/ /home/
+# COPY ./scripts/init.yml /root/init.yml
+
+# RUN bash ~/init
+
+RUN apt-get update && apt install -y software-properties-common git ansible
+RUN git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
+RUN bash ~/dotfiles/ansible/init
+# RUN bash $HOME/dotfiles/ansible/scripts/docker-init
+
+# USER $USER
+CMD tail -F /home/root/.bashrc
+
+
 # ENV USER=kd
 # ENV PASSWORD=q
 
@@ -13,10 +28,3 @@ ENV TZ=Europe/Moscow
 # RUN apt-get update && apt-get -y install sudo
 
 # RUN sed -i 's/htt[p|ps]:\/\/archive.ubuntu.com\/ubuntu\//mirror:\/\/mirrors.ubuntu.com\/mirrors.txt/g' /etc/apt/sources.list
-RUN apt-get update && apt install -y python3 git ansible 
-RUN git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
-
-RUN bash $HOME/dotfiles/ansible/scripts/docker-init
-
-# USER $USER
-CMD tail -F /home/root/.bashrc

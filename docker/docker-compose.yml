@@ -7,8 +7,8 @@ services:
       args: 
         DEBIAN_FRONTEND: noninteractive
 
-    volumes:
-      - ./scripts:/home/scripts
+    # volumes:
+      # - ./scripts:/home/scripts
 
 
 

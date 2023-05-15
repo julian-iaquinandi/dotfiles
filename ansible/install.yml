@@ -1,0 +1,17 @@
+- name: install
+  hosts: localhost
+  become: true
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: root
+  tasks:
+    - name: Install stow
+      apt: name=stow
+
+    - name: Configure zsh
+      shell: cd ~/dotfiles && stow zsh
+
+    - name: Redirect config file
+      shell: echo "source ~/.config/zsh/.zshrc" > ~/.zshrc

@@ -1,0 +1,7 @@
+apt update -y
+apt install -y python3 git ansible
+git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
+
+ansible-galaxy install -r /home/scripts/ansible/requirements.yml
+ansible-playbook /home/scripts/ansible/install.yml
+
