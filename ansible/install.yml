@@ -36,7 +36,6 @@
     - include: homebrew.yml
     - include: terminal-tools.yml
     - include: nvm.yml
+    - include: bob.yml
 
-    - name: Install bob
-      shell: ~/dotfiles/ansible/git_bin_install --bin-name "bob" --repo-url "https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip app_zip_file=bob-linux-x86_64.zip"
 
