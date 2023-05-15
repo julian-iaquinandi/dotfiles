@@ -30,4 +30,5 @@
       register: bashrc_changed
       changed_when: bashrc_changed is changed
 
+    - include: homebrew.yml
     - include: terminal-tools.yml
