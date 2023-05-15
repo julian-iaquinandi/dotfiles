@@ -18,5 +18,7 @@
     - brew
 
 - name: reload
-  shell: zsh
+  shell: echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
+  tags:
+    - brew
 
