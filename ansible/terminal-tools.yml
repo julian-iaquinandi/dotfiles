@@ -22,24 +22,33 @@
       - tmux
       - stow
 
+- name: Configure tmux
+  shell:
+    cmd: stow tmux
+    chdir: "{{home_dir}}/dotfiles/"
 
-- name: Source zsh
-  shell: . ~/.zshrc
+- name: Configure git
+  shell:
+    cmd: stow git
+    chdir: "{{home_dir}}/dotfiles/"
 
-- name: Check for exa bin
-  stat:
-    path: /home/linuxbrew/.linuxbrew/bin/exa
-  register: exa_bin
-
-# - name: Instal brew apps
-#   community.general.homebrew:
-#     name:
-#       - lazygit
-#       - dust
-#       - gh
-#       - sd
-#       - xh
-#       - exa
-- name: test
-  shell: brew install dust
-  when:  exa_bin.stat.exists == false
+# - name: Source zsh
+#   shell: . ~/.zshrc
+#
+# - name: Check for exa bin
+#   stat:
+#     path: /home/linuxbrew/.linuxbrew/bin/exa
+#   register: exa_bin
+#
+# # - name: Instal brew apps
+# #   community.general.homebrew:
+# #     name:
+# #       - lazygit
+# #       - dust
+# #       - gh
+# #       - sd
+# #       - xh
+# #       - exa
+# - name: test
+#   shell: brew install dust
+#   when:  exa_bin.stat.exists == false
