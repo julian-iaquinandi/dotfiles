@@ -14,3 +14,9 @@
   file:
     path: "~/.local/bin/bob"
     mode: "u+x"
+
+- name: Install neovim
+  shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
+
+- name: Configure jujuvim
+  shell: cd ~/dotfiles && stow jujuvim
