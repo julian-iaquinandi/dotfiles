@@ -12,10 +12,10 @@ RUN echo "root:$PASSWORD" | chpasswd
 # RUN usermod -aG sudo $USER
 # RUN apt-get update && apt-get -y install sudo
 
-RUN apt-get update && apt-get upgrade -y && apt install -y python3 git ansible 
+RUN apt-get update && apt install -y python3 git ansible 
 RUN git clone https://github.com/julian-iaquinandi/dotfiles ~/dotfiles
 
-RUN bash ~/dotfiles/ansible/scripts/docker-init $PASSWORD
+RUN bash $HOME/dotfiles/ansible/scripts/docker-init $PASSWORD
 
-USER $USER
+# USER $USER
 CMD tail -F /home/root/.bashrc
