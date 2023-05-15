@@ -24,13 +24,11 @@
 
 - name: Configure tmux
   shell:
-    cmd: stow tmux
-    chdir: "{{home_dir}}/dotfiles/"
+    cmd: cd ~/dotfiles && stow tmux
 
 - name: Configure git
   shell:
-    cmd: stow git
-    chdir: "{{home_dir}}/dotfiles/"
+    cmd: cd ~/dotfiles && stow git
 
 # - name: Source zsh
 #   shell: . ~/.zshrc
