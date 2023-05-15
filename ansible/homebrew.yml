@@ -17,3 +17,6 @@
   tags:
     - brew
 
+- name: reload
+  shell: zsh
+
