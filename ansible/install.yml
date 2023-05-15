@@ -34,7 +34,7 @@
       changed_when: bashrc_changed is changed
 
     # - include: homebrew.yml
-    # - include: terminal-tools.yml
+    - include: terminal-tools.yml
     # - include: nvm.yml
     - include: bob.yml
 
