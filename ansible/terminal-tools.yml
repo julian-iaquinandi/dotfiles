@@ -1,0 +1,29 @@
+tasks:
+  - name: Install Sudo
+    package:
+      name:
+        - sudo
+
+  - name: Update and Upgrade Apt
+    apt:
+      upgrade: yes
+      update_cache: true
+      cache_valid_time: 3600
+      force_apt_get: true
+
+  - name: Install Packages
+    package:
+      name:
+        - trash-cli
+        - python3-pip
+        - silversearcher-ag
+        - fd-find
+        - ripgrep
+        - bat
+        - unzip
+        - fzf
+        - duf
+        - ncdu
+        - tmux
+        - stow
+
