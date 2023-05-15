@@ -24,7 +24,7 @@
 
 
 - name: Source zsh
-  shell: source ~/.zshrc
+  shell: . ~/.zshrc
 
 - name: Check for exa bin
   stat:
