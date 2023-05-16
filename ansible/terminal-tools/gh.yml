@@ -1,0 +1,17 @@
+- name: Download exa
+  shell: cd ~ && wget https://github.com/cli/cli/releases/download/v2.29.0/gh_2.29.0_linux_amd64.tar.gz
+
+- name: Unzip file
+  shell: cd ~ && unzip gh_2.29.0_linux_amd64.tar.gz
+
+- name: Copy extracted files
+  copy:
+    src: "~/gh_2.29.0_linux_arm64/bin/gh"
+    dest: "~/.local/bin/"
+    remote_src: true
+
+- name: Make file executable
+  file:
+    path: "~/.local/bin/lazygit"
+    mode: "u+x"
+

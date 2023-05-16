@@ -25,12 +25,12 @@
 - name: Install exa
   include: terminal-tools/exa.yml
 
+- name: Install lazygit
+  include: terminal-tools/exa.yml
 
-# - name: Install foo
-#   community.general.snap:
-#     name:
-#       - lazygit
-#       - dust
+- name: Install dust
+  shell: deb-get install du-dust
+
 
 - name: Configure tmux
   shell:

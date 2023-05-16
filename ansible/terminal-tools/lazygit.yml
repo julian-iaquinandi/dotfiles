@@ -1,0 +1,17 @@
+- name: Download exa
+  shell: cd ~ && wget https://github.com/jesseduffield/lazygit/releases/download/v0.38.2/lazygit_0.38.2_Linux_x86_64.tar.gz
+
+- name: Unzip file
+  shell: cd ~ && unzip lazygit_0.38.2_Linux_x86_64.tar.gz
+
+- name: Copy extracted files
+  copy:
+    src: "~/lazygit_0.38.2_Linux_x86_64/lazygit"
+    dest: "~/.local/bin/"
+    remote_src: true
+
+- name: Make file executable
+  file:
+    path: "~/.local/bin/lazygit"
+    mode: "u+x"
+
