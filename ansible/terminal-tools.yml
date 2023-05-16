@@ -5,7 +5,7 @@
     cache_valid_time: 3600
     force_apt_get: true
 
-- name: Install Packages
+- name: Install Apt Packages
   package:
     name:
       - curl
@@ -26,12 +26,12 @@
   include: terminal-tools/exa.yml
 
 - name: Install lazygit
-  include: terminal-tools/exa.yml
+  include: terminal-tools/terminal-tools.yml
 
-- name: Install dust
-  shell: deb-get install du-dust
+- name: Install gh
+  include: terminal-tools/gh.yml
 
-
+# Configure
 - name: Configure tmux
   shell:
     cmd: cd ~/dotfiles && stow tmux
