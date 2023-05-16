@@ -22,6 +22,16 @@
       - tmux
       - stow
 
+- name: Install exa
+  include: terminal-tools/exa.yml
+
+
+# - name: Install foo
+#   community.general.snap:
+#     name:
+#       - lazygit
+#       - dust
+
 - name: Configure tmux
   shell:
     cmd: cd ~/dotfiles && stow tmux
@@ -41,12 +51,9 @@
 # # - name: Instal brew apps
 # #   community.general.homebrew:
 # #     name:
-# #       - lazygit
-# #       - dust
 # #       - gh
 # #       - sd
 # #       - xh
-# #       - exa
 # - name: test
 #   shell: brew install dust
 #   when:  exa_bin.stat.exists == false
