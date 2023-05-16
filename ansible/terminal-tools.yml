@@ -23,7 +23,7 @@
       - stow
 
 - name: Install exa
-  shell: ~/dotfiles/ansible/git_scripts/git_install ogham exa
+  shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
 
 # - name: Install lazygit
 #   include: terminal-tools/lazygit.yml
