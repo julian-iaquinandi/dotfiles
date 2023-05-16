@@ -23,13 +23,13 @@
       - stow
 
 - name: Install exa
-  include: terminal-tools/exa.yml
+  shell: ~/dotfiles/ansible/git_scripts/git_install ogham exa
 
-- name: Install lazygit
-  include: terminal-tools/lazygit.yml
+# - name: Install lazygit
+#   include: terminal-tools/lazygit.yml
 
-- name: Install gh
-  include: terminal-tools/gh.yml
+# - name: Install gh
+#   include: terminal-tools/gh.yml
 
 # Configure
 - name: Configure tmux

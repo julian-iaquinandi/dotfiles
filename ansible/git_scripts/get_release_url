@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Variables
+repo=$1       # Replace with the desired repo.
+arch="x86_64" # Replace with the desired architecture.
+
+# Get the JSON data for the latest release.
+latest_release=$(curl -s "https://api.github.com/repos/${repo}/releases/latest")
+
+# Check if the latest release data is valid JSON.
+if ! jq empty <<<"${latest_release}" >/dev/null 2>&1; then
+	echo "Failed to fetch the latest release for repo: ${repo}"
+	exit 1
+fi
+
+# Extract the assets list from the release data.
+assets=$(echo "${latest_release}" | jq -c '.assets[]')
+
+# Loop over each asset in the assets list.
+while IFS= read -r asset; do
+	# Extract the name of the asset.
+	asset_name=$(echo "${asset}" | jq -r '.name')
+
+	# Check if the asset name contains the architecture.
+	if [[ "${asset_name}" == *"${arch}"* ]]; then
+		# Extract the download URL for the asset.
+		download_url=$(echo "${asset}" | jq -r '.browser_download_url')
+
+		# Print the download URL.
+		echo "${download_url}"
+		exit 0
+	fi
+done <<<"${assets}"
+
+# If we made it here, we didn't find an asset for the specified architecture.
+echo "No asset found for architecture: ${arch}"
+exit 1

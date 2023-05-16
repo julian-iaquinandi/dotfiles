@@ -1,0 +1,9 @@
+author=$1
+repo=$2
+
+latest_release=$(./get_latest_release $author/$repo)
+
+echo $latest_release
+
+./dl_and_install_bin $latest_release $repo
+
