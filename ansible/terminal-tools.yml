@@ -26,7 +26,7 @@
   include: terminal-tools/exa.yml
 
 - name: Install lazygit
-  include: terminal-tools/terminal-tools.yml
+  include: terminal-tools/lazygit.yml
 
 - name: Install gh
   include: terminal-tools/gh.yml
