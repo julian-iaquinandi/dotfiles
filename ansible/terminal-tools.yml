@@ -26,9 +26,8 @@
 #   shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
  
 - name: This command will change the working directory to somedir/
-  ansible.builtin.shell:
-    cmd: git_installer ogham exa
-    chdir: ~/dotfiles/ansible/git_scripts/
+  shell:
+    cmd: cd ~/dotfiles/ansible/git_scripts/ && git_installer.sh ogham exa
 
 # - name: Install lazygit
 #   include: terminal-tools/lazygit.yml
