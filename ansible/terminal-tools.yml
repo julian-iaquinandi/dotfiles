@@ -22,8 +22,13 @@
       - tmux
       - stow
 
-- name: Install exa
-  shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
+# - name: Install exa
+#   shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
+ 
+- name: This command will change the working directory to somedir/
+  ansible.builtin.shell:
+    cmd: git_installer ogham exa
+    chdir: ~/dotfiles/ansible/git_scripts/
 
 # - name: Install lazygit
 #   include: terminal-tools/lazygit.yml
