@@ -27,7 +27,7 @@
  
 - name: This command will change the working directory to somedir/
   shell:
-    cmd: cd ~/dotfiles/ansible/git_scripts/ && git_installer.sh ogham exa
+    cmd: cd ~/dotfiles/ansible/git_scripts && git_installer.sh ogham exa
 
 # - name: Install lazygit
 #   include: terminal-tools/lazygit.yml
