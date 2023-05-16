@@ -1,3 +1,5 @@
+#!bin/bash
+
 author=$1
 repo=$2
 
@@ -6,4 +8,3 @@ latest_release=$(bash ~/dotfiles/ansible/git_scripts/get_release_url $author/$re
 echo $latest_release
 
 bash ~/dotfiles/ansible/git_scripts/dl_and_install_bin $latest_release $repo
-
