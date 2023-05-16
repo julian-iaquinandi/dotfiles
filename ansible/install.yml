@@ -35,7 +35,9 @@
 
     # - include: homebrew.yml
     - include: terminal-tools.yml
-    # - include: nvm.yml
+    - include: nvm.yml
     - include: bob.yml
+    - include: rust.yml
+
 
 
