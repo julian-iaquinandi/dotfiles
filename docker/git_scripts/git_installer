@@ -1,10 +1,10 @@
-#!bin/bash
-
 author=$1
 repo=$2
 
-latest_release=$(bash ~/dotfiles/ansible/git_scripts/get_release_url $author/$repo)
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
+latest_release=$(bash $parent_path/get_release_url $author/$repo)
 
 echo $latest_release
 
-bash ~/dotfiles/ansible/git_scripts/dl_and_install_bin $latest_release $repo
+bash $parent_path/dl_and_install_bin $latest_release $repo

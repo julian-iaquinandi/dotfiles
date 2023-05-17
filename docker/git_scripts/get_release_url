@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Variables
 repo=$1       # Replace with the desired repo.
 arch="x86_64" # Replace with the desired architecture.
