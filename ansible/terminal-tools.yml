@@ -26,7 +26,7 @@
 #   shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
  
 - name: Install exa
-  shell: git_installer ogham exa
+  shell: ~/dotfiles/ansible/git_installer ogham exa
 
 # - name: Install lazygit
 #   include: terminal-tools/lazygit.yml
