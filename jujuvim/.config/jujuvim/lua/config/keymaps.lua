@@ -53,6 +53,9 @@ key.set("n", "<leader>x", ":wqa<cr>", { desc = "Quit Neovim" })
 key.set("n", "<leader>X", ":qa!<cr>", { desc = "Quit Neovim" })
 key.set("n", "<leader>z", "<cmd> notify.dismiss()<CR>", { desc = "Dismiss notify" })
 
+key.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+key.set("n", "<leader>e", ":Oil --float .<cr>", { desc = "Open parent directory" })
+
 -- zoom
 -- vim.cmd([[tnoremap <A-S-;> <C-\><C-n><C-w>>]])
 -- vim.cmd([[inoremap <A-j> <C-w>h]])
