@@ -6,7 +6,7 @@ return {
       {
         "<leader>cc",
         function()
-          require("neogen").generate {}
+          require("neogen").generate({})
         end,
         desc = "Neogen Comment",
       },
@@ -62,14 +62,14 @@ return {
       --   cache_enabled = 1,
       -- }
 
-      require("yanky").setup {
+      require("yanky").setup({
         highlight = {
           timer = 150,
         },
         ring = {
-          storage = jit.os:find "Windows" and "shada" or "sqlite",
+          storage = jit.os:find("Windows") and "shada" or "sqlite",
         },
-      }
+      })
 
       vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 
@@ -95,7 +95,7 @@ return {
       vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 
       vim.keymap.set("n", "<leader>P", function()
-        require("telescope").extensions.yank_history.yank_history {}
+        require("telescope").extensions.yank_history.yank_history({})
       end, { desc = "Paste from Yanky" })
     end,
   },
@@ -109,8 +109,8 @@ return {
       { "<C-x>", function() return require("dial.map").dec_normal() end, expr = true, desc = "Decrement" },
     },
     config = function()
-      local augend = require "dial.augend"
-      require("dial.config").augends:register_group {
+      local augend = require("dial.augend")
+      require("dial.config").augends:register_group({
         default = {
           augend.integer.alias.decimal,
           augend.integer.alias.hex,
@@ -118,7 +118,7 @@ return {
           augend.constant.alias.bool,
           augend.semver.alias.semver,
         },
-      }
+      })
     end,
   },
 
@@ -128,4 +128,8 @@ return {
     config = true,
   },
 
+  {
+    "github/copilot.vim",
+    event = "VimEnter",
+  },
 }

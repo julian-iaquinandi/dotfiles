@@ -6,14 +6,13 @@ return {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       config = function()
-        local telescope = require('telescope')
-        telescope.load_extension "fzf"
-
+        local telescope = require("telescope")
+        telescope.load_extension("fzf")
       end,
     },
 
     config = function()
-      local telescope = require('telescope')
+      local telescope = require("telescope")
       local actions = require("telescope.actions")
 
       telescope.setup({
@@ -23,13 +22,13 @@ return {
               ["<esc>"] = actions.close,
             },
           },
-          sorting_strategy = "ascending",  -- display results top->bottom
+          sorting_strategy = "ascending", -- display results top->bottom
           layout_config = {
-            prompt_position = "top"  -- search bar at the top
+            prompt_position = "top", -- search bar at the top
           },
 
           layout_config = {
-            width = 0.8
+            width = 0.8,
             -- other layout configuration here
           },
         },
@@ -45,13 +44,13 @@ return {
       {
         "<leader>fp",
         function()
-          require("telescope.builtin").find_files {
+          require("telescope.builtin").find_files({
             cwd = require("lazy.core.config").options.root,
-          }
+          })
         end,
         desc = "Find Plugin File",
       },
-      { "<leader>p", "<cmd> Telescope find_files <CR>", desc = "find files" },
+      { "<leader>p", "<cmd>Telescope oldfiles<cr>", desc = "recent files" },
       { "<leader>ff", "<cmd> Telescope find_files <CR>", desc = "find files" },
       { "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "find all" },
       { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "live grep" },

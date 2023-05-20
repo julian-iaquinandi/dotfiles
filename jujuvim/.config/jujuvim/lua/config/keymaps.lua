@@ -50,6 +50,8 @@ key.set("n", "<leader>m", ":bn<cr>", { desc = "Last buffer" })
 key.set("n", "<leader>x", ":wq<cr>", { desc = "Quit Neovim" })
 key.set("n", "<leader>z", "<cmd> notify.dismiss()<CR>", { desc = "Dismiss notify" })
 
+-- key.set("n", "<leader>e", ":Neotree position=float reveal<CR>", { desc = "Tree" })
+
 -- zoom
 -- vim.cmd([[tnoremap <A-S-;> <C-\><C-n><C-w>>]])
 -- vim.cmd([[inoremap <A-j> <C-w>h]])

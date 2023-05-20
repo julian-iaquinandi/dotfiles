@@ -1,6 +1,39 @@
 return {
-  { 
+  {
     "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
+    keys = {
+      {
+        "<leader>e",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = require("lazyvim.util").get_root(),
+            position = "float",
+            reveal = true,
+          })
+        end,
+        desc = "Explorer NeoTree",
+      },
+      {
+        "<leader>EE",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd(), position = "float" })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
+      {
+        "<leader>ER",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = require("lazyvim.util").get_root(),
+            position = "float",
+          })
+        end,
+        desc = "Explorer NeoTree (root)",
+      },
+    },
     opts = {
       filesystem = {
         bind_to_cwd = false,
@@ -20,8 +53,8 @@ return {
           expander_highlight = "NeoTreeExpander",
         },
       },
-    }
-  }
+    },
+  },
 }
 
 -- Defaults
