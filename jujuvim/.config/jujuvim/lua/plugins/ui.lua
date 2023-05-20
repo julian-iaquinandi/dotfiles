@@ -1,12 +1,43 @@
 -- style windows with different colorschemes
 return {
+  {
+    "rcarriga/nvim-notify",
+    keys = {
+      {
+        "<leader>un",
+        function()
+          require("notify").dismiss({ silent = true, pending = true })
+        end,
+        desc = "Dismiss all Notifications",
+      },
+    },
+    opts = {
+      timeout = 3000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+    },
+    init = function()
+      -- when noice is not enabled, install notify on VeryLazy
+      local Util = require("lazyvim.util")
+      if not Util.has("noice.nvim") then
+        Util.on_very_lazy(function()
+          vim.notify = require("notify")
+        end)
+      end
+    end,
+  },
+
   -- floating winbar
   {
     "b0o/incline.nvim",
     event = "BufReadPre",
     config = function()
       local colors = require("tokyonight.colors").setup()
-      require("incline").setup {
+      require("incline").setup({
         highlight = {
           groups = {
             InclineNormal = { guibg = "#FC56B1", guifg = colors.black },
@@ -19,7 +50,7 @@ return {
           local icon, color = require("nvim-web-devicons").get_icon_color(filename)
           return { { icon, guifg = color }, { " " }, { filename } }
         end,
-      }
+      })
     end,
   },
 
@@ -52,9 +83,9 @@ return {
     "petertriho/nvim-scrollbar",
     event = "BufReadPost",
     config = function()
-      local scrollbar = require "scrollbar"
+      local scrollbar = require("scrollbar")
       local colors = require("tokyonight.colors").setup()
-      scrollbar.setup {
+      scrollbar.setup({
         handle = { color = colors.bg_highlight },
         excluded_filetypes = { "prompt", "TelescopePrompt", "noice", "notify" },
         marks = {
@@ -65,7 +96,7 @@ return {
           Hint = { color = colors.hint },
           Misc = { color = colors.purple },
         },
-      }
+      })
     end,
   },
 
@@ -81,9 +112,9 @@ return {
     config = function()
       vim.o.winwidth = 5
       vim.o.equalalways = false
-      require("windows").setup {
+      require("windows").setup({
         animation = { enable = false, duration = 150 },
-      }
+      })
     end,
   },
 }

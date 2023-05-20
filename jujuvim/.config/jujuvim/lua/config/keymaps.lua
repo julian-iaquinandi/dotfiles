@@ -44,14 +44,14 @@ key.set("n", "<leader>bp", "<cmd> bp <CR>", { desc = "Previous buffer" })
 
 -- file operations
 key.set("n", "<leader>w", ":w<cr>", { desc = "Write File" })
+key.set("n", "<leader>W", ":wa<cr>", { desc = "Write File" })
+key.set("n", "<leader>n", ":bp<cr>", { desc = "Last buffer" })
+key.set("n", "<leader>m", ":bn<cr>", { desc = "Next buffer" })
 key.set("n", "<leader>q", ":bd<cr>", { desc = "Close File" })
 key.set("n", "<leader>Q", ":bd!<cr>", { desc = "Force close File" })
-key.set("n", "<leader>m", ":bn<cr>", { desc = "Last buffer" })
 key.set("n", "<leader>x", ":wqa<cr>", { desc = "Quit Neovim" })
 key.set("n", "<leader>X", ":qa!<cr>", { desc = "Quit Neovim" })
 key.set("n", "<leader>z", "<cmd> notify.dismiss()<CR>", { desc = "Dismiss notify" })
-
--- key.set("n", "<leader>e", ":Neotree position=float reveal<CR>", { desc = "Tree" })
 
 -- zoom
 -- vim.cmd([[tnoremap <A-S-;> <C-\><C-n><C-w>>]])
