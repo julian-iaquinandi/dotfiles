@@ -58,6 +58,17 @@ return {
       }
     end,
   },
+
+  {
+    "f-person/git-blame.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>gbt", "<cmd> GitBlameToggle <CR>", desc = "git-blame toggle" },
+      { "<leader>gbs", "<cmd> GitBlameCopySHA <CR>", desc = "git-blame copy sha" },
+      { "<leader>gbc", "<cmd> GitBlameCopyCommitURL <CR>", desc = "git-blame copy file url" },
+      { "<leader>gbf", "<cmd> GitBlameCopyFileURL <CR>", desc = "git-blame copy file url" },
+    },
+  },
 }
 
 -- {
