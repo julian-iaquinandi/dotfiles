@@ -21,6 +21,15 @@ return {
     end,
   },
 
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup({
+        height = 15, -- height of the trouble list when position is top or bottom
+      })
+    end,
+  },
+
   { "shaunsingh/oxocarbon.nvim" },
   { "ellisonleao/gruvbox.nvim" },
   { "rose-pine/neovim", name = "rose-pine" },
