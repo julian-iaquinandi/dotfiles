@@ -54,14 +54,3 @@ key.set("n", "<leader>X", ":qa!<cr>", { desc = "quit neovim" })
 
 key.set("n", "-", require("oil").open, { desc = "open parent directory" })
 key.set("n", "<leader>e", ":Oil --float<cr>", { desc = "open parent directory" })
-
--- trouble
-key.set("n", "xx", "", { desc = "" })
-key.set("n", "xX", "", { desc = "" })
-key.set("n", "xL", "", { desc = "" })
-key.set("n", "xQ", "", { desc = "" })
-
-key.set("n", "tt", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "document diagnostics (trouble)" })
-key.set("n", "tT", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "workspace disagnostics (trouble)" })
-key.set("n", "tL", "<cmd>TroubleToggle loclist<cr>", { desc = "localtion list (trouble)" })
-key.set("n", "tQ", "<cmd>TroubleToggle quickfix<cr>", { desc = "quickfix list (trouble)" })

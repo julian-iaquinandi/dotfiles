@@ -28,6 +28,22 @@ return {
         height = 15, -- height of the trouble list when position is top or bottom
       })
     end,
+    keys = {
+      { "<leader>xx", "", desc = "" },
+      { "<leader>xX", "", desc = "" },
+      { "<leader>xL", "", desc = "" },
+      { "<leader>xQ", "", desc = "" },
+
+      { "<leader>tt", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "document diagnostics (trouble)" },
+      { "<leader>tT", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "workspace disagnostics (trouble)" },
+      { "<leader>tL", "<cmd>TroubleToggle loclist<cr>", desc = "location list (trouble)" },
+      { "<leader>tQ", "<cmd>TroubleToggle quickfix<cr>", desc = "quickfix list (trouble)" },
+
+      { "gr", "<cmd>TroubleToggle lsp_references<cr>", desc = "go to referennce (trouble)" },
+      { "gi", "<cmd>TroubleToggle lsp_implementations<cr>", desc = "go to reference (trouble)" },
+      { "gs", "<cmd>TroubleToggle lsp_definitions<cr>", desc = "go to definitions (trouble)" },
+      { "gt", "<cmd>TroubleToggle lsp_type_definitions<cr>", desc = "go to type (trouble)" },
+    },
   },
 
   { "shaunsingh/oxocarbon.nvim" },
