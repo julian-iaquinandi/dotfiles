@@ -100,28 +100,6 @@ return {
     end,
   },
 
-  -- better increase/descrease
-  {
-    "monaqa/dial.nvim",
-    -- stylua: ignore
-    keys = {
-      { "<C-a>", function() return require("dial.map").inc_normal() end, expr = true, desc = "Increment" },
-      { "<C-x>", function() return require("dial.map").dec_normal() end, expr = true, desc = "Decrement" },
-    },
-    config = function()
-      local augend = require("dial.augend")
-      require("dial.config").augends:register_group({
-        default = {
-          augend.integer.alias.decimal,
-          augend.integer.alias.hex,
-          augend.date.alias["%Y/%m/%d"],
-          augend.constant.alias.bool,
-          augend.semver.alias.semver,
-        },
-      })
-    end,
-  },
-
   {
     "simrat39/symbols-outline.nvim",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
@@ -131,5 +109,26 @@ return {
   {
     "github/copilot.vim",
     event = "VimEnter",
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  },
+
+  {
+    "Wansmer/treesj",
+    keys = { "<leader>tm", "<leader>tj", "<space>ts" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesj").setup({--[[ your config ]]
+      })
+    end,
   },
 }

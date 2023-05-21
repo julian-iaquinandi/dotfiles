@@ -7,7 +7,7 @@ return {
       {
         "<leader>op",
         function()
-          local peek = require "peek"
+          local peek = require("peek")
           if peek.is_open() then
             peek.close()
           else
@@ -49,6 +49,27 @@ return {
         -- Available modes for `mode`: foreground, background,  virtualtext
         mode = "background", -- Set the display mode.
         virtualtext = "■",
+      },
+    },
+  },
+
+  {
+    "folke/which-key.nvim",
+    keys = {
+      {
+        "<leader>?w",
+        function()
+          vim.cmd("WhichKey")
+        end,
+        desc = "which-key all keymaps",
+      },
+      {
+        "<leader>?q",
+        function()
+          local input = vim.fn.input("WhichKey: ")
+          vim.cmd("WhichKey " .. input)
+        end,
+        desc = "which-key query lookup",
       },
     },
   },
