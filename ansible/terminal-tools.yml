@@ -32,19 +32,20 @@
       - jq
 
 - name: Install exa
-  shell: gitpm install ogham exa
+  shell: ~/.config/gitpm/gitpm install ogham exa
 
 - name: Install gh
-  shell: /usr/bin/env bash ~/.local/bin/git_installer cli cli
+  shell: ~/.config/gitpm/gitpm cli cli
 
 - name: Install bat
-  shell: /usr/bin/env bash ~/.local/bin/git_installer sharkdp bat
+  shell: ~/.config/gitpm/gitpm sharkdp bat
 
 # - name: Install sd
 #   shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
 
 - name: Install xh
-  shell: /usr/bin/env bash ~/.local/bin/git_installer ducaale xh
+  shell: ~/.config/gitpm/gitpm ducaale xh
+
 
 # Configure
 - name: Configure tmux
