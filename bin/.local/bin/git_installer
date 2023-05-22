@@ -2,9 +2,8 @@
 
 author=$1
 repo=$2
-arch="x86_64" # Replace with the desired architecture.
+log_file="repo_log.txt"  # Log file name
 
-# parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # Variables
 
 function latest_rel() {
@@ -17,27 +16,40 @@ function latest_rel() {
     exit 1
   fi
 
+  # Extract the version from the release data.
+  version=$(echo "${latest_release}" | jq -r '.tag_name')
+
   # Extract the assets list from the release data.
   assets=$(echo "${latest_release}" | jq -c '.assets[]')
+
+  # List of possible architectures
+  arch_list=("x86_64" "amd64")
 
   # Loop over each asset in the assets list.
   while IFS= read -r asset; do
     # Extract the name of the asset.
     asset_name=$(echo "${asset}" | jq -r '.name')
 
-    # Check if the asset name contains the architecture.
-    if [[ "${asset_name}" == *"${arch}"* ]]; then
-      # Extract the download URL for the asset.
-      download_url=$(echo "${asset}" | jq -r '.browser_download_url')
+    # Loop over each architecture in the list
+    for arch in "${arch_list[@]}"; do
+      # Check if the asset name contains the architecture.
+      if [[ "${asset_name}" == *"${arch}"* ]]; then
+        # Extract the download URL for the asset.
+        download_url=$(echo "${asset}" | jq -r '.browser_download_url')
 
-      # Print the download URL.
-      echo "${download_url}"
-      exit 0
-    fi
+        # Print the download URL.
+        echo "${download_url}"
+        
+        # Write to log file
+        echo "$1, ${download_url}, ${version}" >> "${log_file}"
+        cat ${log_file}
+        exit 0
+      fi
+    done
   done <<<"${assets}"
 
   # If we made it here, we didn't find an asset for the specified architecture.
-  echo "No asset found for architecture: ${arch}"
+  echo "No asset found for architectures: ${arch_list[*]}"
   exit 1
 }
 
@@ -80,3 +92,41 @@ function dl_and_install_bin() {
 latest_release=$(latest_rel $author/$repo)
 echo $latest_release
 dl_and_install_bin $latest_release $repo
+
+
+
+#
+# function latest_rel() {
+#   # Get the JSON data for the latest release.
+#   latest_release=$(curl -s "https://api.github.com/repos/$1/releases/latest")
+#
+#   # Check if the latest release data is valid JSON.
+#   if ! jq empty <<<"${latest_release}" >/dev/null 2>&1; then
+#     echo "Failed to fetch the latest release for repo: $1"
+#     exit 1
+#   fi
+#
+#   # Extract the assets list from the release data.
+#   assets=$(echo "${latest_release}" | jq -c '.assets[]')
+#
+#   # Loop over each asset in the assets list.
+#   while IFS= read -r asset; do
+#     # Extract the name of the asset.
+#     asset_name=$(echo "${asset}" | jq -r '.name')
+#
+#     # Check if the asset name contains the architecture.
+#     if [[ "${asset_name}" == *"${arch}"* ]]; then
+#       # Extract the download URL for the asset.
+#       download_url=$(echo "${asset}" | jq -r '.browser_download_url')
+#
+#       # Print the download URL.
+#       echo "${download_url}"
+#       exit 0
+#     fi
+#   done <<<"${assets}"
+#
+#   # If we made it here, we didn't find an asset for the specified architecture.
+#   echo "No asset found for architecture: ${arch}"
+#   exit 1
+# }
+#
