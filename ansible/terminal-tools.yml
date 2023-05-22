@@ -26,7 +26,7 @@
 #   shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
  
 - name: Install exa
-  shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
+  shell: /usr/bin/env bash ~/dotfiles/ansible/git_scripts/git_installer ogham exa
 
 # - name: Install gh
 #   include: terminal-tools/gh.yml
