@@ -42,8 +42,8 @@ function latest_rel() {
 
     # Loop over each architecture in the list
     for arch in "${arch_list[@]}"; do
-      # Check if the asset name contains the architecture.
-      if [[ "${asset_name}" == *"${arch}"* ]]; then
+      # Check if the asset name contains the architecture followed by a dash or other non-alphabetic characters.
+      if [[ "${asset_name}" =~ "${arch}"(-|[^a-zA-Z]).* ]]; then
         # Extract the download URL for the asset.
         download_url=$(echo "${asset}" | jq -r '.browser_download_url')
 
