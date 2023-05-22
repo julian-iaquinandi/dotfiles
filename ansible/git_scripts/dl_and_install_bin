@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # URL of the binary archive and the binary name
 url=$1
