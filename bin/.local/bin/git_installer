@@ -15,6 +15,11 @@ log_file="$HOME/.config/git_installer/manifest.json"  # Log file name
 # Create log file directory if it doesn't exist
 mkdir -p $(dirname "${log_file}")
 
+# Check if the log file is a valid JSON array, otherwise initialize it as an empty array
+if ! jq empty "${log_file}" >/dev/null 2>&1; then
+  echo "[]" > "${log_file}"
+fi
+
 # Variables
 declare -A log_item  # Declare associative array for log item
 declare -a log_array  # Declare array for log items
@@ -65,14 +70,18 @@ function latest_rel() {
         # Extract the download URL for the asset.
         download_url=$(echo "${asset}" | jq -r '.browser_download_url')
 
-        # Print the download URL.
+        # Build a new JSON object
+        new_item=$(jq -n --arg repo "$1" --arg url "$download_url" --arg version "$version" \
+          '{repo: $repo, url: $url, version: $version}')
+
+        # Add the new object to the existing array in the file
+        temp=$(jq --argjson new_item "$new_item" '. += [$new_item]' "${log_file}")
+
+        # Write the updated array back to the file
+        echo "${temp}" > "${log_file}"
+        
+        # Print the download URL and exit
         echo "${download_url}"
-        
-        # Store details in log item array
-        log_item=(["repo"]=$1 ["url"]=$download_url ["version"]=$version)
-        
-        # Append log item to log array
-        log_array+=("$(declare -p log_item)")
         
         exit 0
       fi
