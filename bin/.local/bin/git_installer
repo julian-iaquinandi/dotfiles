@@ -25,10 +25,20 @@ function latest_rel() {
   # List of possible architectures
   arch_list=("x86_64" "amd64")
 
+  # List of strings to exclude
+  exclude_list=("deb" "rpm" "src")
+
   # Loop over each asset in the assets list.
   while IFS= read -r asset; do
     # Extract the name of the asset.
     asset_name=$(echo "${asset}" | jq -r '.name')
+
+    # Check if the asset name contains any of the exclude strings.
+    for exclude in "${exclude_list[@]}"; do
+      if [[ "${asset_name}" == *"${exclude}"* ]]; then
+        continue 2
+      fi
+    done
 
     # Loop over each architecture in the list
     for arch in "${arch_list[@]}"; do
@@ -42,7 +52,6 @@ function latest_rel() {
         
         # Write to log file
         echo "$1, ${download_url}, ${version}" >> "${log_file}"
-        cat ${log_file}
         exit 0
       fi
     done
