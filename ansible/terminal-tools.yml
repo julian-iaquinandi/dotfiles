@@ -30,8 +30,17 @@
 - name: Install exa
   shell: /usr/bin/env bash ~/.local/bin/git_installer ogham exa
 
-# - name: Install gh
-#   include: terminal-tools/gh.yml
+- name: Install gh
+  shell: /usr/bin/env bash ~/.local/bin/git_installer cli cli
+
+- name: Install bat
+  shell: /usr/bin/env bash ~/.local/bin/git_installer sharkdp bat
+
+- name: Install sd
+  shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
+
+- name: Install xh
+  shell: /usr/bin/env bash ~/.local/bin/git_installer ducaale xh
 
 # Configure
 - name: Configure tmux
@@ -42,20 +51,3 @@
   shell:
     cmd: cd ~/dotfiles && stow git
 
-# - name: Source zsh
-#   shell: . ~/.zshrc
-#
-# - name: Check for exa bin
-#   stat:
-#     path: /home/linuxbrew/.linuxbrew/bin/exa
-#   register: exa_bin
-#
-# # - name: Instal brew apps
-# #   community.general.homebrew:
-# #     name:
-# #       - gh
-# #       - sd
-# #       - xh
-# - name: test
-#   shell: brew install dust
-#   when:  exa_bin.stat.exists == false
