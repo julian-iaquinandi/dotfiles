@@ -12,6 +12,9 @@ exclude_list=("deb" "rpm" "src" "apple")
 # Specify the path to the log file
 log_file=~/.config/git_installer/manifest.json
 
+# Create log file directory if it doesn't exist
+mkdir -p $(dirname "${log_file}")
+
 # Check if the log file is a valid JSON array, otherwise initialize it as an empty array
 if ! jq empty "${log_file}" >/dev/null 2>&1; then
   echo "[]" > "${log_file}"
