@@ -36,8 +36,8 @@
 - name: Install bat
   shell: /usr/bin/env bash ~/.local/bin/git_installer sharkdp bat
 
-- name: Install sd
-  shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
+# - name: Install sd
+#   shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
 
 - name: Install xh
   shell: /usr/bin/env bash ~/.local/bin/git_installer ducaale xh
