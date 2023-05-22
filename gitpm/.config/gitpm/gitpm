@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+command=$1
+
+if [ "$command" = "install" ]; then
+	author=$2
+	repo=$3
+
+	if check_binary_installed "$author/$repo"; then
+		read -p "$author/$repo is already installed, would you like to re-install?: y/n " reinstall
+
+		if [ $reinstall = "y" || $reinstall = "Y"]; then
+			./git_installer $author $repo
+		fi
+	else
+		./git_installer $author $repo
+	fi
+
+fi
+
+if [ "$command" = "update" ]; then
+	source ./git_updater
+
+	author=$2
+	repo=$3
+
+	if [ "$2" ]; then
+		update_latest_version $2 $3
+	else
+		update_all_latest_versions
+	fi
+fi

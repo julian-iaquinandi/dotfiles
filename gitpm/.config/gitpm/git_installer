@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+author=$1
+repo=$2
+
+# Replace with the desired architecture.
+arch_list=("x86_64" "amd64")
+
+# List of strings to exclude
+exclude_list=("deb" "rpm" "src" "apple")
+
+# Specify the path to the log file
+log_file=~/.config/gitpm/manifest.json
+
+# Create log file directory if it doesn't exist
+mkdir -p $(dirname "${log_file}")
+
+# Check if the log file is a valid JSON array, otherwise initialize it as an empty array
+if ! jq empty "${log_file}" >/dev/null 2>&1; then
+	echo "[]" >"${log_file}"
+fi
+
+# Function to update the installed field in the manifest.json
+function mark_as_installed() {
+	local repo=$1
+	local installed=$2
+
+	# Update the installed field in the manifest.json for the specified repo
+	temp=$(jq --arg repo "$repo" --arg installed "$installed" \
+		'map(if .repo == $repo then . + { installed: $installed } else . end)' "${log_file}")
+
+	# Write the updated array back to the file
+	echo "${temp}" >"${log_file}"
+}
+
+# Variables
+
+function latest_rel() {
+	# Get the JSON data for the latest release.
+	latest_release=$(curl -s "https://api.github.com/repos/$1/releases/latest")
+
+	# Check if the latest release data is valid JSON.
+	if ! jq empty <<<"${latest_release}" >/dev/null 2>&1; then
+		echo "Failed to fetch the latest release for repo: $1"
+		exit 1
+	fi
+
+	# Extract the version from the release data.
+	version=$(echo "${latest_release}" | jq -r '.tag_name')
+
+	# Extract the assets list from the release data.
+	assets=$(echo "${latest_release}" | jq -c '.assets[]')
+
+	# Loop over each asset in the assets list.
+	while IFS= read -r asset; do
+		# Extract the name of the asset.
+		asset_name=$(echo "${asset}" | jq -r '.name')
+
+		# Check if the asset name contains any of the exclude strings.
+		for exclude in "${exclude_list[@]}"; do
+			if [[ "${asset_name}" == *"${exclude}"* ]]; then
+				continue 2
+			fi
+		done
+
+		# Check if the asset name contains the string "linux"
+		if [[ "${asset_name}" != *"linux"* ]]; then
+			continue
+		fi
+
+		# Loop over each architecture in the list
+		for arch in "${arch_list[@]}"; do
+			# Check if the asset name contains the architecture followed by a dash or other non-alphabetic characters.
+			if [[ "${asset_name}" =~ "${arch}"(-|[^a-zA-Z]).* ]]; then
+				# Extract the download URL for the asset.
+				download_url=$(echo "${asset}" | jq -r '.browser_download_url')
+
+				# Build a new JSON object
+				new_item=$(jq -n --arg repo "$1" --arg url "$download_url" --arg version "$version" \
+					'{repo: $repo, url: $url, version: $version, latest_version: $version}, installed: false')
+
+				# Add the new object to the existing array in the file
+				temp=$(jq --argjson new_item "$new_item" '. += [$new_item]' "${log_file}")
+
+				# Write the updated array back to the file
+				echo "${temp}" >"${log_file}"
+
+				# Print the download URL and exit
+				echo "${download_url}"
+				exit 0
+			fi
+		done
+	done <<<"${assets}"
+
+	# If we made it here, we didn't find an asset for the specified architecture.
+	echo "No asset found for architectures: ${arch_list[*]}"
+	exit 1
+}
+
+function dl_and_install_bin() {
+	# Create tmp directory
+	mkdir -p tmp
+
+	# Change to tmp directory
+	cd tmp
+
+	# Get the filename and extension from the URL
+	filename=$(basename $1)
+	extension="${filename##*.}"
+
+	# Download the binary archive
+	wget $1
+
+	# Extract the archive
+	if [ "$extension" = "zip" ]; then
+		unzip $filename
+	elif [ "$extension" = "gz" ]; then
+		tar -xvf $filename
+	else
+		echo "Unsupported file format: $extension"
+		exit 1
+	fi
+
+	# Look for the binary in the root of the extracted folder and in a nested bin folder
+	binary_path=$(find . -type f -name $2 -o -path "*/bin/$2")
+
+	# Move the binary to ~/.local/bin
+	mv $binary_path ~/.local/bin
+
+	# Update the installed field in the manifest.json for the installed package
+	mark_as_installed $2 true
+
+	# Go back to the parent directory and remove the tmp directory
+	cd ..
+	rm -rf tmp
+}
+
+latest_release=$(latest_rel $author/$repo)
+dl_and_install_bin $latest_release $repo

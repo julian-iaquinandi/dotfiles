@@ -1,0 +1,16 @@
+check_binary_installed() {
+  binary_name=$1
+
+  # Check if binary exists in ~/.local/bin
+  #if [ -x "$HOME/.local/bin/$binary_name" ]; then
+  #  return 0
+  #fi
+
+  # Check if binary exists in ~/.config/git_installer/manifest.json
+  if grep -q "\"$binary_name\"" "$HOME/.config/git_installer/manifest.json"; then
+    return 0
+  fi
+
+  return 1
+}
+

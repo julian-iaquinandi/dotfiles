@@ -64,7 +64,7 @@ function latest_rel() {
 
         # Build a new JSON object
         new_item=$(jq -n --arg repo "$1" --arg url "$download_url" --arg version "$version" \
-          '{repo: $repo, url: $url, version: $version}')
+          '{repo: $repo, url: $url, version: $version, latest_version: $version}')
 
         # Add the new object to the existing array in the file
         temp=$(jq --argjson new_item "$new_item" '. += [$new_item]' "${log_file}")
