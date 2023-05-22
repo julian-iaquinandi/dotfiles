@@ -5,6 +5,8 @@
 #   fd "$*" -X bat 
 # }
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 # ------------------------------ Nvim
 alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"

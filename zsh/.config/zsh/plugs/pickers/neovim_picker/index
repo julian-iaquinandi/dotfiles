@@ -1,0 +1,62 @@
+
+neovimconfigs=( $( cat ~/.config/zsh/plugs/neovim/configs.sh ) )
+config=""
+
+neovim_list_configs() {
+  config=$(printf "%s\n" "${neovimconfigs[@]}" | fzf --prompt=" Neovim Config  " --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+}
+
+# Neovim List - list avalible configs
+nvl() {
+  neovim_list_configs
+  echo "${config}"
+}
+
+# Neovim config load 
+nvc() {
+  neovim_list_configs
+  NVIM_APPNAME=$config nvim $@
+}
+
+# Neovim Testbed - copy current config in new folder and bootstrap
+nvt() {
+  neovim_list_configs
+
+  from="$HOME/.config/$config"
+  newconfig="${config}-testbed"
+  to="$HOME/.config/${newconfig}"
+
+  echo "from: ${from} to: ${to}"
+  
+  if [ ! -d "$to" ]; then
+    cp -r "$from" "$to"
+  fi
+
+  NVIM_APPNAME=$newconfig nvim $@
+  # echo "${config}"
+}
+
+nvdc() {
+  local temp_array=()   # Create empty temporary array
+  for element in "${neovimconfigs[@]}"; do   # Loop over each element of the global array
+    temp_array+=("${element}-testbed")   # Append "-testbed" to the element and add it to the temporary array
+  done
+
+  neovimconfigs+=("${temp_array[@]}")   
+
+  local temp_array_2=() 
+  for element in "${neovimconfigs[@]}"; do   
+    if [ -d "$HOME/.config/$element" ]; then
+      temp_array_2+=("$element")
+    fi
+  done
+  neovimconfigs+=("${temp_array_2[@]}")   
+
+  neovim_list_configs
+}
