@@ -43,9 +43,6 @@ function latest_rel() {
 
 function dl_and_install_bin() {
 
-  # url=$1
-  # binary_name=$2
-
   # Create tmp directory
   mkdir -p tmp
 
