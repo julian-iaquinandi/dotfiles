@@ -11,7 +11,7 @@
 
 - name: Configure local bin
   shell:
-    cmd: cd ~/dotfiles && gitpm
+    cmd: cd ~/dotfiles && stow gitpm
 
 - name: Install Apt Packages
   package:
