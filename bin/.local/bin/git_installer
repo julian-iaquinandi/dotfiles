@@ -26,7 +26,7 @@ function latest_rel() {
   arch_list=("x86_64" "amd64")
 
   # List of strings to exclude
-  exclude_list=("deb" "rpm" "src")
+  exclude_list=("deb" "rpm" "src" "apple")
 
   # Loop over each asset in the assets list.
   while IFS= read -r asset; do
@@ -39,6 +39,11 @@ function latest_rel() {
         continue 2
       fi
     done
+
+    # Check if the asset name contains the string "linux"
+    if [[ "${asset_name}" != *"linux"* ]]; then
+      continue
+    fi
 
     # Loop over each architecture in the list
     for arch in "${arch_list[@]}"; do
@@ -61,7 +66,6 @@ function latest_rel() {
   echo "No asset found for architectures: ${arch_list[*]}"
   exit 1
 }
-
 function dl_and_install_bin() {
 
   # Create tmp directory
