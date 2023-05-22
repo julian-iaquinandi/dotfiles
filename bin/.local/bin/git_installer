@@ -84,6 +84,7 @@ function dl_and_install_bin() {
     tar -xvf $filename
   else
     echo "Unsupported file format: $extension"
+    echo "\n FILE: $1 \n"
     exit 1
   fi
 
