@@ -6,6 +6,19 @@ log_file="repo_log.txt"  # Log file name
 
 # Variables
 
+#!/usr/bin/env bash
+
+author=$1
+repo=$2
+log_file="$HOME/.config/git_installer/manifest.json"  # Log file name
+
+# Create log file directory if it doesn't exist
+mkdir -p $(dirname "${log_file}")
+
+# Variables
+declare -A log_item  # Declare associative array for log item
+declare -a log_array  # Declare array for log items
+
 function latest_rel() {
   # Get the JSON data for the latest release.
   latest_release=$(curl -s "https://api.github.com/repos/$1/releases/latest")
@@ -55,8 +68,12 @@ function latest_rel() {
         # Print the download URL.
         echo "${download_url}"
         
-        # Write to log file
-        echo "$1, ${download_url}, ${version}" >> "${log_file}"
+        # Store details in log item array
+        log_item=(["repo"]=$1 ["url"]=$download_url ["version"]=$version)
+        
+        # Append log item to log array
+        log_array+=("$(declare -p log_item)")
+        
         exit 0
       fi
     done
@@ -66,6 +83,7 @@ function latest_rel() {
   echo "No asset found for architectures: ${arch_list[*]}"
   exit 1
 }
+
 function dl_and_install_bin() {
 
   # Create tmp directory
@@ -104,9 +122,10 @@ function dl_and_install_bin() {
 }
 
 latest_release=$(latest_rel $author/$repo)
-echo $latest_release
+
 dl_and_install_bin $latest_release $repo
 
+jq -n '[inputs]' <<<"${log_array[*]}" > "${log_file}"
 
 
 #
