@@ -5,6 +5,10 @@
     cache_valid_time: 3600
     force_apt_get: true
 
+- name: Configure local bin
+  shell:
+    cmd: cd ~/dotfiles && stow bin
+
 - name: Install Apt Packages
   package:
     name:
@@ -26,7 +30,7 @@
 #   shell: ~/dotfiles/ansible/git_scripts/git_installer ogham exa
  
 - name: Install exa
-  shell: /usr/bin/env bash ~/dotfiles/ansible/git_scripts/git_installer ogham exa
+  shell: /usr/bin/env bash ~/.local/bin/git_installer ogham exa
 
 # - name: Install gh
 #   include: terminal-tools/gh.yml
