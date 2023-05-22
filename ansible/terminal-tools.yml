@@ -9,6 +9,10 @@
   shell:
     cmd: cd ~/dotfiles && stow bin
 
+- name: Configure local bin
+  shell:
+    cmd: cd ~/dotfiles && gitpm
+
 - name: Install Apt Packages
   package:
     name:
@@ -28,7 +32,7 @@
       - jq
 
 - name: Install exa
-  shell: /usr/bin/env bash ~/.local/bin/git_installer ogham exa
+  shell: gitpm install ogham exa
 
 - name: Install gh
   shell: /usr/bin/env bash ~/.local/bin/git_installer cli cli
