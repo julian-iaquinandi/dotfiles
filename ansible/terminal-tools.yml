@@ -40,13 +40,23 @@
 - name: Install bat
   shell: ~/.config/gitpm/gitpm sharkdp bat
 
+
 # - name: Install sd
 #   shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
 
 - name: Install xh
   shell: ~/.config/gitpm/gitpm ducaale xh
 
+- name: Install bob
+  shell: ~/.config/gitpm/gitpm MordechaiHadad bob
+
+- name: Install neovim
+  shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
+
 # Configure
+- name: Configure jujuvim
+  shell: cd ~/dotfiles && stow jujuvim
+
 - name: Configure tmux
   shell:
     cmd: cd ~/dotfiles && stow tmux
