@@ -50,8 +50,13 @@
 - name: Install bob
   shell: ~/.config/gitpm/gitpm MordechaiHadad bob
 
-- debug: 
-    msg: "{{ ls ~/.local/bin }}"
+- name: List files and folder in home directory
+  shell: 'ls ~/.local/bin'
+  register: command_output
+
+- debug:
+    var: command_output.stdout_lines
+
 
 - name: Install neovim
   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
