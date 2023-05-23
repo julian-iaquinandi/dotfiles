@@ -50,9 +50,9 @@
 - name: Install bob
   shell: ~/.config/gitpm/gitpm mordechaihadad bob
 
-- name: List files and folder in home directory
-  shell: 'ls ~/.local/bin && cat ~/.config/gitpm/manifest.json'
-  register: command_output
+# - name: List files and folder in home directory
+#   shell: 'ls ~/.local/bin && cat ~/.config/gitpm/manifest.json'
+#   register: command_output
 
 - debug:
     var: command_output.stdout_lines
