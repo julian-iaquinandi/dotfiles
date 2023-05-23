@@ -50,6 +50,9 @@
 - name: Install bob
   shell: ~/.config/gitpm/gitpm MordechaiHadad bob
 
+- name: echo bin
+  shell: ls ~/.local/bin
+
 - name: Install neovim
   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
 
