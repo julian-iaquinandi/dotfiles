@@ -47,8 +47,8 @@
 - name: Install xh
   shell: ~/.config/gitpm/gitpm ducaale xh
 
-- name: Install bob
-  shell: ~/.config/gitpm/gitpm mordechaihadad bob
+# - name: Install bob
+#   shell: ~/.config/gitpm/gitpm mordechaihadad bob
 
 # - name: Install neovim
 #   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
