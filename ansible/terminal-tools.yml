@@ -48,10 +48,10 @@
   shell: ~/.config/gitpm/gitpm ducaale xh
 
 - name: Install bob
-  shell: ~/.config/gitpm/gitpm MordechaiHadad bob
+  shell: ~/.config/gitpm/gitpm mordechaihadad bob
 
 - name: List files and folder in home directory
-  shell: 'ls ~/.local/bin'
+  shell: 'ls ~/.local/bin && cat ~/.config/gitpm/manifest.json'
   register: command_output
 
 - debug:
