@@ -32,7 +32,7 @@
       - jq
 
 - name: Install exa
-  shell: gitpm install ogham exa
+  shell: ~/.config/gitpm/gitpm install ogham exa
 
 - name: Install gh
   shell: ~/.config/gitpm/gitpm cli cli
@@ -45,7 +45,6 @@
 
 - name: Install xh
   shell: ~/.config/gitpm/gitpm ducaale xh
-
 
 # Configure
 - name: Configure tmux
