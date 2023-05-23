@@ -50,16 +50,8 @@
 - name: Install bob
   shell: ~/.config/gitpm/gitpm mordechaihadad bob
 
-# - name: List files and folder in home directory
-#   shell: 'ls ~/.local/bin && cat ~/.config/gitpm/manifest.json'
-#   register: command_output
-
-- debug:
-    var: command_output.stdout_lines
-
-
-- name: Install neovim
-  shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
+# - name: Install neovim
+#   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
 
 # Configure
 - name: Configure jujuvim
