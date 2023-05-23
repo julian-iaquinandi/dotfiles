@@ -51,7 +51,7 @@
   shell: ~/.config/gitpm/gitpm MordechaiHadad bob
 
 - debug: 
-    msg: ls ~/.local/bin
+    msg: "{{ ls ~/.local/bin }}"
 
 - name: Install neovim
   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
