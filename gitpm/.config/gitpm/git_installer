@@ -127,6 +127,9 @@ function dl_and_install_bin() {
 	# Move the binary to ~/.local/bin
 	mv $binary_path ~/.local/bin
 
+	# Move the binary to ~/.local/bin
+	chmod +x "~/.local/bin/$2"
+
 	# Update the installed field in the manifest.json for the installed package
 	mark_as_installed $2 true
 
