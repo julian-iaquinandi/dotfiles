@@ -56,3 +56,6 @@ key.set("n", "-", require("oil").open, { desc = "open parent directory" })
 key.set("n", "<leader>e", ":Oil --float<cr>", { desc = "open parent directory" })
 
 key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent directory", silent = true })
+
+key.set("n", "<C-o>", "<C-o>zz", { desc = "open parent directory", silent = true })
+key.set("n", "<C-i>", "<C-i>zz", { desc = "open parent directory", silent = true })

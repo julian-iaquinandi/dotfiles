@@ -8,6 +8,9 @@ return {
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "jay-babu/mason-nvim-dap.nvim",
+      "sigmasd/deno-nvim",
+      "jose-elias-alvarez/nvim-lsp-ts-utils",
       {
         "hrsh7th/cmp-nvim-lsp",
         cond = function()
@@ -15,6 +18,7 @@ return {
         end,
       },
     },
+
     ---@class PluginLspOpts
     opts = {
       -- options for vim.diagnostic.config()
@@ -45,7 +49,63 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        tsserver = {
+          on_attach = function(client, bufnr)
+            local ts_utils = require("nvim-lsp-ts-utils")
+
+            -- defaults
+            ts_utils.setup({
+              debug = false,
+              disable_commands = false,
+              enable_import_on_completion = false,
+
+              -- import all
+              import_all_timeout = 5000, -- ms
+              -- lower numbers = higher priority
+              import_all_priorities = {
+                same_file = 1, -- add to existing import statement
+                local_files = 2, -- git files or files with relative path markers
+                buffer_content = 3, -- loaded buffer content
+                buffers = 4, -- loaded buffer names
+              },
+              import_all_scan_buffers = 100,
+              import_all_select_source = false,
+              -- if false will avoid organizing imports
+              always_organize_imports = true,
+
+              -- filter diagnostics
+              filter_out_diagnostics_by_severity = {},
+              filter_out_diagnostics_by_code = {},
+
+              -- inlay hints
+              auto_inlay_hints = true,
+              inlay_hints_highlight = "Comment",
+              inlay_hints_priority = 200, -- priority of the hint extmarks
+              inlay_hints_throttle = 150, -- throttle the inlay hint request
+              inlay_hints_format = { -- format options for individual hint kind
+                Type = {},
+                Parameter = {},
+                Enum = {},
+                -- Example format customization for `Type` kind:
+                -- Type = {
+                --     highlight = "Comment",
+                --     text = function(text)
+                --         return "->" .. text:sub(2)
+                --     end,
+                -- },
+              },
+
+              -- update imports on file move
+              update_imports_on_move = false,
+              require_confirmation_on_move = false,
+              watch_dir = nil,
+            })
+            -- required to fix code action ranges and filter diagnostics
+            ts_utils.setup_client(client)
+          end,
+        },
         jsonls = {},
+        denols = {},
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
@@ -60,6 +120,7 @@ return {
           },
         },
       },
+
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
@@ -153,6 +214,10 @@ return {
       if have_mason then
         mlsp.setup({ ensure_installed = ensure_installed })
         mlsp.setup_handlers({ setup })
+        require("mason-nvim-dap").setup({
+          ensure_installed = { "chrome", "js" },
+          handlers = {},
+        })
       end
 
       if Util.lsp_get_config("denols") and Util.lsp_get_config("tsserver") then
@@ -179,6 +244,15 @@ return {
           nls.builtins.diagnostics.fish,
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.shfmt,
+          nls.builtins.formatting.prettierd.with({
+            prefer_local = "node_modules/.bin",
+          }),
+          nls.builtins.diagnostics.eslint_d.with({
+            prefer_local = "node_modules/.bin",
+          }),
+          nls.builtins.code_actions.eslint_d.with({
+            prefer_local = "node_modules/.bin",
+          }),
           -- nls.builtins.diagnostics.flake8,
         },
       }
