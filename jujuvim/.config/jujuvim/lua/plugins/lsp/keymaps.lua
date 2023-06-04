@@ -19,6 +19,7 @@ function M.get()
       { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
       { "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
       { "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto T[y]pe Definition" },
+      { "gm", "<cmd>TSLspOrganize<cr>", desc = "Organise imports"  },
       { "K", vim.lsp.buf.hover, desc = "Hover" },
       { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
       { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
@@ -60,7 +61,6 @@ function M.get()
       }
     else
       M._keys[#M._keys + 1] = { "<leader>cr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
-      M._keys[#M._keys + 1] = { "<leader>cR", ":TSLspRenameFile<cr>", desc = "Rename File", has = "rename" }
     end
   end
   return M._keys
@@ -69,6 +69,11 @@ end
 function M.on_attach(client, buffer)
   local Keys = require("lazy.core.handler.keys")
   local keymaps = {} ---@type table<string,LazyKeys|{has?:string}>
+
+  -- local opts = { silent = true }
+  -- vim.api.nvim_buf_set_keymap(buffer, "n", "gm", ":TSLspOrganize<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(buffer, "n", "gR", ":TSLspRenameFile<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(buffer, "n", "gi", ":TSLspImportAll<CR>", opts)
 
   for _, value in ipairs(M.get()) do
     local keys = Keys.parse(value)

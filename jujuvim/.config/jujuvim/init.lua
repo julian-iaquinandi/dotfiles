@@ -22,6 +22,19 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+-- function OnSave()
+--   vim.cmd("TSLspOrganizeSync")
+--   vim.cmd("TSLspImportAll")
+--   vim.cmd([[ normal :w<cr> ]])
+-- end
+--
+-- vim.cmd([[
+--   augroup on_file_write
+--     autocmd!
+--     autocmd BufWritePost * lua OnSave()
+--   augroup END
+-- ]])
+--
 -- vim.g.profile_loaders = true
 require("config.lazy")
 -- require("config.lazy")({
