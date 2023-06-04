@@ -70,7 +70,7 @@ return {
       -- git
       { "<leader>gc", "<cmd> Telescope git_commits <CR>", desc = "Git commits" },
       { "<leader>gs", "<cmd> Telescope git_status <CR>", desc = "Git status" },
-      { "<leader>gl", "<cmd> LazyGit <CR>", desc = "Lazy Git" },
+      { "<leader>gg", ":LazyGit <CR>", desc = "Lazy Git" },
 
       -- search
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },

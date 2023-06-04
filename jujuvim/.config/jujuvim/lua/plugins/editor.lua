@@ -85,6 +85,14 @@ return {
   },
 
   {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
+  {
     "f-person/git-blame.nvim",
     event = "VeryLazy",
     keys = {
