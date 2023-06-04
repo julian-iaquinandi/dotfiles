@@ -1,6 +1,14 @@
 apt update -y
 apt install -y python3 git ansible curl wget lsb-release
 
+
+# Ranger TODO
+sudo apt install libxext-dev libx11-dev -y
+git clone --depth 1 --branch 18.1.9 https://github.com/seebye/ueberzug.git ~/tmp/ueberzug
+cd ueberzug
+sudo python3 setup.py install
+pip3 install ranger-fm pynvim
+
 # deb-get
 # curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | bash -s install deb-get
 
