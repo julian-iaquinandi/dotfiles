@@ -5,6 +5,7 @@ return {
     "telescope.nvim",
 
     dependencies = {
+      "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       config = function()
@@ -16,6 +17,10 @@ return {
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+
+      local fb_actions = require("telescope").extensions.file_browser.actions
+      telescope.load_extension("file_browser")
+      -- local fb_actions = require("file_browser.actions")
 
       telescope.setup({
         defaults = {
@@ -30,6 +35,20 @@ return {
             width = 0.9,
           },
         },
+        file_browser = {
+          -- disables netrw and use telescope-file-browser in its place
+          hijack_netrw = true,
+          mappings = {
+            ["i"] = {
+              -- your custom insert mode mappings
+              ["<M-S-x>"] = fb_actions.remove,
+              ["<C-S-a"] = fb_actions.rename,
+            },
+            ["n"] = {
+              -- your custom normal mode mappings
+            },
+          },
+        },
         -- pickers = {
         --   find_files = {
         --     theme = "cursor",
@@ -41,6 +60,8 @@ return {
     keys = {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+
+      -- file browser
 
       -- Files
       { "<leader>p", Util.telescope("oldfiles", { cwd = vim.loop.cwd(), hidden = true }), desc = "recent files" },
@@ -73,6 +94,7 @@ return {
       { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
       { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+
       {
         "<leader>ss",
         Util.telescope("lsp_document_symbols", {
@@ -91,6 +113,7 @@ return {
         }),
         desc = "Goto Symbol",
       },
+
       {
         "<leader>sS",
         Util.telescope("lsp_dynamic_workspace_symbols", {
@@ -109,6 +132,7 @@ return {
         }),
         desc = "Goto Symbol (Workspace)",
       },
+
       {
         "<leader>sp",
         function()
@@ -120,19 +144,19 @@ return {
       },
 
       -- overrides
-      { "<leader><space>", "", desc = "" },
-      { "<leader>/", "", desc = "" },
-      { "<leader>fb", "", desc = "" },
-      { "<leader>ff", "", desc = "" },
-      { "<leader>fF", "", desc = "" },
-      { "<leader>fr", "", desc = "" },
-      { "<leader>fR", "", desc = "" },
-      { "<leader>fb", "", desc = "" },
-      { "<leader>fa", "", desc = "" },
-      { "<leader>fe", "", desc = "" },
-      { "<leader>fE", "", desc = "" },
-      { "<leader>fp", "", desc = "" },
-
+      -- { "<leader><space>", "", desc = "" },
+      -- { "<leader>/", "", desc = "" },
+      -- { "<leader>fb", "", desc = "" },
+      -- { "<leader>ff", "", desc = "" },
+      -- { "<leader>fF", "", desc = "" },
+      -- { "<leader>fr", "", desc = "" },
+      -- { "<leader>fR", "", desc = "" },
+      -- { "<leader>fb", "", desc = "" },
+      -- { "<leader>fa", "", desc = "" },
+      -- { "<leader>fe", "", desc = "" },
+      -- { "<leader>fE", "", desc = "" },
+      -- { "<leader>fp", "", desc = "" },
+      --
       -- theme switcher
       -- { "<leader>th", "<cmd> Telescope themes <CR>", desc = "nvchad themes" },
     },
