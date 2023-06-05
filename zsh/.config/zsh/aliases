@@ -7,6 +7,9 @@
 
 bindkey -s ^f "tmux-sessionizer\n"
 
+alias lzd="lazydocker"
+alias lzg="lazygit"
+
 # ------------------------------ Nvim
 alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"

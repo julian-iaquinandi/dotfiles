@@ -1,0 +1,22 @@
+chats=$(find /tmp/chat_cache -type f -exec stat -c '%Y %n' {} \; 2>/dev/null | sort -rn | awk '{print $2}')
+selected_chat=""
+
+list_chats() {
+  chat_names=$(echo "$chats" | xargs -n1 basename)
+  echo "$chat_names\nNew Chat" | fzf --prompt="Select a chat: " --layout=reverse --border --exit-0
+}
+
+selected_chat=$(list_chats)
+
+if [ -z "$selected_chat" ]; then
+  echo "No chat selected."
+elif [ "$selected_chat" = "New Chat" ]; then
+  read -p "Enter the new chat name: " new_chat_name
+  clear
+  sgpt --repl "$new_chat_name" 
+else
+  chat_name=$(echo "$selected_chat" | xargs -n1 basename)
+  echo "Selected chat: $chat_name"
+  clear
+  sgpt --repl "$chat_name"
+fi

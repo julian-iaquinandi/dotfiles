@@ -1,4 +1,3 @@
-
 neovimconfigs=( $( cat ~/.config/zsh/plugs/neovim/configs.sh ) )
 config=""
 
