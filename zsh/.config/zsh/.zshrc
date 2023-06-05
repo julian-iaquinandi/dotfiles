@@ -33,3 +33,4 @@ source ~/.config/zsh/functions
 
 theme=agnoster
 
+OPENAI_API_KEY=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

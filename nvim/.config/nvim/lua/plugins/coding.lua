@@ -106,10 +106,10 @@ return {
     config = true,
   },
 
-  {
-    "github/copilot.vim",
-    event = "VimEnter",
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   event = "VimEnter",
+  -- },
 
   {
     "kylechui/nvim-surround",

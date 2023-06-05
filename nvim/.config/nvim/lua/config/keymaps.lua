@@ -35,6 +35,8 @@ key.set("n", "<leader>rn", "<cmd> set rnu! <CR>", { desc = "toggle relative numb
 
 key.set("n", "<leader>l", "", { desc = "" })
 key.set("n", "<leader>lz", "<cmd> Lazy<cr>", { desc = "Lazy" })
+key.set("n", "<leader>ld", "<cmd> LazyDocker<cr>", { desc = "Lazy Docker" })
+key.set("n", "<leader>lg", "<cmd> LazyGit<cr>", { desc = "Lazy Git" })
 
 -- Buffers
 key.set("n", "<leader>bc", "<cmd> enew <CR>", { desc = "create buffer" })

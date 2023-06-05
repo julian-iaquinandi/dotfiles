@@ -37,6 +37,10 @@ vim.api.nvim_create_autocmd("User", {
 --
 -- vim.g.profile_loaders = true
 require("config.lazy")
+
+require("local.lazydocker") -- This should be correct if your file is at ~/.config/nvim/lua/lazydocker/init.lua
+vim.api.nvim_command('command! LazyDocker lua require("local.lazydocker").open_floating_window()')
+
 -- require("config.lazy")({
 --   debug = false,
 --   defaults = {
