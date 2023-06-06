@@ -9,6 +9,9 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 alias lzd="lazydocker"
 alias lzg="lazygit"
+alias chp="~/.config/zsh/plugs/gpttui/chat_picker"
+
+alias gita="git diff | sgpt 'Generate git commit message, for my changes, keep it short, concise and use emojis'" 
 
 # ------------------------------ Nvim
 alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"

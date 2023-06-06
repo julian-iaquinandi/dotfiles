@@ -145,8 +145,11 @@ return {
 
       -- setup formatting and keymaps
       Util.on_attach(function(client, buffer)
+        -- local format = require("lazyvim.plugins.lsp.format")
+        -- format.setup(client, buffer, opts.format)
+
         require("plugins.lsp.format").on_attach(client, buffer)
-        require("plugins.lsp.keymaps").on_attach(client, buffer)
+        require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
       end)
 
       -- diagnostics
