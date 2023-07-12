@@ -1,0 +1,9 @@
+{
+  "Comment.nvim": { "branch": "master", "commit": "8d3aa5c22c2d45e788c7a5fe13ad77368b783c20" },
+  "dial.nvim": { "branch": "master", "commit": "5020da900cc5dfd7067f181ee2ebd872ca7c84e8" },
+  "lazy.nvim": { "branch": "main", "commit": "4cdc8aa8dbcfee5d7cef1dcbf5159af50214f005" },
+  "leap.nvim": { "branch": "main", "commit": "f74473d23ebf60957e0db3ff8172349a82e5a442" },
+  "neodev.nvim": { "branch": "main", "commit": "13376f7b2098e5665becd2861930085e26fce0a1" },
+  "nvim-surround": { "branch": "main", "commit": "056f69ed494198ff6ea0070cfc66997cfe0a6c8b" },
+  "vim-oscyank": { "branch": "main", "commit": "ffe827a27dae98aa826e2295336c650c9a434da0" }
+}
