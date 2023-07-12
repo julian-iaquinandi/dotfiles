@@ -10,25 +10,18 @@ export TERM=xterm-256color
 export EDITOR=nvim
 
 # Use Kitty as default system terminal
-export TERMINAL=kitty
+export TERMINAL=alacritty
 
 # Load NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/albingroen/Documents/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/albingroen/Documents/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/Users/albingroen/Documents/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/albingroen/Documents/google-cloud-sdk/completion.zsh.inc'; fi
-#
-
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-
-# if [ "$TMUX" = "" ]; then tmux -f ~/.config/tmux/.tmux.conf; fi
-#
-#
-
+# Update PATH
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin/brew"
 
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

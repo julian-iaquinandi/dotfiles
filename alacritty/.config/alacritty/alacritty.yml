@@ -1,7 +1,7 @@
 font:
   normal:
-    family: CodeNewRoman Nerd Font Mono
-  size: 14
+    family: Caskaydia Cove Nerd Font
+  size: 13
 
 window:
   opacity: .9

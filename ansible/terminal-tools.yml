@@ -1,0 +1,67 @@
+- name: Update and Upgrade Apt
+  apt:
+    upgrade: yes
+    update_cache: true
+    cache_valid_time: 3600
+    force_apt_get: true
+
+- name: Configure local bin
+  shell:
+    cmd: cd ~/dotfiles && stow bin
+
+- name: Configure local bin
+  shell:
+    cmd: cd ~/dotfiles && stow gitpm
+
+- name: Install Apt Packages
+  package:
+    name:
+      - curl
+      - wget
+      - trash-cli
+      - python3-pip
+      - silversearcher-ag
+      - fd-find
+      - ripgrep
+      - unzip
+      - fzf
+      - duf
+      - ncdu
+      - tmux
+      - stow
+      - jq
+
+- name: Install exa
+  shell: ~/.config/gitpm/gitpm install ogham exa
+
+- name: Install gh
+  shell: ~/.config/gitpm/gitpm cli cli
+
+- name: Install bat
+  shell: ~/.config/gitpm/gitpm sharkdp bat
+
+
+# - name: Install sd
+#   shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
+
+- name: Install xh
+  shell: ~/.config/gitpm/gitpm ducaale xh
+
+# - name: Install bob
+#   shell: ~/.config/gitpm/gitpm mordechaihadad bob
+
+# - name: Install neovim
+#   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
+
+# Configure
+- name: Configure jujuvim
+  shell: cd ~/dotfiles && stow jujuvim
+
+- name: Configure tmux
+  shell:
+    cmd: cd ~/dotfiles && stow tmux
+
+- name: Configure git
+  shell:
+    cmd: cd ~/dotfiles && stow git
+

@@ -1,0 +1,55 @@
+- name: Command line install
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "{{current_user}}"
+
+  tasks:
+    - name: Create ~/.local/bin directory if it doesn't exist
+      become: true
+      become_method: sudo
+      file:
+        path: ~/.local/bin
+        state: directory
+        mode: '0755'
+
+    - name: Add ~/.local/bin to the PATH environment variable
+      become: true
+      become_method: sudo
+      lineinfile:
+        path: ~/.bashrc
+        line: 'export PATH="$PATH:~/.local/bin"'
+        state: present
+      register: bashrc_changed
+      changed_when: bashrc_changed is changed
+
+    - name: Update and Upgrade Apt
+      become: true
+      become_method: sudo
+      apt:
+        upgrade: yes
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+
+    - name: Install Packages
+      become: true
+      become_method: sudo
+      package:
+        name:
+          - trash-cli
+          - python3-pip
+          - silversearcher-ag
+          - fd-find
+          - ripgrep
+          - bat
+          - unzip
+          - fzf
+          - duf
+          - ncdu
+          - tmux
+          - stow
+

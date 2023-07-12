@@ -1,0 +1,3 @@
+ROLE_PROMPT=$(grep -A 20 "$(grep -oP '(?<=^## ).*' prompts.md | fzf)" prompts.md | grep ">" | head -n 1)
+PROMPT="$(echo "$ROLE_PROMPT" | cut -c 2-)"
+echo $PROMPT

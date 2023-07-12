@@ -1,0 +1,10 @@
+linode-cli linodes create \
+  --image 'linode/ubuntu22.04' \
+  --region eu-west \
+  --type g6-standard-1 \
+  --label dev \
+  --root_pass 'Boomboom12!?rt' \
+  --authorized_users kensleDev \
+  --booted true \
+  --backups_enabled false \
+  --private_ip false

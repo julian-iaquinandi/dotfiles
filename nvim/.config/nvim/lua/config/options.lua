@@ -1,36 +1,38 @@
-vim.o.encoding = "utf-8"
+vim.g.mapleader = " "
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = " "
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.wrap = false
-vim.o.expandtab = true
-vim.o.incsearch = true
-vim.o.tabstop = 2
-vim.o.cursorline = true
-vim.o.ignorecase = true
-vim.o.hlsearch = false
-vim.o.swapfile = false
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.scrolloff = 3
-vim.o.errorbells = false
-vim.o.shiftwidth = 2
-vim.o.numberwidth = 4
--- vim.o.termguicolors = true
-vim.o.colorcolumn = "100"
-vim.o.showmode = false
-vim.o.showtabline = 2
-vim.o.signcolumn = "yes"
-vim.o.mouse = "a"
--- -- from COC
-vim.o.hidden = true
-vim.o.backup = false
-vim.o.writebackup = false
-vim.o.updatetime = 300
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.foldcolumn = "0"
 
+if vim.fn.has("nvim-0.8") == 1 then
+  vim.opt.backup = true
+  vim.opt.cmdheight = 0
+  vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
+end
+
+if vim.g.neovide then
+  vim.opt.guifont = { "FiraCode Nerd Font Mono", "h9" }
+  vim.g.neovide_scale_factor = 0.3
+end
+
+-- vim.g.node_host_prog = "/Users/folke/.pnpm-global/5/node_modules/neovim/bin/cli.js"
+vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
 
-vim.o.t_Co = 256
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.g.gitblame_enabled = 0
+
+require("util.status")

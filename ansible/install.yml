@@ -1,0 +1,43 @@
+- name: install
+  hosts: localhost
+  become: true
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: root
+  tasks:
+    - name: Install stow
+      apt: name=stow
+
+    - name: Install stow
+      apt: name=curl
+
+    - name: Configure zsh
+      shell: cd ~/dotfiles && stow zsh
+
+    - name: Redirect config file
+      shell: echo "source ~/.config/zsh/.zshrc" > ~/.zshrc
+
+    - name: Create ~/.local/bin directory if it doesn't exist
+      file:
+        path: ~/.local/bin
+        state: directory
+        mode: '0755'
+
+    - name: Add ~/.local/bin to the PATH environment variable
+      lineinfile:
+        path: ~/.bashrc
+        line: 'export PATH="$PATH:~/.local/bin"'
+        state: present
+      register: bashrc_changed
+      changed_when: bashrc_changed is changed
+
+    # - include: homebrew.yml
+    - include: terminal-tools.yml
+    - include: nvm.yml
+    # - include: bob.yml
+    - include: rust.yml
+
+
+

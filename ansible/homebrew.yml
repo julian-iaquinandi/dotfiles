@@ -1,0 +1,19 @@
+- name: Check for brew bin
+  stat:
+    path: /home/linuxbrew/.linuxbrew/bin/brew
+  register: brew_bin
+  tags:
+    - brew
+
+- name: Installing Homebrew
+  shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: brew_bin.stat.exists == false
+  tags:
+    - brew
+
+- name: homebrew reload
+  shell: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.zshenv && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  when: brew_bin.stat.exists == false
+  tags:
+    - brew
+

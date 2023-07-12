@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Specify the path to the log file
+log_file=~/.config/git_installer/manifest.json
+
+# Create log file directory if it doesn't exist
+mkdir -p $(dirname "${log_file}")
+
+function update_latest_version() {
+	# Get the JSON data for the latest release.
+	latest_release=$(curl -s "https://api.github.com/repos/$1/$2/releases/latest")
+
+	# Check if the latest release data is valid JSON.
+	if ! jq empty <<<"${latest_release}" >/dev/null 2>&1; then
+		echo "Failed to fetch the latest release for repo: $1"
+		exit 1
+	fi
+
+	# Extract the version from the release data.
+	latest_version=$(echo "${latest_release}" | jq -r '.tag_name')
+
+	# Update the "latest_version" field for the given repository in the JSON file
+	temp=$(jq --arg repo "$1/$2" --arg latest_version "$latest_version" \
+		'.[] | if .repo == $repo then .latest_version = $latest_version else . end' "${log_file}")
+
+	# Write the updated array back to the file
+	echo "${temp}" >"${log_file}"
+}
+
+function update_all_latest_versions() {
+	# Extract the list of repository names from the JSON file
+	repos=($(jq -r '.[].repo' "${log_file}"))
+
+	# Call update_latest_version for each repository
+	update_latest_version "${repos[@]}"
+}

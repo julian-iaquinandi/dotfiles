@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PLAYBOOK_DIR=$HOME/dotfiles/ansible/playbooks
+
+# # Anisble librarys
+ansible-galaxy install gantsign.oh-my-zsh
+ansible-galaxy collection install community.general
+#
+# Base Install
+ansible-playbook $PLAYBOOK_DIR/base/docker_ubuntu_base_install.yml -e "current_user=$USER"
+# ansible-playbook $PLAYBOOK_DIR/base/homebrew_apps.yml
+# ansible-playbook $PLAYBOOK_DIR/base/base_config.yml -e "current_user=$USER" -e "home_dir=$HOME"
+#
+# # Rust
+# ansible-playbook $PLAYBOOK_DIR/langs/rust_install.yml -e "ansible_become_password=$PASSWORD"
+#
+# # Node Version Manager
+# ansible-playbook $PLAYBOOK_DIR/apps/nvm_install.yml
+#
+# # Neovim Version Manager
+# ansible-playbook $PLAYBOOK_DIR/apps/git_bin_install.yml --extra-vars "app_bin_name=bob app_repo_url=https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip app_zip_file=bob-linux-x86_64.zip"
+# ansible-playbook $PLAYBOOK_DIR/apps/neovim_bob_install.yml
+#
+# zsh

@@ -1,0 +1,30 @@
+---
+- name: Install Application From Git
+  hosts: localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    app_repo_url: 'https://github.com/MordechaiHadad/app/releases/download/v2.3.2'
+    app_zip_file: 'app-linux-x86_64.zip'
+    app_bin_directory: '~/.local/bin'
+    app_bin_name: 'bob'
+
+  tasks:
+    - name: Download application
+      shell: wget "{{ app_repo_url }}"
+
+    - name: Unzip application
+      shell: unzip "{{ app_zip_file }}"
+
+    - name: Make dirs
+      shell: mkdir -p "{{ app_bin_directory }}"
+
+    - name: Move application
+      shell: mv "{{app_bin_name}}" "{{ app_bin_directory }}"
+
+    - name: Clean up
+      shell: rm -r "{{ app_zip_file }}"
+
+    - name: Make executable
+      shell: chmod +x "{{ app_bin_directory }}/{{app_bin_name}}"
+

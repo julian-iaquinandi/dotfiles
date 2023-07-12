@@ -1,0 +1,22 @@
+- name: Download Gh
+  shell: cd ~ && wget https://github.com/cli/cli/releases/download/v2.29.0/gh_2.29.0_linux_amd64.tar.gz
+
+# - name: Unzip file
+#   shell: cd ~ && unzip gh_2.29.0_linux_amd64.tar.gz
+
+- name: Extract 
+  ansible.builtin.unarchive:
+    src: ~/gh_2.29.0_linux_amd64.tar.gz
+    dest: ~/gh
+
+- name: Copy extracted files
+  copy:
+    src: "~/gh/bin/gh"
+    dest: "~/.local/bin/"
+    remote_src: true
+
+- name: Make file executable
+  file:
+    path: "~/.local/bin/gh"
+    mode: "u+x"
+

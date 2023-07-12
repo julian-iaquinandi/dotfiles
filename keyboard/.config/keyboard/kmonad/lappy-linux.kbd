@@ -1,0 +1,93 @@
+;; See keymap/tutorial.kbd for a more complete tutorial
+
+(defcfg
+  ;; input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  ;; output (kext)
+  ;; input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
+  ;; output (uinput-sink "My KMonad output" "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
+
+  ;; input  (low-level-hook)
+  ;; output (send-event-sink)
+
+  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "KMonad output")
+
+
+
+
+
+  fallthrough true
+)
+
+(defalias 
+
+  ;; Layers
+  ;;   fn (around (layer-toggle function) fn)
+  num  (layer-toggle numbers)
+  sym  (layer-toggle symbols)
+
+  _num (tap-hold-next-release 200 ret @num)
+  _sym (tap-hold-next-release 200 bspc @sym)
+
+  ;; Home row mods 
+  _ec (tap-hold-next-release 200 esc lctl)
+
+  _a (tap-hold-next-release 200 a lmet)
+  _s (tap-hold-next-release 200 s lalt)
+  _d (tap-hold-next-release 200 d lsft)
+  _f (tap-hold-next-release 200 f lctl)
+  _g (tap-hold-next-release 200 g @num) 
+  _h (tap-hold-next-release 200 h @num)
+  _j (tap-hold-next-release 200 j rctl)
+  _k (tap-hold-next-release 200 k rsft)
+  _l (tap-hold-next-release 200 l ralt)
+  _; (tap-hold-next-release 200 ; rmet)
+)
+
+    
+;; (defalias fn (around (layer-toggle function) fn))
+
+(defsrc
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    
+  caps  a    s    d    f    g    h    j    k    l    ;    '    `    ret
+  lsft  \    z    x    c    v    b    n    m    ,    .    /    rsft up
+  lctl       lmet lalt           spc            ralt rctl left down rght
+)
+
+(deflayer default
+  XX   brdn brup XX   mute vold volu XX   XX   XX   XX   XX   XX   XX
+  XX   f13  f14  f15  f16  f17  f18  f19  f20  f21  f22  XX   XX   XX
+  XX   _    _    _    _    _    _    _    _    _    _    XX   XX   
+  @_ec @_a  @_s  @_d  @_f  @_g  @_h  @_j  @_k  @_l  @_;  ret  XX   XX
+  XX   _    _    _    _    _    _    _    _    _    _    _    XX   XX
+  XX        XX   @_num          _              @_sym _   XX   XX   XX
+)
+
+(deflayer symbols
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   !    @    #    \_   %    £    home pgdn pgup end  _    _    
+  _   ?    `    "    '    ^    $    left down up   rght _    _    _
+  _   _    |    [    {    \(   &    ~    \)   }    ]    \\   _    _ 
+  _        XX   _              _              _    _    _    _    _
+)
+
+(deflayer numbers
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+  _   f11  f10  f9   f11  _    _    7    8    9    +    _    _    
+  _   f4   f5   f6   f10  _    tab  4    5    6    -    _    _    _
+  _   _    f1   f2   f3   f12  _    =    1    2    3    *    _    _
+  _        XX   _              esc            0    _    _    _    _
+)
+
+;;(deflayer function
+;;  _   brdn brup lp   mctl bldn blup prev pp   next mute vold volu
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _   _    _    _              _              _    _    _    _    _
+;;)

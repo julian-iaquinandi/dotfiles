@@ -1,0 +1,26 @@
+#!/bin/bash
+
+tmux copy-mode
+tmux send-keys -X
+tmux send-keys '?'
+
+xdotool key quoteleft
+xdotool key quoteleft
+xdotool key quoteleft
+
+xdotool key Return
+
+xdotool key V
+xdotool key n
+xdotool key n
+xdotool key Left
+xdotool key Down
+xdotool key Down
+
+xdotool key Return
+
+clipboard=$(xsel -ob)
+
+code=${clipboard::-4}
+
+echo "$code" | xsel --clipboard
