@@ -1,39 +1,6 @@
 -- n, v, i, t = mode names
 local key = vim.keymap
 
-<<<<<<< HEAD
-local noremapSilent = { noremap = true, silent = true }
-local remap = vim.api.nvim_set_keymap
-local keyset = vim.keymap.set
-
--- Escape normal mode + terminal swapping
-remap("i", "jk", "<Esc>", { noremap = false })
-remap("t", "jk", "<C-\\><C-n>", { noremap = false })
-
--- Remap hjkl to jkl;
-remap("n", "j", "h", noremapSilent)
-remap("n", "k", "j", noremapSilent)
-remap("n", "l", "k", noremapSilent)
-remap("n", ";", "l", noremapSilent)
-
--- Open file exp
-keyset("n", "gf", function()
-    vim.cmd([[:call VSCodeNotify("file-navigator.start")]])
-end, { noremap = true, silent = true })
-
-keyset("n", "<leader>h", function()
-    vim.cmd([[:call VSCodeNotify("vscode-nvim-bridge.toast", "test, warning" )]])
-end, { noremap = true, silent = true })
-
--- -- Keep the cursor in the middle when scrolling
-keyset("n", "<C-d>", "<C-d>zz")
-keyset("n", "<C-u>", "<C-u>zz")
-
--- -- Keep the cursor in the middle when searching
-keyset("n", "n", "nzzzv")
-keyset("n", "N", "Nzzzv")
-
-=======
 -- Navigation
 -- vim.cmd([[nnoremap <A-j> <C-w>h]])
 -- vim.cmd([[nnoremap <A-k> <C-w>j]])
@@ -94,4 +61,3 @@ key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent d
 
 key.set("n", "<C-o>", "<C-o>zz", { desc = "open parent directory", silent = true })
 key.set("n", "<C-i>", "<C-i>zz", { desc = "open parent directory", silent = true })
->>>>>>> d3840e1411779c8326a1449b0149f4465efd057c
