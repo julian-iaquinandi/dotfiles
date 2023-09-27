@@ -14,21 +14,21 @@
       apt: name=curl
 
     - name: Configure zsh
-      shell: cd ~/dotfiles && stow zsh
+      shell: cd /home/kd/dotfiles && stow zsh
 
     - name: Redirect config file
       shell: echo "source ~/.config/zsh/.zshrc" > ~/.zshrc
 
-    - name: Create ~/.local/bin directory if it doesn't exist
+    - name: Create /home/kd/.local/bin directory if it doesn't exist
       file:
-        path: ~/.local/bin
+        path: /home/kd/.local/bin
         state: directory
         mode: '0755'
 
     - name: Add ~/.local/bin to the PATH environment variable
       lineinfile:
-        path: ~/.bashrc
-        line: 'export PATH="$PATH:~/.local/bin"'
+        path: /home/kd/.bashrc
+        line: 'export PATH="$PATH:/home/kd/.local/bin"'
         state: present
       register: bashrc_changed
       changed_when: bashrc_changed is changed

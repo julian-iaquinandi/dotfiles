@@ -7,11 +7,11 @@
 
 - name: Configure local bin
   shell:
-    cmd: cd ~/dotfiles && stow bin
+    cmd: cd /home/kd/dotfiles && stow bin
 
 - name: Configure local bin
   shell:
-    cmd: cd ~/dotfiles && stow gitpm
+    cmd: cd /home/kd/dotfiles && stow gitpm
 
 - name: Install Apt Packages
   package:
@@ -32,20 +32,20 @@
       - jq
 
 - name: Install exa
-  shell: ~/.config/gitpm/gitpm install ogham exa
+  shell: /home/kd/.config/gitpm/gitpm install ogham exa
 
 - name: Install gh
-  shell: ~/.config/gitpm/gitpm cli cli
+  shell: /home/kd/.config/gitpm/gitpm cli cli
 
 - name: Install bat
-  shell: ~/.config/gitpm/gitpm sharkdp bat
+  shell: /home/kd/.config/gitpm/gitpm sharkdp bat
 
 
 # - name: Install sd
 #   shell: /usr/bin/env bash ~/.local/bin/git_installer chmin sd
 
 - name: Install xh
-  shell: ~/.config/gitpm/gitpm ducaale xh
+  shell: /home/kd/.config/gitpm/gitpm ducaale xh
 
 # - name: Install bob
 #   shell: ~/.config/gitpm/gitpm mordechaihadad bob
@@ -54,14 +54,14 @@
 #   shell: ~/.local/bin/bob install stable && ~/.local/bin/bob use stable
 
 # Configure
-- name: Configure jujuvim
-  shell: cd ~/dotfiles && stow jujuvim
+#- name: Configure jujuvim
+#  shell: cd /home/kd/dotfiles && stow jujuvim
 
 - name: Configure tmux
   shell:
-    cmd: cd ~/dotfiles && stow tmux
+    cmd: cd /home/kd/dotfiles && stow tmux
 
 - name: Configure git
   shell:
-    cmd: cd ~/dotfiles && stow git
+    cmd: cd /home/kd/dotfiles && stow git
 

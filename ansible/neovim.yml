@@ -2,4 +2,4 @@
   shell: bob install stable && bob use stable
 
 - name: Configure jujuvim
-  shell: cd ~/dotfiles && stow jujuvim
+  shell: cd /home/kd/dotfiles && stow jujuvim
