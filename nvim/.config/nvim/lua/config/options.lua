@@ -48,4 +48,21 @@ vim.opt.termguicolors = true
 
 vim.g.gitblame_enabled = 0
 
--- require("util.status")
+vim.cmd([[
+  let g:coc_global_extensions = ['coc-marketplace']
+]])
+
+-- vim.g.coc_global_extensions = {
+--     "coc-marketplace",
+--     "coc-eslint",
+--     "@raidou/coc-prettier-v3",
+--     "coc-yaml",
+--     "coc-json",
+--     "@echemoo/coc-tailwindcss3",
+--     "coc-emmet",
+--     "coc-pairs",
+--     "coc-react-refactor",
+--     "@yaegassy/coc-marksman",
+--     "@statiolake/coc-sumneko-lua",
+--     "coc-tsserver"
+-- }

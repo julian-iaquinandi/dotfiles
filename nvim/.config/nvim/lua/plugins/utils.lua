@@ -20,13 +20,13 @@ return {
           w = { "<cmd>WhichKey<cr>", "which-key all keymaps" },
         },
 
-        a = {
-          c = { "<Plug>(coc-codeaction-cursor)", "code action cursor" },
-          s = { "<Plug>(coc-codeaction-source)", "code action buffer" },
-          a = { "<Plug>(coc-codeaction-selected)", "code action selected" },
-          f = { "<Plug>(coc-fix-current)", "fix current" },
-          l = { "<Plug>(coc-codeaction-line)", "code lens" },
-        },
+        -- a = {
+        --   c = { "<Plug>(coc-codeaction-cursor)", "code action cursor" },
+        --   s = { "<Plug>(coc-codeaction-source)", "code action buffer" },
+        --   a = { "<Plug>(coc-codeaction-selected)", "code action selected" },
+        --   f = { "<Plug>(coc-fix-current)", "fix current" },
+        --   l = { "<Plug>(coc-codeaction-line)", "code lens" },
+        -- },
 
         b = {
           name = "buffer",
@@ -34,17 +34,17 @@ return {
           d = { "<cmd> bd <CR>", "delete buffer" },
         },
 
-        c = {
-          name = "coc",
-          a = { "<C-u>CocList diagnostics<cr>", "diagnostics" },
-          e = { "<C-u>CocList extensions<cr>", "extensions" },
-          c = { "<C-u>CocList commands<cr>", "commands" },
-          o = { "<C-u>CocList outline<cr>", "outline" },
-          s = { "<C-u>CocList -I symbols<cr>", "symbols" },
-          j = { "<C-u>CocNext<cr>", "next" },
-          k = { "<C-u>CocPrev<cr>", "prev" },
-          p = { "<C-u>CocListResume<cr>", "resume" },
-        },
+        -- c = {
+        --   name = "coc",
+        --   a = { "<C-u>CocList diagnostics<cr>", "diagnostics" },
+        --   e = { "<C-u>CocList extensions<cr>", "extensions" },
+        --   c = { "<C-u>CocList commands<cr>", "commands" },
+        --   o = { "<C-u>CocList outline<cr>", "outline" },
+        --   s = { "<C-u>CocList -I symbols<cr>", "symbols" },
+        --   j = { "<C-u>CocNext<cr>", "next" },
+        --   k = { "<C-u>CocPrev<cr>", "prev" },
+        --   p = { "<C-u>CocListResume<cr>", "resume" },
+        -- },
 
         f = {
           name = "find",
@@ -80,12 +80,12 @@ return {
         m = { "<cmd> bn <CR>", "next buffer" },
         n = { "<cmd> bp <CR>", "previous buffer" },
 
-        r = {
-          name = "refactor",
-          r = { "<Plug>(coc-codeaction-refactor)", "refactor" },
-          s = { "<Plug>(coc-codeaction-refactor-selected)", "refactor selected" },
-          n = { "<Plug>(coc-rename)", "rename" },
-        },
+        -- r = {
+        --   name = "refactor",
+        --   r = { "<Plug>(coc-codeaction-refactor)", "refactor" },
+        --   s = { "<Plug>(coc-codeaction-refactor-selected)", "refactor selected" },
+        --   n = { "<Plug>(coc-rename)", "rename" },
+        -- },
 
         -- file ops
         w = { "<cmd> w <CR>", "write file" },
