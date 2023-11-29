@@ -1,0 +1,1253 @@
+[17:52:35.585][info] [#0:/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/main.lua:66]: Lua Lsp startup, root: 	/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server
+[17:52:35.585][info] [#0:/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/main.lua:67]: ROOT:	/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server
+[17:52:35.585][info] [#0:/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/main.lua:68]: LOGPATH:	/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/log
+[17:52:35.585][info] [#0:/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/main.lua:69]: METAPATH:	/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/meta
+[17:52:35.586][info] [#0:/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/main.lua:70]: VERSION:	3.7.3
+[17:52:35.612][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 2.165 MB
+        # 00 : 2.165 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[17:52:35.616][info] [#0:script/client.lua:657]: Client init	{
+  capabilities = {
+    general = {
+      markdown = {
+        parser = "marked",
+        version = "4.0.10"
+      },
+      positionEncodings = { "utf-16" },
+      regularExpressions = {
+        engine = "ECMAScript",
+        version = "ES2020"
+      },
+      staleRequestSupport = {
+        cancel = true,
+        retryOnContentModified = { "textDocument/inlayHint", "textDocument/semanticTokens/full", "textDocument/semanticTokens/range", "textDocument/semanticTokens/full/delta" }
+      }
+    },
+    textDocument = {
+      callHierarchy = {
+        dynamicRegistration = true
+      },
+      codeAction = {
+        codeActionLiteralSupport = {
+          codeActionKind = {
+            valueSet = { "", "quickfix", "refactor", "refactor.extract", "refactor.inline", "refactor.rewrite", "source", "source.organizeImports" }
+          }
+        },
+        dataSupport = true,
+        disabledSupport = true,
+        dynamicRegistration = true,
+        honorsChangeAnnotations = false,
+        isPreferredSupport = true,
+        resolveSupport = {
+          properties = { "edit" }
+        }
+      },
+      codeLens = {
+        dynamicRegistration = true
+      },
+      colorProvider = {
+        dynamicRegistration = true
+      },
+      completion = {
+        completionItem = {
+          commitCharactersSupport = true,
+          deprecatedSupport = true,
+          documentationFormat = { "markdown", "plaintext" },
+          insertReplaceSupport = true,
+          insertTextModeSupport = {
+            valueSet = { 1, 2 }
+          },
+          labelDetailsSupport = true,
+          preselectSupport = true,
+          resolveSupport = {
+            properties = { "documentation", "detail", "additionalTextEdits" }
+          },
+          snippetSupport = true,
+          tagSupport = {
+            valueSet = { 1 }
+          }
+        },
+        completionItemKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }
+        },
+        completionList = {
+          itemDefaults = { "commitCharacters", "editRange", "insertTextFormat", "insertTextMode" }
+        },
+        contextSupport = true,
+        dynamicRegistration = true,
+        insertTextMode = 2
+      },
+      declaration = {
+        dynamicRegistration = true,
+        linkSupport = true
+      },
+      definition = {
+        dynamicRegistration = true,
+        linkSupport = true
+      },
+      diagnostic = {
+        dynamicRegistration = true,
+        relatedDocumentSupport = true
+      },
+      documentHighlight = {
+        dynamicRegistration = true
+      },
+      documentLink = {
+        dynamicRegistration = true,
+        tooltipSupport = true
+      },
+      documentSymbol = {
+        dynamicRegistration = true,
+        hierarchicalDocumentSymbolSupport = true,
+        labelSupport = true,
+        symbolKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+        },
+        tagSupport = {
+          valueSet = { 1 }
+        }
+      },
+      foldingRange = {
+        dynamicRegistration = true,
+        foldingRange = {
+          collapsedText = false
+        },
+        foldingRangeKind = {
+          valueSet = { "comment", "imports", "region" }
+        },
+        lineFoldingOnly = true,
+        rangeLimit = 5000
+      },
+      formatting = {
+        dynamicRegistration = true
+      },
+      hover = {
+        contentFormat = { "markdown", "plaintext" },
+        dynamicRegistration = true
+      },
+      implementation = {
+        dynamicRegistration = true,
+        linkSupport = true
+      },
+      inlayHint = {
+        dynamicRegistration = true,
+        resolveSupport = {
+          properties = { "tooltip", "textEdits", "label.tooltip", "label.location", "label.command" }
+        }
+      },
+      inlineValue = {
+        dynamicRegistration = true
+      },
+      linkedEditingRange = {
+        dynamicRegistration = true
+      },
+      onTypeFormatting = {
+        dynamicRegistration = true
+      },
+      publishDiagnostics = {
+        codeDescriptionSupport = true,
+        dataSupport = true,
+        relatedInformation = true,
+        tagSupport = {
+          valueSet = { 1, 2 }
+        },
+        versionSupport = true
+      },
+      rangeFormatting = {
+        dynamicRegistration = true
+      },
+      references = {
+        dynamicRegistration = true
+      },
+      rename = {
+        dynamicRegistration = true,
+        honorsChangeAnnotations = true,
+        prepareSupport = true,
+        prepareSupportDefaultBehavior = 1
+      },
+      selectionRange = {
+        dynamicRegistration = true
+      },
+      semanticTokens = {
+        augmentsSyntaxTokens = true,
+        dynamicRegistration = true,
+        formats = { "relative" },
+        multilineTokenSupport = false,
+        overlappingTokenSupport = false,
+        requests = {
+          full = {
+            delta = true
+          },
+          range = true
+        },
+        serverCancelSupport = true,
+        tokenModifiers = { "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async", "modification", "documentation", "defaultLibrary" },
+        tokenTypes = { "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter", "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword", "modifier", "comment", "string", "number", "regexp", "decorator", "operator" }
+      },
+      signatureHelp = {
+        contextSupport = true,
+        dynamicRegistration = true,
+        signatureInformation = {
+          activeParameterSupport = true,
+          documentationFormat = { "markdown", "plaintext" },
+          parameterInformation = {
+            labelOffsetSupport = true
+          }
+        }
+      },
+      synchronization = {
+        didSave = true,
+        dynamicRegistration = true,
+        willSave = true,
+        willSaveWaitUntil = true
+      },
+      typeDefinition = {
+        dynamicRegistration = true,
+        linkSupport = true
+      },
+      typeHierarchy = {
+        dynamicRegistration = true
+      }
+    },
+    window = {
+      showDocument = {
+        support = true
+      },
+      showMessage = {
+        messageActionItem = {
+          additionalPropertiesSupport = true
+        }
+      },
+      workDoneProgress = true
+    },
+    workspace = {
+      applyEdit = true,
+      codeLens = {
+        refreshSupport = true
+      },
+      configuration = true,
+      diagnostics = {
+        refreshSupport = true
+      },
+      didChangeConfiguration = {
+        dynamicRegistration = true
+      },
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+        relativePatternSupport = true
+      },
+      executeCommand = {
+        dynamicRegistration = true
+      },
+      fileOperations = {
+        didCreate = true,
+        didDelete = true,
+        didRename = true,
+        dynamicRegistration = true,
+        willCreate = true,
+        willDelete = true,
+        willRename = true
+      },
+      inlayHint = {
+        refreshSupport = true
+      },
+      inlineValue = {
+        refreshSupport = true
+      },
+      semanticTokens = {
+        refreshSupport = true
+      },
+      symbol = {
+        dynamicRegistration = true,
+        resolveSupport = {
+          properties = { "location.range" }
+        },
+        symbolKind = {
+          valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+        },
+        tagSupport = {
+          valueSet = { 1 }
+        }
+      },
+      workspaceEdit = {
+        changeAnnotationSupport = {
+          groupsOnLabel = false
+        },
+        documentChanges = true,
+        failureHandling = "undo",
+        normalizesLineEndings = true,
+        resourceOperations = { "create", "rename", "delete" }
+      },
+      workspaceFolders = true
+    }
+  },
+  clientInfo = {
+    name = "coc.nvim",
+    version = "0.0.82"
+  },
+  initializationOptions = {
+    changeConfiguration = true
+  },
+  locale = "en_US",
+  processId = 18980,
+  rootPath = "/Users/juliani/dotfiles",
+  rootUri = "file:///Users/juliani/dotfiles",
+  trace = "off",
+  workDoneToken = "9cfae3a0-abff-463f-95c8-72ba7ace9d9b",
+  workspaceFolders = { {
+      name = "dotfiles",
+      uri = "file:///Users/juliani/dotfiles"
+    } }
+}
+[17:52:35.616][info] [#0:script/language.lua:137]: VSC language: en-us
+[17:52:35.616][info] [#0:script/language.lua:138]: LS  language: en-us
+[17:52:35.616][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///Users/juliani/dotfiles
+[17:52:35.616][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/Users/juliani/.config/coc/extensions/@statiolake/coc-sumneko-lua-data/server/log/file_Users_juliani_dotfiles.log
+[17:52:35.616][info] [#0:script/workspace/workspace.lua:48]: Workspace create: 	file:///Users/juliani/dotfiles
+[17:52:35.724][info] [#0:script/provider/provider.lua:46]: Load config from client	file:///Users/juliani/dotfiles
+[17:52:35.724][info] [#0:script/provider/provider.lua:47]: {
+  Lua = {
+    addonManager = {
+      enable = true
+    },
+    codeLens = {
+      enable = false
+    },
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = { "vim" },
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceEvent = "OnSave",
+      workspaceRate = 100
+    },
+    doc = {
+      packageName = {},
+      privateName = {},
+      protectedName = {}
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      executablePath = "",
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[17:52:35.724][info] [#0:script/provider/provider.lua:53]: Load config from .luarc.json/.luarc.jsonc	file:///Users/juliani/dotfiles
+[17:52:35.724][info] [#0:script/provider/provider.lua:54]: {
+  ["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  ["Lua.diagnostics.disable"] = { "undefined-global" },
+  ["Lua.workspace.checkThirdParty"] = false
+}
+[17:52:35.830][info] [#0:script/provider/completion.lua:43]: Enable completion.
+[17:52:35.830][info] [#0:script/provider/provider.lua:61]: Load config from client	fallback
+[17:52:35.831][info] [#0:script/provider/provider.lua:62]: {
+  Lua = {
+    addonManager = {
+      enable = true
+    },
+    codeLens = {
+      enable = false
+    },
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = { "vim" },
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceEvent = "OnSave",
+      workspaceRate = 100
+    },
+    doc = {
+      packageName = {},
+      privateName = {},
+      protectedName = {}
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      executablePath = "",
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[17:52:36.044][info] [#0:script/library.lua:212]: Init builtin library at:	file:///Users/juliani/dotfiles
+[17:52:36.096][info] [#0:script/plugin.lua:86]: plugin path:	/Users/juliani/dotfiles
+[17:52:36.096][warn] [#0:script/plugin.lua:101]: plugin not found:	/Users/juliani/dotfiles
+[17:52:36.096][info] [#0:script/library.lua:212]: Init builtin library at:	nil
+[17:52:36.210][info] [#0:script/workspace/workspace.lua:324]: Preload start:	file:///Users/juliani/dotfiles
+[17:52:36.213][info] [#0:script/workspace/workspace.lua:330]: Scan files at:	file:///Users/juliani/dotfiles
+[17:52:36.216][info] [#0:script/workspace/workspace.lua:324]: Preload start:	<fallback>
+[17:52:36.218][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/package.lua
+[17:52:36.218][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/basic.lua
+[17:52:36.219][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua
+[17:52:36.219][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua
+[17:52:36.219][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/table.lua
+[17:52:36.220][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/math.lua
+[17:52:36.220][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/string.lua
+[17:52:36.220][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
+[17:52:36.220][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/io.lua
+[17:52:36.221][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/debug.lua
+[17:52:36.221][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/os.lua
+[17:52:36.257][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/package.lua
+[17:52:36.257][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/basic.lua
+[17:52:36.257][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua
+[17:52:36.257][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua
+[17:52:36.257][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/table.lua
+[17:52:36.258][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/math.lua
+[17:52:36.258][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/string.lua
+[17:52:36.258][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
+[17:52:36.258][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/io.lua
+[17:52:36.258][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/debug.lua
+[17:52:36.258][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/os.lua
+[17:52:36.363][info] [#0:script/workspace/workspace.lua:379]: Found 11 files at:	<fallback>
+[17:52:36.363][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	<fallback>
+[17:52:36.363][info] [#0:script/workspace/workspace.lua:379]: Found 117 files at:	file:///Users/juliani/dotfiles
+[17:52:36.363][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///Users/juliani/dotfiles
+[17:52:36.364][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/coding.lua
+[17:52:36.365][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/os.lua , size = 5.600 KB
+[17:52:36.371][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/os.lua
+[17:52:36.371][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/os.lua
+[17:52:36.371][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/debug.lua , size = 7.637 KB
+[17:52:36.379][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/debug.lua
+[17:52:36.379][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/debug.lua
+[17:52:36.379][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/io.lua , size = 6.364 KB
+[17:52:36.386][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/io.lua
+[17:52:36.386][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/io.lua
+[17:52:36.386][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua , size = 2.590 KB
+[17:52:36.388][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
+[17:52:36.388][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
+[17:52:36.388][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/string.lua , size = 6.341 KB
+[17:52:36.392][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/string.lua
+[17:52:36.392][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/string.lua
+[17:52:36.392][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/math.lua , size = 8.509 KB
+[17:52:36.400][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/math.lua
+[17:52:36.400][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/table.lua , size = 4.230 KB
+[17:52:36.402][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/table.lua
+[17:52:36.402][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/table.lua
+[17:52:36.402][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/math.lua
+[17:52:36.402][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua , size = 2.386 KB
+[17:52:36.404][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua
+[17:52:36.404][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua , size = 0.302 KB
+[17:52:36.404][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua
+[17:52:36.404][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua
+[17:52:36.404][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua
+[17:52:36.405][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/basic.lua , size = 15.377 KB
+[17:52:36.411][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/basic.lua
+[17:52:36.411][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/basic.lua
+[17:52:36.411][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/package.lua , size = 2.944 KB
+[17:52:36.414][info] [#0:script/workspace/loading.lua:113]: ++++As library of:	file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/package.lua
+[17:52:36.414][info] [#0:script/workspace/loading.lua:98]: Skip loaded file: file:///Users/juliani/.config/coc/extensions/%40statiolake/coc-sumneko-lua-data/server/meta/Lua%205.4%20en-us%20utf8/package.lua
+[17:52:36.414][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/init.lua , size = 1.362 KB
+[17:52:36.415][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/util/init.lua , size = 3.948 KB
+[17:52:36.417][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/util/debug.lua , size = 3.064 KB
+[17:52:36.419][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/util/dashboard/init.lua , size = 3.648 KB
+[17:52:36.421][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/util/dashboard/config.lua , size = 3.828 KB
+[17:52:36.422][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/util/status.lua , size = 1.071 KB
+[17:52:36.422][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/util/profiler.lua , size = 2.418 KB
+[17:52:36.424][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/config/autocmds.lua , size = 1.209 KB
+[17:52:36.424][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/config/keymaps.lua , size = 2.880 KB
+[17:52:36.426][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/config/options.lua , size = 0.881 KB
+[17:52:36.426][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/noice.lua , size = 1.569 KB
+[17:52:36.427][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/config/lazy.lua , size = 3.898 KB
+[17:52:36.427][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/telescope.lua , size = 5.865 KB
+[17:52:36.429][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/lsp/init.lua , size = 10.229 KB
+[17:52:36.433][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/lsp/keymaps.lua , size = 3.899 KB
+[17:52:36.435][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/lsp/format.lua , size = 1.515 KB
+[17:52:36.435][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/tools.lua , size = 2.248 KB
+[17:52:36.436][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/editor.lua , size = 4.241 KB
+[17:52:36.437][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/disabled.lua , size = 0.121 KB
+[17:52:36.437][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/mini.lua , size = 3.383 KB
+[17:52:36.438][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/treesitter.lua , size = 1.788 KB
+[17:52:36.438][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ui.lua , size = 3.157 KB
+[17:52:36.439][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/misc.lua , size = 0.860 KB
+[17:52:36.440][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/dap.lua , size = 3.312 KB
+[17:52:36.441][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/navigation.lua , size = 6.910 KB
+[17:52:36.442][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/local/leap-utils.lua , size = 1.699 KB
+[17:52:36.443][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/local/lazydocker/init.lua , size = 1.363 KB
+[17:52:36.443][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/local/persistent-macros.nvim/lua/persistent-macros/init.lua , size = 2.564 KB
+[17:52:36.444][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/local/persistent-macros.nvim/lua/persistent-macros/libs/dkjson.lua , size = 22.970 KB
+[17:52:36.451][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/local/persistent-macros.nvim/lua/persistent-macros/helpers.lua , size = 2.442 KB
+[17:52:36.452][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/nvim/.config/nvim/local/persistent-macros.nvim/lua/persistent-macros/macroFile.lua , size = 1.471 KB
+[17:52:36.452][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.main/.config/nvim/init.lua , size = 0.235 KB
+[17:52:36.453][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.main/.config/nvim/lua/config/keymaps.lua , size = 4.929 KB
+[17:52:36.454][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.main/.config/nvim/lua/config/options.lua , size = 0.815 KB
+[17:52:36.454][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.main/.config/nvim/lua/config/lazy.lua , size = 1.716 KB
+[17:52:36.455][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/plugins.lua , size = 6.231 KB
+[17:52:36.458][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/init.lua , size = 0.180 KB
+[17:52:36.458][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/mappings.lua , size = 11.006 KB
+[17:52:36.461][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/noice.lua , size = 1.766 KB
+[17:52:36.461][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/telescope.lua , size = 0.000 KB
+[17:52:36.461][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/overrides.lua , size = 0.813 KB
+[17:52:36.462][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/lspconfig.lua , size = 0.517 KB
+[17:52:36.462][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/neozoom.lua , size = 1.016 KB
+[17:52:36.462][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/cmd-pallete.lua , size = 1.762 KB
+[17:52:36.463][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/leap.lua , size = 1.612 KB
+[17:52:36.463][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/configs/null-ls.lua , size = 1.167 KB
+[17:52:36.464][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/chadrc.lua , size = 0.396 KB
+[17:52:36.464][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/highlights.lua , size = 0.380 KB
+[17:52:36.464][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvchad/.config/nvchad/lua/custom/toggles.lua , size = 0.028 KB
+[17:52:36.464][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/init.lua , size = 0.113 KB
+[17:52:36.464][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/archive/terminal.lua , size = 0.455 KB
+[17:52:36.465][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/plugin/packer_compiled.lua , size = 15.985 KB
+[17:52:36.467][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/archive/debug-helper.lua , size = 1.163 KB
+[17:52:36.468][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/archive/coc-config.lua , size = 0.293 KB
+[17:52:36.468][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/noice.lua , size = 0.499 KB
+[17:52:36.468][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lspn/lspconfig.lua , size = 3.898 KB
+[17:52:36.469][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lspn/null-ls.lua , size = 1.612 KB
+[17:52:36.470][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lspn/mason.lua , size = 1.001 KB
+[17:52:36.470][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.115] sec: <fallback>
+[17:52:36.470][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: <fallback>
+[17:52:36.470][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	<fallback>
+[17:52:36.470][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	<fallback>
+[17:52:36.474][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/keymaps.lua , size = 1.956 KB
+[17:52:36.474][warn] [#0:script/proto/proto.lua:141]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[17:52:36.474][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/colors.lua , size = 0.170 KB
+[17:52:36.475][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/telescope.lua , size = 2.402 KB
+[17:52:36.475][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/symbol-outline.lua , size = 1.993 KB
+[17:52:36.476][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/copilot.lua , size = 0.752 KB
+[17:52:36.476][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/trouble.lua , size = 2.558 KB
+[17:52:36.477][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/nvim-cmp.lua , size = 3.654 KB
+[17:52:36.478][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lsp/lspconfig.lua , size = 4.056 KB
+[17:52:36.479][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/plugins.lua , size = 4.518 KB
+[17:52:36.480][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lsp/lspsaga.lua , size = 0.423 KB
+[17:52:36.480][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lsp/null-ls.lua , size = 2.023 KB
+[17:52:36.480][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/lsp/mason.lua , size = 0.993 KB
+[17:52:36.481][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/nvim-tree.lua , size = 1.352 KB
+[17:52:36.481][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/whichkey.lua , size = 5.711 KB
+[17:52:36.482][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/settings/jsonls.lua , size = 0.714 KB
+[17:52:36.482][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/settings/tsserver.lua , size = 2.175 KB
+[17:52:36.483][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/settings/yamlls.lua , size = 0.144 KB
+[17:52:36.483][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/settings/volar.lua , size = 0.106 KB
+[17:52:36.483][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/init.lua , size = 0.215 KB
+[17:52:36.483][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/settings/sumneko_lua.lua , size = 0.233 KB
+[17:52:36.483][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/lsp-installer.lua , size = 1.425 KB
+[17:52:36.484][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/handlers.lua , size = 3.351 KB
+[17:52:36.485][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/lsp/null-ls.lua , size = 0.473 KB
+[17:52:36.485][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/omnisharp.lua , size = 2.013 KB
+[17:52:36.486][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/_old/vimspector.lua , size = 0.144 KB
+[17:52:36.486][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/leap.lua , size = 0.000 KB
+[17:52:36.486][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/dap.lua , size = 4.088 KB
+[17:52:36.490][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/luasnip.lua , size = 0.257 KB
+[17:52:36.490][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/basics.lua , size = 1.115 KB
+[17:52:36.491][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/user/jester.lua , size = 1.498 KB
+[17:52:36.491][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/vscode.lua , size = 0.620 KB
+[17:52:36.491][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.old/.config/nvim/lua/nvim.lua , size = 0.505 KB
+[17:52:36.492][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/init.lua , size = 0.993 KB
+[17:52:36.492][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/init.lua , size = 0.310 KB
+[17:52:36.492][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/config/keymaps.lua , size = 6.563 KB
+[17:52:36.493][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/config/modes.lua , size = 1.160 KB
+[17:52:36.493][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/config/options.lua , size = 0.748 KB
+[17:52:36.494][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/config/lazy.lua , size = 2.551 KB
+[17:52:36.495][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/plugins/code.lua , size = 1.466 KB
+[17:52:36.495][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/plugins/libmodal.lua , size = 0.357 KB
+[17:52:36.600][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/plugins/leap.lua , size = 2.244 KB
+[17:52:36.602][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/plugins/hop.lua , size = 2.113 KB
+[17:52:36.602][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/utils/file.lua , size = 0.386 KB
+[17:52:36.603][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/utils/json.lua , size = 0.505 KB
+[17:52:36.603][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/utils/string.lua , size = 0.257 KB
+[17:52:36.604][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim-vscode/.config/nvim/vscode/lua/utils/table.lua , size = 0.332 KB
+[17:52:36.604][info] [#0:script/workspace/loading.lua:101]: Preload file at: file:///Users/juliani/dotfiles/_old/neovim/nvim.test/init.lua , size = 1.337 KB
+[17:52:36.711][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.147] sec: file:///Users/juliani/dotfiles
+[17:52:36.711][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///Users/juliani/dotfiles
+[17:52:36.711][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///Users/juliani/dotfiles
+[17:52:36.711][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	file:///Users/juliani/dotfiles
+[17:52:36.743][info] [#0:script/provider/diagnostic.lua:557]: Diagnostics scope [file:///Users/juliani/dotfiles], files count:[117]
+[17:52:36.744][warn] [#0:script/proto/proto.lua:141]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[17:52:37.080][info] [#0:script/provider/diagnostic.lua:574]: Diagnostics scope [file:///Users/juliani/dotfiles] finished, takes [0.329] sec.
+[18:02:36.039][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 22.000 MB
+        # 00 : 21.694 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[18:12:36.521][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 22.770 MB
+        # 00 : 22.463 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[18:22:36.882][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 23.540 MB
+        # 00 : 23.234 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[18:32:37.205][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.311 MB
+        # 00 : 24.004 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[18:48:52.493][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.348 MB
+        # 00 : 24.041 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:04:14.585][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.359 MB
+        # 00 : 24.053 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:20:14.413][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.399 MB
+        # 00 : 24.092 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:35:39.099][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.411 MB
+        # 00 : 24.104 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:54:58.331][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.420 MB
+        # 00 : 24.113 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[20:12:13.387][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.431 MB
+        # 00 : 24.124 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[20:27:53.044][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.443 MB
+        # 00 : 24.136 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[20:51:37.250][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.462 MB
+        # 00 : 24.155 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:07:24.936][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.473 MB
+        # 00 : 24.167 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:24:24.187][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.482 MB
+        # 00 : 24.176 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:34:56.253][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.494 MB
+        # 00 : 24.187 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[21:52:48.715][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.508 MB
+        # 00 : 24.201 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[22:07:42.097][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.517 MB
+        # 00 : 24.210 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[22:24:50.055][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.531 MB
+        # 00 : 24.224 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[22:35:57.712][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.542 MB
+        # 00 : 24.236 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[22:53:38.982][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.556 MB
+        # 00 : 24.250 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[23:08:57.614][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.568 MB
+        # 00 : 24.261 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[23:18:57.614][info] [#0:script/service/service.lua:144]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 24.605 MB
+        # 00 : 24.298 MB
+        # 01 : 0.053 MB
+        # 02 : 0.053 MB
+        # 03 : 0.092 MB
+        # 04 : 0.109 MB
+    --------------- Coroutine ---------------
+        Total:     119
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      119
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[23:19:15.948][info] [#0:script/provider/diagnostic.lua:557]: Diagnostics scope [file:///Users/juliani/dotfiles], files count:[118]
+[23:19:16.292][info] [#0:script/provider/diagnostic.lua:574]: Diagnostics scope [file:///Users/juliani/dotfiles] finished, takes [0.342] sec.
+[23:19:25.668][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:25.989][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:28.093][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:47.175][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:47.175][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:47.175][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:47.175][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:47.175][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:47.175][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:19:49.600][info] [#0:script/provider/diagnostic.lua:557]: Diagnostics scope [file:///Users/juliani/dotfiles], files count:[118]
+[23:19:49.929][info] [#0:script/provider/diagnostic.lua:574]: Diagnostics scope [file:///Users/juliani/dotfiles] finished, takes [0.325] sec.
+[23:20:00.156][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:20:00.156][info] [#0:script/workspace/loading.lua:161]: Load files from disk:	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:20:00.156][info] [#0:script/workspace/loading.lua:89]: Skip loaded file: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:20:00.157][info] [#0:script/workspace/loading.lua:173]: Loaded files takes [0.000] sec: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:20:00.157][info] [#0:script/workspace/loading.lua:182]: Compile files takes [0.000] sec: file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
+[23:20:00.157][info] [#0:script/workspace/loading.lua:183]: Loaded finish:	file:///Users/juliani/dotfiles/nvim/.config/nvim/lua/plugins/ai.lua
