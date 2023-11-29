@@ -7,7 +7,7 @@ return {
     "christoomey/vim-tmux-navigator",
     config = function() 
     end
-  }
+  },
   {
     "folke/which-key.nvim",
     keys = {
