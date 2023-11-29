@@ -8,6 +8,7 @@ export TERM=xterm-256color
 
 # Use nvim as default system editor
 export EDITOR=nvim
+export VISUAL="$EDITOR"
 
 # Use Kitty as default system terminal
 export TERMINAL=alacritty

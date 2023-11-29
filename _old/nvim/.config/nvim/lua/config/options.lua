@@ -1,8 +1,4 @@
-
 vim.g.mapleader = " "
-
-vim.opt.number = true
-vim.opt.relativenumber = true
 
 vim.opt.fillchars = {
   foldopen = "",
@@ -16,12 +12,6 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.foldcolumn = "0"
-
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.smarttab = true
-vim.opt.expandtab = true
-
 
 if vim.fn.has("nvim-0.8") == 1 then
   vim.opt.backup = true
@@ -40,12 +30,9 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 
--- nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
-
 
 vim.g.gitblame_enabled = 0
 
--- require("util.status")
+require("util.status")

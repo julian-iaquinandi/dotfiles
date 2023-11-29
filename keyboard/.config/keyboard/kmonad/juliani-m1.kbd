@@ -1,16 +1,16 @@
 ;; See keymap/tutorial.kbd for a more complete tutorial
 
-;;(defcfg
-;;  input  (iokit-name "Apple Internal Keyboard / Trackpad")
-;;  output (kext)
-;;  fallthrough true
-;;)
-
 (defcfg
-  input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
-  output (uinput-sink "My KMonad output" "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
   fallthrough true
 )
+
+;;(defcfg
+;;  input  (device-file "/dev/input/by-path/platform-23510c000.spi-cs-0-event-kbd")
+;;  output (uinput-sink "My KMonad output" "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
+;;  fallthrough true
+;;)
 
 (defalias 
 
@@ -23,16 +23,17 @@
 
   ;; Home row mods 
   _ec (tap-hold-next-release 200 esc lctl)
-  _a (tap-hold-next-release 200 a @sym)
+
+  _a (tap-hold-next-release 200 a lctl)
   _s (tap-hold-next-release 200 s lalt)
   _d (tap-hold-next-release 200 d lsft)
   _f (tap-hold-next-release 200 f lmet)
   _g (tap-hold-next-release 200 g @num) 
-  _h (tap-hold-next-release 200 h @num)
+  _h (tap-hold-next-release 200 h @sym)
   _j (tap-hold-next-release 200 j rmet)
   _k (tap-hold-next-release 200 k rsft)
-  _l (tap-hold-next-release 200 l lalt)
-  _; (tap-hold-next-release 200 ; @sym)
+  _l (tap-hold-next-release 200 l ralt)
+  _; (tap-hold-next-release 200 ; rctl)
 )
 
 (defsrc
@@ -66,8 +67,8 @@
   _   _    _    _    _    _    _    _    _    _    _    _    _
   _   _    _    _    _    _    _    _    _    _    _    _    _    _
   _   f11  f10  f9   f11  _    _    7    8    9    +    _    _    _
-  _   f4   f5   f6   f10  _    =    4    5    6    -    _    _
-  _   f1   f2   f3   f12  _    tab  1    2    3    *    _    _
+  _   f4   f5   f6   f10  _    tab  4    5    6    -    _    _
+  _   f1   f2   f3   f12  _    =    1    2    3    *    _    _
   _   _    _    _              esc            0    _    _    _    _
 )
 
