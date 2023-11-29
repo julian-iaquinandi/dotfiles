@@ -4,6 +4,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
 
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
@@ -62,27 +63,27 @@ return {
 
     keys = {
       -- files
-      { "<leader>p",  "<cmd> Telescope git_files<CR>",                                          desc = "find files" },
-      { "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "find git files" },
-      { "<leader>fa", "<cmd> Telescope live_grep<CR>",                                          desc = "find all" },
-      { "<leader>fo", "<cmd> Telescope buffers<CR>",                                            desc = "find old files" },
-      { "<leader>F",  "<cmd> Telescope grep_string<CR>",                                        desc = "find current word" },
-
-      -- editor
-      { "<leader>fb", "<cmd> Telescope buffers<CR>",                                            desc = "find buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                           desc = "find help pages" },
-      { "<leader>fc", "<cmd>Telescope command_history<cr>",                                     desc = "find command history" },
-      { "<leader>fC", "<cmd>Telescope commands<cr>",                                            desc = "find commands" },
-      { "<leader>fk", "<cmd>Telescope keymaps<cr>",                                             desc = "find key maps" },
-
+      -- { "<leader>p",  "<cmd> Telescope git_files<CR>",                                          desc = "find files" },
+      -- { "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "find git files" },
+      -- { "<leader>fa", "<cmd> Telescope live_grep<CR>",                                          desc = "find all" },
+      -- { "<leader>fo", "<cmd> Telescope buffers<CR>",                                            desc = "find old files" },
+      -- { "<leader>F",  "<cmd> Telescope grep_string<CR>",                                        desc = "find current word" },
+      --
+      -- -- editor
+      -- { "<leader>fb", "<cmd> Telescope buffers<CR>",                                            desc = "find buffers" },
+      -- { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                           desc = "find help pages" },
+      -- { "<leader>fc", "<cmd>Telescope command_history<cr>",                                     desc = "find command history" },
+      -- { "<leader>fC", "<cmd>Telescope commands<cr>",                                            desc = "find commands" },
+      -- { "<leader>fk", "<cmd>Telescope keymaps<cr>",                                             desc = "find key maps" },
+      --
       -- git
-      { "<leader>gc", "<cmd> Telescope git_commits <CR>",                                       desc = "git commits" },
-      { "<leader>gs", "<cmd> Telescope git_status <CR>",                                        desc = "git status" },
-      { "<leader>gS", "<cmd> Telescope git_status <CR>",                                        desc = "git stash" },
-      { "<leader>gb", "<cmd> Telescope git_branches<CR>",                                       desc = "git branches" },
-      { "<leader>gg", ":LazyGit <CR>",                                                          desc = "Lazy Git" },
-
-    },
+    --   { "<leader>gc", "<cmd> Telescope git_commits <CR>",                                       desc = "git commits" },
+    --   { "<leader>gs", "<cmd> Telescope git_status <CR>",                                        desc = "git status" },
+    --   { "<leader>gS", "<cmd> Telescope git_status <CR>",                                        desc = "git stash" },
+    --   { "<leader>gb", "<cmd> Telescope git_branches<CR>",                                       desc = "git branches" },
+    --   { "<leader>gg", ":LazyGit <CR>",                                                          desc = "Lazy Git" },
+    --
+    -- },
 
     opts = {
       defaults = {
@@ -94,6 +95,7 @@ return {
       },
     },
   },
+}
 }
 
 

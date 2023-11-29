@@ -30,26 +30,6 @@ key.set("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = 
 
 -- Editor ops
 key.set("n", "<Esc>", ":noh <CR>", { desc = "clear highlights" })
-key.set("n", "<leader>n", "<cmd> set nu! <CR>", { desc = "toggle line number" })
-key.set("n", "<leader>rn", "<cmd> set rnu! <CR>", { desc = "toggle relative number" })
-
-key.set("n", "<leader>lz", "<cmd> Lazy<cr>", { desc = "Lazy" })
-key.set("n", "<leader>ld", "<cmd> LazyDocker<cr>", { desc = "Lazy Docker" })
-key.set("n", "<leader>lg", "<cmd> LazyGit<cr>", { desc = "Lazy Git" })
-
--- Buffers
-key.set("n", "<leader>bc", "<cmd> enew <CR>", { desc = "create buffer" })
-key.set("n", "<leader>m", "<cmd> bn <CR>", { desc = "next buffer" })
-key.set("n", "<leader>n", "<cmd> bp <CR>", { desc = "previous buffer" })
--- key.set("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
-
--- file operations
-key.set("n", "<leader>w", ":w<cr>", { desc = "write file" })
-key.set("n", "<leader>W", ":wa<cr>", { desc = "Write file" })
-key.set("n", "<leader>q", ":bd<cr>", { desc = "close file" })
-key.set("n", "<leader>Q", ":bd!<cr>", { desc = "force close file" })
-key.set("n", "<leader>x", ":wqa<cr>", { desc = "quit neovim" })
-key.set("n", "<leader>X", ":qa!<cr>", { desc = "quit neovim" })
 
 -- copilot
 key.set("n", "<C-S-j>", "<Plug>(copilot-next)", { desc = "copilot next" })
@@ -58,9 +38,7 @@ key.set("n", "<C-S-;>", "<Plug>(copilot-previous)", { desc = "copilot prev" })
 -- clipboard
 
 key.set("n", "<leader>y", "+y", { desc = "quit neovim" })
-
 key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent directory", silent = true })
-
 
 -- vim.g:tmux_navigator_no_mappings = 1
 vim.cmd([[noremap <silent> A-j :<C-U>TmuxNavigateLeft<cr>]])
@@ -71,6 +49,9 @@ vim.cmd([[noremap <silent> A-h :<C-U>TmuxNavigatePrevious<cr>]])
 
 -- Map the function to a key combination
 
+-- key.set("n", "<leader>n", "<cmd> set nu! <CR>", { desc = "toggle line number" })
+-- key.set("n", "<leader>rn", "<cmd> set rnu! <CR>", { desc = "toggle relative number" })
+--
 -- key.set("n", "-", require("oil").open, { desc = "open parent directory" })
 -- key.set("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<cr>", { desc = "open explorer" })
 --key.set("n", "<C-o>", "<C-o>zz", { desc = "open parent directory", silent = true })
