@@ -42,5 +42,12 @@
         "updateTime": 1700782835338
       }
     }
+  },
+  "coc-eslint|global": {
+    "noESLintMessageShown": {
+      "workspaces": {
+        "file:///home/kd/repos/the-lab": true
+      }
+    }
   }
 }

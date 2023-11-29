@@ -1,4 +1,16 @@
 {
   "Lua.diagnostics.globals": ["vim"],
-  "coc.preferences.formatOnSave": true
+  "coc.preferences.formatOnSave": true,
+
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "javascript.tsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx"
+  ],
+  "eslint.run": "onSave"
 }
