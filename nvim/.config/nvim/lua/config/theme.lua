@@ -1,5 +1,5 @@
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme carbonfox")
-vim.g.theme_id = 2
+vim.cmd("colorscheme duskfox")
+vim.g.theme_id = 4
 -- end themery block
