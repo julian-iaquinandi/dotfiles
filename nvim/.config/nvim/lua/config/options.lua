@@ -44,11 +44,15 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
+vim.cmd([[
+let g:nvim_tree_auto_close=1
+]])
+
 -- vim.g.gitblame_enabled = 0
 
-vim.cmd([[
-  let g:coc_global_extensions = ['coc-marketplace']
-]])
+-- vim.cmd([[
+--   let g:coc_global_extensions = ['coc-marketplace']
+-- ]])
 
 -- vim.g.coc_global_extensions = {
 --     "coc-marketplace",
