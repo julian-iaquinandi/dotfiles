@@ -1,23 +1,23 @@
 local key = vim.keymap
 
 -- Define the function to open a program in a slide-up terminal
-local function open_in_term(cmd, on_exit)
-  -- Create a new window
-  vim.cmd('new')
-  -- Open a terminal
-  local shell_cmd = vim.o.shell .. ' -c ' .. cmd
-  if on_exit then
-    vim.fn.termopen(shell_cmd, { on_exit = on_exit, win = vim.fn.win_getid() })
-  else
-    vim.fn.termopen(shell_cmd)
-  end
-  -- Send window to bottom and start with small height
-  vim.cmd('wincmd J | resize 1')
-  -- Animate height to 66% - Note: This part might need a specific Lua implementation of the animate feature
-  vim.cmd('startinsert')
-end
-
-vim.api.nvim_set_keymap('n', '<leader>ld', '<Cmd>lua open_in_term("lazydocker")<CR>', { noremap = true, silent = true })
+-- local function open_in_term(cmd, on_exit)
+-- 	-- Create a new window
+-- 	vim.cmd("new")
+-- 	-- Open a terminal
+-- 	local shell_cmd = vim.o.shell .. " -c " .. cmd
+-- 	if on_exit then
+-- 		vim.fn.termopen(shell_cmd, { on_exit = on_exit, win = vim.fn.win_getid() })
+-- 	else
+-- 		vim.fn.termopen(shell_cmd)
+-- 	end
+-- 	-- Send window to bottom and start with small height
+-- 	vim.cmd("wincmd J | resize 1")
+-- 	-- Animate height to 66% - Note: This part might need a specific Lua implementation of the animate feature
+-- 	vim.cmd("startinsert")
+-- end
+--
+-- vim.api.nvim_set_keymap("n", "<leader>ld", '<Cmd>lua open_in_term("lazydocker")<CR>', { noremap = true, silent = true })
 
 -- key.set('n', '<leader>ld', '<Cmd>lua open_in_term("lazydocker")<CR>', { noremap = true, silent = true })
 -- key.set('n', '<leader>lg', '<Cmd>lua open_in_term("lazygit")<CR>', { noremap = true, silent = true })
@@ -36,7 +36,6 @@ key.set("n", "<C-S-j>", "<Plug>(copilot-next)", { desc = "copilot next" })
 key.set("n", "<C-S-;>", "<Plug>(copilot-previous)", { desc = "copilot prev" })
 
 -- clipboard
-
 key.set("n", "<leader>y", "+y", { desc = "quit neovim" })
 key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent directory", silent = true })
 
