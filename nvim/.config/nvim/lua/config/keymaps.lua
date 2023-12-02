@@ -24,6 +24,8 @@ key.set("n", "<C-S-;>", "<Plug>(copilot-previous)", { desc = "copilot prev" })
 key.set("n", "<leader>y", "+y", { desc = "quit neovim" })
 key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent directory", silent = true })
 
+key.set("n", "<A-h>", "<C-w><C-w><cr>", { desc = "move into diagnostic" })
+
 -- which key mappings
 return {
 	["?"] = {

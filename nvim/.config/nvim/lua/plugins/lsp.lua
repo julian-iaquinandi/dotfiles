@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
+			{ "leafOfTree/vim-svelte-plugin" },
 		},
 		config = function()
 			-- import lspconfig plugin
@@ -97,6 +98,7 @@ return {
 
 			-- configure svelte server
 			lspconfig["svelte"].setup({
+				filetypes = { "svelte", "typescriptreact", "javascriptreact", "html" },
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					on_attach(client, bufnr)
@@ -254,8 +256,35 @@ return {
 					--  to disable file types use
 					--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 					formatting.prettier.with({
-						extra_filetypes = { "svelte" },
+						-- extra_filetypes = { "svelte" },
+						filetypes = {
+							"html",
+							"json",
+							"svelte",
+							"markdown",
+							"css",
+							"javascript",
+							"javascriptreact",
+							"typescript",
+							"typescriptreact",
+							"vue",
+						},
 					}), -- js/ts formatter
+
+					-- formatting.pretterd.with({
+					-- 	filetypes = {
+					-- 		"html",
+					-- 		"json",
+					-- 		"svelte",
+					-- 		"markdown",
+					-- 		"css",
+					-- 		"javascript",
+					-- 		"javascriptreact",
+					-- 		"typescript",
+					-- 		"typescriptreact",
+					-- 		"vue",
+					-- 	},
+					-- }),
 					formatting.stylua, -- lua formatter
 					formatting.isort,
 					formatting.black,

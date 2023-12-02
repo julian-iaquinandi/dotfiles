@@ -1,5 +1,6 @@
 return {
 	{ "github/copilot.vim" },
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 
 	-- theme
 	{
@@ -18,7 +19,11 @@ return {
 	{
 		"terrortylor/nvim-comment",
 		config = function()
-			require("nvim_comment").setup()
+			require("nvim_comment").setup({
+				hook = function()
+					require("ts_context_commentstring").update_commentstring()
+				end,
+			})
 		end,
 	},
 
@@ -27,11 +32,11 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		config = function()
 			require("nvim-tree").setup({
-				actions = {
-					open_file = {
-						quit_on_open = true,
-					},
-				},
+				-- actions = {
+				-- 	open_file = {
+				-- 		quit_on_open = true,
+				-- 	},
+				-- },
 				sort = {
 					sorter = "case_sensitive",
 				},
