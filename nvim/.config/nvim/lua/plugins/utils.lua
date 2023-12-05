@@ -94,4 +94,40 @@ return {
 			-- end, { desc = "Paste from Yanky" })
 		end,
 	},
+
+	{
+		"piersolenski/wtf.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			openai_model_id = "gpt-3.5-turbo",
+		},
+		hooks = {
+			request_started = function()
+				vim.cmd("hi StatusLine ctermbg=NONE ctermfg=yellow")
+			end,
+			request_finished = vim.schedule_wrap(function()
+				vim.cmd("hi StatusLine ctermbg=NONE ctermfg=NONE")
+			end),
+		},
+		keys = {
+			{
+				"gw",
+				mode = { "n", "x" },
+				function()
+					require("wtf").ai()
+				end,
+				desc = "Debug diagnostic with AI",
+			},
+			{
+				mode = { "n" },
+				"gW",
+				function()
+					require("wtf").search()
+				end,
+				desc = "Search diagnostic with Google",
+			},
+		},
+	},
 }

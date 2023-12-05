@@ -26,3 +26,5 @@ export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin/brew"
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export OPENAI_API_KEY="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"

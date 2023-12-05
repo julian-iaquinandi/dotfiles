@@ -11,6 +11,8 @@ return {
 			-- import lspconfig plugin
 			local lspconfig = require("lspconfig")
 
+			vim.g.vim_svelte_plugin_use_typescript = 1
+
 			-- import cmp-nvim-lsp plugin
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -256,7 +258,7 @@ return {
 					--  to disable file types use
 					--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 					formatting.prettier.with({
-						-- extra_filetypes = { "svelte" },
+						extra_filetypes = { "svelte" },
 						filetypes = {
 							"html",
 							"json",
@@ -290,6 +292,13 @@ return {
 					formatting.black,
 					diagnostics.pylint,
 					diagnostics.eslint_d.with({ -- js/ts linter
+						filetypes = {
+							"javascript",
+							"javascriptreact",
+							"typescript",
+							"typescriptreact",
+							"svelte",
+						},
 						condition = function(utils)
 							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
 						end,

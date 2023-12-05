@@ -1,6 +1,7 @@
 return {
 	{ "github/copilot.vim" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
+	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
 
 	-- theme
 	{
@@ -41,14 +42,18 @@ return {
 					sorter = "case_sensitive",
 				},
 				view = {
-					width = 30,
+					width = 40,
 					side = "right",
+					-- auto_resize = true,
 				},
 				renderer = {
 					group_empty = true,
 				},
 				filters = {
 					dotfiles = true,
+				},
+				update_focused_file = {
+					enable = true,
 				},
 			})
 		end,
@@ -65,6 +70,8 @@ return {
 			{ "kyazdani42/nvim-web-devicons", opt = true },
 		},
 		config = function()
+			local wtf = require("wtf")
+
 			require("lualine").setup({
 
 				-- sections = {
@@ -81,7 +88,7 @@ return {
 					lualine_b = { "buffers" },
 					lualine_c = {},
 					lualine_x = {},
-					lualine_y = {},
+					lualine_y = { wtf.get_status },
 					lualine_z = { "tabs" },
 				},
 

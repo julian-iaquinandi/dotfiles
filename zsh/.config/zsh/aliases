@@ -5,6 +5,8 @@
 #   fd "$*" -X bat 
 # }
 
+alias eslintrestart="~/.local/share/nvim/mason/bin/eslint_d restart"
+
 bindkey -s ^f "tmux-sessionizer\n"
 
 alias lzd="lazydocker"

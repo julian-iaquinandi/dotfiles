@@ -79,7 +79,7 @@ return {
 
 	p = { "<cmd> Telescope git_files<cr>", "find git files" },
 
-	q = { "<cmd> bd <CR>", "quit file" },
+	q = { "<cmd> Bdelete <CR>", "quit file" },
 	Q = { "<cmd> bd! <CR>", "quit file" },
 
 	r = {
