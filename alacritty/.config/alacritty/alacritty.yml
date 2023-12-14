@@ -1,7 +1,7 @@
 font:
   normal:
-    family: Caskaydia Cove Nerd Font
-  size: 13
+    family: Hasklug Nerd Font
+  size: 12
 
 window:
   opacity: .9
