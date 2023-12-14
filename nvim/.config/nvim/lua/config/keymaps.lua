@@ -13,6 +13,10 @@ vim.cmd([[noremap <silent> A-l :<C-U>TmuxNavigateUp<cr>]])
 vim.cmd([[noremap <silent> A-; :<C-U>TmuxNavigateRight<cr>]])
 vim.cmd([[noremap <silent> A-h :<C-U>TmuxNavigatePrevious<cr>]])
 
+-- vim.keymap.set("n", "<leader>c", require("osc52").copy_operator, { expr = true, desc = "copy" })
+vim.keymap.set("n", "<C-S-c>", "<leader>c_", { remap = true, desc = "copy line" })
+vim.keymap.set("v", "<C-c>", require("osc52").copy_visual, { desc = "copy (visual)" })
+
 -- Editor ops
 key.set("n", "<Esc>", ":noh <CR>", { desc = "clear highlights" })
 
@@ -21,8 +25,7 @@ key.set("n", "<C-S-j>", "<Plug>(copilot-next)", { desc = "copilot next" })
 key.set("n", "<C-S-;>", "<Plug>(copilot-previous)", { desc = "copilot prev" })
 
 -- clipboard
-key.set("n", "<leader>y", "+y", { desc = "quit neovim" })
-key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent directory", silent = true })
+-- key.set("n", "<C-f>", "!tmux neww tmux-sessionizer<cr>", { desc = "open parent directory", silent = true })
 
 key.set("n", "<A-h>", "<C-w><C-w><cr>", { desc = "move into diagnostic" })
 
