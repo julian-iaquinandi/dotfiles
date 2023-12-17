@@ -6,3 +6,4 @@ Configured for:
 - Rust
 - Python
 - Markdown
+- C# (untested)
