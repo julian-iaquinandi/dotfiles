@@ -23,7 +23,7 @@ M.Git = {
 }
 
 M.lazy = {
-  plugin = true,
+  -- plugin = true,
   n = {
     ["<leader>lz"] = { "<cmd> Lazy <cr>", "Lazy" },
     ["<leader>lg"] = { "<cmd> LazyGit <cr>", "LazyGit" },

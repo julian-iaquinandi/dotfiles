@@ -5,7 +5,15 @@ local plugins = {
   -- editor
   { "github/copilot.vim", event = "VeryLazy" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
+	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" }, event = "VeryLazy"  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      return require "custom.configs.nvim-tree"
+    end,
+  },
+
 
   -- {
   --   "dreamsofcode-io/ChatGPT.nvim",
@@ -22,6 +30,7 @@ local plugins = {
   --   end,
   -- },
   --
+
   {
     'jpmcb/nvim-llama',
     event = "VeryLazy",
@@ -52,6 +61,7 @@ local plugins = {
         "typescript-language-server",
         "eslint-lsp",
         "prettierd",
+        "svelte-language-server",
 
         "black",
         "debugpy",
@@ -67,6 +77,8 @@ local plugins = {
         "xmlformatter",
 
         "yamlfix",
+
+        "emmet-ls"
       },
     },
   },
@@ -189,6 +201,14 @@ local plugins = {
     end
   },
 
+  -- svelte 
+  {
+    "leafOfTree/vim-svelte-plugin",
+    ft = "svelte",
+    config = function ()
+      vim.g.vim_svelte_plugin_use_typescript = 1
+    end
+  }
 
 }
 

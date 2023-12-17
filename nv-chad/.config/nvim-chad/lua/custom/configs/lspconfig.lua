@@ -40,6 +40,29 @@ lspconfig.marksman.setup({
   filetypes = {"markdown", "md", "mdx"}
 })
 
+lspconfig["svelte"].setup({
+  filetypes = { "svelte", "typescriptreact", "javascriptreact", "html" },
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.js", "*.ts" },
+      callback = function(ctx)
+        if client.name == "svelte" then
+          client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+        end
+      end,
+    })
+  end,
+})
+
+lspconfig["emmet_ls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+})
+
 lspconfig.omnisharp.setup({
   on_attach = on_attach,
   capabilities = capabilities,

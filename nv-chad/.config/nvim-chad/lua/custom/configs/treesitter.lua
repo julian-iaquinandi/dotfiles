@@ -13,5 +13,6 @@ return {
     "markdown",
     "markdown_inline",
     "yaml",
+    "bash"
   },
 }

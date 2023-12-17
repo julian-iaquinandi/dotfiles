@@ -4,8 +4,36 @@ local null_ls = require("null-ls")
 local opts = {
   sources = {
     -- typescript
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.diagnostics.eslint.with({
+      filetypes = {
+        "json",
+        "svelte",
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "vue"
+      }
+    }),
+    -- null_ls.builtins.formatting.prettierd,
+
+    null_ls.builtins.formatting.prettierd.with({
+      extra_filetypes = { "svelte" },
+      filetypes = {
+        "html",
+        "json",
+        "svelte",
+        "markdown",
+        "css",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+      },
+    }), -- js/ts formatter
+
+
+
     -- python
     null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.mypy,
