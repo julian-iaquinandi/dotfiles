@@ -3,6 +3,7 @@
 Configured for:
 
 - Javascript/Typescript/Node
+- Svelte
 - Rust
 - Python
 - Markdown
