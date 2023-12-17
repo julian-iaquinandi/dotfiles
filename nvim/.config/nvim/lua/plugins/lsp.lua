@@ -10,6 +10,7 @@ return {
 		config = function()
 			-- import lspconfig plugin
 			local lspconfig = require("lspconfig")
+			local utils = require("lspconfig/util")
 
 			vim.g.vim_svelte_plugin_use_typescript = 1
 
@@ -142,6 +143,28 @@ return {
 				on_attach = on_attach,
 			})
 
+			-- configure rust server
+			lspconfig["pyright"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+      -- not needed with rust tools 
+			-- lspconfig.rust_analyzer.setup({
+			-- 	cmd = { "rustup", "run", "stable", "rust-analyzer" },
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- 	filetypes = { "rust" },
+			-- 	root_dir = utils.root_pattern("Cargo.toml"),
+			-- 	settings = {
+			-- 		["rust-analyzer"] = {
+			-- 			cargo = {
+			-- 				allFeatures = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
+			--
 			-- configure lua server (with special settings)
 			-- lspconfig["lua_ls"].setup({
 			-- 	capabilities = capabilities,
@@ -203,6 +226,7 @@ return {
 					"emmet_ls",
 					"prismals",
 					"pyright",
+					"rust-analyzer",
 				},
 				-- auto-install configured servers (with lspconfig)
 				automatic_installation = true, -- not the same as ensure_installed
@@ -331,4 +355,29 @@ return {
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 	},
+
+	{
+		"rust-lang/rust.vim",
+		ft = "rust",
+		init = function()
+			vim.g.rustfmt_autosave = 1
+		end,
+	},
+
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    dependencies = "neovim/nvim-lspconfig",
+    opts = function ()
+      server = {
+        on_attach = on_attach
+        capabilities = capabilities
+      }
+      return require "custom.configs.rust-tools"
+    end,
+    config = function (_, opts) 
+      require('rust-tools').setup(opts)
+    end,
+  }
+
 }
