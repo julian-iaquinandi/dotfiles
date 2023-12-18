@@ -16,9 +16,10 @@ alias chp="~/.config/zsh/plugs/gpttui/chat_picker"
 alias gita="git diff | sgpt 'Generate git commit message, for my changes, keep it short, concise and use emojis'" 
 
 # ------------------------------ Nvim
-alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
-alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
-# alias nv="NVIM_APPNAME=nvchad nvim"
+# alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
+# alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
+alias v="NVIM_APPNAME=nvim-chad nvim"
+alias vim="NVIM_APPNAME=nvim-chad nvim"
 # alias lv="NVIM_APPNAME=lazy nvim"
 # alias fv="NVIM_APPNAME=folke nvim"
 # alias jv="NVIM_APPNAME=jujuvim nvim ."
@@ -55,6 +56,7 @@ alias findapp='sudo apt list --installed | grep -i apache'
 alias c='clear'
 
 alias l='exa -l --icons --git -a'
+alias ls='exa --icons --git -a'
 alias lt='exa --tree --level=2 --long --icons --git'
 
 alias laa='ls -a'         # Include hidden
