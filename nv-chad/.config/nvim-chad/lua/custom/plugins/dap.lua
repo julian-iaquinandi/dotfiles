@@ -25,7 +25,7 @@ return {
     "mfussenegger/nvim-dap",
     init = function()
       require "custom.configs.dap"
-      require("core.utils").load_mappings("dap")
+      -- require("core.utils").load_mappings("dap")
     end
   },
 

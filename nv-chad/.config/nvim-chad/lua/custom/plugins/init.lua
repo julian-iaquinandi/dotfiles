@@ -7,3 +7,4 @@ local plugins = {
 }
 
 return plugins
+

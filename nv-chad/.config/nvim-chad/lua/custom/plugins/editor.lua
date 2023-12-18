@@ -20,3 +20,5 @@ local editor = {
 
   {"christoomey/vim-tmux-navigator", event = "VeryLazy"}
 }
+
+return editor
