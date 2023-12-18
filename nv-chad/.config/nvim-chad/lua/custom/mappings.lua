@@ -6,6 +6,8 @@ M.Navigation = {
    ["<A-k>"] = { ":<C-U>TmuxNavigateDown<cr>", "focus down" },
    ["<A-l>"] = { ":<C-U>TmuxNavigateUp<cr>", "focus up" },
    ["<A-;>"] = { ":<C-U><cmd> TmuxNavigateRigth<cr>", "focus right" },
+   ["<leader>,"] = { "<cmd> bn <cr>", "next buffer"},
+   ["<leader>n"] = { "<cmd> bp <cr>", "previous buffer"}
  }
 }
 
