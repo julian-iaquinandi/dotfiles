@@ -1,6 +1,6 @@
-return {
+local editor = {
   -- editor
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
+	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
 
 	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" }, event = "VeryLazy"  },
 

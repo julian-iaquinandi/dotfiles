@@ -1,4 +1,3 @@
-
 local plugins = {
   require("custom.plugins.ai"),
   require("custom.plugins.editor"),

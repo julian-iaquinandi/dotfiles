@@ -2,26 +2,26 @@ local M = {}
 
 M.Navigation = {
  n = {
-   ["<A-j>"] = { ":<C-U>TmuxNavigateLeft<cr>", "Focus left" },
-   ["<A-k>"] = { ":<C-U>TmuxNavigateDown<cr>", "Focus down" },
-   ["<A-l>"] = { ":<C-U>TmuxNavigateUp<cr>", "Focus up" },
-   ["<A-;>"] = { ":<C-U><cmd> TmuxNavigateRigth<cr>", "Focus right" },
+   ["<A-j>"] = { ":<C-U>TmuxNavigateLeft<cr>", "focus left" },
+   ["<A-k>"] = { ":<C-U>TmuxNavigateDown<cr>", "focus down" },
+   ["<A-l>"] = { ":<C-U>TmuxNavigateUp<cr>", "focus up" },
+   ["<A-;>"] = { ":<C-U><cmd> TmuxNavigateRigth<cr>", "focus right" },
  }
 }
 
 M.FileOps = {
   n = {
-    ["<leader>w"] = { "<cmd> w <cr>", "FileOps - Write file" },
-    ["<leader>W"] = { "<cmd> wa <cr>", "FileOps - Write all files" },
-    ["<leader>x"] = { "<cmd> wqa <cr>", "FileOps - Write & quit" },
-    ["<leader>X"] = { "<cmd> qa! <cr>", "FileOps - Quit!" },
-    ["<leader>q"] = { "<cmd> bd <cr>", "FileOps - Close file" },
+    ["<leader>w"] = { "<cmd> w <cr>", "write file" },
+    ["<leader>W"] = { "<cmd> wa <cr>", "write all files" },
+    ["<leader>x"] = { "<cmd> wqa <cr>", "write & quit" },
+    ["<leader>X"] = { "<cmd> qa! <cr>", "force quit" },
+    ["<leader>q"] = { "<cmd> bd <cr>", "close file" },
   }
 }
 
 M.Find = {
   n = {
-    ["<leader>p"] = { "<cmd> Telescope find_files <cr>", "Find files p" },
+    ["<leader>p"] = { "<cmd> Telescope find_files <cr>", "find files p" },
   }
 }
 
