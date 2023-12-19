@@ -281,7 +281,7 @@ return {
 				sources = {
 					--  to disable file types use
 					--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-					formatting.prettier.with({
+				formatting.prettier.with({
 						extra_filetypes = { "svelte" },
 						filetypes = {
 							"html",

@@ -1,7 +1,7 @@
 return {
   {
     "github/copilot.vim",
-    event = "VeryLazy",
+    event = "BufEnter",
     -- config = function()
     --   local copilot = require("copilot")
     --   copilot.setup(require("custom.configs.copilot"))
