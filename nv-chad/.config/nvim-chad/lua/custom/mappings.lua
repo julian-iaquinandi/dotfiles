@@ -1,3 +1,4 @@
+
 local M = {}
 
 M.Navigation = {
@@ -7,7 +8,19 @@ M.Navigation = {
    ["<A-l>"] = { ":<C-U>TmuxNavigateUp<cr>", "focus up" },
    ["<A-;>"] = { ":<C-U><cmd> TmuxNavigateRigth<cr>", "focus right" },
    ["<leader>,"] = { "<cmd> bn <cr>", "next buffer"},
-   ["<leader>n"] = { "<cmd> bp <cr>", "previous buffer"}
+   ["<leader>n"] = { "<cmd> bp <cr>", "previous buffer"},
+
+   --["f"] = {
+   --  function()
+   --    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+   --  end, "find forwards"
+   -- },
+
+   -- ["F"] = {
+   --  function()
+   --  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+   -- end, "find forwards"
+   --}
  }
 }
 

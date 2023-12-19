@@ -1,4 +1,4 @@
-local editor = {
+return {
   -- editor
 	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
 
@@ -18,7 +18,31 @@ local editor = {
     end
   },
 
-  {"christoomey/vim-tmux-navigator", event = "VeryLazy"}
+  {"christoomey/vim-tmux-navigator", event = "VeryLazy"},
+
+  {
+    'smoka7/hop.nvim',
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
+    config = function()
+      local hop = require('hop')
+      local directions = require('hop.hint').HintDirection
+      hop.setup({})
+
+      vim.keymap.set('', 's', function()
+        hop.hint_char2()
+      end, {remap=true})
+
+      vim.keymap.set('', 'f', function()
+        hop.hint_char1({ current_line_only = true })
+      end, {remap=true})
+
+      vim.keymap.set('', 't', function()
+        hop.hint_char1({ current_line_only = true, hint_offset = -1 })
+      end, {remap=true})
+
+    end
+  }
 }
 
-return editor
