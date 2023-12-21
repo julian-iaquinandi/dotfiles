@@ -14,6 +14,44 @@ return {
 			})
 		end,
 	},
+
+	-- {
+	-- 	"gsuuon/model.nvim",
+	--
+	-- 	-- Don't need these if lazy = false
+	-- 	cmd = { "M", "Model", "Mchat" },
+	-- 	init = function()
+	-- 		vim.filetype.add({
+	-- 			extension = {
+	-- 				mchat = "mchat",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	ft = "mchat",
+	--
+	-- 	keys = {
+	-- 		{ "<C-m>d", ":Mdelete<cr>", mode = "n" },
+	-- 		{ "<C-m>s", ":Mselect<cr>", mode = "n" },
+	-- 		{ "<C-m><space>", ":Mchat<cr>", mode = "n" },
+	-- 	},
+	--
+	-- 	config = function()
+	-- 		require("model").setup({
+	-- 			-- Define the provider and the model
+	-- 			provider = "openai_chatgpt",
+	-- 			models = {
+	-- 				openai_chatgpt = {
+	-- 					-- Set the API key (ensure it's set as an environment variable)
+	-- 					api_key = vim.fn.getenv("OPENAI_API_KEY"),
+	-- 					-- Define the model endpoint
+	-- 					model = "gpt-4-1106-preview",
+	-- 				},
+	-- 			},
+	-- 			-- Additional configurations can be added here
+	-- 		})
+	-- 	end,
+	-- },
+
 	-- {
 	-- 	"github/copilot.vim",
 	-- 	event = "VeryLazy",
