@@ -7,6 +7,7 @@ return {
         "rust-analyzer",
 
         "lua-language-server",
+        "stylua",
 
         "typescript-language-server",
         "eslint-lsp",
