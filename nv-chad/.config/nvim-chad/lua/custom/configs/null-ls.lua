@@ -16,7 +16,7 @@ local opts = {
     }),
     -- null_ls.builtins.formatting.prettierd,
 
-    null_ls.builtins.formatting.prettierd.with({
+    null_ls.builtins.formatting.prettier.with({
       extra_filetypes = { "svelte" },
       filetypes = {
         "html",
@@ -31,7 +31,6 @@ local opts = {
         "vue",
       },
     }), -- js/ts formatter
-
 
 
     -- python
