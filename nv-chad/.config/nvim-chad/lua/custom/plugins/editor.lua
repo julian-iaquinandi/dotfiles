@@ -1,6 +1,6 @@
 return {
   -- editor
-	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
   --
   -- {
   --   "nvim-telescope/telescope.nvim",

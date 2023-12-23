@@ -93,6 +93,7 @@ alias tmas='tmux a -t'
 alias tmks='tmux kill-session -t'
 alias tmsc='tmux a -t sysconfig'
 alias tmls='tmux list'
+alias tma='tmux a'
 
 alias del='trash'
 

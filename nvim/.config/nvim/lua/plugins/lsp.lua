@@ -356,6 +356,7 @@ return {
 		event = "VeryLazy",
 	},
 
+<<<<<<< Updated upstream
 	{
 		"rust-lang/rust.vim",
 		ft = "rust",
@@ -380,4 +381,16 @@ return {
     end,
   }
 
+=======
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+        require('lspsaga').setup({})
+    end,
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- optional
+        'nvim-tree/nvim-web-devicons'     -- optional
+    }
+  }
+>>>>>>> Stashed changes
 }
