@@ -1,4 +1,5 @@
 return {
+<<<<<<< HEAD
   -- editor
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
   --
@@ -21,6 +22,30 @@ return {
   --     })
   --   end
   -- },
+=======
+	-- editor
+	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
+	--
+	-- {
+	--   "nvim-telescope/telescope.nvim",
+	--   config = function()
+	--     require("user.telescope")
+	--     local actions = require("telescope.actions")
+	--
+	--     require("config")
+	--
+	--     require("telescope").setup({
+	--       defaults = {
+	--         mappings = {
+	--           i = {
+	--             ["<esc>"] = actions.close,
+	--           },
+	--         },
+	--       },
+	--     })
+	--   end
+	-- },
+>>>>>>> ccff59ff3e50f7456486e89dd76c0d1d2cfd8293
 
 	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" }, event = "VeryLazy" },
 
