@@ -3,9 +3,9 @@ local M = {}
 
 M.lsp = {
   n = {
-    ["<leader>aa"] = { "<cmd>vim.lsp.buf.code_action()<cr>", "lsp code action" },
-    ["<leader>ar"] = { "<cmd>vim.lsp.buf.rename()<cr>", "lsp rename symbol" },
-    ["<leader>af"] = { "<cmd>vim.lsp.buf.format()<cr>", "lsp format document" },
+    ["<leader>aa"] = { ":lua vim.lsp.buf.code_action()<cr>", "lsp code action", opts = { silent = true } },
+    ["<leader>ar"] = { ":lua vim.lsp.buf.rename()<cr>", "lsp rename symbol" },
+    ["<leader>af"] = { ": lua vim.lsp.buf.format()<cr>", "lsp format document" },
   }
 }
 
