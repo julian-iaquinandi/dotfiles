@@ -1,6 +1,14 @@
 
 local M = {}
 
+M.lsp = {
+  n = {
+    ["<leader>aa"] = { "<cmd>vim.lsp.buf.code_action()<cr>", "lsp code action" },
+    ["<leader>ar"] = { "<cmd>vim.lsp.buf.rename()<cr>", "lsp rename symbol" },
+    ["<leader>af"] = { "<cmd>vim.lsp.buf.format()<cr>", "lsp format document" },
+  }
+}
+
 M.Navigation = {
  n = {
    ["<A-j>"] = { ":<C-U>TmuxNavigateLeft<cr>", "focus left" },
@@ -9,18 +17,6 @@ M.Navigation = {
    ["<A-;>"] = { ":<C-U><cmd> TmuxNavigateRigth<cr>", "focus right" },
    ["<leader>,"] = { "<cmd> bn <cr>", "next buffer"},
    ["<leader>n"] = { "<cmd> bp <cr>", "previous buffer"},
-
-   --["f"] = {
-   --  function()
-   --    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-   --  end, "find forwards"
-   -- },
-
-   -- ["F"] = {
-   --  function()
-   --  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-   -- end, "find forwards"
-   --}
  }
 }
 
@@ -52,7 +48,7 @@ M.Git = {
 		["<leader>gs"] = { "<cmd> Telescope git_status<cr>", "git show status" },
 		["<leader>gS"] = { "<cmd> Telescope git_stash<cr>", "git show stashes" },
 		["<leader>gb"] = { "<cmd> Telescope git_branches<cr>", "git show branches" },
-		["<leader>gg"] = { "<cmd> LazyGit<cr>", "Lazy Git" },
+		["<leader>gg"] = { "<cmd> Git add -A | Git commit <cr>", "Lazy Git" },
   }
 }
 

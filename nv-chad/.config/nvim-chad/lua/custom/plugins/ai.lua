@@ -15,6 +15,11 @@ return {
 		end,
 	},
 
+  {
+    disable = true,
+    "tzachar/cmp-tabnine",
+  }
+
 	-- {
 	-- 	"gsuuon/model.nvim",
 	--
