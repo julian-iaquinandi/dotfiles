@@ -48,6 +48,7 @@ return {
 		config = function()
 			local hop = require("hop")
 			local directions = require("hop.hint").HintDirection
+
 			hop.setup({})
 
 			vim.keymap.set("", "s", function()
@@ -55,11 +56,19 @@ return {
 			end, { remap = true })
 
 			vim.keymap.set("", "f", function()
-				hop.hint_char1({ current_line_only = true })
+				hop.hint_char1({ current_line_only = true, direction = directions.AFTER_CURSOR })
 			end, { remap = true })
 
+      vim.keymap.set("", "F", function()
+        hop.hint_char1({ current_line_only = true, reverse_direction = true, direction = directions.BEFORE_CURSOR })
+      end, { remap = true })
+
 			vim.keymap.set("", "t", function()
-				hop.hint_char1({ current_line_only = true, hint_offset = -1 })
+				hop.hint_char1({ current_line_only = true, hint_offset = -1, direction = directions.AFTER_CURSOR })
+			end, { remap = true })
+
+			vim.keymap.set("", "T", function()
+				hop.hint_char1({ current_line_only = true, hint_offset = -1, direction = directions.BEFORE_CURSOR })
 			end, { remap = true })
 		end,
 	},
@@ -75,4 +84,9 @@ return {
 			},
 		},
 	},
+
+  {
+    "tpope/vim-fugitive",
+    event = "BufRead"
+  }
 }

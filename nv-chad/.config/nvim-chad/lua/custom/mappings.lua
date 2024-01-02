@@ -24,6 +24,7 @@ M.Navigation = {
  }
 }
 
+
 M.FileOps = {
   n = {
     ["<leader>w"] = { "<cmd> w <cr>", "write file" },
@@ -36,17 +37,21 @@ M.FileOps = {
 
 M.Find = {
   n = {
-    ["<leader>p"] = { "<cmd> Telescope find_files <cr>", "find files p" },
+    ["<leader>p"] = { "<cmd> Telescope git_files <cr>", "find files p" },
+    ["P"] = { "<cmd>HopPasteChar1<cr>", "paste at position" },
+    ["<leader>y"] = { "<cmd>HopYankChar1<cr>", "yank between positions" },
   }
 }
 
-
 M.Git = {
   n = {
-    ["<leader>gc"] = { "<cmd> Telescope git_commits<cr>", "find git commits" },
-		["<leader>gs"] = { "<cmd> Telescope git_status<cr>", "find git status" },
-		["<leader>gS"] = { "<cmd> Telescope git_stash<cr>", "find git stash" },
-		["<leader>gb"] = { "<cmd> Telescope git_branches<cr>", "find git branches" },
+    ["<leader>ga"] = { "<cmd> Git add -A <cr>", "git add all" },
+    ["<leader>gc"] = { "<cmd> Git commit<cr>", "git commit" },
+    ["<leader>gp"] = { "<cmd> Git push<cr>", "git commit" },
+    ["<leader>gC"] = { "<cmd> Telescope git_commits<cr>", "git show commits" },
+		["<leader>gs"] = { "<cmd> Telescope git_status<cr>", "git show status" },
+		["<leader>gS"] = { "<cmd> Telescope git_stash<cr>", "git show stashes" },
+		["<leader>gb"] = { "<cmd> Telescope git_branches<cr>", "git show branches" },
 		["<leader>gg"] = { "<cmd> LazyGit<cr>", "Lazy Git" },
   }
 }

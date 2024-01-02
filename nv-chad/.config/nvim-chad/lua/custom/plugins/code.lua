@@ -56,10 +56,16 @@ return {
 			local M = require("plugins.configs.cmp")
 			local cmp = require("cmp")
 			M.completion.completeopt = "menu,menuone,noselect"
-			M.mapping["<CR>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Insert,
-				select = false,
-			})
+
+      M.mapping = cmp.mapping({
+        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<CR>'] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = false,
+        }),
+      })
+
 			table.insert(M.sources, { name = "crates" })
 			return M
 		end,
