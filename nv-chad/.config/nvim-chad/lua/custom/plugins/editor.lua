@@ -1,26 +1,28 @@
 return {
-  -- editor
+	-- editor
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-  --
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   config = function()
-  --     require("user.telescope")
-  --     local actions = require("telescope.actions")
-  --
-  --     require("config")
-  --
-  --     require("telescope").setup({
-  --       defaults = {
-  --         mappings = {
-  --           i = {
-  --             ["<esc>"] = actions.close,
-  --           },
-  --         },
-  --       },
-  --     })
-  --   end
-  -- },
+	{ "marklcrns/vim-smartq", event = "BufRead" },
+
+	--
+	-- {
+	--   "nvim-telescope/telescope.nvim",
+	--   config = function()
+	--     require("user.telescope")
+	--     local actions = require("telescope.actions")
+	--
+	--     require("config")
+	--
+	--     require("telescope").setup({
+	--       defaults = {
+	--         mappings = {
+	--           i = {
+	--             ["<esc>"] = actions.close,
+	--           },
+	--         },
+	--       },
+	--     })
+	--   end
+	-- },
 
 	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" }, event = "VeryLazy" },
 
@@ -59,9 +61,13 @@ return {
 				hop.hint_char1({ current_line_only = true, direction = directions.AFTER_CURSOR })
 			end, { remap = true })
 
-      vim.keymap.set("", "F", function()
-        hop.hint_char1({ current_line_only = true, reverse_direction = true, direction = directions.BEFORE_CURSOR })
-      end, { remap = true })
+			vim.keymap.set("", "F", function()
+				hop.hint_char1({
+					current_line_only = true,
+					reverse_direction = true,
+					direction = directions.BEFORE_CURSOR,
+				})
+			end, { remap = true })
 
 			vim.keymap.set("", "t", function()
 				hop.hint_char1({ current_line_only = true, hint_offset = -1, direction = directions.AFTER_CURSOR })
@@ -85,22 +91,21 @@ return {
 		},
 	},
 
-  {
-    "tpope/vim-fugitive",
-    event = "BufRead"
-  },
+	{
+		"tpope/vim-fugitive",
+		event = "BufRead",
+	},
 
-  {
-    "hedyhli/outline.nvim",
-    event = "BufRead",
-    config = function()
-      -- Example mapping to toggle outline
-      vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
-        { desc = "Toggle Outline" })
+	{
+		"hedyhli/outline.nvim",
+		event = "BufRead",
+		config = function()
+			-- Example mapping to toggle outline
+			vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 
-      require("outline").setup {
-        -- Your setup opts here (leave empty to use defaults)
-      }
-    end,
-  },
+			require("outline").setup({
+				-- Your setup opts here (leave empty to use defaults)
+			})
+		end,
+	},
 }
