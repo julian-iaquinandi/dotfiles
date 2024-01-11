@@ -16,7 +16,7 @@ local opts = {
 		}),
 		-- null_ls.builtins.formatting.prettierd,
 
-		null_ls.builtins.formatting.prettier.with({
+		null_ls.builtins.formatting.prettierd.with({
 			extra_filetypes = { "svelte" },
 			filetypes = {
 				"html",
