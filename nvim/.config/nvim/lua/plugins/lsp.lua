@@ -356,32 +356,6 @@ return {
 		event = "VeryLazy",
 	},
 
-<<<<<<< Updated upstream
-	{
-		"rust-lang/rust.vim",
-		ft = "rust",
-		init = function()
-			vim.g.rustfmt_autosave = 1
-		end,
-	},
-
-  {
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
-    dependencies = "neovim/nvim-lspconfig",
-    opts = function ()
-      server = {
-        on_attach = on_attach
-        capabilities = capabilities
-      }
-      return require "custom.configs.rust-tools"
-    end,
-    config = function (_, opts) 
-      require('rust-tools').setup(opts)
-    end,
-  }
-
-=======
   {
     'nvimdev/lspsaga.nvim',
     config = function()
@@ -392,5 +366,4 @@ return {
         'nvim-tree/nvim-web-devicons'     -- optional
     }
   }
->>>>>>> Stashed changes
 }
