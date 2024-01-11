@@ -73,18 +73,6 @@ return {
 		end,
 	},
 
-	{
-		"OlegGulevskyy/better-ts-errors.nvim",
-		event = "BufRead",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		config = {
-			keymaps = {
-				toggle = "<leader>dd", -- default '<leader>dd'
-				go_to_definition = "<leader>dx", -- default '<leader>dx'
-			},
-		},
-	},
-
   {
     "tpope/vim-fugitive",
     event = "BufRead"
@@ -103,4 +91,18 @@ return {
       }
     end,
   },
+
+  {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end,
+
+    cmd = "TroubleToggle",
+  }
 }

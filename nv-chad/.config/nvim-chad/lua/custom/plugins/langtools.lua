@@ -43,5 +43,17 @@ return {
     config = function ()
       vim.g.vim_svelte_plugin_use_typescript = 1
     end
-  }
+  },
+
+	{
+		"OlegGulevskyy/better-ts-errors.nvim",
+		event = "BufRead",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		config = {
+			keymaps = {
+				toggle = "<leader>dd", -- default '<leader>dd'
+				go_to_definition = "<leader>dx", -- default '<leader>dx'
+			},
+		},
+	},
 }
