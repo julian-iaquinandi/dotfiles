@@ -14,7 +14,6 @@ return {
         ["<leader>xb"] = { "<cmd>%bd|e#<cr>", "close all buffers but current" },
 
         -- find
-        ["<leader>p"] = { "<cmd> Telescope git_files <cr>", "find files p" },
         ["<leader>P"] = { "<cmd>HopPasteChar1<cr>", "paste at position" },
         ["<leader>y"] = { "<cmd>HopYankChar1<cr>", "yank between positions" },
       },
