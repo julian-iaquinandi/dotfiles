@@ -9,7 +9,7 @@ return {
     keys = {
       { "<A-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Go to the previous pane" },
       { "<A-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Got to the left pane" },
-      { "<A-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Got to the down pane" },
+      { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Got to the down pane" },
       { "<A-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Got to the up pane" },
       { "<A-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Got to the right pane" },
     },
@@ -69,6 +69,7 @@ return {
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
         mappings = {
           n = { ["q"] = require("telescope.actions").close },
+          i = { ["<esc>"] = require("telescope.actions").close },
         },
       },
     },
