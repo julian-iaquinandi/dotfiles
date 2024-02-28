@@ -2,23 +2,16 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- set leader W
--- return {
---   { "<leader>w", "<cmd>w<cr>", desc = "Write file" },
--- }
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-,>", "<C-w>j", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-.>", "<C-w>k", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-/>", "<C-w>l", { noremap = true, silent = true })
 
 -- return {
---   { "<A-j>", ":<C-U>TmuxNavigateLeft<cr>", "focus left" },
---   { "<A-k>", ":<C-U>TmuxNavigateDown<cr>", "focus down" },
---   { "<A-l>", ":<C-U>TmuxNavigateUp<cr>", "focus up" },
---   { "<A-;>", ":<C-U><cmd> TmuxNavigateRigth<cr>", "focus right" },
+--   { "<A-m>", "<cmd><C-w>h", "focus left" },
+--   { "<A-,>", "<cmd><C-w>j", "focus down" },
+--   { "<A-.>", "<cmd><C-w>k", "focus up" },
+--   { "<A-/>", "<cmd><C-w>l", "focus right" },
 -- }
---
-
--- vim.keymap.set("n", "<A-k>", "<cmd><C-U>TmuxNavigateDown<CR>", { silent = true })
-
--- { "<A-j>", "<cmd><C-U>TmuxNavigateLeft<cr>", "focus left" },
--- { "<A-k>", "<cmd><C-U>TmuxNavigateDown<cr>", "focus down" },
--- { "<A-l>", "<cmd><C-U>TmuxNavigateUp<cr>", "focus up" },
--- { "<A-;>", "<cmd><C-U>TmuxNavigateRight<cr>", "focus right" },
---
