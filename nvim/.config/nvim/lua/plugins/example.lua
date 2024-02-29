@@ -79,7 +79,13 @@ return {
       build = "make",
       config = function()
         require("telescope").load_extension("fzf")
+        require("telescope").load_extension("persisted")
       end,
+      extensions = {
+        persisted = {
+          layout_config = { width = 0.55, height = 0.55 },
+        },
+      },
     },
   },
 

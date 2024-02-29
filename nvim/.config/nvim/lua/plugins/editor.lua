@@ -151,6 +151,42 @@ return {
     },
   },
 
+  -- add better session management
+  {
+    "olimorris/persisted.nvim",
+    config = true,
+  },
+
+  {
+    "folke/persistence.nvim",
+    enabled = false,
+  },
+
+  {
+    "telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+        require("telescope").load_extension("persisted")
+
+        require("telescope").setup({
+          defaults = {},
+          extensions = {
+            persisted = {
+              layout_config = { width = 0.55, height = 0.55 },
+            },
+          },
+        })
+      end,
+      extensions = {
+        persisted = {
+          layout_config = { width = 0.55, height = 0.55 },
+        },
+      },
+    },
+  },
   -- {
   --   "folke/tokyonight.nvim",
   --   opts = {
