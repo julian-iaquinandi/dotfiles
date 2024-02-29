@@ -40,13 +40,13 @@ return {
             vertical = {
               mirror = false,
             },
-            -- width = 0.87,
+            width = 0.87,
             -- height = 0.80,
-            width = function(_, max_columns)
-              local percentage = 0.5
-              local max = 300
-              return math.min(math.floor(percentage * max_columns), max)
-            end,
+            -- width = function(_, max_columns)
+            --   local percentage = 0.5
+            --   local max = 300
+            --   return math.min(math.floor(percentage * max_columns), max)
+            -- end,
             height = function(_, _, max_lines)
               local percentage = 0.5
               local min = 50
