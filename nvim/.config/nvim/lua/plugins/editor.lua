@@ -1,7 +1,7 @@
 local Util = require("lazyvim.util")
 
 return {
-  -- { "marklcrns/vim-smartq", event = "BufRead" },
+  { "marklcrns/vim-smartq", event = "BufRead" },
 
   {
     "christoomey/vim-tmux-navigator",

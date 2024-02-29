@@ -54,6 +54,8 @@ return {
         ["<leader>th"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "terminal horizontal" },
         ["<leader>tv"] = { "<cmd>ToggleTerm direction=vertical<cr>", "terminal vertical" },
 
+        ["<leader>sf"] = { "<cmd>Telescope persisted<cr>", "terminal vertical" },
+
         -- ["<leader>vs"] = { "<cmd>lua WswapAndCycleWindow()<cr>", "swap window" },
       },
     },
