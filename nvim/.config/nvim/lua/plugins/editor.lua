@@ -20,6 +20,7 @@ return {
     opts = {
       position = "right",
     },
+
     keys = {
       {
         "<leader>fe",
@@ -90,26 +91,4 @@ return {
       end,
     },
   },
-
-  -- add better session management
-  {
-    "olimorris/persisted.nvim",
-    config = true,
-  },
-
-  {
-    "folke/persistence.nvim",
-    enabled = false,
-  },
-
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   opts = {
-  --     transparent = true,
-  --     styles = {
-  --       sidebars = "transparent",
-  --       floats = "transparent",
-  --     },
-  --   },
-  -- },
 }

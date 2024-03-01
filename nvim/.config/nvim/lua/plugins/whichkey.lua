@@ -32,6 +32,15 @@ end
 _G.SwapBufferAndResize = SwapBufferAndResize
 vim.api.nvim_set_keymap("n", "<leader>vs", ":lua SwapBufferAndResize()<CR>", { noremap = true, silent = true })
 
+--
+local buffers = require("utils.buffers")
+
+local is_default_buffer = function()
+  return buffers.is_not_focused_buffer("NvimTree_1", "mind", "spectre", "gen.nvim", "Neo-tree")
+end
+
+local fn = require("utils.fn")
+
 return {
   {
     "folke/which-key.nvim",
@@ -51,11 +60,53 @@ return {
         ["<leader>P"] = { "<cmd>HopPasteChar1<cr>", "paste at position" },
         ["<leader>y"] = { "<cmd>HopYankChar1<cr>", "yank between positions" },
 
+        -- terminal
         ["<leader>th"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "terminal horizontal" },
         ["<leader>tv"] = { "<cmd>ToggleTerm direction=vertical<cr>", "terminal vertical" },
 
-        ["<leader>sf"] = { "<cmd>Telescope persisted<cr>", "terminal vertical" },
+        -- session
+        ["<leader>sf"] = { "<cmd>Telescope persisted<cr>", "list sessions" },
 
+        -- pickers
+        ["<leader>ao"] = {
+          function()
+            if is_default_buffer() then
+              local menu = require("pickers.ollama")
+              menu.toggle()
+            end
+          end,
+          "picker: ollama",
+        },
+
+        ["<leader>ac"] = {
+          function()
+            if is_default_buffer() then
+              local menu = require("pickers.code-actions")
+              menu.toggle()
+            end
+          end,
+          "picker: code actions",
+        },
+
+        ["<leader>ap"] = {
+          function()
+            local bufname = vim.fn.expand("%")
+
+            print(bufname)
+
+            local menu = fn.switch(bufname, {
+              -- ["neo-tree filesystem [1]"] = function()
+              --   return require("pickers.neo-tree")
+              -- end,
+              ["default"] = function()
+                return require("pickers.command-palette")
+              end,
+            })
+
+            require("ui.picker").make(menu)
+          end,
+          "picker: command pallete",
+        },
         -- ["<leader>vs"] = { "<cmd>lua WswapAndCycleWindow()<cr>", "swap window" },
       },
     },
