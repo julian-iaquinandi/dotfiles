@@ -15,9 +15,8 @@ if vim.fn.has("win32") == 1 or vim.fn.has("win32unix") == 1 then
   for option, value in pairs(powershell_options) do
     vim.opt[option] = value
   end
-
   if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMono Nerd Font:h11"
+    vim.o.guifont = "JetBrainsMono Nerd Font,Segoe UI Emoji:h11"
     vim.g.neovide_transparency = 0.9
   end
 end
