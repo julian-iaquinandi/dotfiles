@@ -90,5 +90,11 @@ return {
         end
       end,
     },
+    keys = {
+      { "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "terminal horizontal" },
+      { "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", desc = "terminal vertical" },
+    },
   },
+
+  "dhruvasagar/vim-zoom",
 }

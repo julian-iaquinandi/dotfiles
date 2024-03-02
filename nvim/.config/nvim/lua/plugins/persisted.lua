@@ -17,6 +17,9 @@ return {
   {
     "olimorris/persisted.nvim",
     config = true,
+    keys = {
+      { "<leader>sf", "<cmd> Telescope persisted<CR>", desc = "list sessions" },
+    },
   },
 
   {

@@ -1,45 +1,7 @@
-function SwapBufferAndResize()
-  local current_win = vim.api.nvim_get_current_win()
-  local windows = vim.api.nvim_tabpage_list_wins(0)
-
-  local target_win = nil
-  for i, win in ipairs(windows) do
-    if win == current_win then
-      -- Determine the target window based on the position.
-      target_win = (i < #windows) and windows[i + 1] or windows[i - 1]
-      break
-    end
-  end
-
-  if not target_win then
-    print("No window to swap with.")
-    return
-  end
-
-  -- Swap the buffers between the current and target windows.
-  local current_buf = vim.api.nvim_win_get_buf(current_win)
-  local target_buf = vim.api.nvim_win_get_buf(target_win)
-  vim.api.nvim_win_set_buf(current_win, target_buf)
-  vim.api.nvim_win_set_buf(target_win, current_buf)
-
-  -- Swap sizes
-  -- local cur_height = vim.api.nvim_win_get_height(current_win)
-  -- local target_height = vim.api.nvim_win_get_height(target_win)
-  -- vim.api.nvim_win_set_height(current_win, target_height)
-  -- vim.api.nvim_win_set_height(target_win, cur_height)
-end
-
-_G.SwapBufferAndResize = SwapBufferAndResize
-vim.api.nvim_set_keymap("n", "<leader>vs", ":lua SwapBufferAndResize()<CR>", { noremap = true, silent = true })
-
---
 local buffers = require("utils.buffers")
+local pickers = require("utils.pickers")
 
-local is_default_buffer = function()
-  return buffers.is_not_focused_buffer("NvimTree_1", "mind", "spectre", "gen.nvim", "Neo-tree")
-end
-
-local fn = require("utils.fn")
+-- local fn = require("utils.fn")
 
 return {
   {
@@ -56,58 +18,16 @@ return {
         ["<leader>Q"] = { "<cmd> SmartQ!<cr>", "close file force" },
         ["<leader>xb"] = { "<cmd>%bd|e#<cr>", "close all buffers but current" },
 
-        -- find
-        ["<leader>P"] = { "<cmd>HopPasteChar1<cr>", "paste at position" },
-        ["<leader>y"] = { "<cmd>HopYankChar1<cr>", "yank between positions" },
-
-        -- terminal
-        ["<leader>th"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "terminal horizontal" },
-        ["<leader>tv"] = { "<cmd>ToggleTerm direction=vertical<cr>", "terminal vertical" },
-
-        -- session
-        ["<leader>sf"] = { "<cmd>Telescope persisted<cr>", "list sessions" },
-
         -- pickers
-        ["<leader>ao"] = {
-          function()
-            if is_default_buffer() then
-              local menu = require("pickers.ollama")
-              menu.toggle()
-            end
-          end,
-          "picker: ollama",
-        },
-
-        ["<leader>ac"] = {
-          function()
-            if is_default_buffer() then
-              local menu = require("pickers.code-actions")
-              menu.toggle()
-            end
-          end,
-          "picker: code actions",
-        },
-
-        ["<leader>ap"] = {
-          function()
-            local bufname = vim.fn.expand("%")
-
-            print(bufname)
-
-            local menu = fn.switch(bufname, {
-              -- ["neo-tree filesystem [1]"] = function()
-              --   return require("pickers.neo-tree")
-              -- end,
-              ["default"] = function()
-                return require("pickers.command-palette")
-              end,
-            })
-
-            require("ui.picker").make(menu)
-          end,
-          "picker: command pallete",
-        },
+        ["<leader>P"] = { pickers.invoke_command_pallete, "paste at position" },
+        -- ["<leader>ao"] = { pickers.invoke_picker("ollama"), "ollama" },
+        -- ["<leader>ac"] = { pickers.invoke_picker("code-actions"), "code actions" },
+        -- ["<leader>ap"] = { pickers.invoke_command_pallete, "command pallete" },
+        ["<leader>ai"] = { "<cmd>Gen<cr>", "command pallete" },
         -- ["<leader>vs"] = { "<cmd>lua WswapAndCycleWindow()<cr>", "swap window" },
+
+        -- window/panes
+        ["<leader>vs"] = { buffers.swap_buffer_and_resize, "swap window" },
       },
     },
   },

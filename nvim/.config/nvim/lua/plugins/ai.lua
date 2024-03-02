@@ -14,7 +14,8 @@ return {
           pcall(io.popen, "ollama serve > /dev/null 2>&1 &")
         end,
         -- Function to initialize Ollama
-        command = "curl --silent --no-buffer -X POST http://localhost:11434/api/generate -d $body",
+        -- command = "curl --silent --no-buffer -X POST http://localhost:11434/api/generate -d $body",
+        command = [[powershell -Command "Invoke-RestMethod -Method Post -Uri http://localhost:11434/api/generate -ContentType 'application/json' -Body '{\""prompt\"": \""Hello, world!\"", \""model\"": \""zephyr\""}'"]],
         -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
         -- This can also be a lua function returning a command string, with options as the input parameter.
         -- The executed command must return a JSON object with { response, context }
