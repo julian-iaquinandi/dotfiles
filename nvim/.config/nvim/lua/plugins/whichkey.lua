@@ -1,9 +1,5 @@
 local buffers = require("utils.buffers")
 local pickers = require("utils.pickers")
-local windows = require("utils.windows")
-
--- local fn = require("utils.fn")
---
 
 return {
   {
@@ -20,6 +16,8 @@ return {
         ["<leader>Q"] = { "<cmd> SmartQ!<cr>", "close file force" },
         ["<leader>xb"] = { "<cmd>%bd|e#<cr>", "close all buffers but current" },
 
+        ["<leader>m"] = { "<cmd>bn<cr>", "buffer next" },
+        ["<leader>n"] = { "<cmd>bp<cr>", "buffer previous" },
         -- pickers
         ["<leader>P"] = { pickers.invoke_command_pallete, "paste at position" },
         -- ["<leader>ao"] = { pickers.invoke_picker("ollama"), "ollama" },
@@ -31,8 +29,8 @@ return {
         -- window/panes
         ["<leader>vs"] = { buffers.swap_buffer_and_resize, "swap window" },
 
-        ["<leader>vv"] = { windows.resize_windows, "window layout 1" },
-        ["<leader>vz"] = { windows.zoom, "window zoom" },
+        ["<leader>vv"] = { "<cmd>lua layout0()<cr>", "window layout 1" },
+        ["<leader>vz"] = { "<cmd>lua zoom()<cr>", "window zoom" },
       },
     },
   },

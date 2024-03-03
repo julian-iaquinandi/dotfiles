@@ -89,27 +89,6 @@ M.zoom = function(targetWinId)
     vim.cmd(winId .. "wincmd |")
     _G.winZoomState.zoomedWinId = winId -- Update the zoomed window state
   end
-  -- local winId = vim.api.nvim_get_current_win()
-  --
-  -- -- Initialize window-specific state if it doesn't exist
-  -- if _G.winZoomStates[winId] == nil then
-  --   _G.winZoomStates[winId] = { isZoomed = 0 }
-  -- end
-  --
-  -- if _G.winZoomStates[winId].isZoomed == 0 then
-  --   -- Store current window size
-  --   _G.winZoomStates[winId].oldWidth = vim.api.nvim_win_get_width(winId)
-  --   _G.winZoomStates[winId].oldHeight = vim.api.nvim_win_get_height(winId)
-  --   -- Maximize window
-  --   vim.cmd("wincmd _")
-  --   vim.cmd("wincmd |")
-  --   _G.winZoomStates[winId].isZoomed = 1
-  -- else
-  --   -- Restore window size
-  --   vim.cmd("resize " .. _G.winZoomStates[winId].oldHeight)
-  --   vim.cmd("vertical resize " .. _G.winZoomStates[winId].oldWidth)
-  --   _G.winZoomStates[winId].isZoomed = 0
-  -- end
 end
 
 M.exitTerminalMode = function()
@@ -128,13 +107,13 @@ vim.api.nvim_create_autocmd("WinEnter", {
     local currentWinId = vim.api.nvim_get_current_win()
     if _G.winZoomState.zoomedWinId and _G.winZoomState.zoomedWinId ~= currentWinId then
       -- Call the zoom toggle function for the new window
-      winZoomToggle(currentWinId)
+      zoom(currentWinId)
     end
   end,
 })
 
-_G.resizeWindows = M.resize_windows
-_G.winZoomToggle = M.zoom
+_G.layout0 = M.resize_windows
+_G.zoom = M.zoom
 _G.exitTerminalAndZoom = M.exitTerminalAndZoom
 
 return M
