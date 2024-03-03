@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 --
 local opts = { noremap = true, silent = true }
+local window = require("utils.windows")
 
 -- Move focus
 vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", opts)
@@ -19,6 +20,7 @@ vim.api.nvim_set_keymap("i", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()
 vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n><C-w>w", { noremap = true })
 vim.api.nvim_set_keymap("t", "jj", "<C-\\><C-n>", { noremap = true })
 vim.api.nvim_set_keymap("t", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", { noremap = true, silent = true })
 
 -- Remap movement keys
 vim.api.nvim_set_keymap("n", "j", "h", opts)

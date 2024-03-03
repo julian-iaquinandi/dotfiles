@@ -233,7 +233,8 @@ return {
             end,
           },
         },
-        extensions = { "neo-tree", "lazy" },
+        extensions = { "lazy" },
+        -- extensions = { "neo-tree", "lazy" },
       }
     end,
   },

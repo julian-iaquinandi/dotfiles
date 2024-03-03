@@ -1,7 +1,9 @@
 local buffers = require("utils.buffers")
 local pickers = require("utils.pickers")
+local windows = require("utils.windows")
 
 -- local fn = require("utils.fn")
+--
 
 return {
   {
@@ -28,6 +30,9 @@ return {
 
         -- window/panes
         ["<leader>vs"] = { buffers.swap_buffer_and_resize, "swap window" },
+
+        ["<leader>vv"] = { windows.resize_windows, "window layout 1" },
+        ["<leader>vz"] = { windows.zoom, "window zoom" },
       },
     },
   },
