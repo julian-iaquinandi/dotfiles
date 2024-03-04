@@ -292,6 +292,8 @@ return {
         'stylua', -- Used to format lua code
         'codelldb',
         'hadolint',
+        'prettier',
+        'prettierd',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -430,6 +432,14 @@ return {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
+  },
+
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    lazy = true,
+    opts = {
+      enable_autocmd = false,
+    },
   },
 
   -- Rust
