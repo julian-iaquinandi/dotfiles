@@ -25,7 +25,7 @@ M.contains = function(pattern)
 end
 
 M.compose = function(...)
-  local tbl = { ... }
+  local tbl = {...}
 
   return function(value)
     for index, fn in ipairs(tbl) do

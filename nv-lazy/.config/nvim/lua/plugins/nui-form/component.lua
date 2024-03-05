@@ -1,35 +1,45 @@
-local Popup = require 'nui.popup'
+local Popup = require("nui.popup")
 
-local event = require('nui.utils.autocmd').event
-local fn = require 'custom.utils.fn'
+local event = require("nui.utils.autocmd").event
+local fn = require("utils.fn")
 
-local Component = Popup:extend 'Component'
+local Component = Popup:extend("Component")
 
 function Component:init(form, props, popup_options)
-  popup_options = vim.tbl_deep_extend('force', {
-    enter = false,
-    focusable = true,
-    size = {
-      width = form.width,
+  popup_options =
+    vim.tbl_deep_extend(
+    "force",
+    {
+      enter = false,
+      focusable = true,
+      size = {
+        width = form.width
+      },
+      win_options = {
+        winblend = 0
+      },
+      zindex = 100
     },
-    win_options = {
-      winblend = 0,
-    },
-    zindex = 100,
-  }, vim.F.if_nil(popup_options, {}))
+    vim.F.if_nil(popup_options, {})
+  )
 
   if not self:disable_label() then
-    local icon = props.icon and ' ' .. props.icon or ''
+    local icon = props.icon and " " .. props.icon or ""
 
-    popup_options = vim.tbl_extend('force', popup_options, {
-      border = {
-        style = props.style,
-        text = {
-          top = icon .. ' ' .. props.label .. ' ',
-          top_align = props.label_align,
-        },
-      },
-    })
+    popup_options =
+      vim.tbl_extend(
+      "force",
+      popup_options,
+      {
+        border = {
+          style = props.style,
+          text = {
+            top = icon .. " " .. props.label .. " ",
+            top_align = props.label_align
+          }
+        }
+      }
+    )
   end
 
   self.__form = form
@@ -51,9 +61,11 @@ end
 function Component:unmount()
   Component.super.unmount(self)
 
-  vim.schedule(function()
-    vim.api.nvim_command 'stopinsert'
-  end)
+  vim.schedule(
+    function()
+      vim.api.nvim_command("stopinsert")
+    end
+  )
 end
 
 function Component:__set_initial_focus()
@@ -67,14 +79,22 @@ function Component:__attach_events()
 
   local default_events = {}
 
-  local events = fn.ireduce(self:events(), function(acc, event)
-    table.insert(acc, event)
-    return acc
-  end, default_events)
+  local events =
+    fn.ireduce(
+    self:events(),
+    function(acc, event)
+      table.insert(acc, event)
+      return acc
+    end,
+    default_events
+  )
 
-  fn.ieach(events, function(tbl)
-    self:on(tbl.event, tbl.callback)
-  end)
+  fn.ieach(
+    events,
+    function(tbl)
+      self:on(tbl.event, tbl.callback)
+    end
+  )
 end
 
 function Component:__attach_mappings()
@@ -82,71 +102,82 @@ function Component:__attach_mappings()
 
   local default_mappings = {
     {
-      mode = { 'n' },
-      from = '<leader>c',
+      mode = {"n"},
+      from = "<leader>c",
       to = function()
         form.layout:unmount()
         form.on_close()
-      end,
+      end
     },
     {
-      mode = { 'n' },
+      mode = {"n"},
       from = form.keymap.close,
       to = function()
         form.layout:unmount()
         form.on_close()
-      end,
+      end
     },
     {
-      mode = { 'i', 'n' },
+      mode = {"i", "n"},
       from = form.keymap.submit,
       to = function()
         if form:validate() then
           form.layout:unmount()
           form.on_submit(form.state)
         end
-      end,
+      end
     },
     {
-      mode = { 'i', 'n' },
-      from = '<Tab>',
+      mode = {"i", "n"},
+      from = "<Tab>",
       to = function()
         local index = self:get_props().focus_index
         local next = form.focusable_components[index + 1] or form.focusable_components[1]
 
         vim.api.nvim_set_current_win(next.winid)
-      end,
+      end
     },
     {
-      mode = { 'i', 'n' },
-      from = '<S-Tab>',
+      mode = {"i", "n"},
+      from = "<S-Tab>",
       to = function()
         local index = self:get_props().focus_index
         local prev = form.focusable_components[index - 1] or form.focusable_components[#form.focusable_components]
 
         vim.api.nvim_set_current_win(prev.winid)
-      end,
-    },
+      end
+    }
   }
 
-  local mappings = fn.ireduce(self:mappings(), function(acc, event)
-    table.insert(acc, event)
-    return acc
-  end, default_mappings)
+  local mappings =
+    fn.ireduce(
+    self:mappings(),
+    function(acc, event)
+      table.insert(acc, event)
+      return acc
+    end,
+    default_mappings
+  )
 
   local map = function(mode, from, to)
-    self:map(mode, from, to, { noremap = true, silent = true })
+    self:map(mode, from, to, {noremap = true, silent = true})
   end
 
-  fn.ieach(mappings, function(mapping)
-    if type(mapping.mode) == 'table' then
-      return fn.ieach(mapping.mode, function(mode)
-        map(mode, mapping.from, mapping.to)
-      end)
-    end
+  fn.ieach(
+    mappings,
+    function(mapping)
+      if type(mapping.mode) == "table" then
+        return fn.ieach(
+          mapping.mode,
+          function(mode)
+            map(mode, mapping.from, mapping.to)
+          end
+        )
+      end
 
-    map(mapping.mode, mapping.from, mapping.to)
-  end)
+      map(mapping.mode, mapping.from, mapping.to)
+    end
+  )
 end
 
 function Component:__set_initial_state()
@@ -198,9 +229,11 @@ function Component:is_focusable()
 end
 
 function Component:set_focus_index(index)
-  self:extend_props {
-    focus_index = index,
-  }
+  self:extend_props(
+    {
+      focus_index = index
+    }
+  )
 end
 
 function Component:disable_label()
@@ -212,7 +245,7 @@ function Component:get_height(index)
 end
 
 function Component:extend_props(tbl)
-  self.__props = vim.tbl_extend('force', self.__props, tbl)
+  self.__props = vim.tbl_extend("force", self.__props, tbl)
 end
 
 function Component:get_key()

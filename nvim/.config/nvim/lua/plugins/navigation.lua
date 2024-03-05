@@ -11,32 +11,25 @@ return {
       -- Document existing key chains
       require('which-key').register {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
 
         -- general
         ['<leader>w'] = { '<cmd>w<cr>', 'write file' },
         ['<leader>W'] = { '<cmd> wa <cr>', 'write all files' },
-        -- ["<leader>xx"] = { "<cmd> wqa <cr>", "write & quit" },
-        -- ["<leader>XX"] = { "<cmd> qa! <cr>", "force quit" },
-        ['<leader>q'] = { '<cmd> SmartQ<cr>', 'close file' },
-        ['<leader>Q'] = { '<cmd> SmartQ!<cr>', 'close file force' },
-        ['<leader>xb'] = { '<cmd>%bd|e#<cr>', 'close all buffers but current' },
 
         ['<leader>m'] = { '<cmd>bn<cr>', 'buffer next' },
         ['<leader>n'] = { '<cmd>bp<cr>', 'buffer previous' },
+
         -- pickers
-        ['<leader>P'] = { pickers.invoke_command_pallete, 'paste at position' },
+        ['<leader>P'] = { pickers.invoke_command_pallete, '[P]icker command [p]allete' },
+        ['<leader>ai'] = { '<cmd>Gen<cr>', 'Gen AI' },
         -- ["<leader>ao"] = { pickers.invoke_picker("ollama"), "ollama" },
         -- ["<leader>ac"] = { pickers.invoke_picker("code-actions"), "code actions" },
         -- ["<leader>ap"] = { pickers.invoke_command_pallete, "command pallete" },
-        ['<leader>ai'] = { '<cmd>Gen<cr>', 'command pallete' },
         -- ["<leader>vs"] = { "<cmd>lua WswapAndCycleWindow()<cr>", "swap window" },
 
         -- window/panes
         ['<leader>vs'] = { buffers.swap_buffer_and_resize, 'swap window' },
-
         ['<leader>vv'] = { '<cmd>lua layout0()<cr>', 'window layout 1' },
         ['<leader>vz'] = { '<cmd>lua zoom()<cr>', 'window zoom' },
       }
@@ -63,6 +56,7 @@ return {
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
 
       -- Useful for getting pretty icons, but requires special font.
       --  If you already have a Nerd Font, or terminal set up with fallback fonts
@@ -148,6 +142,20 @@ return {
           persisted = {
             layout_config = { width = 0.55, height = 0.55 },
           },
+
+          file_browser = {
+            theme = 'ivy',
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+              ['i'] = {
+                -- your custom insert mode mappings
+              },
+              ['n'] = {
+                -- your custom normal mode mappings
+              },
+            },
+          },
         },
       }
 
@@ -161,13 +169,20 @@ return {
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sb', ':Telescope file_browser<CR>', { desc = '[S]earch Files [B]rowser' })
+      vim.keymap.set('n', '<leader>sv', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = '[S]earch Files [B]rowser' })
       vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set(
+        'n',
+        '<leader><leader>',
+        ":lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<cr>",
+        { desc = '[ ] Find existing buffers' }
+      )
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()

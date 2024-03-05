@@ -1,16 +1,16 @@
-local Layout = require 'nui.layout'
+local Layout = require("nui.layout")
 
-local TextInput = require 'plugins.nui-form.text-input'
-local Select = require 'plugins.nui-form.select'
-local Footer = require 'plugins.nui-form.footer'
+local TextInput = require("plugins.nui-form.text-input")
+local Select = require("plugins.nui-form.select")
+local Footer = require("plugins.nui-form.footer")
 
-local fn = require 'utils.fn'
-local validators = require 'plugins.nui-form.validators'
+local fn = require("utils.fn")
+local validators = require("plugins.nui-form.validators")
 
 local NuiForm = {}
 
 local set_default_options = function(options)
-  return vim.tbl_extend('force', {
+  return vim.tbl_extend("force", {
     height = 3,
     is_focusable = true,
     validate = fn.always(true),
@@ -25,17 +25,17 @@ function NuiForm:new(options)
   options.width = vim.F.if_nil(options.width, 80)
 
   options.default_options = {
-    label_align = vim.F.if_nil(options.label_align, 'left'),
-    style = vim.F.if_nil(options.style, 'rounded'),
+    label_align = vim.F.if_nil(options.label_align, "left"),
+    style = vim.F.if_nil(options.style, "rounded"),
   }
 
-  options.keymap = vim.tbl_extend('force', {
-    submit = '<D-CR>',
-    close = '<Esc>',
+  options.keymap = vim.tbl_extend("force", {
+    submit = "<D-CR>",
+    close = "<Esc>",
   }, vim.F.if_nil(options.keymap, {}))
 
-  options.position = vim.F.if_nil(options.position, '50%')
-  options.relative = vim.F.if_nil(options.relative, 'editor')
+  options.position = vim.F.if_nil(options.position, "50%")
+  options.relative = vim.F.if_nil(options.relative, "editor")
   options.on_submit = vim.F.if_nil(options.on_submit, fn.ignore)
   options.on_close = vim.F.if_nil(options.on_close, fn.ignore)
 
@@ -47,21 +47,21 @@ end
 
 function NuiForm.text_input(options)
   return {
-    type = 'text_input',
+    type = "text_input",
     options = set_default_options(options),
   }
 end
 
 function NuiForm.select(options)
   return {
-    type = 'select',
+    type = "select",
     options = set_default_options(options),
   }
 end
 
 function NuiForm.footer(options)
   return {
-    type = 'footer',
+    type = "footer",
     options = set_default_options(options),
   }
 end
@@ -69,7 +69,7 @@ end
 NuiForm.validator = validators
 
 function NuiForm:set_content(...)
-  self:__set_components { ... }
+  self:__set_components({ ... })
 end
 
 function NuiForm:open()
@@ -139,14 +139,14 @@ end
 function NuiForm:__get_layout_box()
   local components = fn.ireduce(self.components, function(acc, component)
     if not component:is_hidden() then
-      local size = math.ceil(component:get_height() / self.total_height * 100) .. '%'
+      local size = math.ceil(component:get_height() / self.total_height * 100) .. "%"
       table.insert(acc, Layout.Box(component, { size = size }))
     end
 
     return acc
   end, {})
 
-  return Layout.Box(components, { dir = 'col' })
+  return Layout.Box(components, { dir = "col" })
 end
 
 function NuiForm:__set_layout()
@@ -174,16 +174,16 @@ end
 
 function NuiForm:__set_components(content)
   self.components = fn.ireduce(content, function(acc, item, index)
-    local options = vim.tbl_deep_extend('force', self.default_options, item.options)
+    local options = vim.tbl_deep_extend("force", self.default_options, item.options)
 
     local component = fn.switch(item.type, {
-      ['select'] = function()
+      ["select"] = function()
         return Select(options, self)
       end,
-      ['text_input'] = function()
+      ["text_input"] = function()
         return TextInput(options, self)
       end,
-      ['footer'] = function()
+      ["footer"] = function()
         return Footer(options, self)
       end,
     })

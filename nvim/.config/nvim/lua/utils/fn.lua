@@ -10,7 +10,7 @@ M.kpairs = function(t)
     local value
     while true do
       index, value = next(t, index)
-      if type(index) ~= "number" or math.floor(index) ~= index then
+      if type(index) ~= 'number' or math.floor(index) ~= index then
         break
       end
     end
@@ -29,7 +29,7 @@ end
 -- Executes a user-supplied "reducer" callback function on each key element of the table indexed with a string key, in order, passing in the return value from the calculation on the preceding element
 M.kreduce = function(tbl, func, acc)
   for i, v in pairs(tbl) do
-    if type(i) == "string" then
+    if type(i) == 'string' then
       acc = func(acc, v, i)
     end
   end
@@ -98,7 +98,7 @@ end
 M.concat = function(...)
   local concatenated = {}
 
-  for _, tbl in ipairs({ ... }) do
+  for _, tbl in ipairs { ... } do
     for _, value in ipairs(tbl) do
       table.insert(concatenated, value)
     end
@@ -157,12 +157,12 @@ M.switch = function(param, t)
   if case then
     return case()
   end
-  local defaultFn = t["default"]
+  local defaultFn = t['default']
   return defaultFn and defaultFn() or nil
 end
 
 M.trim = function(str)
-  return (str:gsub("^%s*(.-)%s*$", "%1"))
+  return (str:gsub('^%s*(.-)%s*$', '%1'))
 end
 
 M.ignore = function() end
