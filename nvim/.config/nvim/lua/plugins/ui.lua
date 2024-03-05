@@ -328,7 +328,7 @@ return {
 
   { 'nvim-tree/nvim-web-devicons', lazy = true },
 
-  { 'MunifTanjim/nui.nvim', lazy = true },
+  { 'MunifTanjim/nui.nvim' },
 
   {
     'RRethy/vim-illuminate',

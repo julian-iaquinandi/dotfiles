@@ -154,6 +154,13 @@ return {
       events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
       linters_by_ft = {
         fish = { 'fish' },
+        javascript = { 'eslint_d', 'eslint' },
+        typescript = { 'eslint_d', 'eslint' },
+        javascriptreact = { 'eslint_d', 'eslint' },
+        typescriptreact = { 'eslint_d', 'eslint' },
+        svelte = { 'eslint_d', 'eslint' },
+        vue = { 'eslint_d', 'eslint' },
+        python = { 'pylint', 'eslint' },
         -- Use the "*" filetype to run linters on all filetypes.
         -- ['*'] = { 'global linter' },
         -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
@@ -179,6 +186,7 @@ return {
       local M = {}
 
       local lint = require 'lint'
+
       for name, linter in pairs(opts.linters) do
         if type(linter) == 'table' and type(lint.linters[name]) == 'table' then
           lint.linters[name] = vim.tbl_deep_extend('force', lint.linters[name], linter)
