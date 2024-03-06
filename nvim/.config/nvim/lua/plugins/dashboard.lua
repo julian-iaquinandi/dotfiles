@@ -1,7 +1,10 @@
+local enabled = require 'config.enabled'
+
 return {
 
   {
     'nvimdev/dashboard-nvim',
+    enabled = enabled.dashboard,
     event = 'VimEnter',
     opts = function()
       local logo = [[

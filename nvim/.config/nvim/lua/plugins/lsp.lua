@@ -1,4 +1,5 @@
 local keymaps = require 'config.keymaps'
+local enabled = require 'config.enabled'
 
 local servers = {
   clangd = {},
@@ -153,6 +154,7 @@ local tools = {
 return {
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    enabled = enabled.nvim_lspconfig,
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for neovim
       'williamboman/mason.nvim',
@@ -164,31 +166,6 @@ return {
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
-      -- Brief Aside: **What is LSP?**
-      --
-      -- LSP is an acronym you've probably heard, but might not understand what it is.
-      --
-      -- LSP stands for Language Server Protocol. It's a protocol that helps editors
-      -- and language tooling communicate in a standardized fashion.
-      --
-      -- In general, you have a "server" which is some tool built to understand a particular
-      -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc). These Language Servers
-      -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-      -- processes that communicate with some "client" - in this case, Neovim!
-      --
-      -- LSP provides Neovim with features like:
-      --  - Go to definition
-      --  - Find references
-      --  - Autocompletion
-      --  - Symbol Search
-      --  - and more!
-      --
-      -- Thus, Language Servers are external tools that must be installed separately from
-      -- Neovim. This is where `mason` and related plugins come into play.
-      --
-      -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-      -- and elegantly composed help section, `:help lsp-vs-treesitter`
-
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -389,12 +366,14 @@ return {
 
   {
     'pmizio/typescript-tools.nvim',
+    enabled = enabled.typescript_tools,
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },
 
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
+    enabled = enabled.nvim_ts_context_commentstring,
     lazy = true,
     opts = {
       enable_autocmd = false,
@@ -405,6 +384,7 @@ return {
 
   {
     'Saecki/crates.nvim',
+    enabled = enabled.crates,
     event = { 'BufRead Cargo.toml' },
     opts = {
       src = {
@@ -415,6 +395,7 @@ return {
 
   {
     'simrat39/rust-tools.nvim',
+    enabled = enabled.rust_tools,
     lazy = true,
     opts = function()
       local ok, mason_registry = pcall(require, 'mason-registry')
@@ -456,14 +437,16 @@ return {
 
   {
     'rouge8/neotest-rust',
+    enabled = enabled.neotest_rust,
   },
 
   -- tailwind
-  { 'roobert/tailwindcss-colorizer-cmp.nvim', config = true },
+  { 'roobert/tailwindcss-colorizer-cmp.nvim', enabled = enabled.tailwindcss_colorizer_cmp, config = true },
 
   -- json
   {
     'b0o/SchemaStore.nvim',
+    enabled = enabled.schemastore,
     lazy = true,
     version = false, -- last release is way too old
   },
@@ -471,6 +454,7 @@ return {
   -- python
   {
     'linux-cultist/venv-selector.nvim',
+    enabled = enabled.venv_selector,
     cmd = 'VenvSelect',
     opts = function(_, opts)
       if require('lazyvim.util').has 'nvim-dap-python' then

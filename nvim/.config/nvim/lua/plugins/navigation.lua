@@ -1,11 +1,13 @@
 -- local pickers = require 'utils.pickers'
 -- local buffers = require 'utils.buffers'
 local keymaps = require 'config.keymaps'
+local enabled = require 'config.enabled'
 -- local layout_picker = require 'pickers.layouts'
 
 return {
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
+    enabled = enabled.which_key,
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
       require('which-key').setup()
@@ -17,6 +19,7 @@ return {
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
+    enabled = enabled.telescope,
     event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
@@ -142,6 +145,7 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -187,6 +191,7 @@ return {
 
   {
     'folke/flash.nvim',
+    enabled = enabled.flash,
     event = 'VeryLazy',
     vscode = true,
     ---@type Flash.Config

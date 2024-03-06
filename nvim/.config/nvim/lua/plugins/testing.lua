@@ -1,6 +1,9 @@
+local enabled = require 'config.keymaps'
+
 return {
   {
     'nvim-neotest/neotest',
+    enabled = enabled.neotest,
     optional = true,
     dependencies = {
       'rouge8/neotest-rust',

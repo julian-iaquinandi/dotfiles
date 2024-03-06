@@ -1,35 +1,6 @@
-local windows = require 'utils.windows'
+-- local windows = require 'utils.windows'
 local keymaps = require 'config.keymaps'
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
-
--- Here is a more advanced example where we pass configuration
--- options to `gitsigns.nvim`. This is equivalent to the following lua:
---    require('gitsigns').setup({ ... })
-
--- NOTE: Plugins can also be configured to run lua code when they areneOpenneOpenneOpen loaded.
---
--- This is often very useful to both group configuration, as well as handle
--- lazy loading plugins that don't need to be loaded immediately at startup.
---
--- For example, in the following configuration, we use:
---  event = 'VimEnter'
---
--- which loads which-key before all the UI elements are loaded. Events can be
--- normal autocommands events (`:help autocmd-events`).
---
--- Then, because we use the `config` key, the configuration only runs
--- after the plugin has been loaded:
---  config = function() ... end
---
--- NOTE: Plugins can specify dependencies.
---
--- The dependencies are proper plugin specifications as well - anything
--- you do for a plugin at the top level, you can do for a dependency.
---
--- Use the `dependencies` key to specify the dependencies of a particular plugin
+local enabled = require 'config.enabled'
 
 return {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
@@ -37,6 +8,7 @@ return {
 
   {
     'marklcrns/vim-smartq',
+    enabled = enabled.vim_smartq,
     event = 'BufRead',
     key = {
       ['<leader>q'] = { '<cmd> SmartQ<cr>', 'close file' },
@@ -46,6 +18,7 @@ return {
 
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    enabled = enabled.gitsigns,
     opts = {
       signs = {
         add = { text = '+' },
@@ -59,6 +32,7 @@ return {
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    enabled = enabled.mini,
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -96,6 +70,7 @@ return {
 
   {
     'zbirenbaum/copilot.lua',
+    enabled = enabled.copilot,
     cmd = 'Copilot',
     build = ':Copilot auth',
     opts = {
@@ -107,40 +82,6 @@ return {
       },
     },
   },
-
-  {
-    'olimorris/persisted.nvim',
-    keys = keymaps.persisted,
-    config = true,
-    opts = {
-      autosave = true,
-      use_git_branch = true,
-      autoload = true,
-    },
-  },
-
-  {
-    'nvim-pack/nvim-spectre',
-    build = false,
-    cmd = 'Spectre',
-    opts = { open_cmd = 'noswapfile vnew' },
-    -- stylua: ignore
-    keys = keymaps.spectre
-,
-  },
-
-  {
-    'folke/trouble.nvim',
-    cmd = { 'TroubleToggle', 'Trouble' },
-    opts = { use_diagnostic_signs = true },
-    keys = keymaps.trouble,
-  },
-
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {}, event = 'BufEnter' },
 
   {
     'zbirenbaum/copilot-cmp',
@@ -160,7 +101,56 @@ return {
   },
 
   {
+    'olimorris/persisted.nvim',
+    enabled = enabled.persisted,
+    keys = keymaps.persisted,
+    config = true,
+    opts = {
+      autosave = true,
+      use_git_branch = true,
+      autoload = true,
+    },
+  },
+
+  {
+    'nvim-pack/nvim-spectre',
+    enabled = enabled.nvim_spectre,
+    build = false,
+    cmd = 'Spectre',
+    opts = { open_cmd = 'noswapfile vnew' },
+    -- stylua: ignore
+    keys = keymaps.spectre
+,
+  },
+
+  {
+    'folke/trouble.nvim',
+    enabled = enabled.trouble,
+    cmd = { 'TroubleToggle', 'Trouble' },
+    opts = { use_diagnostic_signs = true },
+    keys = keymaps.trouble,
+  },
+
+  -- Highlight todo, notes, etc in comments
+  {
+    'folke/todo-comments.nvim',
+    enabled = enabled.todo_comments,
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
+
+  -- "gc" to comment visual regions/lines
+  {
+    'numToStr/Comment.nvim',
+    enabled = enabled.comment,
+    opts = {},
+    event = 'BufEnter',
+  },
+
+  {
     'akinsho/toggleterm.nvim',
+    enabled = enabled.toggleterm,
     event = 'VeryLazy',
     version = '*',
     config = true,
@@ -178,6 +168,7 @@ return {
 
   {
     'nvim-tree/nvim-tree.lua',
+    enabled = enabled.nvim_tree,
     version = '*',
     lazy = false,
     dependencies = {
@@ -199,6 +190,7 @@ return {
 
   {
     'sindrets/diffview.nvim',
+    enabled = enabled.diffview,
     dependencies = {
       { 'kdheepak/lazygit.nvim' },
     },

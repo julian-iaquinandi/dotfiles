@@ -1,7 +1,10 @@
 local keymaps = require 'config.keymaps'
+local enabled = require 'config.enabled'
+
 return {
   {
     'mfussenegger/nvim-dap',
+    enabled = enabled.nvim_dap,
     optional = true,
 
     dependencies = {

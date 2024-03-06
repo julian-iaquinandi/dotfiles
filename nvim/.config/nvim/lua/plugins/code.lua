@@ -1,7 +1,10 @@
 local keymaps = require 'config.keymaps'
+local enabled = require 'config.enabled'
+
 return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    enabled = enabled.nvim_treesitter,
     build = ':TSUpdate',
     config = function()
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -70,6 +73,7 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    enabled = enabled.nvim_treesitter_textobjects,
     config = function()
       -- When in diff mode, we want to use the default
       -- vim text objects c & C instead of the treesitter ones.
@@ -96,20 +100,22 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter-context',
+    enabled = enabled.nvim_treesitter_context,
     event = 'BufEnter',
-    enabled = true,
     opts = { mode = 'cursor', max_lines = 3 },
     keys = keymaps.treesitter_context,
   },
 
   {
     'windwp/nvim-ts-autotag',
+    enabled = enabled.nvim_ts_autotag,
     event = 'BufEnter',
     opts = {},
   },
 
   { -- Formatting
     'stevearc/conform.nvim',
+    enabled = enabled.conform,
     event = { 'BufReadPre', 'BufNewFile' },
 
     opts = {
@@ -134,6 +140,7 @@ return {
 
   { -- Linting
     'mfussenegger/nvim-lint',
+    enabled = enabled.nvim_lint,
     event = 'BufEnter',
     opts = {
       -- Event to trigger linters
@@ -234,6 +241,7 @@ return {
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
+    enabled = nvim_cmp,
     event = 'InsertEnter',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source

@@ -1,5 +1,6 @@
 local Util = require 'lazyvim.util'
 local keymaps = require 'config.keymaps'
+local enabled = require 'config.enabled'
 
 return {
   { -- You can easily change to a different colorscheme.
@@ -22,6 +23,7 @@ return {
   {
     'stevearc/dressing.nvim',
     lazy = true,
+    enabled = enabled.dressing,
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
@@ -38,6 +40,7 @@ return {
 
   {
     'akinsho/bufferline.nvim',
+    enabled = enabled.bufferline,
     event = 'VeryLazy',
     keys = keymaps.bufferline,
     opts = {
@@ -78,6 +81,7 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
+    enalbed = enabled.lualine,
     event = 'VeryLazy',
     init = function()
       vim.g.lualine_laststatus = vim.o.laststatus
@@ -182,6 +186,7 @@ return {
 
   {
     'lukas-reineke/indent-blankline.nvim',
+    enalbed = enabled.indent_blankline,
     event = 'BufEnter',
     opts = {
       indent = {
@@ -210,6 +215,7 @@ return {
 
   {
     'echasnovski/mini.indentscope',
+    enalbed = enabled.mini_indentscope,
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = 'BufEnter',
     opts = {
@@ -241,6 +247,7 @@ return {
 
   {
     'folke/noice.nvim',
+    enabled = enabled.noice,
     event = 'VeryLazy',
     opts = {
       lsp = {
@@ -277,6 +284,7 @@ return {
 
   {
     'rcarriga/nvim-notify',
+    enabled = enabled.nvim_notify,
     keys = keymaps.notify,
     opts = {
       timeout = 2000,
@@ -302,12 +310,13 @@ return {
     end,
   },
 
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
+  { 'nvim-tree/nvim-web-devicons', enabled = enabled.nvim_web_devicons, lazy = true },
 
-  { 'MunifTanjim/nui.nvim' },
+  { 'MunifTanjim/nui.nvim', enabled = enabled.nui },
 
   {
     'RRethy/vim-illuminate',
+    enabled = enabled.vim_illuminate,
     event = 'BufEnter',
     opts = {
       delay = 200,
@@ -342,6 +351,7 @@ return {
 
   {
     'hedyhli/outline.nvim',
+    enabled = enabled.outline,
     lazy = true,
     cmd = { 'Outline', 'OutlineOpen' },
     keys = keymaps.outline,
@@ -352,6 +362,7 @@ return {
 
   {
     'folke/edgy.nvim',
+    enabled = enabled.edgy,
     event = 'VeryLazy',
     keys = keymaps.edgy,
 
