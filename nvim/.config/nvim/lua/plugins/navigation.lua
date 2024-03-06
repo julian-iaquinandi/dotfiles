@@ -1,5 +1,7 @@
-local pickers = require 'utils.pickers'
-local buffers = require 'utils.buffers'
+-- local pickers = require 'utils.pickers'
+-- local buffers = require 'utils.buffers'
+local keymaps = require 'config.keymaps'
+-- local layout_picker = require 'pickers.layouts'
 
 return {
   { -- Useful plugin to show you pending keybinds.
@@ -9,30 +11,7 @@ return {
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-
-        -- general
-        ['<leader>w'] = { '<cmd>w<cr>', 'write file' },
-        ['<leader>W'] = { '<cmd> wa <cr>', 'write all files' },
-
-        ['<leader>m'] = { '<cmd>bn<cr>', 'buffer next' },
-        ['<leader>n'] = { '<cmd>bp<cr>', 'buffer previous' },
-
-        -- pickers
-        ['<leader>P'] = { pickers.invoke_command_pallete, '[P]icker command [p]allete' },
-        ['<leader>ai'] = { '<cmd>Gen<cr>', 'Gen AI' },
-        -- ["<leader>ao"] = { pickers.invoke_picker("ollama"), "ollama" },
-        -- ["<leader>ac"] = { pickers.invoke_picker("code-actions"), "code actions" },
-        -- ["<leader>ap"] = { pickers.invoke_command_pallete, "command pallete" },
-        -- ["<leader>vs"] = { "<cmd>lua WswapAndCycleWindow()<cr>", "swap window" },
-
-        -- window/panes
-        ['<leader>vs'] = { buffers.swap_buffer_and_resize, 'swap window' },
-        ['<leader>vv'] = { '<cmd>lua layout0()<cr>', 'window layout 1' },
-        ['<leader>vz'] = { '<cmd>lua zoom()<cr>', 'window zoom' },
-      }
+      require('which-key').register { keymaps.which_key }
     end,
   },
 
@@ -64,10 +43,7 @@ return {
       -- { 'nvim-tree/nvim-web-devicons' }
     },
 
-    keys = {
-      { '<leader>p', '<cmd>Telescope find_files <cr>', 'Find files ' },
-      -- { '<leader>fw', '<cmd>Telescope live_grep<cr>', 'Find in files' },
-    },
+    keys = keymaps.telescope,
 
     config = function()
       require('telescope').setup {
@@ -216,12 +192,7 @@ return {
     ---@type Flash.Config
     opts = {},
     -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
+    keys = keymaps.flash
+,
   },
 }

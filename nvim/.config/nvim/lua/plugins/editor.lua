@@ -1,3 +1,5 @@
+local windows = require 'utils.windows'
+local keymaps = require 'config.keymaps'
 -- You can add your own plugins here or in other files in this directory!
 --  I promise not to create any merge conflicts in this directory :)
 --
@@ -108,9 +110,7 @@ return {
 
   {
     'olimorris/persisted.nvim',
-    keys = {
-      { '<leader>ss', '<cmd> Telescope persisted<CR>', desc = '[S]earch [S]essions' },
-    },
+    keys = keymaps.persisted,
     config = true,
     opts = {
       autosave = true,
@@ -125,49 +125,15 @@ return {
     cmd = 'Spectre',
     opts = { open_cmd = 'noswapfile vnew' },
     -- stylua: ignore
-    keys = {
-      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-    },
+    keys = keymaps.spectre
+,
   },
 
   {
     'folke/trouble.nvim',
     cmd = { 'TroubleToggle', 'Trouble' },
     opts = { use_diagnostic_signs = true },
-    keys = {
-      { '<leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'Document Diagnostics (Trouble)' },
-      { '<leader>xX', '<cmd>TroubleToggle workspace_diagnostics<cr>', desc = 'Workspace Diagnostics (Trouble)' },
-      { '<leader>xL', '<cmd>TroubleToggle loclist<cr>', desc = 'Location List (Trouble)' },
-      { '<leader>xQ', '<cmd>TroubleToggle quickfix<cr>', desc = 'Quickfix List (Trouble)' },
-      {
-        '[q',
-        function()
-          if require('trouble').is_open() then
-            require('trouble').previous { skip_groups = true, jump = true }
-          else
-            local ok, err = pcall(vim.cmd.cprev)
-            if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
-            end
-          end
-        end,
-        desc = 'Previous trouble/quickfix item',
-      },
-      {
-        ']q',
-        function()
-          if require('trouble').is_open() then
-            require('trouble').next { skip_groups = true, jump = true }
-          else
-            local ok, err = pcall(vim.cmd.cnext)
-            if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
-            end
-          end
-        end,
-        desc = 'Next trouble/quickfix item',
-      },
-    },
+    keys = keymaps.trouble,
   },
 
   -- Highlight todo, notes, etc in comments
@@ -207,10 +173,7 @@ return {
         end
       end,
     },
-    keys = {
-      { '<leader>th', '<cmd>ToggleTerm direction=horizontal<cr>', desc = 'terminal horizontal' },
-      { '<leader>tv', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'terminal vertical' },
-    },
+    keys = keymaps.terminal,
   },
 
   {
@@ -231,11 +194,14 @@ return {
         },
       }
     end,
-    keys = {
-      { '<leader>e', ':NvimTreeFindFileToggle!<cr>', desc = 'Explorer' },
-      -- { "<leader>E", "<cmd>NvimTreeFindFile<cr>", desc = "Explorer (find file)" },
-      -- { "<leader>e", "<leader>fe", desc = "Explorer", remap = true },
-      -- { "<leader>E", "<leader>fE", desc = "Explorer (find file)", remap = true },
+    keys = keymaps.nvim_tree,
+  },
+
+  {
+    'sindrets/diffview.nvim',
+    dependencies = {
+      { 'kdheepak/lazygit.nvim' },
     },
+    keys = keymaps.diffview,
   },
 }

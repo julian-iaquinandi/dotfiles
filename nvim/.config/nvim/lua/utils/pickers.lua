@@ -14,7 +14,20 @@ M.invoke_command_pallete = function()
       return require 'pickers.command-palette'
     end,
   })
-  require('ui.picker').make(menu)
+  require('utils.picker').make(menu)
+end
+
+M.invoke_layout_picker = function()
+  local bufname = vim.fn.expand '%'
+  local menu = fn.switch(bufname, {
+    -- ['neo-tree filesystem [1]'] = function()
+    --   return require 'pickers.neo-tree'
+    -- end,
+    ['default'] = function()
+      return require 'pickers.layouts'
+    end,
+  })
+  require('utils.picker').make(menu)
 end
 
 M.invoke_picker = function(picker)

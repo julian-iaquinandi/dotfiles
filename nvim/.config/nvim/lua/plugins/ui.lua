@@ -1,4 +1,5 @@
 local Util = require 'lazyvim.util'
+local keymaps = require 'config.keymaps'
 
 return {
   { -- You can easily change to a different colorscheme.
@@ -38,17 +39,7 @@ return {
   {
     'akinsho/bufferline.nvim',
     event = 'VeryLazy',
-    keys = {
-      { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle pin' },
-      { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete non-pinned buffers' },
-      { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Delete other buffers' },
-      { '<leader>br', '<Cmd>BufferLineCloseRight<CR>', desc = 'Delete buffers to the right' },
-      { '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', desc = 'Delete buffers to the left' },
-      { '<S-h>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev buffer' },
-      { '<S-l>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next buffer' },
-      { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev buffer' },
-      { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next buffer' },
-    },
+    keys = keymaps.bufferline,
     opts = {
       options = {
       -- stylua: ignore
@@ -280,28 +271,13 @@ return {
       },
     },
     -- stylua: ignore
-    keys = {
-      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"} },
-      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
-    },
+    keys = keymaps.noice
+,
   },
 
   {
     'rcarriga/nvim-notify',
-    keys = {
-      {
-        '<leader>z',
-        function()
-          require('notify').dismiss { silent = true, pending = true }
-        end,
-        desc = 'Dismiss all Notifications',
-      },
-    },
+    keys = keymaps.notify,
     opts = {
       timeout = 2000,
       max_height = function()
@@ -361,19 +337,14 @@ return {
         end,
       })
     end,
-    keys = {
-      { ']]', desc = 'Next Reference' },
-      { '[[', desc = 'Prev Reference' },
-    },
+    keys = keymaps.vim_illuminate,
   },
 
   {
     'hedyhli/outline.nvim',
     lazy = true,
     cmd = { 'Outline', 'OutlineOpen' },
-    keys = { -- Example mapping to toggle outline
-      { '<leader>o', '<cmd>Outline<CR>', desc = 'Toggle outline' },
-    },
+    keys = keymaps.outline,
     opts = {
       -- Your setup opts here
     },
@@ -382,17 +353,7 @@ return {
   {
     'folke/edgy.nvim',
     event = 'VeryLazy',
-    keys = {
-      {
-        '<leader>ue',
-        function()
-          require('edgy').toggle()
-        end,
-        desc = 'Edgy Toggle',
-      },
-      -- stylua: ignore
-      { "<leader>uE", function() require("edgy").select() end, desc = "Edgy Select Window" },
-    },
+    keys = keymaps.edgy,
 
     opts = function()
       local opts = {
@@ -429,16 +390,6 @@ return {
           --   pinned = true,
           --   open = "Neotree position=right git_status",
           -- },
-          -- {
-          --   title = "Neo-Tree Buffers",
-          --   ft = "neo-tree",
-          --   filter = function(buf)
-          --     return vim.b[buf].neo_tree_source == "buffers"
-          --   end,
-          --   pinned = true,
-          --   open = "Neotree position=top buffers",
-          -- },
-          -- "neo-tree",
         },
 
         -- bottom = {

@@ -1,3 +1,5 @@
+local keymaps = require 'config.keymaps'
+
 local servers = {
   clangd = {},
   -- gopls = {},
@@ -9,21 +11,7 @@ local servers = {
 
   pyright = {},
   ruff_lsp = {
-    keys = {
-      {
-        '<leader>co',
-        function()
-          vim.lsp.buf.code_action {
-            apply = true,
-            context = {
-              only = { 'source.organizeImports' },
-              diagnostics = {},
-            },
-          }
-        end,
-        desc = 'Organize Imports',
-      },
-    },
+    keys = keymaps.ruff_lsp,
   },
 
   yamlls = {
@@ -120,11 +108,7 @@ local servers = {
   },
 
   rust_analyzer = {
-    keys = {
-      { 'K', '<cmd>RustHoverActions<cr>', desc = 'Hover Actions (Rust)' },
-      { '<leader>cR', '<cmd>RustCodeAction<cr>', desc = 'Code Action (Rust)' },
-      { '<leader>dr', '<cmd>RustDebuggables<cr>', desc = 'Run Debuggables (Rust)' },
-    },
+    keys = keymaps.rust_analyzer,
     settings = {
       ['rust-analyzer'] = {
         cargo = {
@@ -151,19 +135,7 @@ local servers = {
   },
 
   taplo = {
-    keys = {
-      {
-        'K',
-        function()
-          if vim.fn.expand '%:t' == 'Cargo.toml' and require('crates').popup_available() then
-            require('crates').show_popup()
-          else
-            vim.lsp.buf.hover()
-          end
-        end,
-        desc = 'Show Crate Documentation',
-      },
-    },
+    keys = keymaps.taplo,
   },
 }
 
@@ -513,6 +485,6 @@ return {
         },
       })
     end,
-    keys = { { '<leader>cv', '<cmd>:VenvSelect<cr>', desc = 'Select VirtualEnv' } },
+    keys = keymaps.venv_selector,
   },
 }

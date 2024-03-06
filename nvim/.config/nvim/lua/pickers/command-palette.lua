@@ -1,7 +1,7 @@
 local M = {}
 
 local fn = require 'utils.fn'
-local telescope_ui = require 'ui.telescope'
+local telescope_ui = require 'utils.telescope'
 -- local harpoon = require("harpoon")
 
 local actions = {
