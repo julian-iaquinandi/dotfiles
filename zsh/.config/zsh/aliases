@@ -77,13 +77,14 @@ alias ys="yarn start"
 alias yd="yarn dev"
 alias yf="yarn format"
 
-# ------------------------------ Pnpm
+
+# ------------------------------ Bun
 alias p="pnpm"
 alias pd="pnpm dev"
 alias pt="pnpm test"
+alias pti="pnpm test:ui"
+alias pte="pnpm test:e2e"
 alias pb="pnpm build"
-alias pl="pnpm lint"
-alias pf="pnpm format"
 
 # ---------------------------------TMUX
 

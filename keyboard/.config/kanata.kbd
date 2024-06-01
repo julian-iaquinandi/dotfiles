@@ -1,0 +1,124 @@
+(defcfg
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
+  )
+)
+
+;; Only one defsrc is allowed.
+;;
+;; defsrc defines the keys that will be intercepted by kanata. The order of the
+;; keys matches with deflayer declarations and all deflayer declarations must
+;; have the same number of keys as defsrc. Any keys not listed in defsrc will
+;; be passed straight to the operating system.
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            rmet ralt 
+)
+
+(defvar
+  ;; Note: consider using different time values for your different fingers.
+  ;; For example, your pinkies might be slower to release keys and index
+  ;; fingers faster.
+  tap-time 200
+  hold-time 150
+)
+
+(defalias
+  a (tap-hold $tap-time $hold-time a lctl)
+  s (tap-hold $tap-time $hold-time s lalt)
+  d (tap-hold $tap-time $hold-time d lsft)
+  f (tap-hold $tap-time $hold-time f lmet)
+  j (tap-hold $tap-time $hold-time j rmet)
+  k (tap-hold $tap-time $hold-time k rsft)
+  l (tap-hold $tap-time $hold-time l ralt)
+  ; (tap-hold $tap-time $hold-time ; rctl)
+
+  ;; num (layer-while-held numbers)
+  ;; sym (layer-while-held symbols)
+  
+  num (tap-hold 200 200 ent (layer-toggle numbers))
+  sym (tap-hold 200 200 bspc (layer-toggle symbols))
+  g (tap-hold 200 200 g (layer-toggle numbers))
+
+  ;; shifted keys
+  { S-[
+  } S-]
+  lpn S-9
+  rpn S-0
+  : S-;
+
+  & S-7
+  ~ S-`
+  ^ S-6
+  % S-5
+  _ S-min 
+  # S-3
+  @ S-2
+  ! S-1
+  $ S-4
+  
+)
+
+;; The first layer defined is the layer that will be active by default when
+;; kanata starts up. This layer is the standard QWERTY layout except for the
+;; backtick/grave key (@grl) which is an alias for a tap-hold key.
+(deflayer qwerty
+  _    1    2    3    4    5    6    7    8    9    0    _    _    bspc 
+  _    q    w    e    r    t    y    u    i    o    p    _    _    _ 
+  esc  @a   @s   @d   @f   @g   h    @j   @k   @l   @;   _    _  
+  _    z    x    c    v    b    n    m    ,    .    /    _   
+  _    _    @num           spc            @sym tab  
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _   
+  _    _    f7   f8   f9   f10  caps kp7  kp8  kp9  +    _    _    _ 
+  _    _    f4   f5   f6   f11  tab  kp4  kp5  kp6  min  _    _  
+  _    _    f1   f2   f3   f12  kp=  kp1  kp2  kp3  kp*  _   
+  _    _    _              _              kp0  _    
+)
+
+(deflayer symbols
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _   
+  _    @!   @@   @#   @_   @%   caps home pgdn pgup end  _    _    _ 
+  _    S-/  `    S-'  '    @^   @$   lft  down up   rght _    _  
+  _    S-\  [    @{   @lpn @&   @~   @rpn @}   ]    \    _   
+  _    _    _              _              _    _    
+)
+
+;; defalias is used to declare a shortcut for a more complicated action to keep
+;; the deflayer declarations clean and aligned. The alignment in deflayers is not
+;; necessary, but is strongly recommended for ease of understanding visually.
+;;
+;; Aliases are referred to by `@<alias_name>`.
+;; (defalias
+;;   ;; tap: backtick (grave), hold: toggle layer-switching layer while held
+;;   grl (tap-hold 200 200 grv (layer-toggle layers))
+
+;;   ;; layer-switch changes the base layer.
+;;   ;; dvk (layer-switch dvorak)
+;;   qwr (layer-switch qwerty)
+
+;;   ;; tap for capslk, hold for lctl
+;;   cap (tap-hold 200 200 caps lctl)
+;; )
+
+;; The `lrld` action stands for "live reload". This will re-parse everything
+;; except for linux-dev, meaning you cannot live reload and switch keyboard
+;; devices.
+;;
+;; The keys 1 and 2 switch the base layer to qwerty and dvorak respectively.
+;;
+;; Apart from the layer switching and live reload, all other keys are the
+;; underscore _ which means "transparent". Transparent means the base layer
+;; behaviour is used when pressing that key.
+;; (deflayer layers
+;;   _    @qwr _    lrld _    _    _    _    _    _    _    _    _    _   
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _  
+;;   _    _    _    _    _    _    _    _    _    _    _    _   
+;;   _    _    _              _              _    _    _   
+;; )
