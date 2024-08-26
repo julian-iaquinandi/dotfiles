@@ -1,11 +1,16 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+--
+
+vim.g.neovide_input_macos_option_key_is_meta = true
 
 local opts = {
   noremap = true,
   silent = true,
 }
+
+-- local buffers = require("utils.buffers")
 
 -- Move focus
 vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", opts)
@@ -13,12 +18,19 @@ vim.api.nvim_set_keymap("n", "<A-,>", "<C-w>j", opts)
 vim.api.nvim_set_keymap("n", "<A-.>", "<C-w>k", opts)
 vim.api.nvim_set_keymap("n", "<A-/>", "<C-w>l", opts)
 
+vim.api.nvim_set_keymap("n", "<M-p>", "G", opts)
+vim.api.nvim_set_keymap("n", "<M-u>", "gg", opts)
+vim.api.nvim_set_keymap("n", "<M-i>", "<C-d>", opts)
+vim.api.nvim_set_keymap("n", "<M-o>", "<C-u>", opts)
+
 -- Exit insert mode
 vim.api.nvim_set_keymap("i", "jk", "<ESC><C-w>w i", opts)
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
 vim.api.nvim_set_keymap("i", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", {
   noremap = true,
 })
+
+vim.api.nvim_set_keymap("i", "A-.", "<ESC>", opts)
 
 -- Exit terminal mode
 vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n><C-w>w", {
@@ -35,6 +47,10 @@ vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
   silent = true,
 })
 
+-- vim.keymap.set("n", "<C-s>", require("auto-session.session-lens").search_session, {
+--   noremap = true,
+-- })
+
 -- Remap movement keys
 vim.api.nvim_set_keymap("n", "j", "h", opts)
 vim.api.nvim_set_keymap("n", "k", "j", opts)
@@ -42,6 +58,22 @@ vim.api.nvim_set_keymap("n", "l", "k", opts)
 vim.api.nvim_set_keymap("n", ";", "l", opts)
 
 --
+vim.api.nvim_set_keymap("n", "<leader>q", ":SmartQ<CR>", { desc = "close file", noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>Q", ":SmartQ<CR>", { desc = "close file force", noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>sp", ":Gen<CR>", { desc = "[S]earch [P]rompts", noremap = true, silent = true })
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>th",
+  "<cmd>ToggleTerm direction=horizontal size=15<cr>",
+  { desc = "terminal horizontal", noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>tv",
+  "<cmd>ToggleTerm direction=vertical size=15<cr>",
+  { desc = "terminal vertical", noremap = true, silent = true }
+)
 
 M = {}
 
@@ -375,6 +407,9 @@ M.search = function(builtin)
     { "<leader>s.", builtin.oldfiles, {
       desc = '[S]earch Recent Files ("." for repeat)',
     } },
+    { "<leader>sp", ":Gen<cr>", {
+      desc = "[S]earch [P]rompts",
+    } },
     {
       "<leader><leader>",
       ":lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<cr>",
@@ -410,10 +445,17 @@ M.which_key = {
   ["<leader>m"] = { "<cmd>bn<cr>", "buffer next" },
   ["<leader>n"] = { "<cmd>bp<cr>", "buffer previous" },
 
-  ["<leader>q"] = M.smartq["<leader>q"],
-  ["<leader>Q"] = M.smartq["<leader>Q"],
+  -- ["<leader>q"] = M.smartq["<leader>q"],
+  -- ["<leader>Q"] = M.smartq["<leader>Q"],
+  --
+  -- ["<leader>th"] = M.terminal["<leader>th"],
+  -- ["<leader>tv"] = M.terminal["<leader>tv"],
 
   ["<leader>sR"] = M.spectre["<leader>sR"],
+
+  -- ["<leader>vs"] = { buffers.swap_buffer_and_resize, "swap window" },
+  -- ["<leader>vv"] = { "<cmd>lua layout0()<cr>", "window layout 1" },
+  ["<leader>vz"] = { "<cmd>lua zoom()<cr>", "window zoom" },
 
   -- ["<leader>Gd"] = M.diffview["Gd"],
   -- ["<leader>GF"] = M.diffview["GF"],
@@ -424,10 +466,21 @@ M.which_key = {
 }
 
 -- override
-vim.api.nvim_set_keymap("n", "<leader>q", ":SmartQ<CR>", { noremap = true, silent = true })
 
 return M
 
+-- M.terminal = {
+--   {
+--     "<leader>th",
+--     "<cmd>ToggleTerm direction=horizontal size=15<cr>",
+--     desc = "terminal horizontal",
+--   },
+--   {
+--     "<leader>tv",
+--     "<cmd>ToggleTerm direction=vertical size=15<cr>",
+--     desc = "terminal vertical",
+--   },
+-- }
 -- pickers
 -- ['<leader>P'] = {pickers.invoke_command_pallete, '[P]icker command [p]allete'},
 -- ['<leader>l'] = {pickers.invoke_layout_picker, '[P]icker command [p]allete'},
@@ -442,19 +495,6 @@ return M
 -- ['<leader>vs'] = {buffers.swap_buffer_and_resize, 'swap window'},
 -- ['<leader>vv'] = { '<cmd>lua layout0()<cr>', 'window layout 1' },
 -- ['<leader>vz'] = {'<cmd>lua zoom()<cr>', 'window zoom'}
-
--- M.terminal = {
---   {
---     "<leader>th",
---     "<cmd>ToggleTerm direction=horizontal size=15<cr>",
---     desc = "terminal horizontal",
---   },
---   {
---     "<leader>tv",
---     "<cmd>ToggleTerm direction=vertical size=15<cr>",
---     desc = "terminal vertical",
---   },
--- }
 
 -- code
 

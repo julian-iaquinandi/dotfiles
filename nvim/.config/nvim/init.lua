@@ -5,4 +5,5 @@ if vim.g.vscode then
   require("vscode_init")
 else
   require("config.lazy")
+  require("utils.windows")
 end
