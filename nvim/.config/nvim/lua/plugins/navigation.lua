@@ -201,8 +201,7 @@ return {
     ---@type Flash.Config
     opts = {},
     -- stylua: ignore
-    keys = keymaps.flash
-,
+    keys = keymaps.flash,
   },
 
   {
@@ -220,5 +219,9 @@ return {
         },
       })
     end,
+  },
+
+  {
+    "ojroques/vim-oscyank",
   },
 }
