@@ -204,4 +204,21 @@ return {
     keys = keymaps.flash
 ,
   },
+
+  {
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+      require("nvim-tmux-navigation").setup({
+        disable_when_zoomed = true, -- defaults to false
+        keybindings = {
+          left = "<M-m>",
+          down = "<M-,>",
+          up = "<M-.>",
+          right = "<M-.>",
+          last_active = "<C-\\>",
+          next = "<C-Space>",
+        },
+      })
+    end,
+  },
 }
