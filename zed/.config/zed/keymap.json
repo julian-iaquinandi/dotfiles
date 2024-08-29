@@ -1,0 +1,114 @@
+[
+  {
+    // Editor
+    "context": "EmptyPane || SharedScreen || vim_operator == none && !VimWaiting && vim_mode != insert",
+    "bindings": {
+      // Navigate
+      "j": "vim::Left",
+      "k": "vim::Down",
+      "l": "vim::Up",
+      ";": "vim::Right",
+
+      "space e": "workspace::ToggleRightDock",
+      "space z": "workspace::ToggleZoom",
+
+      "alt-shift-n": "editor::GoToDiagnostic",
+      "alt-shift-p": "editor::GoToPrevDiagnostic",
+
+      // Search
+      "space p": "file_finder::Toggle",
+      "space s b": "tab_switcher::Toggle",
+      "space s r": "projects::OpenRecent",
+      "space s k": "zed::OpenKeymap",
+      "space s K": "vim::OpenDefaultKeymap",
+      "space s s": "zed::OpenSettings",
+      "space s S": "zed::OpenDefaultSettings",
+
+      // Tasks
+      "space t s": ["task::Spawn", {}],
+      "space t l": "task::Rerun",
+      "space t e": ["task::Rerun", { "reevaluate_context": true }],
+
+      // File
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space Q": "pane::CloseAllItems",
+      "space m": "pane::ActivateNextItem",
+      "space n": "pane::ActivatePrevItem",
+
+      "ctrl-alt-shift-d": ["workspace::SendKeystrokes", "alt-, space z"],
+      "space g l": [
+        "workspace::SendKeystrokes",
+        "ctrl-alt-shiftd ctrl-alt-shift-g"
+      ]
+    }
+  },
+
+  {
+    // Shared Global
+    "context": "Editor || Terminal || Dock || Assistant",
+    "bindings": {
+      "alt-m": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-,": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-.": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-/": ["workspace::ActivatePaneInDirection", "Right"],
+      "space z": "workspace::ToggleZoom",
+
+      // Terminal
+      "cmd-shift-t": "workspace::ToggleBottomDock",
+      "space t t": "workspace::ToggleBottomDock",
+      "space t c": "workspace::NewTerminal",
+
+      "cmd-shift-a": "assistant::ToggleFocus",
+
+      // Git
+      "space g c": ["task::Spawn", { "task_name": "git commit" }],
+      "ctrl-alt-shift-g": ["task::Spawn", { "task_name": "lazy git" }]
+    }
+  },
+
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-shift-r": "search::ToggleReplace"
+    }
+  },
+
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  },
+
+  {
+    // Subword motions
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd"
+    }
+  },
+
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "g shift-r": "editor::FindAllReferences",
+      "g a": "editor::ToggleCodeActions",
+      "g r": "editor::Rename",
+      "space w": "workspace::Save",
+      "space g b": "editor::ToggleGitBlame"
+    }
+  },
+
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-shift-n": "tab_switcher::Toggle",
+      "alt-shift-p": ["tab_switcher::Toggle", { "select_last": true }],
+      "space g l": ["workspace::SendKeystrokes", "space z ctrl-alt-shift-g"]
+    }
+  }
+]

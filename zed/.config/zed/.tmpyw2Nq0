@@ -1,0 +1,29 @@
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"Setting","setting":"theme","value":"Ayu Dark"}
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"Setting","setting":"keymap","value":"VSCode"}
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"App","operation":"open"}
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"Editor","operation":"open","file_extension":null,"vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":false,"milliseconds_since_first_event":7372,"type":"App","operation":"open project"}
+{"signed_in":false,"milliseconds_since_first_event":23321,"type":"Editor","operation":"open","file_extension":"cs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":false,"milliseconds_since_first_event":35768,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":36540,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":41624,"type":"Action","source":"command palette","action":":write"}
+{"signed_in":false,"milliseconds_since_first_event":41625,"type":"Editor","operation":"save","file_extension":"cs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":false,"milliseconds_since_first_event":91595,"type":"Edit","duration":13823,"environment":"editor"}
+{"signed_in":false,"milliseconds_since_first_event":95391,"type":"Action","source":"command palette","action":":write"}
+{"signed_in":false,"milliseconds_since_first_event":95392,"type":"Editor","operation":"save","file_extension":"cs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":false,"milliseconds_since_first_event":151060,"type":"Edit","duration":6027,"environment":"editor"}
+{"signed_in":false,"milliseconds_since_first_event":159782,"type":"Action","source":"command palette","action":"editor: toggle code actions"}
+{"signed_in":false,"milliseconds_since_first_event":165733,"type":"Action","source":"command palette","action":"editor: toggle code actions"}
+{"signed_in":false,"milliseconds_since_first_event":178465,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":178590,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":178955,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":180467,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":180475,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":180680,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":180743,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":180912,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":181010,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":181108,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":183921,"type":"Copilot","suggestion_id":null,"suggestion_accepted":false,"file_extension":"cs"}
+{"signed_in":false,"milliseconds_since_first_event":239816,"type":"Memory","memory_in_bytes":176750592,"virtual_memory_in_bytes":447960285184}
+{"signed_in":false,"milliseconds_since_first_event":239816,"type":"Cpu","usage_as_percentage":8.310158,"core_count":8}

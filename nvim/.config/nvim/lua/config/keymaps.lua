@@ -52,10 +52,10 @@ vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
 -- })
 
 -- Remap movement keys
-vim.api.nvim_set_keymap("n", "j", "h", opts)
-vim.api.nvim_set_keymap("n", "k", "j", opts)
-vim.api.nvim_set_keymap("n", "l", "k", opts)
-vim.api.nvim_set_keymap("n", ";", "l", opts)
+-- vim.api.nvim_set_keymap("n", "j", "h", opts)
+-- vim.api.nvim_set_keymap("n", "k", "j", opts)
+-- vim.api.nvim_set_keymap("n", "l", "k", opts)
+-- vim.api.nvim_set_keymap("n", ";", "l", opts)
 
 --
 vim.api.nvim_set_keymap("n", "<leader>q", ":SmartQ<CR>", { desc = "close file", noremap = true, silent = true })

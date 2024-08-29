@@ -1,0 +1,46 @@
+// Zed settings
+//
+{
+  "base_keymap": "VSCode",
+  "theme": "VSCode Dark Modern",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // Vim
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  // "scrollbar": { "show": "never" },
+  "scroll_beyond_last_line": "off",
+
+  // Ui
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+
+  "project_panel": {
+    // Whether to show the project panel button in the status bar
+    "button": true,
+    "default_width": 300,
+    "dock": "right",
+    "indent_size": 15
+  },
+
+  "outline_panel": {
+    "default_width": 300,
+    "dock": "right"
+  },
+
+  "wrap_guides": [90],
+
+  "soft_wrap": "preferred_line_length",
+  "tab_size": 2,
+
+  "buffer_font_family": "JetBrainsMono Nerd Font"
+}
