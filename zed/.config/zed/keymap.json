@@ -9,8 +9,8 @@
       "l": "vim::Up",
       ";": "vim::Right",
 
-      "space e": "workspace::ToggleRightDock",
-      "space z": "workspace::ToggleZoom",
+      "spacee": "workspace::ToggleRightDock",
+      // "spacez": "workspace::ToggleZoom",
 
       "alt-shift-n": "editor::GoToDiagnostic",
       "alt-shift-p": "editor::GoToPrevDiagnostic",
@@ -36,34 +36,39 @@
       "space m": "pane::ActivateNextItem",
       "space n": "pane::ActivatePrevItem",
 
-      "ctrl-alt-shift-d": ["workspace::SendKeystrokes", "alt-, space z"],
+      "ctrl-alt-shift-d": ["workspace::SendKeystrokes", "alt-, cmd-shift-z"],
       "space g l": [
         "workspace::SendKeystrokes",
-        "ctrl-alt-shiftd ctrl-alt-shift-g"
+        "ctrl-alt-shift-d ctrl-alt-shift-g"
       ]
     }
   },
 
   {
     // Shared Global
-    "context": "Editor || Terminal || Dock || Assistant",
+    "context": "Editor || Terminal || Dock || Assistant || EmptyPane",
     "bindings": {
       "alt-m": ["workspace::ActivatePaneInDirection", "Left"],
       "alt-,": ["workspace::ActivatePaneInDirection", "Down"],
       "alt-.": ["workspace::ActivatePaneInDirection", "Up"],
       "alt-/": ["workspace::ActivatePaneInDirection", "Right"],
-      "space z": "workspace::ToggleZoom",
+
+      "cmd-shift-z": "workspace::ToggleZoom",
+      "cmd-shift-a": "assistant::ToggleFocus",
+      // exit from zoomed lazygit/terminal
+      "alt-x": ["workspace::SendKeystrokes", "q backspace cmd-shift-z alt-."],
 
       // Terminal
       "cmd-shift-t": "workspace::ToggleBottomDock",
       "space t t": "workspace::ToggleBottomDock",
       "space t c": "workspace::NewTerminal",
-
-      "cmd-shift-a": "assistant::ToggleFocus",
+      "space t f": ["workspace::SendKeystrokes", "ctrl-alt-shift-d"],
 
       // Git
       "space g c": ["task::Spawn", { "task_name": "git commit" }],
-      "ctrl-alt-shift-g": ["task::Spawn", { "task_name": "lazy git" }]
+      "ctrl-alt-shift-g": ["task::Spawn", { "task_name": "lazy git" }],
+
+      "ctrl-shift-a": "assistant::InlineAssist"
     }
   },
 
@@ -98,8 +103,8 @@
       "g shift-r": "editor::FindAllReferences",
       "g a": "editor::ToggleCodeActions",
       "g r": "editor::Rename",
-      "space w": "workspace::Save",
-      "space g b": "editor::ToggleGitBlame"
+      ", w": "workspace::Save",
+      ", g b": "editor::ToggleGitBlame"
     }
   },
 
@@ -108,7 +113,15 @@
     "bindings": {
       "alt-shift-n": "tab_switcher::Toggle",
       "alt-shift-p": ["tab_switcher::Toggle", { "select_last": true }],
-      "space g l": ["workspace::SendKeystrokes", "space z ctrl-alt-shift-g"]
+      ", g l": ["workspace::SendKeystrokes", ", z ctrl-alt-shift-g"]
+    }
+  },
+
+  {
+    "context": "Assistant",
+    "bindings": {
+      "alt-shift-n": "tab_switcher::Toggle",
+      "alt-shift-p": ["tab_switcher::Toggle", { "select_last": true }]
     }
   }
 ]
