@@ -1,10 +1,16 @@
 // Zed settings
 //
 {
+  "inline_completions": {
+    "disabled_globs": [".env", "src/logistics/Logistics.cs"]
+  },
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
@@ -22,8 +28,11 @@
   "scroll_beyond_last_line": "off",
 
   // Ui
-  "ui_font_size": 16,
-  "buffer_font_size": 14,
+  "ui_font_size": 14,
+  "buffer_font_size": 13,
+  "terminal": {
+    "font_size": 12
+  },
 
   "git": {
     "inline_blame": {

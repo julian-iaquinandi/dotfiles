@@ -2,7 +2,7 @@
 # alias fd="fd -x bat "
 
 # fdb() {
-#   fd "$*" -X bat 
+#   fd "$*" -X bat
 # }
 
 alias eslintrestart="~/.local/share/nvim/mason/bin/eslint_d restart"
@@ -13,7 +13,7 @@ alias lzd="lazydocker"
 alias lzg="lazygit"
 alias chp="~/.config/zsh/plugs/gpttui/chat_picker"
 
-alias gita="git diff | sgpt 'Generate git commit message, for my changes, keep it short, concise and use emojis'" 
+alias gita="git diff | sgpt 'Generate git commit message, for my changes, keep it short, concise and use emojis'"
 
 # ------------------------------ Nvim
 # alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
@@ -41,7 +41,7 @@ alias gs="~/.config/tmux/scripts/git_status"
 alias gps="git push"
 alias cgs="clear && git status"
 
-# ------------------------------ Apt get 
+# ------------------------------ Apt get
 
 alias install='sudo apt install -y'
 alias remove='sudo apt purge'
@@ -78,13 +78,20 @@ alias yd="yarn dev"
 alias yf="yarn format"
 
 
-# ------------------------------ Bun
+# ------------------------------ Pnpm
 alias p="pnpm"
 alias pd="pnpm dev"
 alias pt="pnpm test"
 alias pti="pnpm test:ui"
 alias pte="pnpm test:e2e"
 alias pb="pnpm build"
+
+
+# ------------------------------ Bun
+alias b="bun"
+alias bd="bun dev"
+alias bt="bun test"
+alias bb="bun build"
 
 # ---------------------------------TMUX
 
@@ -102,3 +109,5 @@ alias del='trash'
 alias dkrmi='sudo docker rmi $(docker images -a -q)'
 alias dkrmc='sudo docker ps -a'
 alias dkrma='sudo docker rmi $(docker images -a -q) && docker ps -a'
+
+alias dbreset='rm -rf ./docker/postgres_data && docker compose down && docker compose up --build -d && sleep 3 && pnpm run db:push && pnpm db:seed'

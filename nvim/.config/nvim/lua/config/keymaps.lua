@@ -62,6 +62,10 @@ vim.api.nvim_set_keymap("n", "<leader>q", ":SmartQ<CR>", { desc = "close file", 
 vim.api.nvim_set_keymap("n", "<leader>Q", ":SmartQ<CR>", { desc = "close file force", noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>sp", ":Gen<CR>", { desc = "[S]earch [P]rompts", noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>y", "<Plug>OSCYankOperator", { desc = "yank to system" })
+-- vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set("v", "<leader>y", "<Plug>OSCYankVisual", { desc = "yank to system" })
+
 vim.api.nvim_set_keymap(
   "n",
   "<leader>th",
