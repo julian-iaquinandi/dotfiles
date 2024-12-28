@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
+
 vim.g.neovide_input_macos_option_key_is_meta = true
 
 local opts = {
@@ -46,6 +47,17 @@ vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
   silent = true,
 })
 
+-- vim.keymap.set("n", "<C-s>", require("auto-session.session-lens").search_session, {
+--   noremap = true,
+-- })
+
+-- Remap movement keys
+-- vim.api.nvim_set_keymap("n", "j", "h", opts)
+-- vim.api.nvim_set_keymap("n", "k", "j", opts)
+-- vim.api.nvim_set_keymap("n", "l", "k", opts)
+-- vim.api.nvim_set_keymap("n", ";", "l", opts)
+
+--
 vim.api.nvim_set_keymap("n", "<leader>q", ":SmartQ<CR>", { desc = "close file", noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>Q", ":SmartQ<CR>", { desc = "close file force", noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>sp", ":Gen<CR>", { desc = "[S]earch [P]rompts", noremap = true, silent = true })
@@ -68,6 +80,8 @@ vim.api.nvim_set_keymap(
 )
 
 M = {}
+
+M.general = {}
 
 M.smartq = {
   ["<leader>q"] = {
@@ -171,6 +185,9 @@ M.rust_analyzer = {
     desc = "Run Debuggables (Rust)",
   },
 }
+--
+
+M.telescope = { { "<leader>p", "<cmd>Telescope find_files <cr>", "Find files " } }
 
 M.flash = { -- stylua: ignore
   {
@@ -212,6 +229,56 @@ M.flash = { -- stylua: ignore
       require("flash").toggle()
     end,
     desc = "Toggle Flash Search",
+  },
+}
+
+-- ui
+
+M.bufferline = {
+  {
+    "<leader>bp",
+    "<Cmd>BufferLineTogglePin<CR>",
+    desc = "Toggle pin",
+  },
+  {
+    "<leader>bP",
+    "<Cmd>BufferLineGroupClose ungrouped<CR>",
+    desc = "Delete non-pinned buffers",
+  },
+  {
+    "<leader>bo",
+    "<Cmd>BufferLineCloseOthers<CR>",
+    desc = "Delete other buffers",
+  },
+  {
+    "<leader>br",
+    "<Cmd>BufferLineCloseRight<CR>",
+    desc = "Delete buffers to the right",
+  },
+  {
+    "<leader>bl",
+    "<Cmd>BufferLineCloseLeft<CR>",
+    desc = "Delete buffers to the left",
+  },
+  {
+    "<S-h>",
+    "<cmd>BufferLineCyclePrev<cr>",
+    desc = "Prev buffer",
+  },
+  {
+    "<S-l>",
+    "<cmd>BufferLineCycleNext<cr>",
+    desc = "Next buffer",
+  },
+  {
+    "[b",
+    "<cmd>BufferLineCyclePrev<cr>",
+    desc = "Prev buffer",
+  },
+  {
+    "]b",
+    "<cmd>BufferLineCycleNext<cr>",
+    desc = "Next buffer",
   },
 }
 
@@ -291,11 +358,71 @@ M.notify = {
   },
 }
 
+-- M.vim_illuninate = { {
+--   "]]",
+--   desc = "Next Reference",
+-- }, {
+--   "[[",
+--   desc = "Prev Reference",
+-- } }
+
 M.outline = { {
   "<leader>o",
   "<cmd>Outline<CR>",
   desc = "Toggle outline",
 } }
+
+M.search = function(builtin)
+  return {
+    { "<leader>sh", builtin.help_tags, {
+      desc = "[S]earch [H]elp",
+    } },
+    { "<leader>sk", builtin.keymaps, {
+      desc = "[S]earch [K]eymaps",
+    } },
+    { "<leader>sf", builtin.find_files, {
+      desc = "[S]earch [F]iles",
+    } },
+    { "<leader>sb", ":Telescope file_browser<CR>", {
+      desc = "[S]earch Files [B]rowser",
+    } },
+    {
+      "<leader>sv",
+      ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+      {
+        desc = "[S]earch Files [B]rowser",
+      },
+    },
+    { "<leader>st", builtin.builtin, {
+      desc = "[S]earch [S]elect Telescope",
+    } },
+    { "<leader>sw", builtin.grep_string, {
+      desc = "[S]earch current [W]ord",
+    } },
+    { "<leader>sg", builtin.live_grep, {
+      desc = "[S]earch by [G]rep",
+    } },
+    { "<leader>sd", builtin.diagnostics, {
+      desc = "[S]earch [D]iagnostics",
+    } },
+    { "<leader>sr", builtin.resume, {
+      desc = "[S]earch [R]esume",
+    } },
+    { "<leader>s.", builtin.oldfiles, {
+      desc = '[S]earch Recent Files ("." for repeat)',
+    } },
+    { "<leader>sp", ":Gen<cr>", {
+      desc = "[S]earch [P]rompts",
+    } },
+    {
+      "<leader><leader>",
+      ":lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<cr>",
+      {
+        desc = "[ ] Find existing buffers",
+      },
+    },
+  }
+end
 
 M.which_key = {
   { "<leader>G", group = "[G]it diff" },
@@ -312,9 +439,58 @@ M.which_key = {
   { "<leader>s_", hidden = true },
   { "<leader>vz", "<cmd>lua zoom()<cr>", desc = "window zoom" },
   { "<leader>w", "<cmd>w<cr>", desc = "write file" },
-
-  { "<leader>p", require("fzf-lua").files, desc = "Fzf Files" },
-  { "<leader>P", require("fzf-lua").oldfiles, desc = "Recent Files" },
 }
 
+-- override
+
 return M
+
+-- M.terminal = {
+--   {
+--     "<leader>th",
+--     "<cmd>ToggleTerm direction=horizontal size=15<cr>",
+--     desc = "terminal horizontal",
+--   },
+--   {
+--     "<leader>tv",
+--     "<cmd>ToggleTerm direction=vertical size=15<cr>",
+--     desc = "terminal vertical",
+--   },
+-- }
+-- pickers
+-- ['<leader>P'] = {pickers.invoke_command_pallete, '[P]icker command [p]allete'},
+-- ['<leader>l'] = {pickers.invoke_layout_picker, '[P]icker command [p]allete'},
+-- ['<leader>ai'] = { '<cmd>Gen<cr>', 'Gen AI' },
+-- ['<leader>al'] = { pickers.invoke_picker(require 'pickers.layouts'), 'Layout selector' },
+-- ['<leader>ao'] = { pickers.invoke_picker 'ollama', 'ollama' },
+-- ["<leader>ac"] = { pickers.invoke_picker("code-actions"), "code actions" },
+-- ["<leader>ap"] = { pickers.invoke_command_pallete, "command pallete" },
+-- ["<leader>vs"] = { "<cmd>lua WswapAndCycleWindow()<cr>", "swap window" },
+
+-- window/panes
+-- ['<leader>vs'] = {buffers.swap_buffer_and_resize, 'swap window'},
+-- ['<leader>vv'] = { '<cmd>lua layout0()<cr>', 'window layout 1' },
+-- ['<leader>vz'] = {'<cmd>lua zoom()<cr>', 'window zoom'}
+
+-- code
+
+-- M.treesitter_context = {
+--   {
+--     "<leader>ut",
+--     function()
+--       local Util = require("lazyvim.util")
+--       local tsc = require("treesitter-context")
+--       tsc.toggle()
+--       if Util.inject.get_upvalue(tsc.toggle, "enabled") then
+--         Util.info("Enabled Treesitter Context", {
+--           title = "Option",
+--         })
+--       else
+--         Util.warn("Disabled Treesitter Context", {
+--           title = "Option",
+--         })
+--       end
+--     end,
+--     desc = "Toggle Treesitter Context",
+--   },
+-- }

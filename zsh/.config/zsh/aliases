@@ -111,3 +111,7 @@ alias dkrmc='sudo docker ps -a'
 alias dkrma='sudo docker rmi $(docker images -a -q) && docker ps -a'
 
 alias dbreset='rm -rf ./docker/postgres_data && docker compose down && docker compose up --build -d && sleep 3 && pnpm run db:push && pnpm db:seed'
+
+alias dk='lazydocker'
+
+alias lv='NVIM_APPNAME=nvim-lazynvim nvim'

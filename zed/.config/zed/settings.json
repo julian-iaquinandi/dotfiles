@@ -73,5 +73,14 @@
         "source.organizeImports": true
       }
     }
+  },
+
+  "lsp": {
+    "omnisharp": {
+      // "binary": {
+      //   "path": "~/Library/Application Support/Zed/extensions/work/csharp/omnisharp-v1.39.12/OmniSharp",
+      //   "arguments": ["optional", "additional", "args", "-lsp"]
+      // }
+    }
   }
 }
