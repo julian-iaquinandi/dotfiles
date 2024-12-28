@@ -6,13 +6,8 @@ return {
   { -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     enabled = enabled.which_key,
-    event = "VimEnter", -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require("which-key").setup()
-
-      -- Document existing key chains
-      require("which-key").register({ keymaps.which_key })
-    end,
+    event = "VeryLazy", -- Sets the loading event to 'VimEnter'
+    keys = keymaps.which_key,
   },
 
   { -- Fuzzy Finder (files, lsp, etc)

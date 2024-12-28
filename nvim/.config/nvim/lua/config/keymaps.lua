@@ -425,48 +425,20 @@ M.search = function(builtin)
 end
 
 M.which_key = {
-  ["<leader>c"] = {
-    name = "[c]ode",
-    _ = "which_key_ignore",
-  },
-  ["<leader>s"] = {
-    name = "[s]earch",
-    _ = "which_key_ignore",
-  },
-  ["<leader>g"] = {
-    name = "[g]it",
-    _ = "which_key_ignore",
-  },
-  ["<leader>G"] = {
-    name = "[G]it diff",
-    _ = "which_key_ignore",
-  },
-
-  -- general
-  ["<leader>w"] = { "<cmd>w<cr>", "write file" },
-  ["<leader>W"] = { "<cmd> wa <cr>", "write all files" },
-
-  ["<leader>m"] = { "<cmd>bn<cr>", "buffer next" },
-  ["<leader>n"] = { "<cmd>bp<cr>", "buffer previous" },
-
-  -- ["<leader>q"] = M.smartq["<leader>q"],
-  -- ["<leader>Q"] = M.smartq["<leader>Q"],
-  --
-  -- ["<leader>th"] = M.terminal["<leader>th"],
-  -- ["<leader>tv"] = M.terminal["<leader>tv"],
-
-  ["<leader>sR"] = M.spectre["<leader>sR"],
-
-  -- ["<leader>vs"] = { buffers.swap_buffer_and_resize, "swap window" },
-  -- ["<leader>vv"] = { "<cmd>lua layout0()<cr>", "window layout 1" },
-  ["<leader>vz"] = { "<cmd>lua zoom()<cr>", "window zoom" },
-
-  -- ["<leader>Gd"] = M.diffview["Gd"],
-  -- ["<leader>GF"] = M.diffview["GF"],
-  -- ["<leader>Gf"] = M.diffview["Gf"],
-  -- ["<leader>Gq"] = M.diffview["Gq"],
-  -- ["<leader>Gg"] = M.diffview["Gg"],
-  -- { '<leader>gs', windows.show_command_output 'git status', desc = '[G]it Status' },
+  { "<leader>G", group = "[G]it diff" },
+  { "<leader>G_", hidden = true },
+  { "<leader>W", "<cmd> wa <cr>", desc = "write all files" },
+  { "<leader>c", group = "[c]ode" },
+  { "<leader>c_", hidden = true },
+  { "<leader>g", group = "[g]it" },
+  { "<leader>g_", hidden = true },
+  { "<leader>m", "<cmd>bn<cr>", desc = "buffer next" },
+  { "<leader>n", "<cmd>bp<cr>", desc = "buffer previous" },
+  { "<leader>s", group = "[s]earch" },
+  -- { "<leader>sR", <function 1>, desc = "Replace in files (Spectre)" },
+  { "<leader>s_", hidden = true },
+  { "<leader>vz", "<cmd>lua zoom()<cr>", desc = "window zoom" },
+  { "<leader>w", "<cmd>w<cr>", desc = "write file" },
 }
 
 -- override
