@@ -3,6 +3,19 @@ return {
     "robitx/gp.nvim",
     config = function()
       local conf = {
+        openai_api_key = os.getenv("OPENAI_API_KEY"),
+
+        providers = {
+          copilot = {
+            disable = false,
+            endpoint = "https://api.githubcopilot.com/chat/completions",
+            secret = {
+              "bash",
+              "-c",
+              "cat ~/.config/github-copilot/hosts.json | sed -e 's/.*oauth_token...//;s/\".*//'",
+            },
+          },
+        },
         -- For customization, refer to Install > Configuration in the Documentation/Readme
         hooks = {
           -- example of adding command which writes unit tests for the selected code

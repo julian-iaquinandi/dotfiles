@@ -65,8 +65,10 @@ alias lta='exa --tree --level=2 --long --icons --git'
 alias lh='ls -d .?* '    # Hidden only
 alias lha='ls -ld .?* '    # Hidden inline
 
-alias Del='sudo rm -rf'
-alias del='rm -rf'
+alias DELETE='sudo rm -rf'
+# alias del='rm -rf'
+alias del='trash'
+alias rm='trash'
 
 alias es='sudo chmod u+x'
 alias aliases="nvim ~/.config/zsh/aliases"
@@ -103,7 +105,6 @@ alias tmsc='tmux a -t sysconfig'
 alias tmls='tmux list'
 alias tma='tmux a'
 
-alias del='trash'
 
 #---- DOCKER
 alias dkrmi='sudo docker rmi $(docker images -a -q)'

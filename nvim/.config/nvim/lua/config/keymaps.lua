@@ -10,6 +10,7 @@ local opts = {
 }
 
 -- local buffers = require("utils.buffers")
+--
 
 -- Move focus
 vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", opts)
@@ -278,24 +279,24 @@ M.noice = {
   },
 }
 
-M.notify = {
-  {
-    "<leader>z",
-    function()
-      require("notify").dismiss({
-        silent = true,
-        pending = true,
-      })
-    end,
-    desc = "Dismiss all Notifications",
-  },
-}
+-- M.notify = {
+--   {
+--     "<leader>z",
+--     function()
+--       require("notify").dismiss({
+--         silent = true,
+--         pending = true,
+--       })
+--     end,
+--     desc = "Dismiss all Notifications",
+--   },
+-- }
 
-M.outline = { {
-  "<leader>o",
-  "<cmd>Outline<CR>",
-  desc = "Toggle outline",
-} }
+-- M.outline = { {
+--   "<leader>o",
+--   "<cmd>Outline<CR>",
+--   desc = "Toggle outline",
+-- } }
 
 M.which_key = {
   { "<leader>G", group = "[G]it diff" },

@@ -7,6 +7,9 @@ return {
     enabled = enabled.which_key,
     event = "VeryLazy", -- Sets the loading event to 'VimEnter'
     keys = keymaps.which_key,
+    defaults = {
+      preset = "modern",
+    },
   },
 
   {
