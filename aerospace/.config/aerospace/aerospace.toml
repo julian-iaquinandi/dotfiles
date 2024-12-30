@@ -31,7 +31,9 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+	'exec-and-forget borders active_color=0xff800080 inactive_color=0x994A0072 width=10.0',
+]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -70,6 +72,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'lulu'
+run = 'layout floating'
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
@@ -91,43 +97,31 @@ outer.top = 10
 outer.right = 10
 
 # 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+# #layout
 alt-shift-slash = 'layout tiles horizontal vertical'
 alt-shift-comma = 'layout accordion horizontal vertical'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-j = 'focus left'
-alt-k = 'focus down'
-alt-l = 'focus up'
-alt-semicolon = 'focus right'
+# Custom scripts to move focus over windows and monitors
+alt-j = 'exec-and-forget /Users/juliani/.config/aerospace/focus_or_monitor.sh left'
+alt-k = 'exec-and-forget /Users/juliani/.config/aerospace/focus_or_monitor.sh down'
+alt-l = 'exec-and-forget /Users/juliani/.config/aerospace/focus_or_monitor.sh up'
+alt-semicolon = 'exec-and-forget /Users/juliani/.config/aerospace/focus_or_monitor.sh right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-j = 'move left'
-alt-shift-k = 'move down'
-alt-shift-l = 'move up'
-alt-shift-semicolon = 'move right'
+# Custom scripts to move current app position or monitor
+alt-shift-j = 'exec-and-forget /Users/juliani/.config/aerospace/move_or_monitor.sh left'
+alt-shift-k = 'exec-and-forget /Users/juliani/.config/aerospace/move_or_monitor.sh down'
+alt-shift-l = 'exec-and-forget /Users/juliani/.config/aerospace/move_or_monitor.sh up'
+alt-shift-semicolon = 'exec-and-forget /Users/juliani/.config/aerospace/move_or_monitor.sh right'
 
-alt-u = 'focus-monitor left'
-alt-i = 'focus-monitor down'
-alt-o = 'focus-monitor up'
-alt-p = 'focus-monitor right'
+# #resize
+alt-shift-i = 'resize smart -150'
+alt-shift-o = 'resize smart +150'
 
-alt-shift-u = 'move-node-to-monitor --wrap-around left'
-alt-shift-i = 'move-node-to-monitor --wrap-around down'
-alt-shift-o = 'move-node-to-monitor --wrap-around up'
-alt-shift-p = 'move-node-to-monitor --wrap-around right'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+# #workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -138,7 +132,7 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+# #move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
@@ -149,20 +143,14 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
+# Apps
 alt-g = 'exec-and-forget open -a /Applications/Ghostty.app'
 alt-t = 'exec-and-forget open -a /Applications/Thorium.app'
 
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+# Service #binding-modes
 cmd-shift-alt-r = 'mode service'
 
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
@@ -172,15 +160,20 @@ f = [
 ] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
+alt-j = ['join-with left', 'mode main']
+alt-k = ['join-with down', 'mode main']
+alt-l = ['join-with up', 'mode main']
+alt-semicolon = ['join-with right', 'mode main']
+
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
-
-alt-shift-j = ['join-with left', 'mode main']
-alt-shift-k = ['join-with down', 'mode main']
-alt-shift-l = ['join-with up', 'mode main']
-alt-shift-semicolon = ['join-with right', 'mode main']
-
 
 # down = 'volume down'
 # up = 'volume up'
 # shift-down = ['volume set 0', 'mode main']
+
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+# alt-tab = 'workspace-back-and-forth'
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+# alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
