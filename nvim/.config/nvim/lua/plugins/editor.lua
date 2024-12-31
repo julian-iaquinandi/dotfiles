@@ -2,6 +2,7 @@ local enabled = require("config.enabled")
 local keymaps = require("config.keymaps")
 
 return {
+  -- "njcom/hjkl-remap",
   {
     "marklcrns/vim-smartq",
     enabled = enabled.vim_smartq,
@@ -148,25 +149,57 @@ return {
   },
 
   {
-    "rmagatti/auto-session",
-    event = "VeryLazy",
-    opts = {
-      log_level = "error",
-      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      auto_session_enable_last_session = true,
-      -- session_lens = {
-      --   -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
-      --   buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
-      --   load_on_setup = true,
-      --   theme_conf = { border = true },
-      --   previewer = false,
-      -- },
+    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "TimUntersberger/neogit", config = { disable_commit_confirmation = true } },
     },
-    -- config = function()
-    --   require("auto-session.session-lens").search_session()
-    -- end,
-    -- keys = {
-    --   { "<leader>ss", require("auto-session.session-lens").search_session, "search sessions" },
-    -- },
+    -- commit = "9359f7b1dd3cb9fb1e020f57a91f8547be3558c6", -- HEAD requires git 2.31
+    -- keys = keymaps.diffview,
+    keys = {
+      { "<C-g>", "<CMD>DiffviewOpen<CR>", mode = { "n", "i", "v" } },
+    },
+    config = {
+      keymaps = {
+        view = {
+          ["<C-g>"] = "<CMD>DiffviewClose<CR>",
+          ["c"] = "<CMD>DiffviewClose|Neogit commit<CR>",
+        },
+        file_panel = {
+          ["<C-g>"] = "<CMD>DiffviewClose<CR>",
+          ["c"] = "<CMD>DiffviewClose|Neogit commit<CR>",
+        },
+      },
+    },
   },
+
+  {
+    "rickhowe/wrapwidth",
+    -- config = function()
+    --   require("wrapping").setup()
+    -- end,
+  },
+
+  -- {
+  --   "rmagatti/auto-session",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     log_level = "error",
+  --     auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+  --     auto_session_enable_last_session = true,
+  --     -- session_lens = {
+  --     --   -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
+  --     --   buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
+  --     --   load_on_setup = true,
+  --     --   theme_conf = { border = true },
+  --     --   previewer = false,
+  --     -- },
+  --   },
+  --   -- config = function()
+  --   --   require("auto-session.session-lens").search_session()
+  --   -- end,
+  --   -- keys = {
+  --   --   { "<leader>ss", require("auto-session.session-lens").search_session, "search sessions" },
+  --   -- },
+  -- },
 }

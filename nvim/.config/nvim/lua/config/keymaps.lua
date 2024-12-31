@@ -12,6 +12,30 @@ local opts = {
 -- local buffers = require("utils.buffers")
 --
 
+-- Define a custom function for adding surround
+local function surround_word()
+  -- Save the current word under cursor
+  local word = vim.fn.expand("<cword>")
+  if word == "" then
+    print("No word under cursor!")
+    return
+  end
+
+  -- Prompt the user to enter the surround character
+  vim.ui.input({ prompt = "Enter surround character: " }, function(surround_char)
+    if surround_char and surround_char ~= "" then
+      -- Apply surround using `gsa`
+      vim.cmd("normal! viw")
+      vim.cmd("normal! gsa" .. surround_char)
+    else
+      print("No surround character provided.")
+    end
+  end)
+end
+
+-- Map the function to <leader>y
+vim.api.nvim_set_keymap("n", "<leader>y", ":lua surround_word()<CR>", { noremap = true, silent = true })
+
 -- Move focus
 vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", opts)
 vim.api.nvim_set_keymap("n", "<A-,>", "<C-w>j", opts)
@@ -47,48 +71,33 @@ vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
   silent = true,
 })
 
-vim.api.nvim_set_keymap("n", "<leader>q", ":SmartQ<CR>", { desc = "close file", noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>Q", ":SmartQ<CR>", { desc = "close file force", noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>sp", ":Gen<CR>", { desc = "[S]earch [P]rompts", noremap = true, silent = true })
-
 vim.keymap.set("n", "<leader>y", "<Plug>OSCYankOperator", { desc = "yank to system" })
 -- vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
 vim.keymap.set("v", "<leader>y", "<Plug>OSCYankVisual", { desc = "yank to system" })
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>th",
-  "<cmd>ToggleTerm direction=horizontal size=15<cr>",
-  { desc = "terminal horizontal", noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>tv",
-  "<cmd>ToggleTerm direction=vertical size=15<cr>",
-  { desc = "terminal vertical", noremap = true, silent = true }
-)
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<leader>th",
+--   "<cmd>ToggleTerm direction=horizontal size=15<cr>",
+--   { desc = "terminal horizontal", noremap = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<leader>tv",
+--   "<cmd>ToggleTerm direction=vertical size=15<cr>",
+--   { desc = "terminal vertical", noremap = true, silent = true }
+-- )
 
 M = {}
 
-M.smartq = {
-  ["<leader>q"] = {
-    "<cmd>SmartQ<cr>",
-    "close file",
-  },
-  ["<leader>Q"] = {
-    "<cmd>SmartQ!<cr>",
-    "close file force",
-  },
-}
-
-M.spectre = {
-  ["<leader>sR"] = {
-    function()
-      require("spectre").open()
-    end,
-    "Replace in files (Spectre)",
-  },
-}
+-- M.spectre = {
+--   ["<leader>sR"] = {
+--     function()
+--       require("spectre").open()
+--     end,
+--     "Replace in files (Spectre)",
+--   },
+-- }
 
 M.diffview = {
   { "<leader>Gd", ":DiffviewOpen<cr>" },

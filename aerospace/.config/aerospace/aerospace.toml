@@ -33,6 +33,13 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
 	'exec-and-forget borders active_color=0xff800080 inactive_color=0x994A0072 width=10.0',
+	'exec-and-forget sketchybar',
+]
+
+exec-on-workspace-change = [
+	'/bin/bash',
+	'-c',
+	'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # Start AeroSpace at login
@@ -81,6 +88,12 @@ run = 'layout floating'
 [key-mapping]
 preset = 'qwerty'
 
+# [workspace-to-monitor-force-assignment]
+# 1 = 1           # Monitor sequence number from left to right. 1-based indexing
+# 2 = 'main'      # Main monitor
+# 3 = 'secondary' # Non-main monitor in case when there are only two monitors
+
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -93,8 +106,9 @@ inner.horizontal = 10
 inner.vertical = 10
 outer.left = 10
 outer.bottom = 10
-outer.top = 10
+# outer.top = 40
 outer.right = 10
+outer.top = [{ monitor.secondary = 45 }, 45]
 
 # 'main' binding mode declaration
 # 'main' binding mode must be always presented
@@ -165,6 +179,7 @@ alt-k = ['join-with down', 'mode main']
 alt-l = ['join-with up', 'mode main']
 alt-semicolon = ['join-with right', 'mode main']
 
+
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
@@ -177,3 +192,4 @@ alt-semicolon = ['join-with right', 'mode main']
 # alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 # alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+#
