@@ -7,19 +7,16 @@
 
 alias eslintrestart="~/.local/share/nvim/mason/bin/eslint_d restart"
 
+
 bindkey -s ^f "tmux-sessionizer\n"
 
-alias lzd="lazydocker"
-alias lzg="lazygit"
 alias chp="~/.config/zsh/plugs/gpttui/chat_picker"
 
 alias gita="git diff | sgpt 'Generate git commit message, for my changes, keep it short, concise and use emojis'"
 
 # ------------------------------ Nvim
-# alias vim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
-# alias v="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
-alias v="NVIM_APPNAME=nvim-chad nvim"
-alias vim="NVIM_APPNAME=nvim-chad nvim"
+alias v="nvim"
+alias vim="nvim"
 # alias lv="NVIM_APPNAME=lazy nvim"
 # alias fv="NVIM_APPNAME=folke nvim"
 # alias jv="NVIM_APPNAME=jujuvim nvim ."
@@ -40,6 +37,7 @@ alias gch="git checkout"
 alias gs="~/.config/tmux/scripts/git_status"
 alias gps="git push"
 alias cgs="clear && git status"
+alias lzg="lazygit"
 
 # ------------------------------ Apt get
 
@@ -73,12 +71,6 @@ alias rm='trash'
 alias es='sudo chmod u+x'
 alias aliases="nvim ~/.config/zsh/aliases"
 
-# ------------------------------ Yarn
-alias y="yarn"
-alias ys="yarn start"
-alias yd="yarn dev"
-alias yf="yarn format"
-
 
 # ------------------------------ Pnpm
 alias p="pnpm"
@@ -88,12 +80,6 @@ alias pti="pnpm test:ui"
 alias pte="pnpm test:e2e"
 alias pb="pnpm build"
 
-
-# ------------------------------ Bun
-alias b="bun"
-alias bd="bun dev"
-alias bt="bun test"
-alias bb="bun build"
 
 # ---------------------------------TMUX
 
@@ -110,9 +96,14 @@ alias tma='tmux a'
 alias dkrmi='sudo docker rmi $(docker images -a -q)'
 alias dkrmc='sudo docker ps -a'
 alias dkrma='sudo docker rmi $(docker images -a -q) && docker ps -a'
-
-alias dbreset='rm -rf ./docker/postgres_data && docker compose down && docker compose up --build -d && sleep 3 && pnpm run db:push && pnpm db:seed'
-
 alias dk='lazydocker'
 
-alias lv='NVIM_APPNAME=nvim-lazynvim nvim'
+
+# FZF
+alias s=displayFZFFiles
+alias sd=fdFzf
+alias sl=nvimGoToLine
+alias sf=nvimGoToFiles
+
+alias test=echo "test"
+

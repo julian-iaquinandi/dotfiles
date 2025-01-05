@@ -157,7 +157,10 @@ return {
     -- commit = "9359f7b1dd3cb9fb1e020f57a91f8547be3558c6", -- HEAD requires git 2.31
     -- keys = keymaps.diffview,
     keys = {
-      { "<C-g>", "<CMD>DiffviewOpen<CR>", mode = { "n", "i", "v" } },
+      { "<leader>gd", ":DiffviewOpen<cr>", { desc = "Diff Open View" } },
+      -- { "<leader>GF", ":DiffviewFileHistory<cr>", { desc = "Diff file history" } },
+      { "<leader>gh", ":DiffviewFileHistory %<cr>", { desc = "Diff file history %" } },
+      { "<leader>gx", ":DiffviewClose<cr>", { desc = "Diff close" } },
     },
     config = {
       keymaps = {
@@ -175,31 +178,5 @@ return {
 
   {
     "rickhowe/wrapwidth",
-    -- config = function()
-    --   require("wrapping").setup()
-    -- end,
   },
-
-  -- {
-  --   "rmagatti/auto-session",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     log_level = "error",
-  --     auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-  --     auto_session_enable_last_session = true,
-  --     -- session_lens = {
-  --     --   -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
-  --     --   buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
-  --     --   load_on_setup = true,
-  --     --   theme_conf = { border = true },
-  --     --   previewer = false,
-  --     -- },
-  --   },
-  --   -- config = function()
-  --   --   require("auto-session.session-lens").search_session()
-  --   -- end,
-  --   -- keys = {
-  --   --   { "<leader>ss", require("auto-session.session-lens").search_session, "search sessions" },
-  --   -- },
-  -- },
 }

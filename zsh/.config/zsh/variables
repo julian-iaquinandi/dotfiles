@@ -17,7 +17,12 @@ export TERMINAL=alacritty
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
+#
+# export FZF_DEFAULT_OPTS='--prompt="🔭 " --height 80% --layout=reverse --border'
+#
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/" --glob "!node_modules/" --glob "!vendor/" --glob "!undo/" --glob "!plugged/"'
+
 
 # Update PATH
 export PATH="$HOME/.local/bin:$PATH"

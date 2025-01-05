@@ -9,33 +9,6 @@ local opts = {
   silent = true,
 }
 
--- local buffers = require("utils.buffers")
---
-
--- Define a custom function for adding surround
-local function surround_word()
-  -- Save the current word under cursor
-  local word = vim.fn.expand("<cword>")
-  if word == "" then
-    print("No word under cursor!")
-    return
-  end
-
-  -- Prompt the user to enter the surround character
-  vim.ui.input({ prompt = "Enter surround character: " }, function(surround_char)
-    if surround_char and surround_char ~= "" then
-      -- Apply surround using `gsa`
-      vim.cmd("normal! viw")
-      vim.cmd("normal! gsa" .. surround_char)
-    else
-      print("No surround character provided.")
-    end
-  end)
-end
-
--- Map the function to <leader>y
-vim.api.nvim_set_keymap("n", "<leader>y", ":lua surround_word()<CR>", { noremap = true, silent = true })
-
 -- Move focus
 vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", opts)
 vim.api.nvim_set_keymap("n", "<A-,>", "<C-w>j", opts)
@@ -53,7 +26,6 @@ vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
 vim.api.nvim_set_keymap("i", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", {
   noremap = true,
 })
-
 vim.api.nvim_set_keymap("i", "A-.", "<ESC>", opts)
 
 -- Exit terminal mode
@@ -71,40 +43,19 @@ vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
   silent = true,
 })
 
+-- Yank
 vim.keymap.set("n", "<leader>y", "<Plug>OSCYankOperator", { desc = "yank to system" })
 -- vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
 vim.keymap.set("v", "<leader>y", "<Plug>OSCYankVisual", { desc = "yank to system" })
 
--- vim.api.nvim_set_keymap(
---   "n",
---   "<leader>th",
---   "<cmd>ToggleTerm direction=horizontal size=15<cr>",
---   { desc = "terminal horizontal", noremap = true, silent = true }
--- )
--- vim.api.nvim_set_keymap(
---   "n",
---   "<leader>tv",
---   "<cmd>ToggleTerm direction=vertical size=15<cr>",
---   { desc = "terminal vertical", noremap = true, silent = true }
--- )
-
 M = {}
 
--- M.spectre = {
---   ["<leader>sR"] = {
---     function()
---       require("spectre").open()
---     end,
---     "Replace in files (Spectre)",
---   },
--- }
-
-M.diffview = {
-  { "<leader>Gd", ":DiffviewOpen<cr>" },
-  { "<leader>GF", ":DiffviewFileHistory<cr>" },
-  { "<leader>Gf", ":DiffviewFileHistory %<cr>" },
-  { "<leader>Gq", ":DiffviewClose<cr>" },
-  { "<leader>Gg", ":LazyGit<cr>" }, -- { '<leader>gs', windows.show_command_output 'git status', desc = '[G]it Status' },
+M.copilot = {
+  {
+    "<leader>at",
+    "<cmd>ToggleRequirementsTag<cr>",
+    desc = "Toggle Requirements Tag",
+  },
 }
 
 M.trouble = {
@@ -287,25 +238,6 @@ M.noice = {
     mode = { "i", "n", "s" },
   },
 }
-
--- M.notify = {
---   {
---     "<leader>z",
---     function()
---       require("notify").dismiss({
---         silent = true,
---         pending = true,
---       })
---     end,
---     desc = "Dismiss all Notifications",
---   },
--- }
-
--- M.outline = { {
---   "<leader>o",
---   "<cmd>Outline<CR>",
---   desc = "Toggle outline",
--- } }
 
 M.which_key = {
   { "<leader>G", group = "[G]it diff" },

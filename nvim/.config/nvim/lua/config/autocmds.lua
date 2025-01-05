@@ -71,3 +71,56 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = set_wrap_width,
 })
+
+-- stop window from being opened in neotree pane
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   pattern = "*",
+--   callback = function()
+--     -- Check if the current window is the NeoTree window
+--     if vim.bo.filetype == "neo-tree" then
+--       print("neotree")
+--       -- Open a vertical split to the left
+--       -- vim.cmd("wincmd h") -- Move to the left
+--       -- vim.cmd("vsplit")   -- Create a vertical split
+--     end
+--   end,
+-- })
+
+-- Code actions
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--   group = vim.api.nvim_create_augroup("ts_imports", { clear = true }),
+--   pattern = { "*.tsx,*.ts,*.svelte" },
+--   callback = function()
+--     vim.lsp.buf.code_action({
+--       apply = true,
+--       context = {
+--         only = { "source.removeUnused.ts" },
+--         diagnostics = {},
+--       },
+--     })
+--   end,
+-- })
+
+-- Requirements nvim chat with context tracking
+-- local requirementsLoaded = false
+
+-- function LoadRequirementsContext()
+--   if not requirementsLoaded then
+--     local req_file = vim.fn.getcwd() .. "/requirements.md"
+--     if vim.fn.filereadable(req_file) == 1 then
+--       local req_content = vim.fn.readfile(req_file)
+--
+--       vim.fn.CopilotChatPrepend(table.concat(req_content, "\n"))
+--
+--       vim.cmd("CopilotChatOpen")
+--
+--       -- require('CopilotChat').
+--
+--       requirementsLoaded = true -- Mark as loaded
+--     else
+--       print("No requirements.md file found!")
+--     end
+--   else
+--     print("Requirements context already loaded!")
+--   end
+-- end
