@@ -1,11 +1,9 @@
 local Util = require("lazyvim.util")
 local keymaps = require("config.keymaps")
-local enabled = require("config.enabled")
 
 return {
   {
     "folke/noice.nvim",
-    enabled = enabled.noice,
     event = "VeryLazy",
     opts = {
       lsp = {
@@ -42,7 +40,6 @@ return {
 
   -- {
   --   "rcarriga/nvim-notify",
-  --   enabled = enabled.nvim_notify,
   --   keys = keymaps.notify,
   --   opts = {
   --     timeout = 2000,
