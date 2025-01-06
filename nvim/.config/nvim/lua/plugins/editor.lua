@@ -1,11 +1,9 @@
-local enabled = require("config.enabled")
 local keymaps = require("config.keymaps")
 
 return {
   -- "njcom/hjkl-remap",
   {
     "marklcrns/vim-smartq",
-    enabled = enabled.vim_smartq,
     event = "BufEnter",
     keys = keymaps.smartq,
   },
