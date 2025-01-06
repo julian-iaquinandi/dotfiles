@@ -1,4 +1,4 @@
-require("config.copilot")
+require("local_plugins.copilot")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -53,3 +53,5 @@ require("lazy").setup({
     },
   },
 })
+
+require("local_plugins.find_and_replace")
