@@ -105,5 +105,4 @@ alias sd=fdFzf
 alias sl=nvimGoToLine
 alias sf=nvimGoToFiles
 
-alias test=echo "test"
 

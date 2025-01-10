@@ -37,7 +37,6 @@ export GOPATH=~/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 export PATH=/usr/local/lib/ruby/gems/2.7.0/bin:$PATH
-export JAVA_HOME=$(/usr/libexec/java_home -v"11");
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
