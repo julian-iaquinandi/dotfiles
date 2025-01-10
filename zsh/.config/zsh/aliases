@@ -53,12 +53,12 @@ alias findapp='sudo apt list --installed | grep -i apache'
 
 alias c='clear'
 
-alias la='exa -l --icons --git'
-alias l='exa -l --icons --git -a'
-alias lsa='exa --icons --git'
-alias ls='exa --icons --git -a'
-alias lt='exa --tree --level=2 --long --icons --git -a'
-alias lta='exa --tree --level=2 --long --icons --git'
+alias la='eza -l --icons --git'
+alias l='eza -l --icons --git -a'
+alias lsa='eza --icons --git'
+alias ls='eza --icons --git -a'
+alias lt='eza --tree --level=2 --long --icons --git -a'
+alias lta='eza --tree --level=2 --long --icons --git'
 
 alias lh='ls -d .?* '    # Hidden only
 alias lha='ls -ld .?* '    # Hidden inline
