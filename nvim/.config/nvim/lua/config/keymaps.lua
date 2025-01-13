@@ -28,6 +28,24 @@ vim.api.nvim_set_keymap("i", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()
 })
 vim.api.nvim_set_keymap("i", "A-.", "<ESC>", opts)
 
+-- .
+function YankEntireDocument()
+  -- Save the current cursor position
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
+  -- Yank the entire document
+  vim.cmd("normal! ggVGy")
+
+  -- Restore the cursor position
+  vim.api.nvim_win_set_cursor(0, cursor_pos)
+end
+
+vim.api.nvim_set_keymap("n", "ya", "<cmd>lua YankEntireDocument()<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>qr", ":%s/\t/  /g<CR>", { noremap = true, silent = true })
+
+-- .
+
 -- Exit terminal mode
 vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n><C-w>w", {
   noremap = true,

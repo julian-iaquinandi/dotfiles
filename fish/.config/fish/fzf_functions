@@ -1,0 +1,66 @@
+
+FZF_PREVIEW=(--preview "bat --theme=gruvbox-dark --color=always --style=header,grid --line-range :400 {}")
+
+FZF_DEFAULTS=(--height 60% --layout reverse --border)
+
+FZF_COMMAND=(fzf "${FZF_DEFAULTS[@]}" "${FZF_PREVIEW[@]}")
+
+function displayFZFFiles {
+    echo $($FZF_COMMAND)
+}
+
+function nvimGoToFiles {
+    nvimExists=$(which nvim)
+    if [ -z "$nvimExists" ]; then
+      return;
+    fi;
+
+    selection=$(displayFZFFiles);
+    if [ -z "$selection" ]; then
+        return;
+    else
+        nvim $selection;
+    fi;
+}
+
+function displayRgPipedFzf {
+    echo $(rg . -n --glob "!.git/" --glob "!node_modules/" | fzf "${FZF_DEFAULTS[@]}");
+}
+
+function nvimGoToLine {
+    nvimExists=$(which nvim)
+    if [ -z "$nvimExists" ]; then
+      return;
+    fi
+    selection=$(displayRgPipedFzf)
+    if [ -z "$selection" ]; then
+      return;
+    else 
+        filename=$(echo $selection | awk -F ':' '{print $1}')
+        line=$(echo $selection | awk -F ':' '{print $2}')
+        nvim $(printf "+%s %s" $line $filename) +"normal zz";
+    fi
+}
+
+function fdFzf {
+	fdExists=$(which fd)
+	if [ -z "$fdExists" ]; then
+					return;
+	else
+    if [ "$(pwd)" = "$HOME" ]; then
+      goTo=$(fd -t d -d 1 . | fzf $($FZF_DEFAULTS))
+      if [ -z "$goTo" ]; then
+        return;
+      else 
+        cd $goTo
+        return;
+      fi
+    fi
+    goTo=$(fd -t d . | grep -vE '(node_modules)' | fzf)
+    if [ -z "$goTo" ]; then
+      return;
+    else 
+      cd $goTo
+    fi
+	fi
+}

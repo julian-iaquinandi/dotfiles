@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Auto close
+----- Auto close
 
 -- Close Neo-tree when CopilotChat opens
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -47,46 +47,33 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- })
 --
 
--- Softwrapping set via editorconfig
+----- Softwrapping set via editorconfig
 
-local function set_wrap_width()
-  -- Retrieve the max_line_length from editorconfig
-  local max_length = vim.bo.textwidth
-
-  if max_length and max_length > 0 then
-    vim.cmd("Wrapwidth " .. max_length)
-  else
-    vim.cmd("Wrapwidth 80")
-  end
-
-  vim.wo.colorcolumn = tostring(max_length + 1) -- Highlight max_line_length
-  vim.wo.wrap = true
-  vim.wo.linebreak = true -- Avoid breaking mid-word
-  vim.opt.breakindent = true -- Indent wrapped lines
-  vim.opt.showbreak = "⤷ " -- Add visual indicator for wrapped lines
-end
+-- local function set_wrap_width()
+--   -- Retrieve the max_line_length from editorconfig
+--   local max_length = vim.bo.textwidth
+--
+--   if max_length and max_length > 0 then
+--     vim.cmd("Wrapwidth " .. max_length)
+--   else
+--     vim.cmd("Wrapwidth 80")
+--   end
+--
+--   vim.wo.colorcolumn = tostring(max_length + 1) -- Highlight max_line_length
+--   vim.wo.wrap = true
+--   vim.wo.linebreak = true -- Avoid breaking mid-word
+--   vim.opt.breakindent = true -- Indent wrapped lines
+--   vim.opt.showbreak = "⤷ " -- Add visual indicator for wrapped lines
+-- end
 
 -- Create an autocommand to set wrap width when entering a buffer
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = set_wrap_width,
-})
-
--- stop window from being opened in neotree pane
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = "*",
---   callback = function()
---     -- Check if the current window is the NeoTree window
---     if vim.bo.filetype == "neo-tree" then
---       print("neotree")
---       -- Open a vertical split to the left
---       -- vim.cmd("wincmd h") -- Move to the left
---       -- vim.cmd("vsplit")   -- Create a vertical split
---     end
---   end,
+--   callback = set_wrap_width,
 -- })
 
--- Code actions
+----- Code actions
+---
 -- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --   group = vim.api.nvim_create_augroup("ts_imports", { clear = true }),
 --   pattern = { "*.tsx,*.ts,*.svelte" },
