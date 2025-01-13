@@ -5,35 +5,33 @@
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Wrapping
+---- Wrapping
 vim.opt.wrap = true
 vim.wo.linebreak = true -- Avoid breaking mid-word
 vim.opt.breakindent = true -- Indent wrapped lines
 vim.opt.showbreak = "⤷ " -- Add visual indicator for wrapped lines
 
+local function set_buffer_options(wrapwidth, tabwidth, expandtab)
+  vim.cmd("Wrapwidth " .. wrapwidth)
+  vim.wo.colorcolumn = tostring(wrapwidth + 1) -- Automatically set colorcolumn to wrapwidth + 1
+  vim.o.tabstop = tabwidth -- A TAB character looks like `tabwidth` spaces
+  vim.o.shiftwidth = tabwidth -- Number of spaces inserted when indenting
+  vim.o.softtabstop = tabwidth -- Spaces inserted instead of a TAB character
+  vim.o.expandtab = expandtab -- true: TAB key inserts spaces
+end
+
+-- General settings for all files
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function()
-    vim.cmd("Wrapwidth 80")
-    vim.wo.colorcolumn = tostring(81) -- Highlight max_line_length
-
-    vim.o.tabstop = 2 -- A TAB character looks like 4 spaces
-    vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-    vim.o.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
-    vim.o.shiftwidth = 2 -- Number of spaces inserted when indenting
+    set_buffer_options(80, 2, true)
   end,
 })
 
--- Setting for C# and Rust
+-- Specific settings for C# and Rust files
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.cs", "*.rs" }, -- Patterns for C# and Rust files
+  pattern = { "*.cs", "*.rs" },
   callback = function()
-    vim.cmd("Wrapwidth 100")
-    vim.wo.colorcolumn = tostring(101) -- Highlight max_line_length
-
-    vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
-    vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-    vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-    vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+    set_buffer_options(100, 4, true)
   end,
 })
