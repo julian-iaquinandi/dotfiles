@@ -1,6 +1,10 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 --
 vim.g.neovide_input_macos_option_key_is_meta = true
 
@@ -9,24 +13,39 @@ local opts = {
   silent = true,
 }
 
--- Move focus
-vim.api.nvim_set_keymap("n", "<A-m>", "<C-w>h", opts)
-vim.api.nvim_set_keymap("n", "<A-,>", "<C-w>j", opts)
-vim.api.nvim_set_keymap("n", "<A-.>", "<C-w>k", opts)
-vim.api.nvim_set_keymap("n", "<A-/>", "<C-w>l", opts)
+local set = vim.keymap.set
 
-vim.api.nvim_set_keymap("n", "<M-p>", "G", opts)
-vim.api.nvim_set_keymap("n", "<M-u>", "gg", opts)
-vim.api.nvim_set_keymap("n", "<M-i>", "<C-d>", opts)
-vim.api.nvim_set_keymap("n", "<M-o>", "<C-u>", opts)
+-- Movement remaps
+set("n", ";", "<Right>", opts)
+set("n", "l", "<Up>", opts)
+set("n", "k", "<Down>", opts)
+set("n", "j", "<Left>", opts)
+set("n", "h", ";", opts)
+
+set("v", ";", "<Right>", opts)
+set("v", "l", "<Up>", opts)
+set("v", "k", "<Down>", opts)
+set("v", "j", "<Left>", opts)
+set("v", "h", ";", opts)
+
+-- Move focus
+set("n", "<A-m>", "<C-w>h", opts)
+set("n", "<A-,>", "<C-w>j", opts)
+set("n", "<A-.>", "<C-w>k", opts)
+set("n", "<A-/>", "<C-w>l", opts)
+
+set("n", "<M-p>", "G", opts)
+set("n", "<M-u>", "gg", opts)
+set("n", "<M-i>", "<C-d>", opts)
+set("n", "<M-o>", "<C-u>", opts)
 
 -- Exit insert mode
-vim.api.nvim_set_keymap("i", "jk", "<ESC><C-w>w i", opts)
-vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
-vim.api.nvim_set_keymap("i", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", {
+set("i", "jk", "<ESC><C-w>w i", opts)
+set("i", "jj", "<ESC>", opts)
+set("i", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", {
   noremap = true,
 })
-vim.api.nvim_set_keymap("i", "A-.", "<ESC>", opts)
+set("i", "A-.", "<ESC>", opts)
 
 -- .
 function YankEntireDocument()
@@ -40,31 +59,36 @@ function YankEntireDocument()
   vim.api.nvim_win_set_cursor(0, cursor_pos)
 end
 
-vim.api.nvim_set_keymap("n", "ya", "<cmd>lua YankEntireDocument()<CR>", { noremap = true, silent = true })
+set("n", "ya", "<cmd>lua YankEntireDocument()<CR>", { desc = "Yank all", noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>qr", ":%s/\t/  /g<CR>", { noremap = true, silent = true })
+set("n", "<leader>qr", ":%s/\t/  /g<CR>", { noremap = true, silent = true })
 
 -- .
 
 -- Exit terminal mode
-vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n><C-w>w", {
+set("t", "jk", "<C-\\><C-n><C-w>w", {
   noremap = true,
 })
-vim.api.nvim_set_keymap("t", "jj", "<C-\\><C-n>", {
+
+set("t", "jj", "<C-\\><C-n>", {
   noremap = true,
 })
-vim.api.nvim_set_keymap("t", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", {
+
+set("t", "jl", "<C-\\><C-n><C-w>w :lua SwapBufferAndResize()<CR>", {
   noremap = true,
 })
-vim.api.nvim_set_keymap("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
+
+set("t", "jz", "<cmd>lua exitTerminalAndZoom()<cr>", {
   noremap = true,
   silent = true,
 })
 
 -- Yank
-vim.keymap.set("n", "<leader>y", "<Plug>OSCYankOperator", { desc = "yank to system" })
+set("n", "<leader>y", "<Plug>OSCYankOperator", { desc = "yank to system" })
 -- vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
-vim.keymap.set("v", "<leader>y", "<Plug>OSCYankVisual", { desc = "yank to system" })
+set("v", "<leader>y", "<Plug>OSCYankVisual", { desc = "yank to system" })
+
+set("x", "<leader>;", [["_dP]])
 
 M = {}
 
@@ -73,24 +97,6 @@ M.copilot = {
     "<leader>at",
     "<cmd>ToggleRequirementsTag<cr>",
     desc = "Toggle Requirements Tag",
-  },
-}
-
-M.rust_analyzer = {
-  {
-    "K",
-    "<cmd>RustHoverActions<cr>",
-    desc = "Hover Actions (Rust)",
-  },
-  {
-    "<leader>cR",
-    "<cmd>RustCodeAction<cr>",
-    desc = "Code Action (Rust)",
-  },
-  {
-    "<leader>dr",
-    "<cmd>RustDebuggables<cr>",
-    desc = "Run Debuggables (Rust)",
   },
 }
 
@@ -158,23 +164,11 @@ M.noice = {
 }
 
 M.which_key = {
-  { "<leader>G", group = "[G]it diff" },
-  { "<leader>G_", hidden = true },
-  { "<leader>W", "<cmd> wa <cr>", desc = "write all files" },
-  { "<leader>c", group = "[c]ode" },
-  { "<leader>c_", hidden = true },
-  { "<leader>g", group = "[g]it" },
-  { "<leader>g_", hidden = true },
   { "<leader>m", "<cmd>bn<cr>", desc = "buffer next" },
   { "<leader>n", "<cmd>bp<cr>", desc = "buffer previous" },
-  { "<leader>s", group = "[s]earch" },
-  -- { "<leader>sR", <function 1>, desc = "Replace in files (Spectre)" },
-  { "<leader>s_", hidden = true },
-  { "<leader>vz", "<cmd>lua zoom()<cr>", desc = "window zoom" },
-  { "<leader>w", "<cmd>w<cr>", desc = "write file" },
-
   { "<leader>p", require("fzf-lua").files, desc = "Fzf Files" },
   { "<leader>P", require("fzf-lua").oldfiles, desc = "Recent Files" },
+  { "<leader>w", "<cmd>w<cr>", desc = "write file" },
 }
 
 return M

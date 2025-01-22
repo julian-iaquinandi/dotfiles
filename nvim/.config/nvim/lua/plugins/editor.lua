@@ -1,7 +1,40 @@
 local keymaps = require("config.keymaps")
 
 return {
-  -- "njcom/hjkl-remap",
+  { -- Useful plugin to show you pending keybinds.
+    "folke/which-key.nvim",
+    event = "VeryLazy", -- Sets the loading event to 'VimEnter'
+    keys = keymaps.which_key,
+    defaults = {
+      preset = "modern",
+    },
+  },
+
+  {
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+      require("nvim-tmux-navigation").setup({
+        disable_when_zoomed = true, -- defaults to false
+        keybindings = {
+          left = "<M-m>",
+          down = "<M-,>",
+          up = "<M-.>",
+          right = "<M-.>",
+          last_active = "<C-\\>",
+          next = "<C-Space>",
+        },
+      })
+    end,
+  },
+
+  {
+    "ojroques/vim-oscyank",
+  },
+
+  {
+    "rickhowe/wrapwidth",
+  },
+
   {
     "marklcrns/vim-smartq",
     event = "BufEnter",
@@ -144,37 +177,5 @@ return {
         end,
       })
     end,
-  },
-
-  {
-    "sindrets/diffview.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      { "TimUntersberger/neogit", config = { disable_commit_confirmation = true } },
-    },
-    -- commit = "9359f7b1dd3cb9fb1e020f57a91f8547be3558c6", -- HEAD requires git 2.31
-    -- keys = keymaps.diffview,
-    keys = {
-      { "<leader>gd", ":DiffviewOpen<cr>", { desc = "Diff Open View" } },
-      -- { "<leader>GF", ":DiffviewFileHistory<cr>", { desc = "Diff file history" } },
-      { "<leader>gh", ":DiffviewFileHistory %<cr>", { desc = "Diff file history %" } },
-      { "<leader>gx", ":DiffviewClose<cr>", { desc = "Diff close" } },
-    },
-    config = {
-      keymaps = {
-        view = {
-          ["<C-g>"] = "<CMD>DiffviewClose<CR>",
-          ["c"] = "<CMD>DiffviewClose|Neogit commit<CR>",
-        },
-        file_panel = {
-          ["<C-g>"] = "<CMD>DiffviewClose<CR>",
-          ["c"] = "<CMD>DiffviewClose|Neogit commit<CR>",
-        },
-      },
-    },
-  },
-
-  {
-    "rickhowe/wrapwidth",
   },
 }
