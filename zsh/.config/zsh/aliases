@@ -16,7 +16,7 @@ alias gita="git diff | sgpt 'Generate git commit message, for my changes, keep i
 
 # ------------------------------ Nvim
 alias v="nvim"
-alias vim="nvim"
+# alias vim="nvim"
 # alias lv="NVIM_APPNAME=lazy nvim"
 # alias fv="NVIM_APPNAME=folke nvim"
 # alias jv="NVIM_APPNAME=jujuvim nvim ."
@@ -41,13 +41,18 @@ alias lzg="lazygit"
 
 # ------------------------------ Apt get
 
-alias install='sudo apt install -y'
-alias remove='sudo apt purge'
-alias update='sudo apt update'
-alias upgrade='sudo apt update && sudo apt upgrade'
+#alias install='sudo apt install -y'
+#alias remove='sudo apt purge'
+#alias update='sudo apt update'
+#alias upgrade='sudo apt update && sudo apt upgrade'
 
-alias list='sudo dpkg -l'
-alias findapp='sudo apt list --installed | grep -i apache'
+#alias list='sudo dpkg -l'
+#alias findapp='sudo apt list --installed | grep -i apache'
+
+# ----------------------------- Pacman
+alias install='sudo pacman -S --noconfirm '
+alias remove='sudo pacman -R '
+alias update='sudo pacman -Sy '
 
 # --------------------------------File Ops
 
@@ -106,3 +111,4 @@ alias sl=nvimGoToLine
 alias sf=nvimGoToFiles
 
 
+alias cdi=snap run code-insiders
